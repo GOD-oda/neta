@@ -1,2 +1,10 @@
-# neta
-備忘録
+# Sample
+```
+% cd {language}
+```
+```
+% make build
+```
+```
+% make run
+```
