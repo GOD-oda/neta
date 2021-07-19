@@ -62,7 +62,7 @@ function runIssuesNew(query) {
     return ContentService.createTextOutput('titleを指定してください');
   }
 
-  const results = createNewIssue('neta', {title: title});
+  const results = createNewIssue(USER_NAME, 'neta', {title: title});
   if (!results) {
     return ContentService.createTextOutput('issueの作成に失敗しました');
   }
