@@ -61,13 +61,11 @@ function runIssuesGet(debug = false) {
   for (const key in issues) {
     if (debug) {
       text.push([
-        '```',
         'title:',
         issues[key]['title'],
         '',
         'url:',
         issues[key]['html_url'],
-        '```'
       ].join("\n"))
     } else {
       attachments.push({
