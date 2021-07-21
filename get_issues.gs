@@ -5,9 +5,9 @@ function getIssues(userName, repoName) {
   let url = makeIssueUrl(userName, repoName);
 
   try {
-    const json = UrlFetchApp.fetch(url);
+    const res = runGetRequest(url);
 
-    return json;    
+    return JSON.parse(res);
   } catch (error) {
     logError(error);
     return false;
@@ -22,5 +22,5 @@ function testGetIssues() {
   const repoName = 'neta';
 
   const res = getIssues(userName, repoName);
-  console.log(JSON.parse(res));
+  console.log(res);
 }
