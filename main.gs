@@ -49,8 +49,47 @@ function switchAction(categoryName, actionName, query) {
 /**
  * issueの取得
  */
-function runIssuesGet() {
-  return ContentService.createTextOutput('TODO');
+function runIssuesGet(debug = false) {
+  const issues = getIssues(USER_NAME, 'neta');
+  if (!issues) {
+    return ContentService.createTextOutput('issueの取得に失敗しました');
+  }
+
+  let text = [];
+  let attachments = [];
+
+  for (const key in issues) {
+    if (debug) {
+      text.push([
+        '```',
+        'title:',
+        issues[key]['title'],
+        '',
+        'url:',
+        issues[key]['html_url'],
+        '```'
+      ].join("\n"))
+    } else {
+      attachments.push({
+        title: issues[key]['title'],
+        color: '#3AA3E3',
+        text: "URL:\n" + issues[key]['html_url']
+      });
+    }
+  }
+
+  if (debug) {
+    return text.join("\n\n");
+  } else {
+    return ContentService.createTextOutput(JSON.stringify({text: 'issues', attachments: attachments})).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * runIssuesGet関数のテスト
+ */
+function testRunIssuesGet() {
+  console.log(runIssuesGet(true));
 }
 
 /**
