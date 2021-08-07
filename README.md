@@ -1,2 +1,3 @@
 # neta
-備忘録
+
+issueで検証したサンプルコードは`issues/{issue_id}`ディレクトリにある
