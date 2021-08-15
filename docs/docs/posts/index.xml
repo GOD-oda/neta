@@ -1,45 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on ODA WORLD</title>
-    <link>https://GOD-oda.github.io/neta/posts/</link>
-    <description>Recent content in Posts on ODA WORLD</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 16 Aug 2021 01:37:04 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>54</title>
-      <link>https://GOD-oda.github.io/neta/posts/54/</link>
-      <pubDate>Mon, 16 Aug 2021 01:37:04 +0900</pubDate>
-      
-      <guid>https://GOD-oda.github.io/neta/posts/54/</guid>
-      <description>TABLEでのログ 前提  slow_query_logがONになていること  mysql&amp;gt; show variables like &#39;%slow_query%&#39;;+---------------------+----------------------------------------------+| Variable_name | Value |+---------------------+----------------------------------------------+| slow_query_log | ON || slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log |+---------------------+----------------------------------------------+2 rows in set (0.00 sec)log_outputがTABLEになっていること  mysql&amp;gt; show variables like &#39;%output%&#39;;+---------------+-------+| Variable_name | Value |+---------------+-------+| log_output | TABLE |+---------------+-------+1 row in set (0.00 sec)コマンド 上位10件を抽出する例
-mysql&amp;gt; select * from mysql.slow_log order by query_time desc limit 10\G*************************** 1.</description>
-    </item>
-    
-    <item>
-      <title>26</title>
-      <link>https://GOD-oda.github.io/neta/posts/26/</link>
-      <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
-      
-      <guid>https://GOD-oda.github.io/neta/posts/26/</guid>
-      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時
-SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL;mysqlの公式にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる
-環境  Docker version 19.03.13, build 4484c46d9d mysql:5.6  my.confは未指定なのでデフォルト    準備 mysql5.6のイメージをダウンロードする
-% docker pull mysql:5.6コンテナを起動する
-% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120確認
-% docker psCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESc10a60237021 mysql:5.6 &amp;quot;docker-entrypoint.s…&amp;quot; 3 seconds ago Up 2 seconds 3306/tcp mysql56コンテナに入る</description>
-    </item>
-    
-    <item>
-      <title>28</title>
-      <link>https://GOD-oda.github.io/neta/posts/28/</link>
-      <pubDate>Sun, 15 Aug 2021 18:32:28 +0900</pubDate>
-      
-      <guid>https://GOD-oda.github.io/neta/posts/28/</guid>
-      <description>インストールコマンドは公式で確認する
-% /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot;Password:==&amp;gt; This script will install:/opt/homebrew/bin/brew/opt/homebrew/share/doc/homebrew/opt/homebrew/share/man/man1/brew.1/opt/homebrew/share/zsh/site-functions/_brew/opt/homebrew/etc/bash_completion.d/brew/opt/homebrewPress RETURN to continue or any other key to abort==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew==&amp;gt; Downloading and installing Homebrew...remote: Enumerating objects: 381, done.remote: Counting objects: 100% (381/381), done.remote: Compressing objects: 100% (9/9), done.remote: Total 548 (delta 375), reused 376 (delta 372), pack-reused 167Receiving objects: 100% (548/548), 127.</description>
-    </item>
-    
-  </channel>
-</rss>
