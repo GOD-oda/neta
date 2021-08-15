@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.87.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>ODA WORLD</title>
+  <link href="https://GOD-oda.github.io/neta/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://GOD-oda.github.io/neta/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(https://GOD-oda.github.io/neta/images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="https://GOD-oda.github.io/neta"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://GOD-oda.github.io/neta/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://GOD-oda.github.io/neta/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">ODA WORLD</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+        <div class="row center">
+        
+        
+        
+        
+        
+        
+          <a href="https://GOD-oda.github.io/neta/index.xml"><img src="https://GOD-oda.github.io/neta/images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="https://GOD-oda.github.io/neta/images/default.png">
+    
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="section">
+
+
+<div class="row">
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="https://GOD-oda.github.io/neta/posts/54/">54</a></h4>
+      <p>
+       
+      </p>
+      <p>TABLEでのログ 前提  slow_query_logがONになていること  mysql&gt; show variables like '%slow_query%';+---------------------+----------------------------------------------+| Variable_name | Value |+---------------------+----------------------------------------------+| slow_query_log | ON || slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log |+---------------------+----------------------------------------------+2 rows in set (0.00 sec)log_outputがTABLEになっていること  mysql&gt; show variables like '%output%';+---------------+-------+| Variable_name | Value |+---------------+-------+| log_output | TABLE |+---------------+-------+1 row in set (0.00 sec)コマンド 上位10件を抽出する例
+mysql&gt; select * from mysql.slow_log order by query_time desc limit 10\G*************************** 1.</p>
+      <p>
+      16 Aug 2021
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="https://GOD-oda.github.io/neta/posts/26/">26</a></h4>
+      <p>
+       
+      </p>
+      <p>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時
+SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &lt; t2.column2 WHERE t2.column2 IS NULL;mysqlの公式にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる
+環境  Docker version 19.03.13, build 4484c46d9d mysql:5.6  my.confは未指定なのでデフォルト    準備 mysql5.6のイメージをダウンロードする
+% docker pull mysql:5.6コンテナを起動する
+% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120確認
+% docker psCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESc10a60237021 mysql:5.6 &quot;docker-entrypoint.s…&quot; 3 seconds ago Up 2 seconds 3306/tcp mysql56コンテナに入る</p>
+      <p>
+      15 Aug 2021
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="https://GOD-oda.github.io/neta/posts/28/">28</a></h4>
+      <p>
+       
+      </p>
+      <p>インストールコマンドは公式で確認する
+% /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;Password:==&gt; This script will install:/opt/homebrew/bin/brew/opt/homebrew/share/doc/homebrew/opt/homebrew/share/man/man1/brew.1/opt/homebrew/share/zsh/site-functions/_brew/opt/homebrew/etc/bash_completion.d/brew/opt/homebrewPress RETURN to continue or any other key to abort==&gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew==&gt; Downloading and installing Homebrew...remote: Enumerating objects: 381, done.remote: Counting objects: 100% (381/381), done.remote: Compressing objects: 100% (9/9), done.remote: Total 548 (delta 375), reused 376 (delta 372), pack-reused 167Receiving objects: 100% (548/548), 127.</p>
+      <p>
+      15 Aug 2021
+       
+      </p>
+    </div>
+  </div>
+
+</div>
+
+  
+<div class="row">
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
+  
+  </div>
+  <div class="col s6 m10 center">&nbsp</div>
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
+  
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://GOD-oda.github.io/neta/js/materialize.min.js"></script>
+  <script src="https://GOD-oda.github.io/neta/js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
