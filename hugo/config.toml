@@ -1,0 +1,6 @@
+baseURL = 'https://GOD-oda.github.io/neta'
+languageCode = 'en-us'
+title = 'ODA WORLD'
+theme = 'material-design'
+publishDir = 'docs'
+canonifyurls = true
