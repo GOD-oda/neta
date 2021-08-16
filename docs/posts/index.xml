@@ -6,7 +6,18 @@
     <description>Recent content in Posts on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 16 Aug 2021 01:37:04 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Aug 2021 00:40:03 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>55</title>
+      <link>https://GOD-oda.github.io/neta/posts/55/</link>
+      <pubDate>Tue, 17 Aug 2021 00:40:03 +0900</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/55/</guid>
+      <description>設定からapplication.jsonを表示できるようにする
+ timeZoneを指定のものに設定する
+ </description>
+    </item>
+    
     <item>
       <title>54</title>
       <link>https://GOD-oda.github.io/neta/posts/54/</link>
