@@ -2,4 +2,4 @@
 
 hugo
 
-cp -r docs ../docs
+cp -r docs/* ../docs
