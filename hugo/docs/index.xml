@@ -6,7 +6,18 @@
     <description>Recent content on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 17 Aug 2021 00:40:03 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Aug 2021 02:55:57 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>特定ディレクトリ配下のファイル合計行数を算出する</title>
+      <link>https://GOD-oda.github.io/neta/posts/44/</link>
+      <pubDate>Tue, 17 Aug 2021 02:55:57 +0900</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/44/</guid>
+      <description>コマンド
+% find /path/to/directory -name &amp;quot;*.php&amp;quot; | xargs wc -lLaravelで確認
+% ls -ltotal 632drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 .drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 ..-rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig-rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env-rw-r--r-- 1 odatakahiro staff 869 6 16 00:48 .env.example-rw-r--r-- 1 odatakahiro staff 111 6 16 00:48 .gitattributes-rw-r--r-- 1 odatakahiro staff 207 6 16 00:48 .</description>
+    </item>
+    
     <item>
       <title>55</title>
       <link>https://GOD-oda.github.io/neta/posts/55/</link>
