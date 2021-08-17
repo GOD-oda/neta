@@ -16,12 +16,15 @@ res_body = JSON.parse(res.body)
 title = res_body['title']
 body = res_body['body']
 file_path = "posts/#{issue_id}.md"
+label_names = res_body['labels'].map { |l| l['name'] }.join(',')
 
 %x(hugo new #{file_path})
 
 system("sed -i -e \"s/title\:.*/title\: #{title}/\" content/#{file_path}")
 system("sed -i -e \"s/draft\:.*/draft: false/\" content/#{file_path}")
-system("rm content/#{file_path}-e")
+unless label_names.empty?
+  system("gsed -i -e \"/draft\:.*/a tags: [#{label_names}]\" content/#{file_path}")
+end
 
 File.open("content/#{file_path}", 'a') do |f|
   f.puts res_body['body']

@@ -6,7 +6,30 @@
     <description>Recent content in Posts on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 17 Aug 2021 02:55:57 +0900</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Aug 2021 15:02:04 +0900</lastBuildDate>
+    
+	<atom:link href="https://GOD-oda.github.io/neta/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>brewで新しいphpをインストールする</title>
+      <link>https://GOD-oda.github.io/neta/posts/40/</link>
+      <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/40/</guid>
+      <description>環境  php 7.3 brew 2.6.2 zsh  % php -vPHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS )Copyright (c) 1997-2018 The PHP GroupZend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies% brew -vHomebrew 2.6.2Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17)Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18)手順  インストール可能なphpバージョンを確認する  % brew search php==&amp;gt; Formulaebrew-php-switcher php-cs-fixer php@7.4 phpmyadminphp php@7.</description>
+    </item>
+    
+    <item>
+      <title>curlのバージョン確認</title>
+      <link>https://GOD-oda.github.io/neta/posts/41/</link>
+      <pubDate>Tue, 17 Aug 2021 14:59:53 +0900</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/41/</guid>
+      <description>コマンド curl -V
+% curl -Vcurl 7.64.1 (x86_64-apple-darwin19.0) libcurl/7.64.1 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.39.2Release-Date: 2019-03-27Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp Features: AsynchDNS GSS-API HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets</description>
+    </item>
+    
     <item>
       <title>特定ディレクトリ配下のファイル合計行数を算出する</title>
       <link>https://GOD-oda.github.io/neta/posts/44/</link>
@@ -25,8 +48,8 @@
       
       <guid>https://GOD-oda.github.io/neta/posts/55/</guid>
       <description>設定からapplication.jsonを表示できるようにする
- timeZoneを指定のものに設定する
- </description>
+  timeZoneを指定のものに設定する
+  </description>
     </item>
     
     <item>
