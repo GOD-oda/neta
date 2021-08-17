@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>yum on ODA WORLD</title>
+    <link>https://GOD-oda.github.io/neta/tags/yum/</link>
+    <description>Recent content in yum on ODA WORLD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 15 Jun 2021 16:17:03 +0000</lastBuildDate>
+    
+	<atom:link href="https://GOD-oda.github.io/neta/tags/yum/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>yumでインストール済みパッケージを表示する</title>
+      <link>https://GOD-oda.github.io/neta/posts/43/</link>
+      <pubDate>Tue, 15 Jun 2021 16:17:03 +0000</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/43/</guid>
+      <description>インストール済みパッケージ一覧
+% yum list installedヘルプ
+% yum list -h読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helperUsage: yum [options] COMMANDList of Commands:autoremove Remove leaf packagescheck rpmdb の問題を確認するcheck-update 更新に利用できるパッケージを確認するclean キャッシュデータを削除するdeplist パッケージの依存性の一覧を表示するdistribution-synchronization 最新の利用可能なバージョンへインストール済みパッケージを同期するdowngrade パッケージのダウングレードerase システムから削除するパッケージfs Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.fssnapshot Creates filesystem snapshots, or lists/deletes current snapshots.groups グループ情報の表示または使用help 役立つ使い方のメッセージを表示するhistory トランザクション履歴を表示、使用するinfo パッケージもしくはパッケージのグループについての詳細を表示するinstall システムにパッケージをインストールするlist パッケージグループの一覧を表示するload-transaction filename から保存済みトランザクションを読み込むmakecache メタデータキャッシュを生成するprovides 指定値を提供するパッケージを検索するreinstall パッケージの再インストールrepo-pkgs Treat a repo.</description>
+    </item>
+    
+  </channel>
+</rss>
