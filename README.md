@@ -17,5 +17,5 @@ Resolving deltas: 100% (55/55), done.
 ```sh
 % hugo server
 ```
-3. Access `localhost:1313/neta/posts/28
+3. Access [localhost:1313/neta/posts/28](http://localhost:1313/neta/posts/28)
 
