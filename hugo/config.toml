@@ -4,3 +4,4 @@ title = 'ODA WORLD'
 theme = 'material-design'
 publishDir = 'docs'
 canonifyurls = true
+hasCJKLanguage = true
