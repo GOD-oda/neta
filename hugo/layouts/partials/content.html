@@ -9,21 +9,22 @@
     <div class="card-panel">
       <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
       {{if .Params.categories }}
-     <p>
+      <p>
         {{ range $index, $category := .Params.categories }}
           <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
         {{ end }}
       </p>
       {{end}} 
       <p>{{ substr .Summary 0 100 }} ...</p>
-      <p>
-      {{ .Date.Format "2 Jan 2006" }}
+      <hr>
+      作成日 {{ .Date.Format "2006/01/02 15:04:05" }}
       {{if .Params.tags }}
+      <p>
         {{ range $index, $tag := .Params.tags }}
           <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
         {{ end }}
-      {{end}} 
       </p>
+      {{end}} 
     </div>
   </div>
 {{ end }}
