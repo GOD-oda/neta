@@ -17,7 +17,7 @@
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/40/</guid>
-      <description>環境  php 7.3 brew 2.6.2 zsh  % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順  インストール可能なphpバージョンを確認する  % brew search php ==&amp;gt; Formulae brew-php-switcher php-cs-fixer php@7.4 phpmyadmin php php@7.</description>
+      <description>環境 php 7.3 brew 2.6.2 zsh % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順 インストール可能なphpバー</description>
     </item>
     
     <item>
@@ -26,8 +26,7 @@
       <pubDate>Tue, 17 Aug 2021 14:59:53 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/41/</guid>
-      <description>コマンド curl -V
-% curl -V curl 7.64.1 (x86_64-apple-darwin19.0) libcurl/7.64.1 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.39.2 Release-Date: 2019-03-27 Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp Features: AsynchDNS GSS-API HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets </description>
+      <description>コマンド curl -V % curl -V curl 7.64.1 (x86_64-apple-darwin19.0) libcurl/7.64.1 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.39.2 Release-Date: 2019-03-27 Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp Features: AsynchDNS GSS-API HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets</description>
     </item>
     
     <item>
@@ -36,9 +35,7 @@
       <pubDate>Tue, 17 Aug 2021 02:55:57 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/44/</guid>
-      <description>コマンド
-% find /path/to/directory -name &amp;quot;*.php&amp;quot; | xargs wc -lLaravelで確認
-% ls -ltotal 632drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 .drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 ..-rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig-rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env-rw-r--r-- 1 odatakahiro staff 869 6 16 00:48 .env.example-rw-r--r-- 1 odatakahiro staff 111 6 16 00:48 .gitattributes-rw-r--r-- 1 odatakahiro staff 207 6 16 00:48 .</description>
+      <description>コマンド % find /path/to/directory -name &amp;quot;*.php&amp;quot; | xargs wc -l Laravelで確認 % ls -l total 632 drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 . drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 .. -rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig -rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env -rw-r--r-- 1 odatakahiro staff 869 6</description>
     </item>
     
     <item>
@@ -47,9 +44,7 @@
       <pubDate>Tue, 17 Aug 2021 00:40:03 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/55/</guid>
-      <description>設定からapplication.jsonを表示できるようにする
-  timeZoneを指定のものに設定する
-  </description>
+      <description>設定からapplication.jsonを表示できるようにする timeZoneを指定のものに設定する</description>
     </item>
     
     <item>
@@ -58,8 +53,7 @@
       <pubDate>Mon, 16 Aug 2021 01:37:04 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/54/</guid>
-      <description>TABLEでのログ 前提  slow_query_logがONになていること  mysql&amp;gt; show variables like &#39;%slow_query%&#39;;+---------------------+----------------------------------------------+| Variable_name | Value |+---------------------+----------------------------------------------+| slow_query_log | ON || slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log |+---------------------+----------------------------------------------+2 rows in set (0.00 sec)log_outputがTABLEになっていること  mysql&amp;gt; show variables like &#39;%output%&#39;;+---------------+-------+| Variable_name | Value |+---------------+-------+| log_output | TABLE |+---------------+-------+1 row in set (0.00 sec)コマンド 上位10件を抽出する例
-mysql&amp;gt; select * from mysql.slow_log order by query_time desc limit 10\G*************************** 1.</description>
+      <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
     </item>
     
     <item>
@@ -68,12 +62,7 @@ mysql&amp;gt; select * from mysql.slow_log order by query_time desc limit 10\G*
       <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/26/</guid>
-      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時
-SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL;mysqlの公式にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる
-環境  Docker version 19.03.13, build 4484c46d9d mysql:5.6  my.confは未指定なのでデフォルト    準備 mysql5.6のイメージをダウンロードする
-% docker pull mysql:5.6コンテナを起動する
-% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120確認
-% docker psCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESc10a60237021 mysql:5.6 &amp;quot;docker-entrypoint.s…&amp;quot; 3 seconds ago Up 2 seconds 3306/tcp mysql56コンテナに入る</description>
+      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
     </item>
     
     <item>
@@ -82,8 +71,7 @@ SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.colu
       <pubDate>Sun, 15 Aug 2021 18:32:28 +0900</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/28/</guid>
-      <description>インストールコマンドは公式で確認する
-% /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot;Password:==&amp;gt; This script will install:/opt/homebrew/bin/brew/opt/homebrew/share/doc/homebrew/opt/homebrew/share/man/man1/brew.1/opt/homebrew/share/zsh/site-functions/_brew/opt/homebrew/etc/bash_completion.d/brew/opt/homebrewPress RETURN to continue or any other key to abort==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew==&amp;gt; Downloading and installing Homebrew...remote: Enumerating objects: 381, done.remote: Counting objects: 100% (381/381), done.remote: Compressing objects: 100% (9/9), done.remote: Total 548 (delta 375), reused 376 (delta 372), pack-reused 167Receiving objects: 100% (548/548), 127.</description>
+      <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
     </item>
     
     <item>
@@ -92,9 +80,7 @@ SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.colu
       <pubDate>Tue, 15 Jun 2021 16:17:03 +0000</pubDate>
       
       <guid>https://GOD-oda.github.io/neta/posts/43/</guid>
-      <description>インストール済みパッケージ一覧
-% yum list installedヘルプ
-% yum list -h読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helperUsage: yum [options] COMMANDList of Commands:autoremove Remove leaf packagescheck rpmdb の問題を確認するcheck-update 更新に利用できるパッケージを確認するclean キャッシュデータを削除するdeplist パッケージの依存性の一覧を表示するdistribution-synchronization 最新の利用可能なバージョンへインストール済みパッケージを同期するdowngrade パッケージのダウングレードerase システムから削除するパッケージfs Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.fssnapshot Creates filesystem snapshots, or lists/deletes current snapshots.groups グループ情報の表示または使用help 役立つ使い方のメッセージを表示するhistory トランザクション履歴を表示、使用するinfo パッケージもしくはパッケージのグループについての詳細を表示するinstall システムにパッケージをインストールするlist パッケージグループの一覧を表示するload-transaction filename から保存済みトランザクションを読み込むmakecache メタデータキャッシュを生成するprovides 指定値を提供するパッケージを検索するreinstall パッケージの再インストールrepo-pkgs Treat a repo.</description>
+      <description>インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper Usage: yum [options] COMMAND List of Commands: autoremove Remove leaf packages check rpmdb の問題</description>
     </item>
     
   </channel>
