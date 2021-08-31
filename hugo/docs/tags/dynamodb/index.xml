@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DynamoDB on ODA WORLD</title>
+    <link>https://GOD-oda.github.io/neta/tags/dynamodb/</link>
+    <description>Recent content in DynamoDB on ODA WORLD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    
+	<atom:link href="https://GOD-oda.github.io/neta/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DynamoDBをローカル環境に作る</title>
+      <link>https://GOD-oda.github.io/neta/posts/72/</link>
+      <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
+      
+      <guid>https://GOD-oda.github.io/neta/posts/72/</guid>
+      <description>前提 ローカルで実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい awsコマンドは打てる状態でshellス</description>
+    </item>
+    
+  </channel>
+</rss>
