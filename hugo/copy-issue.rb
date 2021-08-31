@@ -45,10 +45,11 @@ if created_at
   system("sed -i -e \"s/date\:.*/date: #{created_at.strftime('%Y-%m-%dT%H:%M:%S')}/\" #{file_path}")
 end
 if updated_at
-  system("gsed -i -e \"/date\:.*/a publishDate: #{updated_at.strftime('%Y-%m-%dT%H:%M:%S')}\" #{file_path}")
+  system("gsed -i -e \"/date\:.*/a publishDate: #{updated_at.strftime('%Y-%m-%dT%H:%M:%S')}+09:00\" #{file_path}")
 end
 
 File.open(file_path, 'a') do |f|
-  f.puts res_body['body']
+  f.puts res_body['body'].gsub(/\r/, '')
 end
+
 
