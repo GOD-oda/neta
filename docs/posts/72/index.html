@@ -14,6 +14,15 @@
     footer.page-footer{background-image: url(https://GOD-oda.github.io/neta/images/default.png);}
   
   </style>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-93E1496REW');
+  </script>
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
@@ -61,21 +70,35 @@
            
           </p>
           <p><h1 id="前提">前提</h1>
-<ul>
-<li>ローカルで実行する</li>
-<li>docker-compose.ymlを使う</li>
-<li>作ったテーブルや項目は残しておきたい</li>
-<li>awsコマンドは打てる状態でshellスクリプトで実行する（直接打ってもいいよ）</li>
+<ul style="padding-left: 40px !important; list-style-type: initial !important;">
+
+  <li style="list-style-type: initial !important;">ローカルで実行する</li>
+
+  <li style="list-style-type: initial !important;">docker-compose.ymlを使う</li>
+
+  <li style="list-style-type: initial !important;">作ったテーブルや項目は残しておきたい</li>
+
+  <li style="list-style-type: initial !important;">awsコマンドは打てる状態でshellスクリプトで実行する</li>
+
 </ul>
+
 <h1 id="やることとゴール">やることとゴール</h1>
-<ul>
-<li>dynamodbのコンテナをdocker-compose.ymlで</li>
-<li>テーブル作成</li>
-<li>テーブル確認</li>
-<li>項目挿入</li>
-<li>scan実行</li>
-<li>データのマウント</li>
+<ul style="padding-left: 40px !important; list-style-type: initial !important;">
+
+  <li style="list-style-type: initial !important;">dynamodbのコンテナをdocker-compose.ymlで</li>
+
+  <li style="list-style-type: initial !important;">テーブル作成</li>
+
+  <li style="list-style-type: initial !important;">テーブル確認</li>
+
+  <li style="list-style-type: initial !important;">項目挿入</li>
+
+  <li style="list-style-type: initial !important;">scan実行</li>
+
+  <li style="list-style-type: initial !important;">データのマウント</li>
+
 </ul>
+
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
