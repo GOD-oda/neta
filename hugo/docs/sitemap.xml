@@ -1,99 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://GOD-oda.github.io/neta/tags/docker/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/dynamodb/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/72/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/40/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/homebrew/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/php/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/curl/</loc>
     <lastmod>2021-08-17T14:59:53+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/41/</loc>
     <lastmod>2021-08-17T14:59:53+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/44/</loc>
     <lastmod>2021-08-17T02:55:57+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/55/</loc>
     <lastmod>2021-08-17T00:40:03+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/54/</loc>
     <lastmod>2021-08-16T01:37:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/26/</loc>
     <lastmod>2021-08-15T18:49:20+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/28/</loc>
     <lastmod>2021-08-15T18:32:28+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/tags/yum/</loc>
     <lastmod>2021-06-15T16:17:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/posts/43/</loc>
     <lastmod>2021-06-15T16:17:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://GOD-oda.github.io/neta/categories/</loc>
   </url>
-  
 </urlset>

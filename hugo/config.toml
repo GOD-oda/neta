@@ -5,3 +5,4 @@ theme = 'material-design'
 publishDir = 'docs'
 canonifyurls = true
 hasCJKLanguage = true
+googleAnalytics = 'G-93E1496REW'
