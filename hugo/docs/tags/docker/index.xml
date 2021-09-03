@@ -6,7 +6,11 @@
     <description>Recent content in docker on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    
+	<atom:link href="https://GOD-oda.github.io/neta/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>DynamoDBをローカル環境に作る</title>
       <link>https://GOD-oda.github.io/neta/posts/72/</link>

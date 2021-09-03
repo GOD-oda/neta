@@ -37,7 +37,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <!-- <h1 class="header center teal-text text-lighten-2"><a href="{{.Site.BaseURL}}">{{.Site.Title}}</a></h1> -->
-        <h1 class="header center teal-text text-lighten-2">{{.Site.Title}}</h1>
+        <h1 class="header center teal-text text-lighten-2">{{.Title | default .Site.Title}}</h1>
         <div class="row center">
           <h5 class="header col s12 light">{{.Site.Params.description}}</h5>
         </div>
