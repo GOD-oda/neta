@@ -1,3 +1,83 @@
+// media query
+$pc: 992px;
+$tablet: 600px;
+$sp: 480px;
+
+@mixin pc {
+  @media screen and (max-width: ($pc)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: ($tablet)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+/*
+ * original
+ */
+
+// header
+#index-banner {
+  h1 {
+    @include pc {
+      font-size: 3.5rem;
+    }
+
+    @include tablet {
+      font-size: 3rem;
+    }
+
+    @include sp {
+      font-size: 2rem;
+    }
+  }
+}
+
+.parallax-container {
+  height: 400px;
+
+  @include sp {
+    height: 300px;
+  }
+}
+
+// article
+#article {
+  h1 {
+    font-size: 3.5rem;
+    @include pc {
+      font-size: 3.5rem;
+    }
+    @include tablet {
+      font-size: 2.5rem;
+    }
+    @include sp {
+      font-size: 2rem;
+    }
+  }
+  h2 {
+    font-size: 3rem;
+    @include pc {
+      font-size: 3rem;
+    }
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include sp {
+      font-size: 1.5rem;
+    }
+  }
+}
+
 .card-panel {
   overflow-wrap: break-word;
 　word-wrap: break-word;
@@ -8,4 +88,14 @@ figure {
     max-width: 100%;
   }
 }
+
+
+
+
+
+
+
+
+
+
 
