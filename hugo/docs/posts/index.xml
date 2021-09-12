@@ -17,7 +17,7 @@
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
       <guid>https://blog.oda.world/posts/72/</guid>
-      <description>&amp;lt;?php $hoge = &amp;#39;hoge&amp;#39;; echo $hoge; class V1::ExpertsController &amp;lt; ApplicationController include ExpertsControllerValidator before_action :authenticate_user! def create expert = Expert.create!(permitted_params) render_one({ expert_id: expert.id }) rescue =&amp;gt; e render_error(&amp;#34;管理者に問い合わせてください。#{e.message</description>
+      <description>前提 ローカルで実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい awsコマンドは打てる状態でshellス</description>
     </item>
     
     <item>

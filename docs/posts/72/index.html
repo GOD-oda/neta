@@ -83,35 +83,12 @@
 
     <div class="row">
       <div class="col s12">
-        <div class="card-panel">
+        <div>
           
           <p>
            
           </p>
-          <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$hoge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hoge&#39;</span>;
-<span style="color:#66d9ef">echo</span> $hoge;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">V1</span><span style="color:#f92672">::</span><span style="color:#66d9ef">ExpertsController</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">ApplicationController</span>
-  <span style="color:#66d9ef">include</span> <span style="color:#66d9ef">ExpertsControllerValidator</span>
-
-  before_action <span style="color:#e6db74">:authenticate_user!</span>
-
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">create</span>
-    expert <span style="color:#f92672">=</span> <span style="color:#66d9ef">Expert</span><span style="color:#f92672">.</span>create!(permitted_params)
-
-    render_one({ <span style="color:#e6db74">expert_id</span>: expert<span style="color:#f92672">.</span>id })
-  <span style="color:#66d9ef">rescue</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> e
-    render_error(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">管理者に問い合わせてください。</span><span style="color:#e6db74">#{</span>e<span style="color:#f92672">.</span>message<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-  <span style="color:#66d9ef">end</span>
-
-  <span style="color:#66d9ef">private</span>
-
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">authenticate_user!</span>
-    pull_current_user
-    render_error(<span style="color:#66d9ef">ErrorMessages</span><span style="color:#f92672">::</span><span style="color:#66d9ef">UNAUTHORISED</span>) <span style="color:#66d9ef">unless</span> <span style="color:#66d9ef">Authenticator</span><span style="color:#f92672">.</span>has_expert?(@current_user)
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><h1 id="前提">前提</h1>
+          <p><h1 id="前提">前提</h1>
 <ul style="padding-left: 40px !important; list-style-type: initial !important;">
 
   <li style="list-style-type: initial !important;">ローカルで実行する</li>
@@ -141,30 +118,7 @@ $hoge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hoge
 
 </ul>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
-$hoge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hoge&#39;</span>;
-<span style="color:#66d9ef">echo</span> $hoge;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">V1</span><span style="color:#f92672">::</span><span style="color:#66d9ef">ExpertsController</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">ApplicationController</span>
-  <span style="color:#66d9ef">include</span> <span style="color:#66d9ef">ExpertsControllerValidator</span>
-
-  before_action <span style="color:#e6db74">:authenticate_user!</span>
-
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">create</span>
-    expert <span style="color:#f92672">=</span> <span style="color:#66d9ef">Expert</span><span style="color:#f92672">.</span>create!(permitted_params)
-
-    render_one({ <span style="color:#e6db74">expert_id</span>: expert<span style="color:#f92672">.</span>id })
-  <span style="color:#66d9ef">rescue</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> e
-    render_error(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">管理者に問い合わせてください。</span><span style="color:#e6db74">#{</span>e<span style="color:#f92672">.</span>message<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-  <span style="color:#66d9ef">end</span>
-
-  <span style="color:#66d9ef">private</span>
-
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">authenticate_user!</span>
-    pull_current_user
-    render_error(<span style="color:#66d9ef">ErrorMessages</span><span style="color:#f92672">::</span><span style="color:#66d9ef">UNAUTHORISED</span>) <span style="color:#66d9ef">unless</span> <span style="color:#66d9ef">Authenticator</span><span style="color:#f92672">.</span>has_expert?(@current_user)
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
 │   ├── config.sh
@@ -211,9 +165,11 @@ dynamodb_1  | InMemory:	true    &lt;---------------------------ここ
 .
 </code></pre></div><p>消えないようにボリュームマウントしたいわけですがこの<code>InMemory</code>オプションが邪魔になります
 ということで<code>docker-compose.yml</code>に追記します</p>
-<p>commandを上書きしましょ
-portの設定をしないとホスト側からコンテナ側へ繋げられないね？
-volumesでマウントするんだ</p>
+<ul>
+<li>commandを上書きしましょ</li>
+<li>portの設定をしないとホスト側からコンテナ側へ繋げられないね？</li>
+<li>volumesでマウントするんだ</li>
+</ul>
 <p>完成したのがこちら</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
   <span style="color:#66d9ef">services</span>:
@@ -252,51 +208,51 @@ aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --key-schema <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    AttributeName<span style="color:#f92672">=</span>userId,KeyType<span style="color:#f92672">=</span>HASH AttributeName<span style="color:#f92672">=</span>userName,KeyType<span style="color:#f92672">=</span>RANGE <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --billing-mode PAY_PER_REQUEST
-</code></pre></div><p><code>$REGION</code>と<code>$ENDPOINT_URL</code>と<code>$TABLE</code>は環境変数として読み込みます（直接書いてもいいです）
-<code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>はなんでもいいのでとりあえず<code>fake</code>としています</p>
-<pre><code>% REGION=ap-northeast-1 ENDPOINT_URL=http://localhost:8000 TABLE=Sample AWS_ACCESS_KEY_ID=fake AWS_SECRET_ACCESS_KEY=fake sh bin/create-table.sh
-{
-    &quot;TableDescription&quot;: {
-        &quot;AttributeDefinitions&quot;: [
-            {
-                &quot;AttributeName&quot;: &quot;userId&quot;,
-                &quot;AttributeType&quot;: &quot;N&quot;
-            },
-            {
-                &quot;AttributeName&quot;: &quot;userName&quot;,
-                &quot;AttributeType&quot;: &quot;S&quot;
-            }
-        ],
-        &quot;TableName&quot;: &quot;Sample&quot;,
-        &quot;KeySchema&quot;: [
-            {
-                &quot;AttributeName&quot;: &quot;userId&quot;,
-                &quot;KeyType&quot;: &quot;HASH&quot;
-            },
-            {
-                &quot;AttributeName&quot;: &quot;userName&quot;,
-                &quot;KeyType&quot;: &quot;RANGE&quot;
-            }
-        ],
-        &quot;TableStatus&quot;: &quot;ACTIVE&quot;,
-        &quot;CreationDateTime&quot;: &quot;2021-08-31T15:52:52.990000+09:00&quot;,
-        &quot;ProvisionedThroughput&quot;: {
-            &quot;LastIncreaseDateTime&quot;: &quot;1970-01-01T09:00:00+09:00&quot;,
-            &quot;LastDecreaseDateTime&quot;: &quot;1970-01-01T09:00:00+09:00&quot;,
-            &quot;NumberOfDecreasesToday&quot;: 0,
-            &quot;ReadCapacityUnits&quot;: 0,
-            &quot;WriteCapacityUnits&quot;: 0
-        },
-        &quot;TableSizeBytes&quot;: 0,
-        &quot;ItemCount&quot;: 0,
-        &quot;TableArn&quot;: &quot;arn:aws:dynamodb:ddblocal:000000000000:table/Sample&quot;,
-        &quot;BillingModeSummary&quot;: {
-            &quot;BillingMode&quot;: &quot;PAY_PER_REQUEST&quot;,
-            &quot;LastUpdateToPayPerRequestDateTime&quot;: &quot;2021-08-31T15:52:52.990000+09:00&quot;
-        }
-    }
-}
-</code></pre><p>無事作成されましたね
+</code></pre></div><p><code>$REGION</code>と<code>$ENDPOINT_URL</code>と<code>$TABLE</code>は環境変数として読み込みます（直接書いてもいいです）</p>
+<p><code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>はなんでもいいのでとりあえず<code>fake</code>としています</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/create-table.sh
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;TableDescription&#34;</span>: <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;AttributeDefinitions&#34;</span>: <span style="color:#f92672">[</span>
+            <span style="color:#f92672">{</span>
+                <span style="color:#e6db74">&#34;AttributeName&#34;</span>: <span style="color:#e6db74">&#34;userId&#34;</span>,
+                <span style="color:#e6db74">&#34;AttributeType&#34;</span>: <span style="color:#e6db74">&#34;N&#34;</span>
+            <span style="color:#f92672">}</span>,
+            <span style="color:#f92672">{</span>
+                <span style="color:#e6db74">&#34;AttributeName&#34;</span>: <span style="color:#e6db74">&#34;userName&#34;</span>,
+                <span style="color:#e6db74">&#34;AttributeType&#34;</span>: <span style="color:#e6db74">&#34;S&#34;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">]</span>,
+        <span style="color:#e6db74">&#34;TableName&#34;</span>: <span style="color:#e6db74">&#34;Sample&#34;</span>,
+        <span style="color:#e6db74">&#34;KeySchema&#34;</span>: <span style="color:#f92672">[</span>
+            <span style="color:#f92672">{</span>
+                <span style="color:#e6db74">&#34;AttributeName&#34;</span>: <span style="color:#e6db74">&#34;userId&#34;</span>,
+                <span style="color:#e6db74">&#34;KeyType&#34;</span>: <span style="color:#e6db74">&#34;HASH&#34;</span>
+            <span style="color:#f92672">}</span>,
+            <span style="color:#f92672">{</span>
+                <span style="color:#e6db74">&#34;AttributeName&#34;</span>: <span style="color:#e6db74">&#34;userName&#34;</span>,
+                <span style="color:#e6db74">&#34;KeyType&#34;</span>: <span style="color:#e6db74">&#34;RANGE&#34;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">]</span>,
+        <span style="color:#e6db74">&#34;TableStatus&#34;</span>: <span style="color:#e6db74">&#34;ACTIVE&#34;</span>,
+        <span style="color:#e6db74">&#34;CreationDateTime&#34;</span>: <span style="color:#e6db74">&#34;2021-08-31T15:52:52.990000+09:00&#34;</span>,
+        <span style="color:#e6db74">&#34;ProvisionedThroughput&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;LastIncreaseDateTime&#34;</span>: <span style="color:#e6db74">&#34;1970-01-01T09:00:00+09:00&#34;</span>,
+            <span style="color:#e6db74">&#34;LastDecreaseDateTime&#34;</span>: <span style="color:#e6db74">&#34;1970-01-01T09:00:00+09:00&#34;</span>,
+            <span style="color:#e6db74">&#34;NumberOfDecreasesToday&#34;</span>: 0,
+            <span style="color:#e6db74">&#34;ReadCapacityUnits&#34;</span>: 0,
+            <span style="color:#e6db74">&#34;WriteCapacityUnits&#34;</span>: <span style="color:#ae81ff">0</span>
+        <span style="color:#f92672">}</span>,
+        <span style="color:#e6db74">&#34;TableSizeBytes&#34;</span>: 0,
+        <span style="color:#e6db74">&#34;ItemCount&#34;</span>: 0,
+        <span style="color:#e6db74">&#34;TableArn&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:dynamodb:ddblocal:000000000000:table/Sample&#34;</span>,
+        <span style="color:#e6db74">&#34;BillingModeSummary&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;BillingMode&#34;</span>: <span style="color:#e6db74">&#34;PAY_PER_REQUEST&#34;</span>,
+            <span style="color:#e6db74">&#34;LastUpdateToPayPerRequestDateTime&#34;</span>: <span style="color:#e6db74">&#34;2021-08-31T15:52:52.990000+09:00&#34;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>無事作成されましたね
 テーブル一覧を確認してみます（もちろんshellスクリプトで）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
@@ -399,8 +355,8 @@ aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --billing-mode PAY_PER_REQUEST
 </code></pre></div><p><code>$TABLE</code>は柔軟性を考えて入力するようにしている（全て固定しても良いぞ？）
 ということで次のコマンドでオールOK</p>
-<pre><code>% TABLE=SampleTable bin/create-table.sh
-</code></pre><h2 id="最後に">最後に</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% TABLE<span style="color:#f92672">=</span>SampleTable bin/create-table.sh
+</code></pre></div><h2 id="最後に">最後に</h2>
 <p>ファイルの最終形態はこうですね（再掲）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
