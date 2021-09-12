@@ -4,10 +4,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>{{ .Title }}</title>
-  <link href="{{.Site.BaseURL}}css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{.Site.BaseURL}}/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <!-- <link href="{{.Site.BaseURL}}/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
   {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-  <link href="{{.Site.BaseURL}}css/syntax.css"> 
+  <link href="{{.Site.BaseURL}}/css/syntax.css"> 
   <!-- favicon -->
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
