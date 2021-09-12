@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>54</title>
-      <link>https://blog.oda.world/posts/54/</link>
-      <pubDate>Mon, 16 Aug 2021 01:37:04 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/posts/54/</guid>
-      <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
-    </item>
-    
-    <item>
       <title>26</title>
       <link>https://blog.oda.world/posts/26/</link>
       <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
@@ -77,6 +68,15 @@
       
       <guid>https://blog.oda.world/posts/55/</guid>
       <description>設定からapplication.jsonを表示できるようにする timeZoneを指定のものに設定する</description>
+    </item>
+    
+    <item>
+      <title>slow_query_log確認コマンド</title>
+      <link>https://blog.oda.world/posts/54/</link>
+      <pubDate>Tue, 20 Jul 2021 16:57:02 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/54/</guid>
+      <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
     </item>
     
     <item>
