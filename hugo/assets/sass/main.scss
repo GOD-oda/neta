@@ -46,6 +46,7 @@ body {
 // header
 #index-banner {
   h1 {
+    font-size: 3.5rem;
     @include pc {
       font-size: 2rem;
     }
