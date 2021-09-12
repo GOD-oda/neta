@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on ODA WORLD</title>
-    <link>https://GOD-oda.github.io/tags/php/</link>
+    <link>https://blog.oda.world/tags/php/</link>
     <description>Recent content in php on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 17 Aug 2021 15:02:04 +0900</lastBuildDate>
     
-	<atom:link href="https://GOD-oda.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.oda.world/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>brewで新しいphpをインストールする</title>
-      <link>https://GOD-oda.github.io/posts/40/</link>
+      <link>https://blog.oda.world/posts/40/</link>
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/40/</guid>
+      <guid>https://blog.oda.world/posts/40/</guid>
       <description>環境 php 7.3 brew 2.6.2 zsh % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順 インストール可能なphpバー</description>
     </item>
     

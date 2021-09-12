@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DynamoDB on ODA WORLD</title>
-    <link>https://GOD-oda.github.io/tags/dynamodb/</link>
+    <link>https://blog.oda.world/tags/dynamodb/</link>
     <description>Recent content in DynamoDB on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
     
-	<atom:link href="https://GOD-oda.github.io/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.oda.world/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DynamoDBをローカル環境に作る</title>
-      <link>https://GOD-oda.github.io/posts/72/</link>
+      <link>https://blog.oda.world/posts/72/</link>
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/72/</guid>
+      <guid>https://blog.oda.world/posts/72/</guid>
       <description>&amp;lt;?php $hoge = &amp;#39;hoge&amp;#39;; echo $hoge; class V1::ExpertsController &amp;lt; ApplicationController include ExpertsControllerValidator before_action :authenticate_user! def create expert = Expert.create!(permitted_params) render_one({ expert_id: expert.id }) rescue =&amp;gt; e render_error(&amp;#34;管理者に問い合わせてください。#{e.message</description>
     </item>
     

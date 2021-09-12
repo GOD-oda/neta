@@ -1,4 +1,4 @@
-baseURL = 'https://GOD-oda.github.io'
+baseURL = 'https://blog.oda.world'
 languageCode = 'ja'
 title = 'ODA WORLD'
 theme = 'material-design'

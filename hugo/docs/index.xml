@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ODA WORLD</title>
-    <link>https://GOD-oda.github.io/</link>
+    <link>https://blog.oda.world/</link>
     <description>Recent content on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
     
-	<atom:link href="https://GOD-oda.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DynamoDBをローカル環境に作る</title>
-      <link>https://GOD-oda.github.io/posts/72/</link>
+      <link>https://blog.oda.world/posts/72/</link>
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/72/</guid>
+      <guid>https://blog.oda.world/posts/72/</guid>
       <description>&amp;lt;?php $hoge = &amp;#39;hoge&amp;#39;; echo $hoge; class V1::ExpertsController &amp;lt; ApplicationController include ExpertsControllerValidator before_action :authenticate_user! def create expert = Expert.create!(permitted_params) render_one({ expert_id: expert.id }) rescue =&amp;gt; e render_error(&amp;#34;管理者に問い合わせてください。#{e.message</description>
     </item>
     
     <item>
       <title>brewで新しいphpをインストールする</title>
-      <link>https://GOD-oda.github.io/posts/40/</link>
+      <link>https://blog.oda.world/posts/40/</link>
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/40/</guid>
+      <guid>https://blog.oda.world/posts/40/</guid>
       <description>環境 php 7.3 brew 2.6.2 zsh % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順 インストール可能なphpバー</description>
     </item>
     
     <item>
       <title>curlのバージョン確認</title>
-      <link>https://GOD-oda.github.io/posts/41/</link>
+      <link>https://blog.oda.world/posts/41/</link>
       <pubDate>Tue, 17 Aug 2021 14:59:53 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/41/</guid>
+      <guid>https://blog.oda.world/posts/41/</guid>
       <description>コマンド curl -V % curl -V curl 7.64.1 (x86_64-apple-darwin19.0) libcurl/7.64.1 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.39.2 Release-Date: 2019-03-27 Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp Features: AsynchDNS GSS-API HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets</description>
     </item>
     
     <item>
       <title>特定ディレクトリ配下のファイル合計行数を算出する</title>
-      <link>https://GOD-oda.github.io/posts/44/</link>
+      <link>https://blog.oda.world/posts/44/</link>
       <pubDate>Tue, 17 Aug 2021 02:55:57 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/44/</guid>
+      <guid>https://blog.oda.world/posts/44/</guid>
       <description>コマンド % find /path/to/directory -name &amp;quot;*.php&amp;quot; | xargs wc -l Laravelで確認 % ls -l total 632 drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 . drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 .. -rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig -rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env -rw-r--r-- 1 odatakahiro staff 869 6</description>
     </item>
     
     <item>
       <title>55</title>
-      <link>https://GOD-oda.github.io/posts/55/</link>
+      <link>https://blog.oda.world/posts/55/</link>
       <pubDate>Tue, 17 Aug 2021 00:40:03 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/55/</guid>
+      <guid>https://blog.oda.world/posts/55/</guid>
       <description>設定からapplication.jsonを表示できるようにする timeZoneを指定のものに設定する</description>
     </item>
     
     <item>
       <title>54</title>
-      <link>https://GOD-oda.github.io/posts/54/</link>
+      <link>https://blog.oda.world/posts/54/</link>
       <pubDate>Mon, 16 Aug 2021 01:37:04 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/54/</guid>
+      <guid>https://blog.oda.world/posts/54/</guid>
       <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
     </item>
     
     <item>
       <title>26</title>
-      <link>https://GOD-oda.github.io/posts/26/</link>
+      <link>https://blog.oda.world/posts/26/</link>
       <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/26/</guid>
+      <guid>https://blog.oda.world/posts/26/</guid>
       <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
     </item>
     
     <item>
       <title>28</title>
-      <link>https://GOD-oda.github.io/posts/28/</link>
+      <link>https://blog.oda.world/posts/28/</link>
       <pubDate>Sun, 15 Aug 2021 18:32:28 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/28/</guid>
+      <guid>https://blog.oda.world/posts/28/</guid>
       <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
     </item>
     
     <item>
       <title>yumでインストール済みパッケージを表示する</title>
-      <link>https://GOD-oda.github.io/posts/43/</link>
+      <link>https://blog.oda.world/posts/43/</link>
       <pubDate>Tue, 15 Jun 2021 16:17:03 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/posts/43/</guid>
+      <guid>https://blog.oda.world/posts/43/</guid>
       <description>インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper Usage: yum [options] COMMAND List of Commands: autoremove Remove leaf packages check rpmdb の問題</description>
     </item>
     
