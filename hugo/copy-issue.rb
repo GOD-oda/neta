@@ -18,6 +18,14 @@ title = res_body['title']
 body = res_body['body']
 file_name = "#{issue_id}.md"
 file_path = "content/posts/#{file_name}"
+if File.exist?(file_path)
+  begin
+    File.delete(file_path)
+  rescue
+    p $!
+    exit
+  end
+end
 label_names = res_body['labels'].map { |l| l['name'] }.join(',')
 if res_body['created_at']
   ENV['TZ'] = 'Asia/Tokyo'

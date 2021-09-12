@@ -13,7 +13,7 @@
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
       <guid>https://blog.oda.world/posts/72/</guid>
-      <description>前提 ローカルで実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい awsコマンドは打てる状態でshellス</description>
+      <description>前提 ローカルでDynamoDBに関するコマンドを実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい aws</description>
     </item>
     
   </channel>
