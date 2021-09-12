@@ -24,6 +24,20 @@ $sp: 480px;
 /*
  * original
  */
+html {
+  font-size: 20px;
+  @include pc {
+    font-size: 20px;
+  }
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+  @include sp {
+    font-size: 15px;
+  }
+}
 
 body {
   font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", 'メイリオ' , Meiryo , Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
