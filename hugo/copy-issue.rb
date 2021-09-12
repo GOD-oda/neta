@@ -57,7 +57,19 @@ if updated_at
 end
 
 File.open(file_path, 'a') do |f|
-  f.puts res_body['body'].gsub(/\r/, '')
+  res_body['body'].gsub(/\r/, '').split("\n").each do |line|
+    if line.include?('<img')
+      src = line[/src="(?<src>.*?)"/, 'src'] || ''
+      alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
+      next if src.empty?
+      pp src
+      pp alt
+
+      f.puts "![#{alt}](#{src})"
+    else
+      f.puts line
+    end
+  end
 end
 
-
+File.delete("#{file_path}-e")
