@@ -2,62 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on ODA WORLD</title>
-    <link>https://GOD-oda.github.io/neta/tags/</link>
+    <link>https://GOD-oda.github.io/tags/</link>
     <description>Recent content in Tags on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate><atom:link href="https://GOD-oda.github.io/neta/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    
+	<atom:link href="https://GOD-oda.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>docker</title>
-      <link>https://GOD-oda.github.io/neta/tags/docker/</link>
+      <link>https://GOD-oda.github.io/tags/docker/</link>
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/docker/</guid>
+      <guid>https://GOD-oda.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DynamoDB</title>
-      <link>https://GOD-oda.github.io/neta/tags/dynamodb/</link>
+      <link>https://GOD-oda.github.io/tags/dynamodb/</link>
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/dynamodb/</guid>
+      <guid>https://GOD-oda.github.io/tags/dynamodb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Homebrew</title>
-      <link>https://GOD-oda.github.io/neta/tags/homebrew/</link>
+      <link>https://GOD-oda.github.io/tags/homebrew/</link>
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/homebrew/</guid>
+      <guid>https://GOD-oda.github.io/tags/homebrew/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>https://GOD-oda.github.io/neta/tags/php/</link>
+      <link>https://GOD-oda.github.io/tags/php/</link>
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/php/</guid>
+      <guid>https://GOD-oda.github.io/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>curl</title>
-      <link>https://GOD-oda.github.io/neta/tags/curl/</link>
+      <link>https://GOD-oda.github.io/tags/curl/</link>
       <pubDate>Tue, 17 Aug 2021 14:59:53 +0900</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/curl/</guid>
+      <guid>https://GOD-oda.github.io/tags/curl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>yum</title>
-      <link>https://GOD-oda.github.io/neta/tags/yum/</link>
+      <link>https://GOD-oda.github.io/tags/yum/</link>
       <pubDate>Tue, 15 Jun 2021 16:17:03 +0000</pubDate>
       
-      <guid>https://GOD-oda.github.io/neta/tags/yum/</guid>
+      <guid>https://GOD-oda.github.io/tags/yum/</guid>
       <description></description>
     </item>
     

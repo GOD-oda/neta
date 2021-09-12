@@ -4,33 +4,33 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>DynamoDBをローカル環境に作る</title>
-  <link href="https://GOD-oda.github.io/neta/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <link href="https://GOD-oda.github.iocss/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   
-  <link rel="apple-touch-icon" sizes="57x57" href="https://GOD-oda.github.io/neta/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="https://GOD-oda.github.io/neta/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="https://GOD-oda.github.io/neta/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://GOD-oda.github.io/neta/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="https://GOD-oda.github.io/neta/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="https://GOD-oda.github.io/neta/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="https://GOD-oda.github.io/neta/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://GOD-oda.github.io/neta/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://GOD-oda.github.io/neta/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="https://GOD-oda.github.io/neta/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://GOD-oda.github.io/neta/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://GOD-oda.github.io/neta/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://GOD-oda.github.io/neta/favicon-16x16.png">
-  <link rel="manifest" href="https://GOD-oda.github.io/neta/manifest.json">
+  <link href="https://GOD-oda.github.iocss/syntax.css"> 
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://GOD-oda.github.io/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://GOD-oda.github.io/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://GOD-oda.github.io/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://GOD-oda.github.io/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://GOD-oda.github.io/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://GOD-oda.github.io/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://GOD-oda.github.io/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://GOD-oda.github.io/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://GOD-oda.github.io/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://GOD-oda.github.io/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://GOD-oda.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://GOD-oda.github.io/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://GOD-oda.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://GOD-oda.github.io/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://GOD-oda.github.io/neta/sass/main.min.d230480a3f6cfbcb3cc4915647afa0433ab14fcd09f5eaf625be3fea52e4fdf4.css">
+  <link rel="stylesheet" href="https://GOD-oda.github.io/sass/main.min.d230480a3f6cfbcb3cc4915647afa0433ab14fcd09f5eaf625be3fea52e4fdf4.css">
   <style type="text/css">
   
-    footer.page-footer{background-image: url(https://GOD-oda.github.io/neta/images/default.png);}
+    footer.page-footer{background-image: url(https://GOD-oda.github.io/images/default.png);}
   
   </style>
   
@@ -45,9 +45,9 @@
 </head>
 <body>
   <ul id="slide-out" class="side-nav">
-    <li><a href="https://GOD-oda.github.io/neta"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://GOD-oda.github.io/neta/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="https://GOD-oda.github.io/neta/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://GOD-oda.github.io"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://GOD-oda.github.io/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://GOD-oda.github.io/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
   </ul>
   <div id="index-banner" class="parallax-container">
   <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
@@ -65,13 +65,13 @@
         
         
         
-          <a href="https://GOD-oda.github.io/neta/index.xml"><img src="https://GOD-oda.github.io/neta/images/feed-dreamstale27.png"></a>
+          <a href="https://GOD-oda.github.io/index.xml"><img src="https://GOD-oda.github.io/images/feed-dreamstale27.png"></a>
         </div>
       </div>
     </div>
     <div class="parallax">
     
-      <img src="https://GOD-oda.github.io/neta/images/default.png">
+      <img src="https://GOD-oda.github.io/images/default.png">
     
     </div>
   </div>
@@ -88,7 +88,30 @@
           <p>
            
           </p>
-          <p><h1 id="前提">前提</h1>
+          <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$hoge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hoge&#39;</span>;
+<span style="color:#66d9ef">echo</span> $hoge;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">V1</span><span style="color:#f92672">::</span><span style="color:#66d9ef">ExpertsController</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">ApplicationController</span>
+  <span style="color:#66d9ef">include</span> <span style="color:#66d9ef">ExpertsControllerValidator</span>
+
+  before_action <span style="color:#e6db74">:authenticate_user!</span>
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">create</span>
+    expert <span style="color:#f92672">=</span> <span style="color:#66d9ef">Expert</span><span style="color:#f92672">.</span>create!(permitted_params)
+
+    render_one({ <span style="color:#e6db74">expert_id</span>: expert<span style="color:#f92672">.</span>id })
+  <span style="color:#66d9ef">rescue</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> e
+    render_error(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">管理者に問い合わせてください。</span><span style="color:#e6db74">#{</span>e<span style="color:#f92672">.</span>message<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+  <span style="color:#66d9ef">end</span>
+
+  <span style="color:#66d9ef">private</span>
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">authenticate_user!</span>
+    pull_current_user
+    render_error(<span style="color:#66d9ef">ErrorMessages</span><span style="color:#f92672">::</span><span style="color:#66d9ef">UNAUTHORISED</span>) <span style="color:#66d9ef">unless</span> <span style="color:#66d9ef">Authenticator</span><span style="color:#f92672">.</span>has_expert?(@current_user)
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><h1 id="前提">前提</h1>
 <ul style="padding-left: 40px !important; list-style-type: initial !important;">
 
   <li style="list-style-type: initial !important;">ローカルで実行する</li>
@@ -118,7 +141,30 @@
 
 </ul>
 
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+$hoge <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;hoge&#39;</span>;
+<span style="color:#66d9ef">echo</span> $hoge;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">V1</span><span style="color:#f92672">::</span><span style="color:#66d9ef">ExpertsController</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">ApplicationController</span>
+  <span style="color:#66d9ef">include</span> <span style="color:#66d9ef">ExpertsControllerValidator</span>
+
+  before_action <span style="color:#e6db74">:authenticate_user!</span>
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">create</span>
+    expert <span style="color:#f92672">=</span> <span style="color:#66d9ef">Expert</span><span style="color:#f92672">.</span>create!(permitted_params)
+
+    render_one({ <span style="color:#e6db74">expert_id</span>: expert<span style="color:#f92672">.</span>id })
+  <span style="color:#66d9ef">rescue</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> e
+    render_error(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">管理者に問い合わせてください。</span><span style="color:#e6db74">#{</span>e<span style="color:#f92672">.</span>message<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+  <span style="color:#66d9ef">end</span>
+
+  <span style="color:#66d9ef">private</span>
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">authenticate_user!</span>
+    pull_current_user
+    render_error(<span style="color:#66d9ef">ErrorMessages</span><span style="color:#f92672">::</span><span style="color:#66d9ef">UNAUTHORISED</span>) <span style="color:#66d9ef">unless</span> <span style="color:#66d9ef">Authenticator</span><span style="color:#f92672">.</span>has_expert?(@current_user)
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
 │   ├── config.sh
@@ -131,12 +177,12 @@
 <h2 id="docker-composeyml">docker-compose.yml</h2>
 <p>まずは<code>docker-compose.yml</code>で<code>DynamoDB Local</code>イメージのコンテナの準備をする</p>
 <p>動作する必要最低限の<code>docker-compose.yml</code>はこうなる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">dynamodb</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">amazon/dynamodb-local</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">dynamodb</span>:
+    <span style="color:#66d9ef">image</span>: amazon/dynamodb-local
 </code></pre></div><p>この状態で<code>docker-compose up</code>を実行するとイメージを取得してコンテナが立ち上がる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose up
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose up
 Creating network <span style="color:#e6db74">&#34;72_default&#34;</span> with the default driver
 Pulling dynamodb <span style="color:#f92672">(</span>amazon/dynamodb-local:<span style="color:#f92672">)</span>...
 latest: Pulling from amazon/dynamodb-local
@@ -157,7 +203,7 @@ dynamodb_1  | CorsParams:	*
 dynamodb_1  |
 
 </code></pre></div><p>さて、ログを見ると<code>InMemory: true</code>となっており、このままだとコンテナを落とすとせっかく投入したデータが消えてしまいます</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dynamodb_1  | Initializing DynamoDB Local with the following configuration:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dynamodb_1  | Initializing DynamoDB Local with the following configuration:
 dynamodb_1  | Port:	<span style="color:#ae81ff">8000</span>
 dynamodb_1  | InMemory:	true    &lt;---------------------------ここ
 .
@@ -169,31 +215,31 @@ dynamodb_1  | InMemory:	true    &lt;---------------------------ここ
 portの設定をしないとホスト側からコンテナ側へ繋げられないね？
 volumesでマウントするんだ</p>
 <p>完成したのがこちら</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">  version: &#39;3.8&#39;
-  services:
-    dynamodb:
-      image: amazon/dynamodb-local
-<span style="color:#a6e22e">+     command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;
-</span><span style="color:#a6e22e">+     ports:
-</span><span style="color:#a6e22e">+       - &#34;8000:8000&#34;
-</span><span style="color:#a6e22e">+     volumes:
-</span><span style="color:#a6e22e">+       - &#34;dynamodb:/home/dynamodblocal&#34;
-</span><span style="color:#a6e22e">+ volumes:
-</span><span style="color:#a6e22e">+   dynamodb:
-</span><span style="color:#a6e22e">+     driver: local
-</span></code></pre></div><p>ちなみにデフォルトのコマンドはこのようになってますね</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+  <span style="color:#66d9ef">services</span>:
+    <span style="color:#66d9ef">dynamodb</span>:
+      <span style="color:#66d9ef">image</span>: amazon/dynamodb-local
+<span style="color:#e6db74">+    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;</span>
+<span style="color:#e6db74">+    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">ports:</span>
+<span style="color:#e6db74">+      </span><span style="color:#e6db74"> </span><span style="color:#e6db74">- &#34;8000:8000&#34;</span>
+<span style="color:#e6db74">+    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">volumes:</span>
+<span style="color:#e6db74">+      </span><span style="color:#e6db74"> </span><span style="color:#e6db74">- &#34;dynamodb:/home/dynamodblocal&#34;</span>
+<span style="color:#66d9ef">+ volumes</span>:
+<span style="color:#e6db74">+  </span><span style="color:#e6db74"> </span><span style="color:#e6db74">dynamodb:</span>
+<span style="color:#e6db74">+    </span><span style="color:#e6db74"> </span><span style="color:#e6db74">driver: local</span>
+</code></pre></div><p>ちなみにデフォルトのコマンドはこのようになってますね</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
 CONTAINER ID                                                       IMAGE                   COMMAND                                   CREATED          STATUS          PORTS      NAMES
 6a527476c032121902fcedfef532ceed06e548c6a38c46966bcc69fb9855e58b   amazon/dynamodb-local   <span style="color:#e6db74">&#34;java -jar DynamoDBLocal.jar -inMemory&#34;</span>   <span style="color:#ae81ff">16</span> minutes ago   Up <span style="color:#ae81ff">16</span> minutes   8000/tcp   72_dynamodb_1
 </code></pre></div><p>コンテナを起動して、COMMANDとPORTS状態を確認してみましょう
 問題なさそうですね</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
 CONTAINER ID                                                       IMAGE                   COMMAND                                   CREATED          STATUS          PORTS                                       NAMES
 fd850211e368d4522968e6f9f43c7e2764ac3b1e28cc14083f88bbe1bf9914ad   amazon/dynamodb-local   <span style="color:#e6db74">&#34;java -jar DynamoDBLocal.jar -dbPath .&#34;</span>   <span style="color:#ae81ff">45</span> seconds ago   Up <span style="color:#ae81ff">44</span> seconds   0.0.0.0:8000-&gt;8000/tcp, :::8000-&gt;8000/tcp   72_dynamodb_1
 </code></pre></div><h2 id="テーブル作成">テーブル作成</h2>
 <p>この状態でテーブルを作ってみます
 テーブル作成のshellスクリプト<code>bin/create-table.sh</code>を作ってそれを実行します</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -252,13 +298,13 @@ aws dynamodb <span style="color:#ae81ff">\
 }
 </code></pre><p>無事作成されましたね
 テーブル一覧を確認してみます（もちろんshellスクリプトで）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --endpoint-url $ENDPOINT_URL <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  list-tables
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/list-tables.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/list-tables.sh
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;TableNames&#34;</span>: <span style="color:#f92672">[</span>
         <span style="color:#e6db74">&#34;Sample&#34;</span>
@@ -267,7 +313,7 @@ aws dynamodb <span style="color:#ae81ff">\
 </code></pre></div><h2 id="項目挿入">項目挿入</h2>
 <p>次に項目を入れてみましょう
 これまたshellスクリプトを作ります</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -290,17 +336,17 @@ aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#e6db74">      }
 </span><span style="color:#e6db74">    }
 </span><span style="color:#e6db74">  &#39;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/insert-item.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/insert-item.sh
 </code></pre></div><h2 id="scanで確認">scanで確認</h2>
 <p>ではscanで挿入された項目を確認しましょう</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --endpoint-url $ENDPOINT_URL <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  scan <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --table-name $TABLE
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/scan.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/scan.sh
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;Items&#34;</span>: <span style="color:#f92672">[</span>
         <span style="color:#f92672">{</span>
@@ -325,20 +371,20 @@ aws dynamodb <span style="color:#ae81ff">\
 </code></pre></div><h2 id="環境変数とか">環境変数とか</h2>
 <p>ほぼほぼ共通の環境変数とか毎度入力はだるいので<code>bin/config.sh</code>にまとめて
 各スクリプトから呼び出します</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 export AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>dummy
 export AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>dummykey
 export REGION<span style="color:#f92672">=</span>ap-northeast-1
 export ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000
 </code></pre></div><p>以下のコードを各スクリプトで読み込みます</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
-source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
+source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><p>例）create-table.sh</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
-source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh&#34;</span>
+source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh</span><span style="color:#e6db74">&#34;</span>
 
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -356,7 +402,7 @@ aws dynamodb <span style="color:#ae81ff">\
 <pre><code>% TABLE=SampleTable bin/create-table.sh
 </code></pre><h2 id="最後に">最後に</h2>
 <p>ファイルの最終形態はこうですね（再掲）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
 │   ├── config.sh
@@ -377,9 +423,9 @@ aws dynamodb <span style="color:#ae81ff">\
           <p>
             
               
-                <a href="https://GOD-oda.github.io/neta/tags/docker/">#docker</a>
+                <a href="https://GOD-oda.github.io/tags/docker/">#docker</a>
               
-                <a href="https://GOD-oda.github.io/neta/tags/dynamodb/">#DynamoDB</a>
+                <a href="https://GOD-oda.github.io/tags/dynamodb/">#DynamoDB</a>
               
             
           </p>
@@ -395,7 +441,7 @@ aws dynamodb <span style="color:#ae81ff">\
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://GOD-oda.github.io/neta/posts/40/"><i class="mdi-navigation-arrow-back"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://GOD-oda.github.io/posts/40/"><i class="mdi-navigation-arrow-back"></i></a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
@@ -418,8 +464,8 @@ aws dynamodb <span style="color:#ae81ff">\
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://GOD-oda.github.io/neta/js/materialize.min.js"></script>
-  <script src="https://GOD-oda.github.io/neta/js/init.js"></script>
+  <script src="https://GOD-oda.github.io/js/materialize.min.js"></script>
+  <script src="https://GOD-oda.github.io/js/init.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   

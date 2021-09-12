@@ -1,4 +1,4 @@
-baseURL = 'https://GOD-oda.github.io/neta'
+baseURL = 'https://GOD-oda.github.io'
 languageCode = 'ja'
 title = 'ODA WORLD'
 theme = 'material-design'
@@ -6,3 +6,19 @@ publishDir = 'docs'
 canonifyurls = true
 hasCJKLanguage = true
 googleAnalytics = 'G-93E1496REW'
+
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  pygmentsUseClasses = true
+  pygmentsCodefences = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+
