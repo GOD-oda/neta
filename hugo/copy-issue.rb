@@ -62,8 +62,6 @@ File.open(file_path, 'a') do |f|
       src = line[/src="(?<src>.*?)"/, 'src'] || ''
       alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
       next if src.empty?
-      pp src
-      pp alt
 
       f.puts "![#{alt}](#{src})"
     else
