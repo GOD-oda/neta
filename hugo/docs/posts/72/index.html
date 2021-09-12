@@ -27,7 +27,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.954aa146f7b42b8366e414ea69a00e6f2787c24fe84a44756c0b6cfeedfa4680.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.e9ed9561bc9da046276a145e6fd74e4ae6647ac403cff1959d23bd6fd3d3d666.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -90,35 +90,21 @@
            
           </p>
           <p><h1 id="前提">前提</h1>
-<ul style="padding-left: 40px !important; list-style-type: initial !important;">
-
-  <li style="list-style-type: initial !important;">ローカルで実行する</li>
-
-  <li style="list-style-type: initial !important;">docker-compose.ymlを使う</li>
-
-  <li style="list-style-type: initial !important;">作ったテーブルや項目は残しておきたい</li>
-
-  <li style="list-style-type: initial !important;">awsコマンドは打てる状態でshellスクリプトで実行する</li>
-
+<ul>
+<li>ローカルで実行する</li>
+<li>docker-compose.ymlを使う</li>
+<li>作ったテーブルや項目は残しておきたい</li>
+<li>awsコマンドは打てる状態でshellスクリプトで実行する</li>
 </ul>
-
 <h1 id="やることとゴール">やることとゴール</h1>
-<ul style="padding-left: 40px !important; list-style-type: initial !important;">
-
-  <li style="list-style-type: initial !important;">dynamodbのコンテナをdocker-compose.ymlで</li>
-
-  <li style="list-style-type: initial !important;">テーブル作成</li>
-
-  <li style="list-style-type: initial !important;">テーブル確認</li>
-
-  <li style="list-style-type: initial !important;">項目挿入</li>
-
-  <li style="list-style-type: initial !important;">scan実行</li>
-
-  <li style="list-style-type: initial !important;">データのマウント</li>
-
+<ul>
+<li>dynamodbのコンテナをdocker-compose.ymlで</li>
+<li>テーブル作成</li>
+<li>テーブル確認</li>
+<li>項目挿入</li>
+<li>scan実行</li>
+<li>データのマウント</li>
 </ul>
-
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin

@@ -89,6 +89,8 @@ body {
 
 // article
 #article {
+  overflow-wrap: break-word;
+
   h1 {
     font-size: 2rem;
     @include pc {
@@ -130,6 +132,19 @@ body {
     font-size: 85%;
     background-color: #D7DDE3;
     border-radius: 6px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  ul {
+    padding-left: 2rem;
+    list-style-type: initial;
+
+    li {
+      list-style-type: initial;
+    }
   }
 }
 
