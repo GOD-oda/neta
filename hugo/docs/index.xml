@@ -88,5 +88,14 @@
       <description>インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper Usage: yum [options] COMMAND List of Commands: autoremove Remove leaf packages check rpmdb の問題</description>
     </item>
     
+    <item>
+      <title>rubyのブロックについて</title>
+      <link>https://blog.oda.world/posts/37/</link>
+      <pubDate>Sat, 03 Apr 2021 13:27:48 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/37/</guid>
+      <description>環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 書き方 ブロックを仮引数として明示した書き方 コード def exec_block(&amp;amp;block) block.call end exec_block do p &amp;#39;hoge&amp;#39; end 結果 % ruby a.rb &amp;quot;hoge&amp;quot; 補足 &amp;a</description>
+    </item>
+    
   </channel>
 </rss>

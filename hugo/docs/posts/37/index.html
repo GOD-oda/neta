@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>rubyのブロックについて</title>
+  <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+  <link href="https://blog.oda.world/css/syntax.css"> 
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://blog.oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://blog.oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://blog.oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://blog.oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://blog.oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://blog.oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://blog.oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://blog.oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://blog.oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://blog.oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://blog.oda.world/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.1ab7f7ef59302e30fc438fa7fd04f3b8378666d6491b94874a5a237bed1c596b.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
+  
+  </style>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-93E1496REW');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="https://blog.oda.world"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.oda.world/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="https://blog.oda.world/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">rubyのブロックについて</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+        <div class="row center">
+        
+        
+        
+        
+        
+        
+          <a href="https://blog.oda.world/index.xml"><img src="https://blog.oda.world/images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="https://blog.oda.world/images/default.png">
+    
+    </div>
+  </div>
+
+
+
+<div class="container" id="article">
+  <div class="section">
+
+    <div class="row">
+      <div class="col s12">
+        <div>
+          
+          <p>
+           
+          </p>
+          <p><h1 id="環境">環境</h1>
+<ul>
+<li>ruby 2.5.8</li>
+</ul>
+<pre><code>% ruby -v
+ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19]
+</code></pre><ul>
+<li>a.rbにコードを書いて実行</li>
+</ul>
+<h1 id="書き方">書き方</h1>
+<h2 id="ブロックを仮引数として明示した書き方">ブロックを仮引数として明示した書き方</h2>
+<p>コード</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
+  block<span style="color:#f92672">.</span>call
+<span style="color:#66d9ef">end</span>
+
+exec_block <span style="color:#66d9ef">do</span>
+  p <span style="color:#e6db74">&#39;hoge&#39;</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>結果</p>
+<pre><code>% ruby a.rb
+&quot;hoge&quot;
+</code></pre><p>補足</p>
+<ul>
+<li><code>&amp;block</code>はProcオブジェクトのこと</li>
+<li><code>&amp;</code>をつけることでProcオブジェクトに変換している（つけないとただの引数なのでエラーになる）</li>
+<li>Procオブジェクトはcallメソッドで呼び出す</li>
+<li>ブロック引数は仮引数の中で、必ず<strong>1つ</strong>だけ、<strong>最後</strong>に、定義されなければならない</li>
+</ul>
+<p>確認</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
+  p block
+<span style="color:#66d9ef">end</span>
+
+exec_block <span style="color:#66d9ef">do</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><pre><code>% ruby a.rb
+#&lt;Proc:0x00007fd9a187a1b8@a.rb:11&gt;
+</code></pre><p>ブロック引数でない時にブロックを渡した時
+<img src="https://user-images.githubusercontent.com/14949022/113468622-2d346580-9482-11eb-9cde-756a325adafe.png" alt="スクリーンショット 2021-04-03 13 38 43"></p>
+<p>仮引数でブロックが定義できないパターン
+<img src="https://user-images.githubusercontent.com/14949022/113468706-ce232080-9482-11eb-9126-add43dc6434d.png" alt="スクリーンショット 2021-04-03 13 44 05"></p>
+<p><img src="https://user-images.githubusercontent.com/14949022/113468708-d1b6a780-9482-11eb-9823-3daa94392ffc.png" alt="スクリーンショット 2021-04-03 13 44 33"></p>
+<h2 id="ブロックを仮引数から省略した書き方">ブロックを仮引数から省略した書き方</h2>
+<p>ブロック引数は1つしか取れないのでどのブロックをどう呼び出すかも決まり切っているので<code>yield</code>で<code>block.call</code>と同等の動きになる</p>
+<p>なので仮引数からブロックを省略できる</p>
+<p>コード</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>
+  <span style="color:#66d9ef">yield</span>
+<span style="color:#66d9ef">end</span>
+
+exec_block <span style="color:#66d9ef">do</span>
+  p <span style="color:#e6db74">&#39;hoge&#39;</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>確認</p>
+<pre><code>% ruby a.rb
+&quot;hoge&quot;
+</code></pre><h1 id="メリット">メリット</h1>
+<ul>
+<li>書き手が、前提が同じ状態で好きな処理をかける</li>
+<li>クロージャのとしての機能が得られる（<a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2#%E7%8A%B6%E6%85%8B%E3%82%92%E6%8C%81%E3%81%A3%E3%81%9F%E9%96%A2%E6%95%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%8C%E5%BE%97%E3%82%89%E3%82%8C%E3%82%8B">こちら</a>を参考に）</li>
+</ul>
+<p>例）eachメソッド</p>
+<p>前提：対象をループさせる</p>
+<p>書き手A：全ての要素に1を足す</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
+  p i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><pre><code>% ruby a.rb
+2
+3
+</code></pre><p>書き手B：全ての要素に2をかける</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
+  p i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><pre><code>% ruby a.rb
+2
+4
+</code></pre><h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2">https://qiita.com/kidach1/items/15cfee9ec66804c3afd2</a></li>
+<li><a href="https://language-and-engineering.hatenablog.jp/entry/20101118/p1">https://language-and-engineering.hatenablog.jp/entry/20101118/p1</a></li>
+<li><a href="https://artgear.hatenablog.com/entry/20120115/1326635158">https://artgear.hatenablog.com/entry/20120115/1326635158</a></li>
+</ul>
+</p>
+          <p>
+            
+              
+                <a href="https://blog.oda.world/tags/ruby/">#ruby</a>
+              
+            
+          </p>
+          <hr>
+          <p>
+            更新日 2021/09/12 23:59:32
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large disabled">prev</a>
+      
+      </div>
+      <div class="col s6 m10 center">&nbsp</div>
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/43/">next</a>
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://blog.oda.world/js/materialize.min.js"></script>
+  <script src="https://blog.oda.world/js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+
