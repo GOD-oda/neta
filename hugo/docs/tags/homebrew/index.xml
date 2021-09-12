@@ -16,5 +16,14 @@
       <description>環境 php 7.3 brew 2.6.2 zsh % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順 インストール可能なphpバー</description>
     </item>
     
+    <item>
+      <title>macOS M1でhomebrew</title>
+      <link>https://blog.oda.world/posts/28/</link>
+      <pubDate>Thu, 14 Jan 2021 00:06:53 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/28/</guid>
+      <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
+    </item>
+    
   </channel>
 </rss>

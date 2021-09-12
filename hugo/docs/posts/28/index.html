@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>28</title>
+  <title>macOS M1でhomebrew</title>
   <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   
@@ -55,7 +55,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         
-        <h1 class="header center teal-text text-lighten-2">28</h1>
+        <h1 class="header center teal-text text-lighten-2">macOS M1でhomebrew</h1>
         <div class="row center">
           <h5 class="header col s12 light"></h5>
         </div>
@@ -151,13 +151,13 @@ No analytics data has been sent yet (or will be during this `install` run).
 
 ==&gt; Next steps:
 - Add Homebrew to your PATH in /Users/gonzalezoda/.zprofile:
-    echo eval export HOMEBREW_PREFIX=&quot;/opt/homebrew&quot;; export HOMEBREW_CELLAR=&quot;/opt/homebrew/Cellar&quot;; export HOMEBREW_REPOSITORY=&quot;/opt/homebrew&quot;; export PATH=&quot;/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}&quot;; export MANPATH=&quot;/opt/homebrew/share/man${MANPATH+:$MANPATH}:&quot;; export INFOPATH=&quot;/opt/homebrew/share/info:${INFOPATH:-}&quot;; &gt;&gt; /Users/gonzalezoda/.zprofile
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; /Users/gonzalezoda/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
 - Run `brew help` to get started
 - Further documentation:
     https://docs.brew.sh
 </code></pre><p>Next stepsにあるように次のコマンドを実行する</p>
-<pre><code>% echo eval export HOMEBREW_PREFIX=&quot;/opt/homebrew&quot;; export HOMEBREW_CELLAR=&quot;/opt/homebrew/Cellar&quot;; export HOMEBREW_REPOSITORY=&quot;/opt/homebrew&quot;; export PATH=&quot;/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}&quot;; export MANPATH=&quot;/opt/homebrew/share/man${MANPATH+:$MANPATH}:&quot;; export INFOPATH=&quot;/opt/homebrew/share/info:${INFOPATH:-}&quot;; &gt;&gt; /Users/gonzalezoda/.zprofile
+<pre><code>% echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; /Users/gonzalezoda/.zprofile
 % eval $(/opt/homebrew/bin/brew shellenv)
 </code></pre><p>インストール完了</p>
 <pre><code>% brew
@@ -190,10 +190,16 @@ Homebrew/homebrew-core (git revision c2557a; last commit 2021-01-13)
 </code></pre></p>
           <p>
             
+              
+                <a href="https://blog.oda.world/tags/homebrew/">#Homebrew</a>
+              
+                <a href="https://blog.oda.world/tags/macm1/">#macM1</a>
+              
+            
           </p>
           <hr>
           <p>
-            更新日 2021/08/15 18:32:28
+            更新日 2021/08/16 22:46:05
           </p>
           
         </div>
@@ -203,13 +209,13 @@ Homebrew/homebrew-core (git revision c2557a; last commit 2021-01-13)
     <div class="row">
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/55/">prev</a>
+        <a class="btn-floating btn-large disabled">prev</a>
       
       </div>
       <div class="col s6 m10 center">&nbsp</div>
       <div class="col s3 m1">
       
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/26/">next</a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/37/">next</a>
       
       </div>
     </div>
