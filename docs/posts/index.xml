@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>26</title>
-      <link>https://blog.oda.world/posts/26/</link>
-      <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/posts/26/</guid>
-      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
-    </item>
-    
-    <item>
       <title>gasのtimezone設定</title>
       <link>https://blog.oda.world/posts/55/</link>
       <pubDate>Sun, 25 Jul 2021 22:27:03 +0000</pubDate>
@@ -95,6 +86,15 @@
       
       <guid>https://blog.oda.world/posts/28/</guid>
       <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
+    </item>
+    
+    <item>
+      <title>特定のカラムでグルーピングされたもののうち特定のカラムが一番大きいレコードを抽出するSQL</title>
+      <link>https://blog.oda.world/posts/26/</link>
+      <pubDate>Wed, 02 Dec 2020 12:02:45 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/26/</guid>
+      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
     </item>
     
   </channel>

@@ -16,5 +16,14 @@
       <description>前提 ローカルでDynamoDBに関するコマンドを実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい aws</description>
     </item>
     
+    <item>
+      <title>特定のカラムでグルーピングされたもののうち特定のカラムが一番大きいレコードを抽出するSQL</title>
+      <link>https://blog.oda.world/posts/26/</link>
+      <pubDate>Wed, 02 Dec 2020 12:02:45 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/26/</guid>
+      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
+    </item>
+    
   </channel>
 </rss>
