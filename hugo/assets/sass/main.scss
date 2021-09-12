@@ -89,8 +89,6 @@ body {
 
 // article
 #article {
-  overflow-wrap: break-word;
-
   h1 {
     font-size: 2rem;
     @include pc {
@@ -124,6 +122,10 @@ body {
     font-size: 85%;
     background-color: #D7DDE3;
     border-radius: 6px;
+  }
+
+  :not(pre) {
+    word-wrap: break-word;
   }
 
   p code {
