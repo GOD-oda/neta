@@ -6,7 +6,11 @@
     <description>Recent content in macM1 on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Jan 2021 00:06:53 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/macm1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jan 2021 00:06:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.oda.world/tags/macm1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>macOS M1でhomebrew</title>
       <link>https://blog.oda.world/posts/28/</link>

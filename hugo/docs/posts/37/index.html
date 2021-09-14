@@ -27,7 +27,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.1ab7f7ef59302e30fc438fa7fd04f3b8378666d6491b94874a5a237bed1c596b.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.ba1bc5c2132e8c23e1496e4e424ae2b00450f2087e06d5417817e27edd8327d2.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -101,7 +101,7 @@ ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19]
 <h1 id="書き方">書き方</h1>
 <h2 id="ブロックを仮引数として明示した書き方">ブロックを仮引数として明示した書き方</h2>
 <p>コード</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
   block<span style="color:#f92672">.</span>call
 <span style="color:#66d9ef">end</span>
 
@@ -119,7 +119,7 @@ exec_block <span style="color:#66d9ef">do</span>
 <li>ブロック引数は仮引数の中で、必ず<strong>1つ</strong>だけ、<strong>最後</strong>に、定義されなければならない</li>
 </ul>
 <p>確認</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
   p block
 <span style="color:#66d9ef">end</span>
 
@@ -136,7 +136,7 @@ exec_block <span style="color:#66d9ef">do</span>
 <p>ブロック引数は1つしか取れないのでどのブロックをどう呼び出すかも決まり切っているので<code>yield</code>で<code>block.call</code>と同等の動きになる</p>
 <p>なので仮引数からブロックを省略できる</p>
 <p>コード</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">exec_block</span>
   <span style="color:#66d9ef">yield</span>
 <span style="color:#66d9ef">end</span>
 
@@ -154,16 +154,16 @@ exec_block <span style="color:#66d9ef">do</span>
 <p>例）eachメソッド</p>
 <p>前提：対象をループさせる</p>
 <p>書き手A：全ての要素に1を足す</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">end</span>
+<span style="color:#f92672"></span><span style="color:#66d9ef">end</span>
 </code></pre></div><pre><code>% ruby a.rb
 2
 3
 </code></pre><p>書き手B：全ての要素に2をかける</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
-<span style="color:#66d9ef">end</span>
+<span style="color:#f92672"></span><span style="color:#66d9ef">end</span>
 </code></pre></div><pre><code>% ruby a.rb
 2
 4

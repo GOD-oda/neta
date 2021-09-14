@@ -27,7 +27,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.1ab7f7ef59302e30fc438fa7fd04f3b8378666d6491b94874a5a237bed1c596b.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.ba1bc5c2132e8c23e1496e4e424ae2b00450f2087e06d5417817e27edd8327d2.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -105,7 +105,7 @@
 <li>scan実行</li>
 <li>データのマウント</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
 │   ├── config.sh
@@ -118,12 +118,12 @@
 <h2 id="docker-composeyml">docker-compose.yml</h2>
 <p>まずは<code>docker-compose.yml</code>で<code>DynamoDB Local</code>イメージのコンテナの準備をする</p>
 <p>動作する必要最低限の<code>docker-compose.yml</code>はこうなる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
-<span style="color:#f92672">services</span>:
-  <span style="color:#f92672">dynamodb</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">amazon/dynamodb-local</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">dynamodb</span>:
+    <span style="color:#66d9ef">image</span>: amazon/dynamodb-local
 </code></pre></div><p>この状態で<code>docker-compose up</code>を実行するとイメージを取得してコンテナが立ち上がる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose up
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose up
 Creating network <span style="color:#e6db74">&#34;72_default&#34;</span> with the default driver
 Pulling dynamodb <span style="color:#f92672">(</span>amazon/dynamodb-local:<span style="color:#f92672">)</span>...
 latest: Pulling from amazon/dynamodb-local
@@ -144,7 +144,7 @@ dynamodb_1  | CorsParams:	*
 dynamodb_1  |
 
 </code></pre></div><p>さて、ログを見ると<code>InMemory: true</code>となっており、このままだとコンテナを落とすとせっかく投入したデータが消えてしまいます</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dynamodb_1  | Initializing DynamoDB Local with the following configuration:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">dynamodb_1  | Initializing DynamoDB Local with the following configuration:
 dynamodb_1  | Port:	<span style="color:#ae81ff">8000</span>
 dynamodb_1  | InMemory:	true    &lt;---------------------ここ
 .
@@ -158,31 +158,31 @@ dynamodb_1  | InMemory:	true    &lt;---------------------ここ
 <li>volumesでマウントするんだ</li>
 </ul>
 <p>完成したのがこちら</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">  version: &#39;3.8&#39;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">  version: &#39;3.8&#39;
   services:
     dynamodb:
       image: amazon/dynamodb-local
 <span style="color:#a6e22e">+     command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;
-</span><span style="color:#a6e22e">+     ports:
-</span><span style="color:#a6e22e">+       - &#34;8000:8000&#34;
-</span><span style="color:#a6e22e">+     volumes:
-</span><span style="color:#a6e22e">+       - &#34;dynamodb:/home/dynamodblocal&#34;
-</span><span style="color:#a6e22e">+ volumes:
-</span><span style="color:#a6e22e">+   dynamodb:
-</span><span style="color:#a6e22e">+     driver: local
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+     ports:
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+       - &#34;8000:8000&#34;
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+     volumes:
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+       - &#34;dynamodb:/home/dynamodblocal&#34;
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+ volumes:
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+   dynamodb:
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+     driver: local
 </span></code></pre></div><p>ちなみにデフォルトのコマンドはこのようになってますね</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
 CONTAINER ID                                                       IMAGE                   COMMAND                                   CREATED          STATUS          PORTS      NAMES
 6a527476c032121902fcedfef532ceed06e548c6a38c46966bcc69fb9855e58b   amazon/dynamodb-local   <span style="color:#e6db74">&#34;java -jar DynamoDBLocal.jar -inMemory&#34;</span>   <span style="color:#ae81ff">16</span> minutes ago   Up <span style="color:#ae81ff">16</span> minutes   8000/tcp   72_dynamodb_1
 </code></pre></div><p>コンテナを起動して、COMMANDとPORTS状態を確認してみましょう</p>
 <p>問題なさそうですね</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker ps --no-trunc -f ancestor<span style="color:#f92672">=</span>amazon/dynamodb-local
 CONTAINER ID                                                       IMAGE                   COMMAND                                   CREATED          STATUS          PORTS                                       NAMES
 fd850211e368d4522968e6f9f43c7e2764ac3b1e28cc14083f88bbe1bf9914ad   amazon/dynamodb-local   <span style="color:#e6db74">&#34;java -jar DynamoDBLocal.jar -dbPath .&#34;</span>   <span style="color:#ae81ff">45</span> seconds ago   Up <span style="color:#ae81ff">44</span> seconds   0.0.0.0:8000-&gt;8000/tcp, :::8000-&gt;8000/tcp   72_dynamodb_1
 </code></pre></div><h2 id="テーブル作成">テーブル作成</h2>
 <p>この状態でテーブルを作ってみます</p>
 <p>テーブル作成のshellスクリプト<code>bin/create-table.sh</code>を作ってそれを実行します</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -241,13 +241,13 @@ aws dynamodb <span style="color:#ae81ff">\
 }
 </code></pre><p>無事作成されましたね</p>
 <p>テーブル一覧を確認してみます（もちろんshellスクリプトで）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --endpoint-url $ENDPOINT_URL <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  list-tables
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/list-tables.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/list-tables.sh
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;TableNames&#34;</span>: <span style="color:#f92672">[</span>
         <span style="color:#e6db74">&#34;Sample&#34;</span>
@@ -256,7 +256,7 @@ aws dynamodb <span style="color:#ae81ff">\
 </code></pre></div><h2 id="項目挿入">項目挿入</h2>
 <p>次に項目を入れてみましょう</p>
 <p>これまたshellスクリプトを作ります</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -279,17 +279,17 @@ aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#e6db74">      }
 </span><span style="color:#e6db74">    }
 </span><span style="color:#e6db74">  &#39;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/insert-item.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/insert-item.sh
 </code></pre></div><h2 id="scanで確認">scanで確認</h2>
 <p>ではscanで挿入された項目を確認しましょう</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --endpoint-url $ENDPOINT_URL <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  scan <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --table-name $TABLE
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/scan.sh
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% REGION<span style="color:#f92672">=</span>ap-northeast-1 ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000 TABLE<span style="color:#f92672">=</span>Sample AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake sh bin/scan.sh
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;Items&#34;</span>: <span style="color:#f92672">[</span>
         <span style="color:#f92672">{</span>
@@ -314,20 +314,20 @@ aws dynamodb <span style="color:#ae81ff">\
 </code></pre></div><h2 id="環境変数とか">環境変数とか</h2>
 <p>ほぼほぼ共通の環境変数とか毎度入力はだるいので<code>bin/config.sh</code>にまとめて</p>
 <p>各スクリプトから呼び出します</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 export AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>dummy
 export AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>dummykey
 export REGION<span style="color:#f92672">=</span>ap-northeast-1
 export ENDPOINT_URL<span style="color:#f92672">=</span>http://localhost:8000
 </code></pre></div><p>以下のコードを各スクリプトで読み込みます</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
-source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
+source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><p>例）create-table.sh</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 current_dir<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cd <span style="color:#66d9ef">$(</span>dirname $0<span style="color:#66d9ef">)</span>; pwd<span style="color:#66d9ef">)</span>
-source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh&#34;</span>
+source <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>current_dir<span style="color:#e6db74">}</span><span style="color:#e6db74">/config.sh</span><span style="color:#e6db74">&#34;</span>
 
 aws dynamodb <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --region $REGION <span style="color:#ae81ff">\
@@ -345,7 +345,7 @@ aws dynamodb <span style="color:#ae81ff">\
 <pre><code>% TABLE=SampleTable bin/create-table.sh
 </code></pre><h2 id="最後に">最後に</h2>
 <p>ファイルの最終形態はこうですね（再掲）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
 .
 ├── bin
 │   ├── config.sh
