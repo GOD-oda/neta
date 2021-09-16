@@ -7,6 +7,11 @@ canonifyurls = true
 hasCJKLanguage = true
 googleAnalytics = 'G-93E1496REW'
 
+[params]
+  twitter = "@oskfjzp"
+  facebook = "last.pass.oda"
+  github = "GOD-oda"
+
 [markup]
   [markup.highlight]
     codeFences = true
