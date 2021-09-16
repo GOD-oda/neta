@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    build: src/
+    volumes: 
+      - ./src:/src
+    working_dir: /src
+    depends_on:
+      - dynamodb
+  dynamodb:
+    image: amazon/dynamodb-local
+    command: "-jar DynamoDBLocal.jar -dbPath ."
+    ports:
+      - "8000:8000"
+    volumes:
+      - "dynamodb:/home/dynamodblocal"
+volumes:
+  dynamodb:
+    driver: local
