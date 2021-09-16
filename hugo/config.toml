@@ -6,6 +6,7 @@ publishDir = 'docs'
 canonifyurls = true
 hasCJKLanguage = true
 googleAnalytics = 'G-93E1496REW'
+copyright = "© 2021 ODA WORLD"
 
 [params]
   twitter = "@oskfjzp"
