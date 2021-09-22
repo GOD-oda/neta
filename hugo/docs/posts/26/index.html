@@ -27,7 +27,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.2b584975eb469e5e4f54a1440dab989d31f78969f155590a565eb8ff4e86ab12.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.9429ee791e30a64a10105fbe1479208825a0cb7f9c9fb321057530c72f89e17a.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -80,17 +80,18 @@
 
 
 
-<div class="container article">
-  <div class="section">
-
-    <div class="row">
-      <div class="col s12">
-        <div>
-          
-          <p>
-           
-          </p>
-          <p><h1 id="結論">結論</h1>
+<div class="article">
+  <div class="container">
+    <div class="section">
+  
+      <div class="row">
+        <div class="col s12">
+          <div class="card-panel">
+            
+            <p>
+             
+            </p>
+            <p><h1 id="結論">結論</h1>
 <p>column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時</p>
 <pre><code>SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &lt; t2.column2 WHERE t2.column2 IS NULL;
 </code></pre><p><a href="https://dev.mysql.com/doc/refman/5.6/ja/example-maximum-column-group-row.html">mysqlの公式</a>にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる</p>
@@ -174,38 +175,39 @@ Records: 4  Duplicates: 0  Warnings: 0
 +------+-------+------+-------+
 2 rows in set (0.00 sec)
 </code></pre></p>
-          <p>
+            <p>
+              
+                
+                  <a href="https://blog.oda.world/tags/docker/">#docker</a>
+                
+                  <a href="https://blog.oda.world/tags/mysql5.6/">#mysql5.6</a>
+                
+              
+            </p>
+            <hr>
+            <p>
+              更新日 2020/12/02 12:03:10
+            </p>
             
-              
-                <a href="https://blog.oda.world/tags/docker/">#docker</a>
-              
-                <a href="https://blog.oda.world/tags/mysql5.6/">#mysql5.6</a>
-              
-            
-          </p>
-          <hr>
-          <p>
-            更新日 2020/12/02 12:03:10
-          </p>
-          
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col s3 m1">
-      
-        <a class="btn-floating btn-large disabled">prev</a>
-      
+  
+      <div class="row">
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large disabled">prev</a>
+        
+        </div>
+        <div class="col s6 m10 center">&nbsp</div>
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/28/">next</a>
+        
+        </div>
       </div>
-      <div class="col s6 m10 center">&nbsp</div>
-      <div class="col s3 m1">
-      
-        <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/28/">next</a>
-      
-      </div>
+  
     </div>
-
   </div>
 </div>
 
