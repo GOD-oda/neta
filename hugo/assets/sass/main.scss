@@ -119,13 +119,19 @@ body {
   pre {
     padding: 1.1rem;
     font-size: 0.8em;
-    background-color: #D7DDE3;
     border-radius: 3px;
     line-height: 1.9;
+    background-color: #292a33!important;
+    color: #f8f8f2;
 
     code {
       word-wrap: initial;
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+      span {
+        span[class="hljs-shebang"] {
+          color: #f8f8f2;
+        }
+      }
     }
   }
 
