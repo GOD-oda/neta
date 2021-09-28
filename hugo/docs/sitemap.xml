@@ -1,124 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://blog.oda.world/tags/docker/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/dynamodb/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/72/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/</loc>
     <lastmod>2021-08-30T20:03:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/40/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/homebrew/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/php/</loc>
     <lastmod>2021-08-17T15:02:04+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/curl/</loc>
     <lastmod>2021-08-17T14:59:53+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/41/</loc>
     <lastmod>2021-08-17T14:59:53+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/44/</loc>
     <lastmod>2021-08-17T02:55:57+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/gas/</loc>
     <lastmod>2021-07-25T22:27:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/55/</loc>
     <lastmod>2021-07-25T22:27:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/mysql5.6/</loc>
     <lastmod>2021-07-20T16:57:02+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/54/</loc>
     <lastmod>2021-07-20T16:57:02+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/yum/</loc>
     <lastmod>2021-06-15T16:17:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/43/</loc>
     <lastmod>2021-06-15T16:17:03+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/ruby/</loc>
     <lastmod>2021-04-03T13:27:48+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/37/</loc>
     <lastmod>2021-04-03T13:27:48+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/tags/macm1/</loc>
     <lastmod>2021-01-14T00:06:53+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/28/</loc>
     <lastmod>2021-01-14T00:06:53+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/posts/26/</loc>
     <lastmod>2020-12-02T12:02:45+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.oda.world/categories/</loc>
   </url>
-  
 </urlset>

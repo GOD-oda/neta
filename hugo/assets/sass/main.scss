@@ -117,22 +117,24 @@ body {
   }
 
   pre {
-    padding: 10px;
-    font-size: 85%;
+    padding: 1.1rem;
+    font-size: 0.8em;
     background-color: #D7DDE3;
-    border-radius: 6px;
+    border-radius: 3px;
+    line-height: 1.9;
 
     code {
       word-wrap: initial;
+      font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
     }
   }
 
   p code {
     padding: .2em .4em;
-    magin: 0;
     font-size: 85%;
     background-color: #D7DDE3;
-    border-radius: 6px;
+    border-radius: 3px;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
   }
 
   a:hover {
