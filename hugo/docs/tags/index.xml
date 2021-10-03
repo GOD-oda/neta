@@ -7,7 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>docker</title>
       <link>https://blog.oda.world/tags/docker/</link>

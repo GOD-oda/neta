@@ -7,7 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sun, 25 Jul 2021 22:27:03 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/gas/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jul 2021 22:27:03 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.oda.world/tags/gas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>gasのtimezone設定</title>
       <link>https://blog.oda.world/posts/55/</link>
