@@ -6,6 +6,8 @@
   <meta property="og:title" content="{{ .Title }}"/>
   <meta property="og:type" content="article" />
   <meta propetry="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.OgImage }}"/>
+  <meta propetry="og:site_name" content="{{ .Site.Params.SiteName }}" />
+  <meta property="og:description" content="{{ if .Path }}{{ substr .Summary 0 100 }}{{ else }}{{ .Site.Params.SiteDescription }}{{ end }}" />
   <title>{{ .Title }}</title>
   <link href="{{.Site.BaseURL}}/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <!-- <link href="{{.Site.BaseURL}}/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
