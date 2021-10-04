@@ -41,7 +41,7 @@ html {
 
 body {
   font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", 'メイリオ' , Meiryo , Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  background-color: #F4F5F7;
+  //background-color: #F4F5F7;
 }
 
 // header
@@ -79,14 +79,37 @@ body {
     }
   }
 
-  .card-panel {
+  .card-style {
+    border: solid 1px #eee;
     border-radius: 6px;
+    padding: 1rem;
+
+    h4 {
+      a {
+        color: #444;
+      }
+    }
+
+    .body {
+      color: #6f7372;
+      font-size: 0.8rem;
+      border-bottom: solid 1px #eee;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      .created-at {
+        color: #6f7372;
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 
 // article
 .article {
   word-wrap: break-word;
+  color: #333;
 
   h1 {
     font-size: 2rem;
@@ -138,7 +161,8 @@ body {
   p code {
     padding: .2em .4em;
     font-size: 85%;
-    background-color: #D7DDE3;
+    background-color: #eee;
+    color: #444;
     border-radius: 3px;
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
   }
