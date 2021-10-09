@@ -158,13 +158,15 @@ body {
     }
   }
 
-  p code {
-    padding: .2em .4em;
-    font-size: 85%;
-    background-color: #eee;
-    color: #444;
-    border-radius: 3px;
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  ul, p {
+    code {
+     padding: .2em .4em;
+     font-size: 85%;
+     background-color: #eee;
+     color: #444;
+     border-radius: 3px;
+     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+   }
   }
 
   a:hover {
