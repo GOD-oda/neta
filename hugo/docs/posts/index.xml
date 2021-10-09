@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Oct 2021 15:45:49 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless Frameworkを使ってみる</title>
+      <link>https://blog.oda.world/posts/76/</link>
+      <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/76/</guid>
+      <description>ゴール AWS Lambdaにデプロイと実行でserverlessテンプレートの内容を表示する AWS Lambdaのランタイムはnode.js14 デプロイ</description>
+    </item>
     
     <item>
       <title>DynamoDBをローカル環境に作る</title>

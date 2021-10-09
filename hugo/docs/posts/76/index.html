@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta property="og:title" content="Serverless Frameworkを使ってみる"/>
+  <meta property="og:type" content="article" />
+  <meta propetry="og:image" content="https://blog.oda.world/og_image.png"/>
+  <meta propetry="og:site_name" content="ODA WORLD" />
+  <meta property="og:description" content="ゴール AWS Lambdaにデプロイと実行でserverlessテンプレートの内容を表示する AWS Lambdaのランタイムはnode.js14 デプロイ" />
+  <title>Serverless Frameworkを使ってみる</title>
+  <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+  <link href="https://blog.oda.world/css/syntax.css"> 
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://blog.oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://blog.oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://blog.oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://blog.oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://blog.oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://blog.oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://blog.oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://blog.oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://blog.oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://blog.oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://blog.oda.world/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.75f9ee94d2e43191fef51fd4c4bab2719b4130bf86fa7534444c681287c11809.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
+  
+  </style>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-93E1496REW');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+</head>
+<body>
+  <div class="header-section">
+    <ul id="slide-out" class="side-nav">
+      <li><a href="https://blog.oda.world"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    </ul>
+    <a data-activates="slide-out" class="btn-floating button-collapse nav-menu" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">Serverless Frameworkを使ってみる</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+        <div class="row center">
+         
+         
+           <a href="https://github.com/GOD-oda"><img src="https://blog.oda.world/images/github2-dreamstale35.png"></a>
+         
+         
+           <a href="https://www.facebook.com/last.pass.oda"><img src="https://blog.oda.world/images/facebook-dreamstale25.png"></a>
+         
+         
+           <a href="https://twitter.com/@oskfjzp"><img src="https://blog.oda.world/images/twitter-dreamstale71.png"></a>
+         
+         
+         
+         <a href="https://blog.oda.world/index.xml"><img src="https://blog.oda.world/images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="article">
+  <div class="container">
+    <div class="section">
+  
+      <div class="row">
+        <div class="col s12">
+          <div class="">
+            
+            <p>
+             
+            </p>
+            <p><h1 id="ゴール">ゴール</h1>
+<ul>
+<li>AWS Lambdaにデプロイと実行でserverlessテンプレートの内容を表示する</li>
+<li>AWS Lambdaのランタイムはnode.js14</li>
+<li>デプロイ対象はstagingとproductionに分ける</li>
+<li>ローカル開発できるようにdockerとdocker-composeを使う</li>
+</ul>
+<h1 id="前提">前提</h1>
+<ul>
+<li>awsアカウントのアクセスキーとシークレットキーを作成済み</li>
+</ul>
+<h1 id="serverless-frameworkとは">Serverless Frameworkとは</h1>
+<p>wikipediaによると下記とのこと(2021/10/9 現在)</p>
+<blockquote>
+<p>Serverless Framework（サーバーレスフレームワーク）は、Node.jsを使用して記述された無料のオープンソースWebフレームワークである[※ 1]。
+Amazon Web Servicesの一部としてAmazonが提供するサーバーレスコンピューティングプラットフォーム「AWS Lambda」で、アプリケーションを構築するために開発されたその最初のフレームワークである。 現在、サーバレスで開発されたアプリケーションは、Azure FunctionsでマイクロソフトAzure、Apache OpenWhiskを基盤とするIBM Cloud FunctionsでIBM Bluemix 、 Google Cloud Functionsを使用するGoogle Cloud Platform(GCP) 、 OracleのFn[1] を使用するOracle Cloud 、Kubernetesを基盤とするKubeless[※ 2] 、Spotinst 、およびAuth0によるWebtask、など他のFunction as a serviceのプロバイダーに展開する事（デプロイ[※ 3]）も可能である[2]。</p>
+</blockquote>
+<p>ざっくりと、AWSであればLambdaを動かすために諸々をコードで表現できますよ、ということか</p>
+<p><a href="https://www.serverless.com/">公式のトップページ</a>にも</p>
+<pre><code>All-in-one development &amp; monitoring of auto-scaling apps on AWS Lambda
+</code></pre><p>と書かれているのでLambdaのデプロイ、モニタリング、オートスケールの制御ができるみたいだな</p>
+<p>さて、ここから実装を進めていくか</p>
+<h1 id="環境の準備">環境の準備</h1>
+<p>まずはdockerを使うのでイメージとか用意しないと</p>
+<p>とりあえずAWS Lambdaのnodejs14のイメージが必要なのでdocker-hubの<a href="https://hub.docker.com/layers/amazon/aws-lambda-nodejs/14/images/sha256-cc92c75ae89fb33ecb935a2304c6836fc9304643911df607db4a442158f926a7?context=explore">こいつ</a>にしよう</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> amazon/aws-lambda-nodejs:14</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install serverless</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl -sL https://rpm.nodesource.com/setup_14.x | bash - <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> yum -y install nodejs <span style="color:#f92672">&amp;&amp;</span> yum -y clean all <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> npm install -g serverless<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> []<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><pre><code>※shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる
+</code></pre><p>事前に作成しておいたAWSアカウントのアクセスキーとシークレットキーを使うので.envを作る</p>
+<pre><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID=****
+AWS_SECRET_ACCESS_KEY=****
+</code></pre><p>docker-compose.ymlも作っておこう</p>
+<p>コードはsrcディレクトリに書いていくことにする（適宜変えればOK）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">serverless</span>:
+    <span style="color:#66d9ef">build</span>:
+      <span style="color:#66d9ef">context</span>: .
+    <span style="color:#66d9ef">working_dir</span>: /src
+    <span style="color:#66d9ef">volumes</span>:
+      - ./src:/src
+    <span style="color:#66d9ef">env_file</span>: .env
+</code></pre></div><p>で、ビルドする</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose build
+Building serverless
+.
+.
+.
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; exporting layers                                           0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; writing image sha256:085ee5ff9aa378d3a51bbfcd8b5ae672b21f  0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; naming to docker.io/library/76_serverless
+</code></pre></div><p>ちょっと確認</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose run --rm serverless sh
+
+sh-4.2# node -v
+v14.17.4
+
+sh-4.2# serverless -v
+Framework Core: 2.62.0
+Plugin: 5.4.6
+SDK: 4.3.0
+Components: 3.17.1
+</code></pre></div><p>serverlessコマンドは<code>sls</code>というショートカットがあるので今後はこちらを使っていく</p>
+<p><code>sls -h</code>でどういうコマンドがあるかざっと見ておいてもヨシ</p>
+<h1 id="テンプレート用意">テンプレート用意</h1>
+<p>ここからコードを書いていくのだがコマンド一発でテンプレートが用意できる（まぁ<code>hello world</code>程度なのでこれでヨシ</p>
+<p><code>--name</code>オプションを付けないと実行したディレクトリ名がサービス名になってしまうのでここでは<code>gorilla</code>とする</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls create --template aws-nodejs --name gorilla
+Serverless: Generating boilerplate...
+Serverless: Successfully generated boilerplate <span style="color:#66d9ef">for</span> template: <span style="color:#e6db74">&#34;aws-nodejs&#34;</span>
+Serverless: NOTE: Please update the <span style="color:#e6db74">&#34;service&#34;</span> property in serverless.yml with your service name
+</code></pre></div><p>するとserverlessの設定ファイル等々ができる(treeコマンドはないのでインストールするかコンテナから抜けて実行する)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree src -a
+src
+├── .npmignore
+├── handler.js
+└── serverless.yml
+</code></pre></div><ul>
+<li>serverless.ymlはいわゆる設定ファイル</li>
+<li>handler.jsはserverless.ymlでラムダ実行時の関数を定義しているファイル</li>
+</ul>
+<p>serverless.ymlは色々コメントアウトされているけど少し付け足した方がいい項目もあるので変更する</p>
+<p>とりあえずstagingのためのserverless.ymlこうなる</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-serverless.yml" data-lang="serverless.yml"><span style="color:#66d9ef">service</span>: gorilla
+
+<span style="color:#66d9ef">frameworkVersion</span>: <span style="color:#e6db74">&#39;2&#39;</span>
+
+<span style="color:#66d9ef">provider</span>:
+  <span style="color:#66d9ef">name</span>: aws
+  <span style="color:#66d9ef">runtime</span>: nodejs14.x
+  <span style="color:#66d9ef">lambdaHashingVersion</span>: <span style="color:#ae81ff">20201221</span>
+  <span style="color:#66d9ef">stage</span>: staging
+  <span style="color:#66d9ef">region</span>: ap-northeast<span style="color:#ae81ff">-1</span>
+
+<span style="color:#66d9ef">functions</span>:
+  <span style="color:#66d9ef">hello</span>:
+    <span style="color:#66d9ef">handler</span>: handler.hello
+</code></pre></div><p>変更した箇所</p>
+<ul>
+<li><code>provider.runtime</code>を<code>nodejs14.x</code>に変更</li>
+<li><code>provider.stage</code>に<code>staging</code>を追加</li>
+<li><code>provider.region</code>に<code>ap-northeast-1</code>を追加</li>
+</ul>
+<h1 id="ローカルでラムダ実行">ローカルでラムダ実行</h1>
+<p>この状態で実行できるはずなのでやってみよう</p>
+<p>実行コマンドは<code>invoke</code>コマンドを使う</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke local -f hello
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;statusCode&#34;</span>: 200,
+    <span style="color:#e6db74">&#34;body&#34;</span>: <span style="color:#e6db74">&#34;{\n  \&#34;message\&#34;: \&#34;Go Serverless v1.0! Your function executed successfully!\&#34;,\n  \&#34;input\&#34;: \&#34;\&#34;\n}&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>ポイント</p>
+<ul>
+<li>ローカル実行は必ず<code>local</code>を付けないといけない</li>
+<li>対象の関数を<code>-f</code>オプションで指定する
+<ul>
+<li>serverless.ymlのfunctionsで定義したキーになる</li>
+</ul>
+</li>
+</ul>
+<h1 id="stagingにデプロイと実行">stagingにデプロイと実行</h1>
+<p>ローカル実行で動作することが確認できたのでstagingにデプロイするんだが、その前に確認用としてログでも仕込んでおこう</p>
+<p><code>handler.js</code>を編集してconsole.logを仕込む</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&#39;use strict&#39;;
+
+module.exports.hello = async (event) =&gt; {
+<span style="color:#a6e22e">+ console.log(&#39;hello gorilla&#39;);
+</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e"></span>  return {
+    statusCode: 200,
+    body: JSON.stringify(
+      {
+        message: &#39;Go Serverless v1.0! Your function executed successfully!&#39;,
+        input: event,
+      },
+      null,
+      2
+    ),
+  };
+
+  // Use this code if you don&#39;t use the http event with the LAMBDA-PROXY integration
+  // return { message: &#39;Go Serverless v1.0! Your function executed successfully!&#39;, event };
+};
+</code></pre></div><p>デプロイには<code>deploy</code>コマンドを使う</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Creating Stack...
+Serverless: Checking Stack create progress...
+........
+Serverless: Stack create finished...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service gorilla.zip file to S3 <span style="color:#f92672">(</span><span style="color:#ae81ff">799</span> B<span style="color:#f92672">)</span>...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+...............
+Serverless: Stack update finished...
+Service Information
+service: gorilla
+stage: staging
+region: ap-northeast-1
+stack: gorilla-staging
+resources: <span style="color:#ae81ff">6</span>
+api keys:
+  None
+endpoints:
+functions:
+  hello: gorilla-staging-hello
+layers:
+  None
+
+Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db74">&#34;serverless&#34;</span>
+</code></pre></div><p>無事デプロイが終わればCloudFormationにひとつスタックができる</p>
+<p><img src="https://user-images.githubusercontent.com/14949022/136654050-1e9c6775-a5e1-40ad-b0b8-595677a8b106.png" alt="スクリーンショット 2021-10-09 19 12 55"></p>
+<p>んじゃ実際に実行してみよう</p>
+<p>同じように<code>invoke</code>コマンドを使うが今回ローカルじゃないので<code>local</code>は必要ない</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke -f hello
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;statusCode&#34;</span>: 200,
+    <span style="color:#e6db74">&#34;body&#34;</span>: <span style="color:#e6db74">&#34;{\n  \&#34;message\&#34;: \&#34;Go Serverless v1.0! Your function executed successfully!\&#34;,\n  \&#34;input\&#34;: {}\n}&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>ログはCloudWatchに自動的に溜まっていくので確認しにいこう</p>
+<p><img src="https://user-images.githubusercontent.com/14949022/136654283-47542957-b1ed-4858-ae6a-36d6b295e190.png" alt="スクリーンショット 2021-10-09 19 19 37"></p>
+<p>該当のログストリームを指定する（今回は最新のもの）
+<img src="https://user-images.githubusercontent.com/14949022/136654406-cf0122ab-b474-4ebc-9db7-2b2bc257ce62.png" alt="スクリーンショット 2021-10-09 19 25 30"></p>
+<p>よしよし、無事にログが出力されている
+<img src="https://user-images.githubusercontent.com/14949022/136654449-dadc2063-8bcf-46ce-adae-e40646fb3960.png" alt="スクリーンショット_2021-10-09_19_25_41"></p>
+<h1 id="production環境でも実行する">production環境でも実行する</h1>
+<p>環境変更はstageを変更することで実現できるが、現状だと<code>staging</code>と固定されている</p>
+<p>ではこれをどうするかというと<code>deploy</code>コマンド実行時に<code>-s</code>オプションを使うことで実行時にstageを変更することができる</p>
+<p>ということで<code>production</code>をつけてこれを実行する</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy -s production
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Creating Stack...
+Serverless: Checking Stack create progress...
+........
+Serverless: Stack create finished...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service gorilla.zip file to S3 <span style="color:#f92672">(</span><span style="color:#ae81ff">819</span> B<span style="color:#f92672">)</span>...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+...............
+Serverless: Stack update finished...
+Service Information
+service: gorilla
+stage: production
+region: ap-northeast-1
+stack: gorilla-production
+resources: <span style="color:#ae81ff">6</span>
+api keys:
+  None
+endpoints:
+functions:
+  hello: gorilla-production-hello
+layers:
+  None
+
+Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db74">&#34;serverless&#34;</span>
+</code></pre></div><p>ログを見てお気づきだろうか？</p>
+<p>stackが<code>gorilla-production</code>になっていることに</p>
+<p>ちゃんとCloudFormationのスタックにもあるし、CloudWatchのロググループも追加されている</p>
+<p><img src="https://user-images.githubusercontent.com/14949022/136654774-ed5a9d93-1dfd-4e6b-bf4b-370f8996077d.png" alt="スクリーンショット 2021-10-09 19 42 33"></p>
+<p><img src="https://user-images.githubusercontent.com/14949022/136654784-add1d99c-0168-4139-900e-42c1a25b1c3e.png" alt="スクリーンショット 2021-10-09 19 42 42"></p>
+<p>以上</p>
+<h1 id="サンプルコード">サンプルコード</h1>
+<p><a href="https://github.com/GOD-oda/neta/tree/master/issues/76">https://github.com/GOD-oda/neta/tree/master/issues/76</a></p>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://zenn.dev/samuraikun/articles/4b5e2becae7c6b#serverless-framwrok%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%A7%E3%81%8D%E3%82%8Bdocker-compose%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B">https://zenn.dev/samuraikun/articles/4b5e2becae7c6b#serverless-framwrok%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%A7%E3%81%8D%E3%82%8Bdocker-compose%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B</a></li>
+<li><a href="https://www.serverless.com/framework/docs/providers/aws/cli-reference/create">https://www.serverless.com/framework/docs/providers/aws/cli-reference/create</a></li>
+<li><a href="https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy">https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy</a></li>
+<li><a href="https://www.serverless.com/framework/docs/providers/aws/guide/credentials/">https://www.serverless.com/framework/docs/providers/aws/guide/credentials/</a></li>
+</ul>
+</p>
+            <p>
+              
+                
+                  <a href="https://blog.oda.world/tags/aws/">#AWS</a>
+                
+                  <a href="https://blog.oda.world/tags/aws-lambda/">#AWS Lambda</a>
+                
+                  <a href="https://blog.oda.world/tags/serverless-framework/">#Serverless Framework</a>
+                
+              
+            </p>
+            <hr>
+            <p>
+              更新日 2021/10/09 19:51:08
+            </p>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/72/">prev</a>
+        
+        </div>
+        <div class="col s6 m10 center">&nbsp</div>
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large disabled">next</a>
+        
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+  <footer class="container">
+    © 2021 ODA WORLD
+    <div class="right">Design <a class="teal-text" href="http://pdevty.github.io/blog/">pdevty</a></div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://blog.oda.world/js/materialize.min.js"></script>
+  <script src="https://blog.oda.world/js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+

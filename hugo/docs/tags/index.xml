@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Mon, 30 Aug 2021 20:03:39 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 Oct 2021 15:45:49 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://blog.oda.world/tags/aws/</link>
+      <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS Lambda</title>
+      <link>https://blog.oda.world/tags/aws-lambda/</link>
+      <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/tags/aws-lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serverless Framework</title>
+      <link>https://blog.oda.world/tags/serverless-framework/</link>
+      <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/tags/serverless-framework/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>docker</title>
