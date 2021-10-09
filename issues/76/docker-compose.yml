@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  serverless:
+    build:
+      context: .
+    working_dir: /src
+    volumes:
+      - ./src:/src
+    env_file: ./src/.env
