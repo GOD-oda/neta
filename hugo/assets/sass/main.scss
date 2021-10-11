@@ -65,24 +65,30 @@ body {
 // top and list
 .top, .list {
   h4 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin: 0;
 
-    @include pc {
-      font-size: 1.5rem;
-    }
     @include tablet {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
     }
     @include sp {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
+  }
+
+  .card-style-p {
+    margin-bottom: 1.3rem;
   }
 
   .card-style {
     border: solid 1px #eee;
     border-radius: 6px;
     padding: 1rem;
+    min-height: 350px;
+
+    @include sp {
+      min-height: initial;
+    }
 
     h4 {
       a {
@@ -101,6 +107,7 @@ body {
       .created-at {
         color: #6f7372;
         font-size: 0.9rem;
+        padding: 0.5rem 0;
       }
     }
   }
