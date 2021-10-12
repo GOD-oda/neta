@@ -205,7 +205,11 @@ body {
 // footer
 footer {
   border-top: solid 1px #4db6ac;
-  padding: 20px 0;
+
+  .copyright {
+    float: right;
+    padding: 10px 0 10px 10px;
+  }
 }
 
 .card-panel {
