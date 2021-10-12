@@ -7,11 +7,15 @@ canonifyurls = true
 hasCJKLanguage = true
 googleAnalytics = 'G-93E1496REW'
 copyright = "© 2021 ODA WORLD"
+paginate = 12 
 
 [params]
   twitter = "@oskfjzp"
   facebook = "last.pass.oda"
   github = "GOD-oda"
+  ogImage = 'og_image.png'
+  siteName = 'ODA WORLD'
+  siteDescription = 'GOD-odaが運営するブログ'
 
 [markup]
   [markup.highlight]

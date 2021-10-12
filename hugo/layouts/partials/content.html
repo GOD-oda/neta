@@ -1,30 +1,33 @@
 {{ $baseurl := .Site.BaseURL }}
 <div class="row">
 {{range $index, $page := .Paginator.Pages}}
-  {{ if and (modBool $index 3) (ne 0 $index) }}
-</div>
-<div class="row">
-  {{ end }}
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-      {{if .Params.categories }}
-      <p>
-        {{ range $index, $category := .Params.categories }}
-          <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
-        {{ end }}
-      </p>
-      {{end}} 
-      <p>{{ substr .Summary 0 100 }} ...</p>
-      <hr>
-      作成日 {{ .Date.Format "2006/01/02 15:04:05" }}
-      {{if .Params.tags }}
-      <p>
-        {{ range $index, $tag := .Params.tags }}
-          <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
-        {{ end }}
-      </p>
-      {{end}} 
+  <div class="col m6 s12 card-style-p">
+    <div class="card-style">
+      <div class="header">
+        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+      </div>
+      <div class="body">
+        {{if .Params.categories }}
+        <p>
+          {{ range $index, $category := .Params.categories }}
+            <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
+          {{ end }}
+        </p>
+        {{end}} 
+        <p>{{ substr .Summary 0 100 }} ...</p>
+      </div>
+      <div class="footer">
+        <div class="created-at">
+          {{ .Date.Format "2006/01/02" }}
+        </div>
+        <div class="tags">
+          {{if .Params.tags }}
+            {{ range $index, $tag := .Params.tags }}
+              <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
+            {{ end }}
+          {{end}} 
+        </div>
+      </div>
     </div>
   </div>
 {{ end }}

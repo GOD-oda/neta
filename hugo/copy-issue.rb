@@ -70,4 +70,6 @@ File.open(file_path, 'a') do |f|
   end
 end
 
-File.delete("#{file_path}-e")
+if File.exist?("#{file_path}-e")
+  File.delete("#{file_path}-e")
+end
