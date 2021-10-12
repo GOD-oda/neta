@@ -113,20 +113,13 @@
 <li>項目を追加する</li>
 <li>scanコマンドで取得する</li>
 </ul>
+<h1 id="サンプルコード">サンプルコード</h1>
+<p><a href="https://github.com/GOD-oda/neta/tree/master/issues/74">https://github.com/GOD-oda/neta/tree/master/issues/74</a></p>
 <h1 id="dynamodb-localの準備">dynamodb localの準備</h1>
 <p><code>docker-compose.yml</code>は<a href="https://blog.oda.world/posts/72/">こちら</a>を参考に用意する</p>
 <p>完成系は以下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
 <span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">app</span>:
-    <span style="color:#66d9ef">build</span>: src/
-    <span style="color:#66d9ef">volumes</span>: 
-      - ./src:/src
-    <span style="color:#66d9ef">working_dir</span>: /src
-    <span style="color:#66d9ef">depends_on</span>:
-      - dynamodb
-    <span style="color:#66d9ef">command</span>: php index.php
-    <span style="color:#66d9ef">env_file</span>: src/.env
   <span style="color:#66d9ef">dynamodb</span>:
     <span style="color:#66d9ef">image</span>: amazon/dynamodb-local
     <span style="color:#66d9ef">command</span>: <span style="color:#e6db74">&#34;-jar DynamoDBLocal.jar -dbPath .&#34;</span>
@@ -165,6 +158,24 @@ services:
 volumes:
   dynamodb:
     driver: local
+</code></pre></div><p>一通り揃ったのでイメージをビルドする</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose build
+dynamodb uses an image, skipping
+Building app
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Building 3.6s <span style="color:#f92672">(</span>7/7<span style="color:#f92672">)</span> FINISHED
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span>internal<span style="color:#f92672">]</span> load build definition from Dockerfile                                                                                                                           0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; transferring dockerfile: 128B                                                                                                                                           0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span>internal<span style="color:#f92672">]</span> load .dockerignore                                                                                                                                              0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; transferring context: 2B                                                                                                                                                0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span>internal<span style="color:#f92672">]</span> load metadata <span style="color:#66d9ef">for</span> docker.io/library/php:8.0-alpine                                                                                                              2.2s
+ <span style="color:#f92672">=</span>&gt; FROM docker.io/library/composer:latest                                                                                                                                     1.3s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; resolve docker.io/library/composer:latest                                                                                                                               1.3s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span>stage-0 1/2<span style="color:#f92672">]</span> FROM docker.io/library/php:8.0-alpine@sha256:6d339aec418226dd8f7fa0c460e3cb805aa11cc6939b0f90cd418eb17bf3343d                                                0.0s
+ <span style="color:#f92672">=</span>&gt; CACHED <span style="color:#f92672">[</span>stage-0 2/2<span style="color:#f92672">]</span> COPY --from<span style="color:#f92672">=</span>composer:latest /usr/bin/composer /usr/bin/composer                                                                                       0.0s
+ <span style="color:#f92672">=</span>&gt; exporting to image                                                                                                                                                         0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; exporting layers                                                                                                                                                        0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; writing image sha256:c1d873c7edc63a019a182686bbd78f6eb8c350fcc58b4b6b4b99c285afc05fbc                                                                                   0.0s
+ <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; naming to docker.io/library/74_app
 </code></pre></div><p>んじゃちょっと確認</p>
 <p><code>composer</code>と<code>php</code>が入ってるよね</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose run --rm app sh
@@ -178,7 +189,7 @@ Zend Engine v4.0.11, Copyright <span style="color:#f92672">(</span>c<span style=
 Composer version 2.1.9 2021-10-05 09:47:38
 </code></pre></div><h2 id="composerでphp-sdkをインストール">composerでphp sdkをインストール</h2>
 <p>コンテナでコマンドを実行する</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/ <span style="color:#75715e"># composer require aws/aws-sdk-php</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/src <span style="color:#75715e"># composer require aws/aws-sdk-php</span>
 Using version ^3.193 <span style="color:#66d9ef">for</span> aws/aws-sdk-php
 ./composer.json has been created
 Running composer update aws/aws-sdk-php
@@ -225,7 +236,7 @@ services:
     depends_on:
       - dynamodb
     command: php index.php
-<span style="color:#a6e22e">+    env_file: src/.env
+<span style="color:#a6e22e">+   env_file: src/.env
 </span><span style="color:#a6e22e"></span>  dynamodb:
     image: amazon/dynamodb-local
     command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;
@@ -233,9 +244,9 @@ services:
       - &#34;8000:8000&#34;
     volumes:
       - &#34;dynamodb:/home/dynamodblocal&#34;
-volumes:
-  dynamodb:
-    driver: local
+  volumes:
+    dynamodb:
+      driver: local
 </code></pre></div><h1 id="テーブル作成">テーブル作成</h1>
 <p>さて、ここまできたらあとはphpから操作するだけ</p>
 <p>ということで<code>src</code>ディレクトリに<code>create.php</code>を作ってテーブル作成のスクリプトを書いていこう</p>
@@ -611,12 +622,13 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
   string<span style="color:#f92672">(</span>3<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;foo&#34;</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>ちょっとクセがあるコードになるんだなぁ</p>
-<h1 id="最後に">最後に</h1>
 <h1 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html">https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html</a></li>
 <li><a href="https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/">https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/</a></li>
 <li><a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.04.html#GettingStarted.PHP.04.Scan">https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.04.html#GettingStarted.PHP.04.Scan</a></li>
+<li><a href="https://qiita.com/Imyslx/items/f250cf2d24ac4f21a7e0">https://qiita.com/Imyslx/items/f250cf2d24ac4f21a7e0</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#listTables-property">https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#listTables-property</a></li>
 </ul>
 </p>
             <p>
@@ -634,7 +646,7 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
             </p>
             <hr>
             <p>
-              更新日 2021/10/12 12:31:14
+              更新日 2021/10/12 13:01:24
             </p>
             
           </div>
