@@ -40,9 +40,18 @@
     </item>
     
     <item>
+      <title>composer</title>
+      <link>https://blog.oda.world/tags/composer/</link>
+      <pubDate>Thu, 16 Sep 2021 00:23:34 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/tags/composer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>docker</title>
       <link>https://blog.oda.world/tags/docker/</link>
-      <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
+      <pubDate>Thu, 16 Sep 2021 00:23:34 +0000</pubDate>
       
       <guid>https://blog.oda.world/tags/docker/</guid>
       <description></description>
@@ -51,9 +60,18 @@
     <item>
       <title>DynamoDB</title>
       <link>https://blog.oda.world/tags/dynamodb/</link>
-      <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
+      <pubDate>Thu, 16 Sep 2021 00:23:34 +0000</pubDate>
       
       <guid>https://blog.oda.world/tags/dynamodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://blog.oda.world/tags/php/</link>
+      <pubDate>Thu, 16 Sep 2021 00:23:34 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/tags/php/</guid>
       <description></description>
     </item>
     
@@ -63,15 +81,6 @@
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
       <guid>https://blog.oda.world/tags/homebrew/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>php</title>
-      <link>https://blog.oda.world/tags/php/</link>
-      <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/tags/php/</guid>
       <description></description>
     </item>
     

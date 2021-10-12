@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DynamoDB on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/dynamodb/</link>
-    <description>Recent content in DynamoDB on ODA WORLD</description>
+    <title>composer on ODA WORLD</title>
+    <link>https://blog.oda.world/tags/composer/</link>
+    <description>Recent content in composer on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
     <lastBuildDate>Thu, 16 Sep 2021 00:23:34 +0000</lastBuildDate>
     
-	<atom:link href="https://blog.oda.world/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.oda.world/tags/composer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://blog.oda.world/posts/74/</guid>
       <description>前提 docker-composeを使う dynamodb localを使う php sdk v3を使う composerを使う macOS ゴール テーブルを作る 項目を追加する scanコマ</description>
-    </item>
-    
-    <item>
-      <title>DynamoDBをローカル環境に作る</title>
-      <link>https://blog.oda.world/posts/72/</link>
-      <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
-      
-      <guid>https://blog.oda.world/posts/72/</guid>
-      <description>前提 ローカルでDynamoDBに関するコマンドを実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい aws</description>
     </item>
     
   </channel>
