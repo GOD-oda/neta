@@ -8,7 +8,6 @@ $sdk = new Sdk([
   'endpoint' => 'dynamodb:8000',
   'region' => 'ap-northeast-1',
   'version' => 'latest',
-  'credentials' => false,
   'aws_access_key_id' => 'fake', 
   'aws_secret_access_key' => 'fake'
 ]);
@@ -35,6 +34,7 @@ $params = [
   ]
 ];
 
-$dynamoDb->createTable($params);
+$result = $dynamoDb->createTable($params);
+var_dump($result);
 
 
