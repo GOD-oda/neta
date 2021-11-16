@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Tue, 20 Jul 2021 16:57:02 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.oda.world/tags/mysql5.6/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 20 Jul 2021 16:57:02 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/mysql5.6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>slow_query_log確認コマンド</title>
       <link>https://blog.oda.world/posts/54/</link>

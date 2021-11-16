@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Thu, 16 Sep 2021 00:23:34 +0000</lastBuildDate>
-    
-	<atom:link href="https://blog.oda.world/tags/php/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 16 Sep 2021 00:23:34 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>dynamodb localにphp sdkで接続する</title>
       <link>https://blog.oda.world/posts/74/</link>

@@ -127,31 +127,31 @@ Amazon Web Servicesの一部としてAmazonが提供するサーバーレスコ�
 <h1 id="環境の準備">環境の準備</h1>
 <p>まずはdockerを使うのでイメージとか用意しないと</p>
 <p>とりあえずAWS Lambdaのnodejs14のイメージが必要なのでdocker-hubの<a href="https://hub.docker.com/layers/amazon/aws-lambda-nodejs/14/images/sha256-cc92c75ae89fb33ecb935a2304c6836fc9304643911df607db4a442158f926a7?context=explore">こいつ</a>にしよう</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> amazon/aws-lambda-nodejs:14</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> amazon/aws-lambda-nodejs:14</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># install serverless</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> curl -sL https://rpm.nodesource.com/setup_14.x | bash - <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> yum -y install nodejs <span style="color:#f92672">&amp;&amp;</span> yum -y clean all <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> npm install -g serverless<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> []<span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><pre><code>※shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる
 </code></pre><p>事前に作成しておいたAWSアカウントのアクセスキーとシークレットキーを使うので.envを作る</p>
-<pre><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID=****
-AWS_SECRET_ACCESS_KEY=****
-</code></pre><p>docker-compose.ymlも作っておこう</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>****
+AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>****
+</code></pre></div><p>docker-compose.ymlも作っておこう</p>
 <p>コードはsrcディレクトリに書いていくことにする（適宜変えればOK）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
-<span style="color:#66d9ef">services</span>:
-  <span style="color:#66d9ef">serverless</span>:
-    <span style="color:#66d9ef">build</span>:
-      <span style="color:#66d9ef">context</span>: .
-    <span style="color:#66d9ef">working_dir</span>: /src
-    <span style="color:#66d9ef">volumes</span>:
-      - ./src:/src
-    <span style="color:#66d9ef">env_file</span>: .env
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+<span style="color:#f92672">services</span>:
+  <span style="color:#f92672">serverless</span>:
+    <span style="color:#f92672">build</span>:
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
+    <span style="color:#f92672">working_dir</span>: <span style="color:#ae81ff">/src</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./src:/src</span>
+    <span style="color:#f92672">env_file</span>: <span style="color:#ae81ff">.env</span>
 </code></pre></div><p>で、ビルドする</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose build
 Building serverless
 .
 .
@@ -160,7 +160,7 @@ Building serverless
  <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; writing image sha256:085ee5ff9aa378d3a51bbfcd8b5ae672b21f  0.0s
  <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; naming to docker.io/library/76_serverless
 </code></pre></div><p>ちょっと確認</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose run --rm serverless sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose run --rm serverless sh
 
 sh-4.2# node -v
 v14.17.4
@@ -175,12 +175,12 @@ Components: 3.17.1
 <h1 id="テンプレート用意">テンプレート用意</h1>
 <p>ここからコードを書いていくのだがコマンド一発でテンプレートが用意できる（まぁ<code>hello world</code>程度なのでこれでヨシ</p>
 <p><code>--name</code>オプションを付けないと実行したディレクトリ名がサービス名になってしまうのでここでは<code>gorilla</code>とする</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls create --template aws-nodejs --name gorilla
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls create --template aws-nodejs --name gorilla
 Serverless: Generating boilerplate...
 Serverless: Successfully generated boilerplate <span style="color:#66d9ef">for</span> template: <span style="color:#e6db74">&#34;aws-nodejs&#34;</span>
 Serverless: NOTE: Please update the <span style="color:#e6db74">&#34;service&#34;</span> property in serverless.yml with your service name
 </code></pre></div><p>するとserverlessの設定ファイル等々ができる(treeコマンドはないのでインストールするかコンテナから抜けて実行する)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree src -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree src -a
 src
 ├── .npmignore
 ├── handler.js
@@ -191,20 +191,20 @@ src
 </ul>
 <p>serverless.ymlは色々コメントアウトされているけど少し付け足した方がいい項目もあるので変更する</p>
 <p>とりあえずstagingのためのserverless.ymlこうなる</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-serverless.yml" data-lang="serverless.yml"><span style="color:#66d9ef">service</span>: gorilla
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-serverless.yml" data-lang="serverless.yml"><span style="color:#f92672">service</span>: <span style="color:#ae81ff">gorilla</span>
 
-<span style="color:#66d9ef">frameworkVersion</span>: <span style="color:#e6db74">&#39;2&#39;</span>
+<span style="color:#f92672">frameworkVersion</span>: <span style="color:#e6db74">&#39;2&#39;</span>
 
-<span style="color:#66d9ef">provider</span>:
-  <span style="color:#66d9ef">name</span>: aws
-  <span style="color:#66d9ef">runtime</span>: nodejs14.x
-  <span style="color:#66d9ef">lambdaHashingVersion</span>: <span style="color:#ae81ff">20201221</span>
-  <span style="color:#66d9ef">stage</span>: staging
-  <span style="color:#66d9ef">region</span>: ap-northeast<span style="color:#ae81ff">-1</span>
+<span style="color:#f92672">provider</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">aws</span>
+  <span style="color:#f92672">runtime</span>: <span style="color:#ae81ff">nodejs14.x</span>
+  <span style="color:#f92672">lambdaHashingVersion</span>: <span style="color:#ae81ff">20201221</span>
+  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">staging</span>
+  <span style="color:#f92672">region</span>: <span style="color:#ae81ff">ap-northeast-1</span>
 
-<span style="color:#66d9ef">functions</span>:
-  <span style="color:#66d9ef">hello</span>:
-    <span style="color:#66d9ef">handler</span>: handler.hello
+<span style="color:#f92672">functions</span>:
+  <span style="color:#f92672">hello</span>:
+    <span style="color:#f92672">handler</span>: <span style="color:#ae81ff">handler.hello</span>
 </code></pre></div><p>変更した箇所</p>
 <ul>
 <li><code>provider.runtime</code>を<code>nodejs14.x</code>に変更</li>
@@ -214,7 +214,7 @@ src
 <h1 id="ローカルでラムダ実行">ローカルでラムダ実行</h1>
 <p>この状態で実行できるはずなのでやってみよう</p>
 <p>実行コマンドは<code>invoke</code>コマンドを使う</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke local -f hello
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke local -f hello
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;statusCode&#34;</span>: 200,
     <span style="color:#e6db74">&#34;body&#34;</span>: <span style="color:#e6db74">&#34;{\n  \&#34;message\&#34;: \&#34;Go Serverless v1.0! Your function executed successfully!\&#34;,\n  \&#34;input\&#34;: \&#34;\&#34;\n}&#34;</span>
@@ -231,11 +231,11 @@ src
 <h1 id="stagingにデプロイと実行">stagingにデプロイと実行</h1>
 <p>ローカル実行で動作することが確認できたのでstagingにデプロイするんだが、その前に確認用としてログでも仕込んでおこう</p>
 <p><code>handler.js</code>を編集してconsole.logを仕込む</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&#39;use strict&#39;;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&#39;use strict&#39;;
 
 module.exports.hello = async (event) =&gt; {
 <span style="color:#a6e22e">+ console.log(&#39;hello gorilla&#39;);
-</span><span style="color:#a6e22e"></span><span style="color:#a6e22e">+
+</span><span style="color:#a6e22e">+
 </span><span style="color:#a6e22e"></span>  return {
     statusCode: 200,
     body: JSON.stringify(
@@ -252,7 +252,7 @@ module.exports.hello = async (event) =&gt; {
   // return { message: &#39;Go Serverless v1.0! Your function executed successfully!&#39;, event };
 };
 </code></pre></div><p>デプロイには<code>deploy</code>コマンドを使う</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy
 Serverless: Packaging service...
 Serverless: Excluding development dependencies...
 Serverless: Creating Stack...
@@ -286,7 +286,7 @@ Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db
 <p><img src="https://user-images.githubusercontent.com/14949022/136654050-1e9c6775-a5e1-40ad-b0b8-595677a8b106.png" alt="スクリーンショット 2021-10-09 19 12 55"></p>
 <p>んじゃ実際に実行してみよう</p>
 <p>同じように<code>invoke</code>コマンドを使うが今回ローカルじゃないので<code>local</code>は必要ない</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke -f hello
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls invoke -f hello
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;statusCode&#34;</span>: 200,
     <span style="color:#e6db74">&#34;body&#34;</span>: <span style="color:#e6db74">&#34;{\n  \&#34;message\&#34;: \&#34;Go Serverless v1.0! Your function executed successfully!\&#34;,\n  \&#34;input\&#34;: {}\n}&#34;</span>
@@ -301,7 +301,7 @@ Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db
 <p>環境変更はstageを変更することで実現できるが、現状だと<code>staging</code>と固定されている</p>
 <p>ではこれをどうするかというと<code>deploy</code>コマンド実行時に<code>-s</code>オプションを使うことで実行時にstageを変更することができる</p>
 <p>ということで<code>production</code>をつけてこれを実行する</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy -s production
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sh-4.2# sls deploy -s production
 Serverless: Packaging service...
 Serverless: Excluding development dependencies...
 Serverless: Creating Stack...
@@ -376,7 +376,7 @@ Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db
         <div class="col s6 m10 center">&nbsp</div>
         <div class="col s3 m1">
         
-          <a class="btn-floating btn-large disabled">next</a>
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/79/">next</a>
         
         </div>
       </div>
