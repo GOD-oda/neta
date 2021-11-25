@@ -36,7 +36,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.68affff2399fd8690426dc3e3c5c01239977e82a5ab4b9a9cf2325f41f70537b.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.859f2d83e6dc5bd7c455b9194bc8d2efe8c31170be7c057a55cb657354bc375f.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -135,8 +135,13 @@ Amazon Web Servicesの一部としてAmazonが提供するサーバーレスコ�
 </span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> npm install -g serverless<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> []<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><pre><code>※shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる
-</code></pre><p>事前に作成しておいたAWSアカウントのアクセスキーとシークレットキーを使うので.envを作る</p>
+</span></code></pre></div><div class="message">
+
+※shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる
+
+</div>
+
+<p>事前に作成しておいたAWSアカウントのアクセスキーとシークレットキーを使うので.envを作る</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>****
 AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>****
 </code></pre></div><p>docker-compose.ymlも作っておこう</p>
@@ -360,7 +365,7 @@ Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db
             </p>
             <hr>
             <p>
-              更新日 2021/10/10 03:15:13
+              更新日 2021/11/25 17:49:03
             </p>
             
           </div>
