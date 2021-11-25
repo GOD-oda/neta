@@ -36,7 +36,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.859f2d83e6dc5bd7c455b9194bc8d2efe8c31170be7c057a55cb657354bc375f.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.bc19e34c5755d5f571e5f69fe6fb727683d9d4d6132f14a3d22fe37a2b43134f.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -135,9 +135,9 @@ Amazon Web Servicesの一部としてAmazonが提供するサーバーレスコ�
 </span><span style="color:#ae81ff"></span>  <span style="color:#f92672">&amp;&amp;</span> npm install -g serverless<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> []<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><div class="message">
+</span></code></pre></div><div class="message ">
 
-※shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる
+shとかしたいがベースイメージのENTRYPOINTが少し邪魔なので上書きしてる<br>
 
 </div>
 
@@ -224,15 +224,15 @@ src
     <span style="color:#e6db74">&#34;statusCode&#34;</span>: 200,
     <span style="color:#e6db74">&#34;body&#34;</span>: <span style="color:#e6db74">&#34;{\n  \&#34;message\&#34;: \&#34;Go Serverless v1.0! Your function executed successfully!\&#34;,\n  \&#34;input\&#34;: \&#34;\&#34;\n}&#34;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>ポイント</p>
-<ul>
-<li>ローカル実行は必ず<code>local</code>を付けないといけない</li>
-<li>対象の関数を<code>-f</code>オプションで指定する
-<ul>
-<li>serverless.ymlのfunctionsで定義したキーになる</li>
-</ul>
-</li>
-</ul>
+</code></pre></div><p>ポイント
+<div class="message  success">
+
+- ローカル実行は必ずlocalを付けないといけない<br>
+- 対象の関数を-fオプションで指定する<br>
+- serverless.ymlのfunctionsで定義したキーになる<br>
+
+</div>
+</p>
 <h1 id="stagingにデプロイと実行">stagingにデプロイと実行</h1>
 <p>ローカル実行で動作することが確認できたのでstagingにデプロイするんだが、その前に確認用としてログでも仕込んでおこう</p>
 <p><code>handler.js</code>を編集してconsole.logを仕込む</p>
@@ -365,7 +365,7 @@ Toggle on monitoring with the Serverless Dashboard: run <span style="color:#e6db
             </p>
             <hr>
             <p>
-              更新日 2021/11/25 17:49:03
+              更新日 2021/11/25 22:28:27
             </p>
             
           </div>

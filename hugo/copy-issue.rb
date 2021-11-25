@@ -58,28 +58,38 @@ end
 
 message_line = {
   now: false,
-  values: []
+  values: [],
+  option: ''
 }
 
 File.open(file_path, 'a') do |f|
-  res_body['body'].gsub(/\r/, '').split("\n").each do |line|
-    if message_line[:now]
-      if line == ':::message'
-        message_line[:now] = false
-        f.puts "{{<message>}}"
-        message_line[:values].each { |v| f.puts v }
-        f.puts "{{</message>}}"
-        next
-      end
-      message_line[:values] << line
+  res_body['body'].gsub(/\r/, '').split("\n").each.with_index do |line, i|
+    # notation
+    end_line_notation = line == ':::'
+
+    ## :::message
+    message_line_match = line.match(/\A:::message(?<class>\s.*)?\z/)
+    if message_line_match
+      message_line[:values] = []
+      message_line[:option] = message_line_match[:class]
+      message_line[:now] = true
       next
-    else
-      if line == ':::message'
-        message_line[:now] = true
-        next
-      end
     end
 
+    if end_line_notation
+      message_line[:now] = false
+      f.puts "{{<message class=\"#{message_line[:option]}\">}}"
+      message_line[:values].each { |v| f.puts "#{v}<br>" }
+      f.puts "{{</message>}}"
+      next
+    end
+
+    if message_line[:now]
+      message_line[:values] << line
+      next
+    end
+
+    # image
     if line.include?('<img')
       src = line[/src="(?<src>.*?)"/, 'src'] || ''
       alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'

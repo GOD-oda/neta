@@ -203,10 +203,37 @@ body {
 
   .message {
     background: #fff6e4;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1.5rem 2rem;
     margin: 1.3rem 0;
     color: #666;
     border-radius: 3px;
+    position: relative;
+    font-size: .9rem;
+
+    &:before {
+      content: "※";
+      color: #ffb84c;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-52%);
+    }
+
+    &.alert {
+      background: #ffeff2;
+
+      &:before {
+        color: #ff7670;
+      }
+    }
+
+    &.success {
+      background: #ddffdd;
+
+      &:before {
+        color: #3c763d;
+      }
+    }
   }
 }
 
