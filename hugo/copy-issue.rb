@@ -56,8 +56,30 @@ if updated_at
   system("gsed -i -e \"/date\:.*/a publishDate: #{updated_at.strftime('%Y-%m-%dT%H:%M:%S')}+09:00\" #{file_path}")
 end
 
+message_line = {
+  now: false,
+  values: []
+}
+
 File.open(file_path, 'a') do |f|
   res_body['body'].gsub(/\r/, '').split("\n").each do |line|
+    if message_line[:now]
+      if line == ':::message'
+        message_line[:now] = false
+        f.puts "{{<message>}}"
+        message_line[:values].each { |v| f.puts v }
+        f.puts "{{</message>}}"
+        next
+      end
+      message_line[:values] << line
+      next
+    else
+      if line == ':::message'
+        message_line[:now] = true
+        next
+      end
+    end
+
     if line.include?('<img')
       src = line[/src="(?<src>.*?)"/, 'src'] || ''
       alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
