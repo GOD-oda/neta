@@ -1,20 +1,17 @@
-# ローカル実行
-1. Clone theme
+# 準備
+1. Install hugo
+```sh
+% brew install hugo
+```
+2. Clone theme
 ```sh
 % cd hugo/themes
 % git clone https://github.com/pdevty/material-design
-Cloning into 'material-design'...
-remote: Enumerating objects: 172, done.
-remote: Total 172 (delta 0), reused 0 (delta 0), pack-reused 172
-Receiving objects: 100% (172/172), 2.23 MiB | 2.11 MiB/s, done.
-Resolving deltas: 100% (55/55), done.
 ```
-2. Run local server
+3. Install gnu-sed
 ```sh
-% hugo server
+% brew install gnu-sed
 ```
-3. Access [localhost:1313/neta/posts/28](http://localhost:1313/neta/posts/28)
-
 # デプロイ手順
 1. githubのissueからhugoの記事作成
 ```sh
@@ -31,7 +28,10 @@ Resolving deltas: 100% (55/55), done.
 % git commit
 % git push
 ```
-
+# ローカル実行
+```sh
+% hugo server
+```
 
 
 
