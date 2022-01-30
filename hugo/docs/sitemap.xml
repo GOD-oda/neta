@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.oda.world/</loc>
+    <lastmod>2022-01-30T17:52:45+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/posts/</loc>
+    <lastmod>2022-01-30T17:52:45+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/tags/</loc>
+    <lastmod>2022-01-30T17:52:45+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/tags/wordpress/</loc>
+    <lastmod>2022-01-30T17:52:45+00:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/posts/83/</loc>
+    <lastmod>2022-01-30T17:52:45+00:00</lastmod>
+  </url><url>
     <loc>https://blog.oda.world/tags/docker/</loc>
     <lastmod>2021-11-16T15:08:35+00:00</lastmod>
   </url><url>
@@ -18,15 +33,6 @@
     <lastmod>2021-11-16T15:08:35+00:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/tags/makefile/</loc>
-    <lastmod>2021-11-16T15:08:35+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/</loc>
-    <lastmod>2021-11-16T15:08:35+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/posts/</loc>
-    <lastmod>2021-11-16T15:08:35+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/tags/</loc>
     <lastmod>2021-11-16T15:08:35+00:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/tags/aws/</loc>

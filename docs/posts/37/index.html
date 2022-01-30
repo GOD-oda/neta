@@ -104,7 +104,7 @@
 <ul>
 <li>ruby 2.5.8</li>
 </ul>
-<pre><code>% ruby -v
+<pre tabindex="0"><code>% ruby -v
 ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19]
 </code></pre><ul>
 <li>a.rbにコードを書いて実行</li>
@@ -120,7 +120,7 @@ exec_block <span style="color:#66d9ef">do</span>
   p <span style="color:#e6db74">&#39;hoge&#39;</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>結果</p>
-<pre><code>% ruby a.rb
+<pre tabindex="0"><code>% ruby a.rb
 &quot;hoge&quot;
 </code></pre><p>補足</p>
 <ul>
@@ -136,7 +136,7 @@ exec_block <span style="color:#66d9ef">do</span>
 
 exec_block <span style="color:#66d9ef">do</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre><code>% ruby a.rb
+</code></pre></div><pre tabindex="0"><code>% ruby a.rb
 #&lt;Proc:0x00007fd9a187a1b8@a.rb:11&gt;
 </code></pre><p>ブロック引数でない時にブロックを渡した時
 <img src="https://user-images.githubusercontent.com/14949022/113468622-2d346580-9482-11eb-9cde-756a325adafe.png" alt="スクリーンショット 2021-04-03 13 38 43"></p>
@@ -155,7 +155,7 @@ exec_block <span style="color:#66d9ef">do</span>
   p <span style="color:#e6db74">&#39;hoge&#39;</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>確認</p>
-<pre><code>% ruby a.rb
+<pre tabindex="0"><code>% ruby a.rb
 &quot;hoge&quot;
 </code></pre><h1 id="メリット">メリット</h1>
 <ul>
@@ -168,14 +168,14 @@ exec_block <span style="color:#66d9ef">do</span>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre><code>% ruby a.rb
+</code></pre></div><pre tabindex="0"><code>% ruby a.rb
 2
 3
 </code></pre><p>書き手B：全ての要素に2をかける</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre><code>% ruby a.rb
+</code></pre></div><pre tabindex="0"><code>% ruby a.rb
 2
 4
 </code></pre><h1 id="参考">参考</h1>

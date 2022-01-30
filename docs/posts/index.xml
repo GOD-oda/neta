@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Tue, 16 Nov 2021 15:08:35 +0000</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jan 2022 17:52:45 +0000</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wordpressのfunctions.phpの場所</title>
+      <link>https://blog.oda.world/posts/83/</link>
+      <pubDate>Sun, 30 Jan 2022 17:52:45 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/83/</guid>
+      <description>functions.phpはテーマごとに設定されるものなので外観 &amp;gt; テーマファイルエディターページにある とりあえずの備忘録として</description>
+    </item>
+    
     <item>
       <title>macでEarthlyを使ってみる</title>
       <link>https://blog.oda.world/posts/79/</link>
