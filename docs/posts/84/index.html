@@ -3,16 +3,16 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="functions.phpはテーマごとに設定されるものなので外観 &amp;gt; テーマファイルエディターページにある とりあえずの備忘録として" />
-  <meta property="og:title" content="wordpressのfunctions.phpの場所" />
+  <meta name="description" content="duとは ディレクトリ容量をいい感じに出してくれるコマンド du - estimate file space usage % man du NAME du - estimate file space " />
+  <meta property="og:title" content="duコマンドのオプション" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://blog.oda.world/og_image.png" />
   <meta property="og:site_name" content="ODA WORLD" />
-  <meta property="og:description" content="functions.phpはテーマごとに設定されるものなので外観 &amp;gt; テーマファイルエディターページにある とりあえずの備忘録として" />
+  <meta property="og:description" content="duとは ディレクトリ容量をいい感じに出してくれるコマンド du - estimate file space usage % man du NAME du - estimate file space " />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@oskfjzp" />
   <meta name="twitter:player" content="@oskfjzp" />
-  <title>wordpressのfunctions.phpの場所</title>
+  <title>duコマンドのオプション</title>
   <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
   
@@ -64,7 +64,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         
-        <h1 class="header center teal-text text-lighten-2">wordpressのfunctions.phpの場所</h1>
+        <h1 class="header center teal-text text-lighten-2">duコマンドのオプション</h1>
         <div class="row center">
           <h5 class="header col s12 light"></h5>
         </div>
@@ -100,21 +100,60 @@
             <p>
              
             </p>
-            <p><p>functions.phpはテーマごとに設定されるものなので<code>外観 &gt; テーマファイルエディター</code>ページにある</p>
-<p><img src="https://user-images.githubusercontent.com/14949022/151693120-a0f15ba0-4b60-4a2b-85fd-c51070152f3f.png" alt="スクリーンショット 2022-01-30 17 49 41"></p>
-<p><img src="https://user-images.githubusercontent.com/14949022/151693125-48b53b68-e048-4168-bb33-0d84cce08c56.png" alt="スクリーンショット_2022-01-30_17_50_17"></p>
-<p>とりあえずの備忘録として</p>
-</p>
+            <p><h1 id="duとは">duとは</h1>
+<p>ディレクトリ容量をいい感じに出してくれるコマンド</p>
+<blockquote>
+<p>du - estimate file space usage</p>
+</blockquote>
+<pre tabindex="0"><code>% man du
+
+NAME
+       du - estimate file space usage
+.
+.
+.
+</code></pre><h1 id="オプション">オプション</h1>
+<h2 id="-s-">-s *</h2>
+<p>ディレクトリ配下のディレクトリは表示されなくてもいいんだけどなーってパターンがある</p>
+<p>例えばこういう時に出て欲しいのは<code>dir1</code>と<code>dir2</code>と<code>dir3</code>の容量なの</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% tree
+.
+├── dir1
+│   └── dir1_dir1
+├── dir2
+│   └── dir2_dir2
+└── dir3
+    └── dir3_dir3
+
+<span style="color:#ae81ff">6</span> directories, <span style="color:#ae81ff">0</span> files
+</code></pre></div><p><code>du</code>だけだと全部でちゃって見づらいのよ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% du
+0	./dir2/dir2_dir2
+0	./dir2
+0	./dir3/dir3_dir3
+0	./dir3
+0	./dir1/dir1_dir1
+0	./dir1
+0	.
+</code></pre></div><p>そんな時に<code>-s</code>を使うと合計を出してくれるようになる</p>
+<pre tabindex="0"><code>-s, --summarize
+              display only a total for each argument
+</code></pre><p>それだけ使うとカレントディレクトリの合計を出しちゃうから<code>*</code>を指定することでディレクトリごとに合計してくれる</p>
+<pre tabindex="0"><code>% du -s *
+0	dir1
+0	dir2
+0	dir3
+</code></pre></p>
             <p>
               
                 
-                  <a href="https://blog.oda.world/tags/wordpress/">#wordpress</a>
+                  <a href="https://blog.oda.world/tags/unix/">#unix</a>
                 
               
             </p>
             <hr>
             <p>
-              更新日 2022/01/30 17:52:45
+              更新日 2022/03/04 14:00:15
             </p>
             
           </div>
@@ -124,13 +163,13 @@
       <div class="row">
         <div class="col s3 m1">
         
-          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/79/">prev</a>
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/83/">prev</a>
         
         </div>
         <div class="col s6 m10 center">&nbsp</div>
         <div class="col s3 m1">
         
-          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/84/">next</a>
+          <a class="btn-floating btn-large disabled">next</a>
         
         </div>
       </div>
