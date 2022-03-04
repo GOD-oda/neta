@@ -143,7 +143,23 @@ NAME
 0	dir1
 0	dir2
 0	dir3
-</code></pre></p>
+</code></pre><h2 id="-h">-h</h2>
+<p>容量が大きいと見づらいよね</p>
+<p>そんな時に<code>-h</code>オプション</p>
+<pre tabindex="0"><code> -h, --human-readable
+        print sizes in human readable format (e.g., 1K 234M 2G)
+</code></pre><p><code>-s *</code>と合わせて使ってみると見やすくなるね</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% du -sh *                                                                                                         
+4.0K	Dockerfile
+4.0K	Makefile
+4.0K	composer.json
+108K	composer.lock
+4.0K	docker-compose.yml
+4.0K	phpunit.xml
+88K	src
+64K	tests
+10M	vendor
+</code></pre></div></p>
             <p>
               
                 
@@ -153,7 +169,7 @@ NAME
             </p>
             <hr>
             <p>
-              更新日 2022/03/04 14:00:15
+              更新日 2022/03/04 16:10:35
             </p>
             
           </div>
