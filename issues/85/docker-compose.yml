@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: ${APP_BUILD_TARGET:-local}
+    volumes:
+      - type: bind
+        source: ./src
+        target: /var/www/html
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+      target: ${APP_BUILD_TARGET:-local}
+    ports:
+      - "8000:80"
+    depends_on:
+      - app
+
+
