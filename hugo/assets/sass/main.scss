@@ -189,6 +189,10 @@ body {
     }
   }
 
+  figure {
+    margin: initial;
+  }
+
   img {
     max-width: 100%;
   }
@@ -252,11 +256,6 @@ footer {
 　word-wrap: break-word;
 }
 
-figure {
-  img {
-    max-width: 100%;
-  }
-}
 
 
 

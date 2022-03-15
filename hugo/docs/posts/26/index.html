@@ -36,7 +36,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.16de26b8759977d1cfde43c45a53dca1bc25280f1ee52a752366d1bd4f5b64f4.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.d92135606d94c5c29f2c3a854d821944b86233f45e15822419b5885aec6f1d69.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -102,7 +102,7 @@
             </p>
             <p><h1 id="結論">結論</h1>
 <p>column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時</p>
-<pre tabindex="0"><code>SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &lt; t2.column2 WHERE t2.column2 IS NULL;
+<pre><code>SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &lt; t2.column2 WHERE t2.column2 IS NULL;
 </code></pre><p><a href="https://dev.mysql.com/doc/refman/5.6/ja/example-maximum-column-group-row.html">mysqlの公式</a>にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる</p>
 <h1 id="環境">環境</h1>
 <ul>
@@ -115,21 +115,21 @@
 </ul>
 <h1 id="準備">準備</h1>
 <p>mysql5.6のイメージをダウンロードする</p>
-<pre tabindex="0"><code>% docker pull mysql:5.6
+<pre><code>% docker pull mysql:5.6
 </code></pre><p>コンテナを起動する</p>
-<pre tabindex="0"><code>% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6
+<pre><code>% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6
 c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120
 </code></pre><p>確認</p>
-<pre tabindex="0"><code>% docker ps
+<pre><code>% docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 c10a60237021        mysql:5.6           &quot;docker-entrypoint.s…&quot;   3 seconds ago       Up 2 seconds        3306/tcp            mysql56
 </code></pre><p>コンテナに入る</p>
-<pre tabindex="0"><code>% docker exec -it mysql56 bash
+<pre><code>% docker exec -it mysql56 bash
 root@c10a60237021:/#
 </code></pre><p>mysqlに入る
 passwordは<code>docker run</code>の<code>-e</code>オプションで指定したもの
 ここでは<code>password</code></p>
-<pre tabindex="0"><code>root@c10a60237021:/# mysql -u root -p
+<pre><code>root@c10a60237021:/# mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 2
@@ -154,16 +154,16 @@ mysql&gt;
 </ul>
 </li>
 </ul>
-<pre tabindex="0"><code>mysql&gt; create database test;
+<pre><code>mysql&gt; create database test;
 Query OK, 1 row affected (0.00 sec)
-</code></pre><pre tabindex="0"><code>mysql&gt; use test
+</code></pre><pre><code>mysql&gt; use test
 Database changed
-</code></pre><pre tabindex="0"><code>mysql&gt; create table products (name varchar(255), price int);
+</code></pre><pre><code>mysql&gt; create table products (name varchar(255), price int);
 Query OK, 0 rows affected (0.01 sec)
-</code></pre><pre tabindex="0"><code>mysql&gt; insert into products (name, price) values ('A', 100), ('B', 200), ('A', 300), ('B', 100);
+</code></pre><pre><code>mysql&gt; insert into products (name, price) values ('A', 100), ('B', 200), ('A', 300), ('B', 100);
 Query OK, 4 rows affected (0.00 sec)
 Records: 4  Duplicates: 0  Warnings: 0
-</code></pre><pre tabindex="0"><code>mysql&gt; select * from products;
+</code></pre><pre><code>mysql&gt; select * from products;
 +------+-------+
 | name | price |
 +------+-------+
@@ -175,7 +175,7 @@ Records: 4  Duplicates: 0  Warnings: 0
 4 rows in set (0.00 sec)
 </code></pre><h1 id="sql">SQL</h1>
 <p>nameごとのグループのうち最大のpriceを持つレコードを抽出する</p>
-<pre tabindex="0"><code>mysql&gt; SELECT * FROM products t1 LEFT JOIN products t2 ON t1.name = t2.name AND t1.price &lt; t2.price WHERE t2.price IS NULL;
+<pre><code>mysql&gt; SELECT * FROM products t1 LEFT JOIN products t2 ON t1.name = t2.name AND t1.price &lt; t2.price WHERE t2.price IS NULL;
 +------+-------+------+-------+
 | name | price | name | price |
 +------+-------+------+-------+

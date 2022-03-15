@@ -36,7 +36,7 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.16de26b8759977d1cfde43c45a53dca1bc25280f1ee52a752366d1bd4f5b64f4.css">
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.d92135606d94c5c29f2c3a854d821944b86233f45e15822419b5885aec6f1d69.css">
   <style type="text/css">
   
     footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
@@ -106,11 +106,11 @@
 <li>brew 2.6.2</li>
 <li>zsh</li>
 </ul>
-<pre tabindex="0"><code>% php -v
+<pre><code>% php -v
 PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS )
 Copyright (c) 1997-2018 The PHP Group
 Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies
-</code></pre><pre tabindex="0"><code>% brew -v
+</code></pre><pre><code>% brew -v
 Homebrew 2.6.2
 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17)
 Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18)
@@ -118,7 +118,7 @@ Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18)
 <ol>
 <li>インストール可能なphpバージョンを確認する</li>
 </ol>
-<pre tabindex="0"><code>% brew search php
+<pre><code>% brew search php
 ==&gt; Formulae
 brew-php-switcher      php-cs-fixer           php@7.4                phpmyadmin
 php                    php@7.2                phplint                phpstan
@@ -128,7 +128,7 @@ eclipse-php                   netbeans-php                  phpstorm
 </code></pre><ol start="2">
 <li>php7.4をインストールする</li>
 </ol>
-<pre tabindex="0"><code>% brew install php@7.4
+<pre><code>% brew install php@7.4
 ==&gt; Downloading https://homebrew.bintray.com/bottles/php%407.4-7.4.13_1.catalina.bottle.ta
 Already downloaded: /Users/odatakahiro/Library/Caches/Homebrew/downloads/0d6c05855a046af46f6f36438fa17097dceb423efbed6427ddc03cc931b757af--php@7.4-7.4.13_1.catalina.bottle.tar.gz
 ==&gt; Pouring php@7.4-7.4.13_1.catalina.bottle.tar.gz
@@ -145,12 +145,12 @@ Or, if you don't want/need a background service you can just run:
   php-fpm
 ==&gt; Summary
 🍺  /usr/local/Cellar/php@7.4/7.4.13_1: 497 files, 72.3MB
-</code></pre><pre tabindex="0"><code> % brew list --formula | grep php
+</code></pre><pre><code> % brew list --formula | grep php
 php@7.4
 </code></pre><ol start="3">
 <li>リンクさせる</li>
 </ol>
-<pre tabindex="0"><code>% brew link php@7.4
+<pre><code>% brew link php@7.4
 Linking /usr/local/Cellar/php@7.4/7.4.13_1... 25 symlinks created
 
 If you need to have this software first in your PATH instead consider running:
@@ -161,11 +161,11 @@ If you need to have this software first in your PATH instead consider running:
 3の最後の2つのechoを、使ってるシェルのrcファイル（今回は.zshrc）に追記する
 rcファイルをsourceで読み込み直す</li>
 </ol>
-<pre tabindex="0"><code>% source ~/.zshrc
+<pre><code>% source ~/.zshrc
 </code></pre><ol start="5">
 <li>確認</li>
 </ol>
-<pre tabindex="0"><code>% php -v
+<pre><code>% php -v
 PHP 7.4.13 (cli) (built: Nov 30 2020 14:46:04) ( NTS )
 Copyright (c) The PHP Group
 Zend Engine v3.4.0, Copyright (c) Zend Technologies

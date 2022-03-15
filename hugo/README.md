@@ -12,14 +12,30 @@
 ```sh
 % brew install gnu-sed
 ```
+# 記事について
+## 画像
+画像は`content/images/{issue_id}`に配置する
+
+ショートコードを使う
+```
+{{<figure src="">}}
+```
+
+必要に応じてwebp変換を行う
+```
+% brew install webp
+% make cwebp FROM={path} TO={path}
+
+ex) make cwebp FROM=./content/images/85/foo.png TO=./content/images/85/foo.webp
+```
 # デプロイ手順
 1. githubのissueからhugoの記事作成
 ```sh
-% ruby copy-issue.rb {ISSUE_ID}
+% make import ID={issue_id}
 ```
 2. 作成した記事をデプロイ（実際は公開ディレクトリへコピー）
 ```sh
-% sh deploy.sh
+% make deploy
 ```
 3. 全てgitに保存
 ```sh
