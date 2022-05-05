@@ -12,5 +12,5 @@ deploy:
 
 .PHONY: cwebp
 cwebp:
-	cwebp $(FROM) -o $(TO)
-	rm $(FROM)
+	cwebp $(from) -o $(to)
+	rm $(from)

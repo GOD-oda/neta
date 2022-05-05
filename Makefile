@@ -8,11 +8,6 @@ setup:
 up_hugo:
 	docker compose up hugo
 
-.PHONY: cwebp
-cwebp:
-	cwebp $(FROM) -o $(TO)
-	rm $(FROM)
-
 .PHONY: clean
 clean:
 	docker compose down -v --rmi all
