@@ -11,6 +11,10 @@ class Post
     @file_path = "content/posts/#{@file_name}"
   end
 
+  def create
+    %x(hugo new posts/#{@file_name})
+  end
+
   def exists?
     File.exist?(@file_path)
   end

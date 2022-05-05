@@ -1,6 +1,6 @@
-.PHONY: import
-import:
-	ruby copy-issue.rb $(ID)
+.PHONY: create
+create:
+	@ruby create_post.rb $(id)
 
 .PHONY: import_post_meta
 import_post_meta:
