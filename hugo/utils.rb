@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require 'net/http'
 require 'json'
 require 'time'
@@ -9,10 +7,6 @@ class Post
     @id = id
     @file_name = "#{@id}.md"
     @file_path = "content/posts/#{@file_name}"
-  end
-
-  def create
-    %x(hugo new posts/#{@file_name})
   end
 
   def exists?
@@ -61,8 +55,6 @@ class Issue
     uri = URI.parse("#{ISSUE_URL}#{@id}")
     res = Net::HTTP.get_response(uri)
     @res = JSON.parse(res.body)
-
-    # @tz =
   end
 
   def title
