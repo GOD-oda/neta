@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 23:44:00 +0900</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>aws cliを使ってLightsail container serviceにゼロからデプロイする</title>
+      <link>https://blog.oda.world/posts/88/</link>
+      <pubDate>Tue, 12 Jul 2022 23:44:00 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/88/</guid>
+      <description>前提 awsアカウントを作成しプロファイルを設定済み awsコマンドはプロファイルを指定して実行する 本記事で出てくる{profile}は置き換え</description>
+    </item>
+    
     <item>
       <title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
       <link>https://blog.oda.world/posts/85/</link>

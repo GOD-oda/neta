@@ -101,7 +101,7 @@
              
             </p>
             <p><h1 id="環境">環境</h1>
-<pre><code>% nodenv -v
+<pre tabindex="0"><code>% nodenv -v
 nodenv 1.4.0
 
 % npm -v
@@ -117,7 +117,7 @@ v15.5.1
 <li>インストール</li>
 </ol>
 <p>とりあえずグローバルでいいのでインストールコマンドを実行する</p>
-<pre><code>% npm i @google/clasp -g
+<pre tabindex="0"><code>% npm i @google/clasp -g
 npm WARN ERESOLVE overriding peer dependency
 npm WARN Found: inquirer@7.3.3
 npm WARN node_modules/@google/clasp/node_modules/inquirer
@@ -145,7 +145,7 @@ Run `npm audit` for details
 </code></pre><ol start="2">
 <li>コマンド確認</li>
 </ol>
-<pre><code>% clasp
+<pre tabindex="0"><code>% clasp
 Usage: clasp &lt;command&gt; [options]
 
 clasp - The Apps Script CLI
@@ -185,14 +185,14 @@ Commands:
 <li>ログイン</li>
 </ol>
 <p><code>clasp login</code>と打つと表示されたページに飛ぶので「アカウントの選択」する</p>
-<pre><code>% clasp login
+<pre tabindex="0"><code>% clasp login
 Logging in globally...
 🔑 Authorize clasp by visiting this url:
 ********
 </code></pre><p>許可するとこれが表示される</p>
-<pre><code>Logged in! You may close this page. 
+<pre tabindex="0"><code>Logged in! You may close this page. 
 </code></pre><p>ターミナルに戻り、こうなっているとログインに成功している</p>
-<pre><code>% clasp login
+<pre tabindex="0"><code>% clasp login
 Logging in globally...
 🔑 Authorize clasp by visiting this url:
 ********
@@ -213,7 +213,7 @@ Default credentials saved to: ~/.clasprc.json (/Users/gonzalezoda/.clasprc.json)
 <p>もしくは歯車から設定ページにいき、IDのセクションに書いてある</p>
 <p><img src="https://user-images.githubusercontent.com/14949022/105607008-b9ba0c00-5ddf-11eb-8f28-84f782f264f3.png" alt="スクリーンショット_2021-01-24_0_56_34"></p>
 <p>cloneするとgasのファイル名がそのまま<code>.js</code>として配置される（ここでは<code>app.gs</code>だったので<code>app.js</code>となっている）</p>
-<pre><code>% clasp clone ****
+<pre tabindex="0"><code>% clasp clone ****
 Warning: files in subfolder are not accounted for unless you set a '.claspignore' file.
 Cloned 2 files.
 └─ app.js

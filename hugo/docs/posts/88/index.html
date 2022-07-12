@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="前提 awsアカウントを作成しプロファイルを設定済み awsコマンドはプロファイルを指定して実行する 本記事で出てくる{profile}は置き換え" />
+  <meta property="og:title" content="aws cliを使ってLightsail container serviceにゼロからデプロイする" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://blog.oda.world/og_image.png" />
+  <meta property="og:site_name" content="ODA WORLD" />
+  <meta property="og:description" content="前提 awsアカウントを作成しプロファイルを設定済み awsコマンドはプロファイルを指定して実行する 本記事で出てくる{profile}は置き換え" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@oskfjzp" />
+  <meta name="twitter:player" content="@oskfjzp" />
+  <title>aws cliを使ってLightsail container serviceにゼロからデプロイする</title>
+  <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+  <link href="https://blog.oda.world/css/syntax.css"> 
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://blog.oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://blog.oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://blog.oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://blog.oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://blog.oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://blog.oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://blog.oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://blog.oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://blog.oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://blog.oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://blog.oda.world/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.9b62bf1b273b86a0b8ccf632b8bf477ad7d6cc1462884fd81468f1c499ff68c6.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
+  
+  </style>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-93E1496REW');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+</head>
+<body>
+  <div class="header-section">
+    <ul id="slide-out" class="side-nav">
+      <li><a href="https://blog.oda.world"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    </ul>
+    <a data-activates="slide-out" class="btn-floating button-collapse nav-menu" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">aws cliを使ってLightsail container serviceにゼロからデプロイする</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+        <div class="row center">
+         
+         
+           <a href="https://github.com/GOD-oda"><img src="https://blog.oda.world/images/github2-dreamstale35.png"></a>
+         
+         
+           <a href="https://www.facebook.com/last.pass.oda"><img src="https://blog.oda.world/images/facebook-dreamstale25.png"></a>
+         
+         
+           <a href="https://twitter.com/@oskfjzp"><img src="https://blog.oda.world/images/twitter-dreamstale71.png"></a>
+         
+         
+         
+         <a href="https://blog.oda.world/index.xml"><img src="https://blog.oda.world/images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="article">
+  <div class="container">
+    <div class="section">
+  
+      <div class="row">
+        <div class="col s12">
+          <div class="">
+            
+            <p>
+             
+            </p>
+            <p><h1 id="前提">前提</h1>
+<ul>
+<li>awsアカウントを作成しプロファイルを設定済み
+<ul>
+<li>awsコマンドはプロファイルを指定して実行する</li>
+<li>本記事で出てくる<code>{profile}</code>は置き換えてもらう</li>
+</ul>
+</li>
+<li>macOS M1</li>
+<li>docker desktop for mac</li>
+<li>docker buildx</li>
+<li>ゴールはデプロイしたnginxのwelcomeページにアクセスする</li>
+</ul>
+<h1 id="awsコマンドインストール">awsコマンドインストール</h1>
+<p>aws cliとlightsailctlのプラグインが必要なのでそれぞれbrewでインストールする</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew install awscli
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew install aws/tap/lightsailctl
+</code></pre></div><h1 id="コンテナサービス作成">コンテナサービス作成</h1>
+<p>コンテナサービスは1度しか作らないと思うのでサクッと作ってしまう</p>
+<p><code>--service-name</code>と<code>--power</code>と<code>--scale</code>は必須項目になる</p>
+<p>ここでは最小構成にしている</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail create-container-service --profile <span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span> --service-name test --power nano --scale <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;containerService&#34;</span>: <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;containerServiceName&#34;</span>: <span style="color:#e6db74">&#34;test&#34;</span>,
+        <span style="color:#e6db74">&#34;arn&#34;</span>: <span style="color:#e6db74">&#34;***&#34;</span>,
+        <span style="color:#e6db74">&#34;createdAt&#34;</span>: <span style="color:#e6db74">&#34;2022-07-13T00:49:57+09:00&#34;</span>,
+        <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;availabilityZone&#34;</span>: <span style="color:#e6db74">&#34;all&#34;</span>,
+            <span style="color:#e6db74">&#34;regionName&#34;</span>: <span style="color:#e6db74">&#34;ap-northeast-1&#34;</span>
+        <span style="color:#f92672">}</span>,
+        <span style="color:#e6db74">&#34;resourceType&#34;</span>: <span style="color:#e6db74">&#34;ContainerService&#34;</span>,
+        <span style="color:#e6db74">&#34;tags&#34;</span>: <span style="color:#f92672">[]</span>,
+        <span style="color:#e6db74">&#34;power&#34;</span>: <span style="color:#e6db74">&#34;nano&#34;</span>,
+        <span style="color:#e6db74">&#34;powerId&#34;</span>: <span style="color:#e6db74">&#34;nano-1&#34;</span>,
+        <span style="color:#e6db74">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;PENDING&#34;</span>,
+        <span style="color:#e6db74">&#34;scale&#34;</span>: 1,
+        <span style="color:#e6db74">&#34;isDisabled&#34;</span>: false,
+        <span style="color:#e6db74">&#34;principalArn&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+        <span style="color:#e6db74">&#34;privateDomainName&#34;</span>: <span style="color:#e6db74">&#34;test.service.local&#34;</span>,
+        <span style="color:#e6db74">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://test.o13lqsv53v8nq.ap-northeast-1.cs.amazonlightsail.com/&#34;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>--generate-cli-skeleton</code>と<code>--cli-input-json</code>オプションを利用して、テンプレートを作るのもひとつの手</p>
+<p>テンプレートを作っておくと同じようなコンテナサービスを簡単に複製することができるから便利っちゃ便利</p>
+<h1 id="イメージの用意">イメージの用意</h1>
+<p>webサーバのコンテナとしてnginxのベースイメージだけのDockerfileを用意する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">FROM nginx:1.23
+</code></pre></div><p>ローカルでビルドしておく</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker buildx build --platform linux/amd64 -t test-web --load .
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker images
+REPOSITORY                         TAG                   IMAGE ID       CREATED        SIZE
+test-web                           latest                fb70a74533ad   <span style="color:#ae81ff">12</span> hours ago   134MB
+</code></pre></div><p><code>push-container-image</code>で作ったコンテナサービスにイメージを登録する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail push-container-image --profile <span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span> --service-name test --label web --image test-web:latest
+df952d2b4106: Pushed 
+ff3d4f9d11eb: Pushed 
+894a5fef50f9: Pushed 
+682334d37f25: Pushed 
+09f60154d529: Pushed 
+af32df749f3f: Pushed 
+Digest: sha256:9cecd0d6f0542c8d26340966a4217825dbdcc3b158780d434416da4acfa4306f
+Image <span style="color:#e6db74">&#34;test-web:latest&#34;</span> registered.
+Refer to this image as <span style="color:#e6db74">&#34;:test.web.7&#34;</span> in deployments.
+</code></pre></div><p>この<code>:test.web.7</code>は後ほど使うのでメモしておく</p>
+<h1 id="コンテナのデプロイ">コンテナのデプロイ</h1>
+<p>コンテナのデプロイにおいてはテンプレートを作って追いたほうが良い</p>
+<p>k8sのdeployment.yamlとかそんな感じ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail create-container-service-deployment --generate-cli-skeleton &gt; container.json
+</code></pre></div><p>container.jsonはこうなる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;containers&#34;</span>: {
+        <span style="color:#f92672">&#34;KeyName&#34;</span>: {
+            <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#f92672">&#34;command&#34;</span>: [
+                <span style="color:#e6db74">&#34;&#34;</span>
+            ],
+            <span style="color:#f92672">&#34;environment&#34;</span>: {
+                <span style="color:#f92672">&#34;KeyName&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+            },
+            <span style="color:#f92672">&#34;ports&#34;</span>: {
+                <span style="color:#f92672">&#34;KeyName&#34;</span>: <span style="color:#e6db74">&#34;HTTPS&#34;</span>
+            }
+        }
+    },
+    <span style="color:#f92672">&#34;publicEndpoint&#34;</span>: {
+        <span style="color:#f92672">&#34;containerName&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+        <span style="color:#f92672">&#34;containerPort&#34;</span>: <span style="color:#ae81ff">0</span>,
+        <span style="color:#f92672">&#34;healthCheck&#34;</span>: {
+            <span style="color:#f92672">&#34;healthyThreshold&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;unhealthyThreshold&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;timeoutSeconds&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;intervalSeconds&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#f92672">&#34;successCodes&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+        }
+    }
+}
+</code></pre></div><p>webサーバのコンテナの設定に書き換える</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;containers&#34;</span>: {
+    <span style="color:#f92672">&#34;web&#34;</span>: {
+      <span style="color:#f92672">&#34;image&#34;</span>: <span style="color:#e6db74">&#34;:test.web.8&#34;</span>,
+      <span style="color:#f92672">&#34;ports&#34;</span>: {
+        <span style="color:#f92672">&#34;80&#34;</span>: <span style="color:#e6db74">&#34;HTTP&#34;</span>
+      }
+    }
+  },
+  <span style="color:#f92672">&#34;publicEndpoint&#34;</span>: {
+    <span style="color:#f92672">&#34;containerName&#34;</span>: <span style="color:#e6db74">&#34;web&#34;</span>,
+    <span style="color:#f92672">&#34;containerPort&#34;</span>: <span style="color:#ae81ff">80</span>,
+    <span style="color:#f92672">&#34;healthCheck&#34;</span>: {
+      <span style="color:#f92672">&#34;healthyThreshold&#34;</span>: <span style="color:#ae81ff">2</span>,
+      <span style="color:#f92672">&#34;unhealthyThreshold&#34;</span>: <span style="color:#ae81ff">2</span>,
+      <span style="color:#f92672">&#34;timeoutSeconds&#34;</span>: <span style="color:#ae81ff">2</span>,
+      <span style="color:#f92672">&#34;intervalSeconds&#34;</span>: <span style="color:#ae81ff">5</span>,
+      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/&#34;</span>,
+      <span style="color:#f92672">&#34;successCodes&#34;</span>: <span style="color:#e6db74">&#34;200-499&#34;</span>
+    }
+  }
+}
+</code></pre></div><p><code>--cli-input-json</code>オプションを利用してデプロイする</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail create-container-service-deployment --profile <span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span> --service-name test --cli-input-json file://container.json
+</code></pre></div><p>デプロイが完了したらpublic domainのURLにアクセスしてwelcome to nginxが表示されていることを確認する</p>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://docs.aws.amazon.com/cli/latest/reference/lightsail/index.html?fid=3BE5EA8FA64943AD-0284EED1954F5F15">https://docs.aws.amazon.com/cli/latest/reference/lightsail/index.html?fid=3BE5EA8FA64943AD-0284EED1954F5F15</a></li>
+<li><a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-install-software">https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-install-software</a></li>
+<li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/buildx/working-with-buildx/">https://matsuand.github.io/docs.docker.jp.onthefly/buildx/working-with-buildx/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/aws-cli-params-from-json/">https://dev.classmethod.jp/articles/aws-cli-params-from-json/</a></li>
+</ul>
+</p>
+            <p>
+              
+            </p>
+            <hr>
+            <p>
+              更新日 2022/07/12 23:44:00
+            </p>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/85/">prev</a>
+        
+        </div>
+        <div class="col s6 m10 center">&nbsp</div>
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large disabled">next</a>
+        
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+  <footer class="container">
+    <div class="copyright">
+      © 2021 ODA WORLD
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://blog.oda.world/js/materialize.min.js"></script>
+  <script src="https://blog.oda.world/js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+
