@@ -27,8 +27,8 @@ TODO: 新しく作ったポストをgithubのissueに保存する
 ### release
 ```shell
 % cd hugo
-% hugo
-% cp -r docs/* ../docs
+% sh copy-posts.sh
+% cd ..
 % git add .
 % git commit -m 'new post'
 % git push
