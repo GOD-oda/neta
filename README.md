@@ -1,10 +1,49 @@
 # neta
 
 ## Hugo
-### 1. Run setup command
+### required
+
+- ruby
+- cwebp
+
+### install theme
 ```shell
-% make setup
+% cd hugo
+% mkdir -p themes
+% git clone https://github.com/pdevty/material-design themes 
 ```
+
+### create new post
+```shell
+% cd hugo
+% hugo new posts/{issue_id}.md
+```
+
+### save post
+```shell
+TODO: 新しく作ったポストをgithubのissueに保存する
+```
+
+### release
+```shell
+% cd hugo
+% hugo
+% cp -r docs/* ../docs
+% git add .
+% git commit -m 'new post'
+% git push
+```
+
+### attach labels
+1. github issueにラベルをつける
+2. ラベルを取り込んでhugoのタグにする
+```shell
+% cd hugo
+% ruby import_meta {issue_id}
+
+ex) ruby import_meta 88
+```
+
 ### 記事について
 #### 画像
 画像は`hugo/content/images/{issue_id}`に配置する
@@ -20,22 +59,6 @@
 % make cwebp FROM={path} TO={path}
 
 ex) make cwebp FROM=./hugo/content/images/85/foo.png TO=./hugo/content/images/85/foo.webp
-```
-#### TODO: デプロイ手順
-1. githubのissueからhugoの記事作成
-```sh
-% make import ID={issue_id}
-```
-2. 作成した記事をデプロイ（実際は公開ディレクトリへコピー）
-```sh
-% make deploy
-```
-3. 全てgitに保存
-```sh
-% cd ../
-% git add .
-% git commit
-% git push
 ```
 
 ## issues
