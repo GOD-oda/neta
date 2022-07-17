@@ -3,3 +3,4 @@
 hugo/themes/
 vendor
 .hugo_build.lock
+.env

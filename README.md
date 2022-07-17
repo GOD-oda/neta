@@ -6,6 +6,12 @@
 - ruby
 - cwebp
 
+### setup
+```shell
+% cd hugo
+% cp .env.example .env
+```
+
 ### install theme
 ```shell
 % cd hugo
@@ -21,7 +27,10 @@
 
 ### save post
 ```shell
-TODO: 新しく作ったポストをgithubのissueに保存する
+% cd hugo
+% ruby save_post.rb {issue_id}
+
+ex) ruby save_post.rb 88
 ```
 
 ### release
