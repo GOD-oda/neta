@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 23:26:28 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDD</title>
+      <link>https://blog.oda.world/tags/ddd/</link>
+      <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/ddd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>laravel</title>
+      <link>https://blog.oda.world/tags/laravel/</link>
+      <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>テスト</title>
+      <link>https://blog.oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
+      <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>amazon lightsail</title>
       <link>https://blog.oda.world/tags/amazon-lightsail/</link>
@@ -23,15 +50,6 @@
       <pubDate>Wed, 09 Mar 2022 23:17:01 +0000</pubDate>
       
       <guid>https://blog.oda.world/tags/amazon-lightsail-container-sevice/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>https://blog.oda.world/tags/laravel/</link>
-      <pubDate>Wed, 09 Mar 2022 23:17:01 +0000</pubDate>
-      
-      <guid>https://blog.oda.world/tags/laravel/</guid>
       <description></description>
     </item>
     

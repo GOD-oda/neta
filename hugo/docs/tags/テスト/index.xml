@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>テスト on ODA WORLD</title>
+    <link>https://blog.oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
+    <description>Recent content in テスト on ODA WORLD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>© 2021 ODA WORLD</copyright>
+    <lastBuildDate>Wed, 20 Jul 2022 23:26:28 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laravelでユースケースのテストをどう書くか</title>
+      <link>https://blog.oda.world/posts/104/</link>
+      <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/104/</guid>
+      <description>結論 ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること 必ずこう書かないといけないということはないと思うけど意識す</description>
+    </item>
+    
+  </channel>
+</rss>
