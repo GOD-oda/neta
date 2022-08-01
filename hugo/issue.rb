@@ -1,8 +1,14 @@
-#
-# client
-#
 class Issue
-  class Request
+  attr_reader :issue_id, :title
+
+  def initialize(**params)
+    @issue_id = params[:issue_id]
+    @title = params[:title]
+    @body = params[:body]
+    @labels = params[:labels]
+  end
+
+  class Client
     def initialize
       @uri = "https://api.github.com/repos/GOD-oda/neta/issues"
       @headers =  {
@@ -16,39 +22,42 @@ class Issue
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme === "https"
 
-      http.get(uri.path, @headers)
+      case res = http.get(uri.path, @headers)
+      when Net::HTTPSuccess
+        JSON.parse(res.body)
+      else
+        res.value
+      end
     end
 
-    def patch(id, title: nil, body: nil)
+    def patch(id, params: {})
       uri = URI.parse("#{@uri}/#{id}")
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme === "https"
-
-      params = {}.tap do |this|
-        this['title'] = title if title
-        this['body'] = body if body
-      end
 
       http.patch(uri.path, params.to_json, @headers)
     end
   end
 
-  def get(issue_id)
-    request = Issue::Request.new
-    @res = request.get(issue_id).body
+  def self.get(issue_id)
+    request = Issue::Client.new
+    response = request.get(issue_id)
+
+    self.new(
+      issue_id: issue_id,
+      title: response['title'],
+      body: response['body'],
+      labels: response['labels']
+    )
   end
 
   def save(issue_id, title: nil, body: nil)
-    request = Issue::Request.new
-    @res = request.patch(issue_id, title: title, body: body)
-  end
-
-  def title
-    @res['title']
+    request = Issue::Client.new
+    @res = request.patch(issue_id, params: {title: title, body: body})
   end
 
   def label_names
-    @res['labels'].map { |l| l['name'] }
+    @labels.map { |l| l['name'] }
   end
 
   def created_at

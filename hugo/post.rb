@@ -37,9 +37,9 @@ class Post
 
     unless tags.empty?
       if texts =~ /tags:\s.*\n/
-        texts = texts.sub(/tags:\s.*\n/, "tags: #{tags.join(',')}\n")
+        texts = texts.sub(/tags:\s.*\n/, "tags: [#{tags.join(',')}]\n")
       elsif texts =~ /draft:\s.*\n/
-        texts = texts.sub(/draft:\s(.*)\n/, "draft: \1\ntags: #{tags.join(',')}\n")
+        texts = texts.sub(/draft:\s(.*)\n/, "draft: \1\ntags: [#{tags.join(',')}]\n")
       end
     end
 

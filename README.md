@@ -10,6 +10,7 @@
 ```shell
 % cd hugo
 % cp .env.example .env
+% bundle install
 ```
 
 ### install theme
@@ -22,15 +23,13 @@
 ### create new post
 ```shell
 % cd hugo
-% hugo new posts/{issue_id}.md
+% ruby create_new_post.rb {issue_id}
 ```
 
 ### save post
 ```shell
 % cd hugo
 % ruby save_post.rb {issue_id}
-
-ex) ruby save_post.rb 88
 ```
 
 ### release
