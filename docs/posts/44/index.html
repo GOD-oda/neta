@@ -45,14 +45,15 @@
   </style>
 
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-93E1496REW');
+    gtag('config', 'G-M5XP83QSK8');
   </script>
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
@@ -103,9 +104,9 @@
              
             </p>
             <p><p>コマンド</p>
-<pre><code>% find /path/to/directory -name &quot;*.php&quot; | xargs wc -l
+<pre tabindex="0"><code>% find /path/to/directory -name &quot;*.php&quot; | xargs wc -l
 </code></pre><p>Laravelで確認</p>
-<pre><code>% ls -l
+<pre tabindex="0"><code>% ls -l
 total 632
 drwxr-xr-x  26 odatakahiro  staff     832  6 22 11:41 .
 drwxr-xr-x  30 odatakahiro  staff     960  6 22 11:41 ..
@@ -134,7 +135,7 @@ drwxr-xr-x   6 odatakahiro  staff     192  6 16 00:48 tests
 drwxr-xr-x  44 odatakahiro  staff    1408  6 22 11:41 vendor
 -rw-r--r--   1 odatakahiro  staff     559  6 16 00:48 webpack.mix.js
 </code></pre><p>appディレクトリ内のphpファイルの行数</p>
-<pre><code>% find app -name &quot;*.php&quot; | xargs wc -l
+<pre tabindex="0"><code>% find app -name &quot;*.php&quot; | xargs wc -l
       28 app/Providers/AppServiceProvider.php
       30 app/Providers/AuthServiceProvider.php
       63 app/Providers/RouteServiceProvider.php
@@ -155,7 +156,7 @@ drwxr-xr-x  44 odatakahiro  staff    1408  6 22 11:41 vendor
       41 app/Console/Kernel.php
      544 total
 </code></pre><p>ソート（昇順）を追加</p>
-<pre><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -n
+<pre tabindex="0"><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -n
       13 app/Http/Controllers/Controller.php
       17 app/Http/Middleware/EncryptCookies.php
       17 app/Http/Middleware/PreventRequestsDuringMaintenance.php
@@ -176,11 +177,11 @@ drwxr-xr-x  44 odatakahiro  staff    1408  6 22 11:41 vendor
       66 app/Http/Kernel.php
      544 total
 </code></pre><p>一番行数が多いファイルを抜き出す</p>
-<pre><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -n | tail -n 2
+<pre tabindex="0"><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -n | tail -n 2
       66 app/Http/Kernel.php
      544 total
 </code></pre><p>降順にしてheadコマンドでも良い</p>
-<pre><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -r | head -n 2
+<pre tabindex="0"><code>% find app -name &quot;*.php&quot; | xargs wc -l | sort -r | head -n 2
      544 total
       66 app/Http/Kernel.php
 </code></pre></p>

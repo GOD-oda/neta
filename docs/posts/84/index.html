@@ -45,14 +45,15 @@
   </style>
 
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-93E1496REW');
+    gtag('config', 'G-M5XP83QSK8');
   </script>
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
@@ -107,7 +108,7 @@
 <blockquote>
 <p>du - estimate file space usage</p>
 </blockquote>
-<pre><code>% man du
+<pre tabindex="0"><code>% man du
 
 NAME
        du - estimate file space usage
@@ -138,17 +139,17 @@ NAME
 0	./dir1
 0	.
 </code></pre></div><p>そんな時に<code>-s</code>を使うと合計を出してくれるようになる</p>
-<pre><code>-s, --summarize
+<pre tabindex="0"><code>-s, --summarize
               display only a total for each argument
 </code></pre><p>それだけ使うとカレントディレクトリの合計を出しちゃうから<code>*</code>を指定することでディレクトリごとに合計してくれる</p>
-<pre><code>% du -s *
+<pre tabindex="0"><code>% du -s *
 0	dir1
 0	dir2
 0	dir3
 </code></pre><h2 id="-h">-h</h2>
 <p>容量が大きいと見づらいよね</p>
 <p>そんな時に<code>-h</code>オプション</p>
-<pre><code> -h, --human-readable
+<pre tabindex="0"><code> -h, --human-readable
         print sizes in human readable format (e.g., 1K 234M 2G)
 </code></pre><p><code>-s *</code>と合わせて使ってみると見やすくなるね</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% du -sh *                                                                                                         

@@ -45,14 +45,15 @@
   </style>
 
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-93E1496REW"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-93E1496REW');
+    gtag('config', 'G-M5XP83QSK8');
   </script>
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
@@ -141,12 +142,12 @@ Error: bootstrap new buildkitd client: maybe start buildkitd: start: could not s
 	* command failed: docker run --privileged --env BUILDKIT_TLS_ENABLED<span style="color:#f92672">=</span>false --env BUILDKIT_DEBUG<span style="color:#f92672">=</span>false --env BUILDKIT_TCP_TRANSPORT_ENABLED<span style="color:#f92672">=</span>false --label dev.earthly.settingshash<span style="color:#f92672">=</span>7fdf5da38c9e48ae --mount type<span style="color:#f92672">=</span>volume,source<span style="color:#f92672">=</span>earthly-cache,dst<span style="color:#f92672">=</span>/tmp/earthly --publish 127.0.0.1:8373:8373/tcp -d --name earthly-buildkitd earthly/buildkitd:v0.5.24: exit status 125: docker: Error: remote trust data does not exist <span style="color:#66d9ef">for</span> docker.io/earthly/buildkitd: notary.docker.io does not have trust data <span style="color:#66d9ef">for</span> docker.io/earthly/buildkitd.
 See <span style="color:#e6db74">&#39;docker run --help&#39;</span>.: exit status <span style="color:#ae81ff">125</span>
 </code></pre></div><p>またしても死んだのでエラーをよく見てみると以下の文を発見</p>
-<pre><code>docker: Error: remote trust data does not exist for docker.io/earthly/buildkitd: notary.docker.io does not have trust data for docker.io/earthly/buildkitd.
+<pre tabindex="0"><code>docker: Error: remote trust data does not exist for docker.io/earthly/buildkitd: notary.docker.io does not have trust data for docker.io/earthly/buildkitd.
 </code></pre><p>そういえば信頼できないイメージはpull出来ないようにしてたな（信頼できないイメージ扱いなのかw</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% printenv | grep DOCKER                                                                                                                        
 DOCKER_CONTENT_TRUST<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>ということで一時的に環境変数を書き換える</p>
-<pre><code>% export DOCKER_CONTENT_TRUST=0
+<pre tabindex="0"><code>% export DOCKER_CONTENT_TRUST=0
 % printenv | grep DOCKER
 DOCKER_CONTENT_TRUST=0
 </code></pre><p>さぁもう一度！</p>
@@ -159,7 +160,7 @@ DOCKER_CONTENT_TRUST=0
 <p><a href="https://docs.earthly.dev/basics/part-1-a-simple-earthfile">https://docs.earthly.dev/basics/part-1-a-simple-earthfile</a> を進めていく</p>
 <p>まずここではearthfileとgoスクリプトを書くが適当にディレクトリを作り、そこで作業していくこととする</p>
 <h2 id="earthfile">earthfile</h2>
-<pre><code>FROM golang:1.15-alpine3.13
+<pre tabindex="0"><code>FROM golang:1.15-alpine3.13
 WORKDIR /go-example
 
 build:
@@ -183,7 +184,7 @@ docker:
 <li>アーティファクト</li>
 </ul>
 <h2 id="maingo">main.go</h2>
-<pre><code>package main
+<pre tabindex="0"><code>package main
 
 import &quot;fmt&quot;
 
