@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="想定するケース コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話 例えばAとBという記事投稿サイトに" />
+  <meta property="og:title" content="phpのenumをいい感じに使いたい" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://blog.oda.world/og_image.png" />
+  <meta property="og:site_name" content="ODA WORLD" />
+  <meta property="og:description" content="想定するケース コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話 例えばAとBという記事投稿サイトに" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@oskfjzp" />
+  <meta name="twitter:player" content="@oskfjzp" />
+  <title>phpのenumをいい感じに使いたい</title>
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://blog.oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://blog.oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://blog.oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://blog.oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://blog.oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://blog.oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://blog.oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://blog.oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://blog.oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://blog.oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://blog.oda.world/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link href="https://blog.oda.world/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.52655ded0da256d5790a0c2beb0694d518189ec44203b791fd1095a8f3f736e2.css">
+
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(https://blog.oda.world/images/default.png);}
+  
+  </style>
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M5XP83QSK8');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+</head>
+<body>
+  <div class="header-section">
+    <ul id="slide-out" class="side-nav">
+      <li><a href="https://blog.oda.world"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+      <li><a href="https://blog.oda.world/tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    </ul>
+    <a data-activates="slide-out" class="btn-floating button-collapse nav-menu" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">phpのenumをいい感じに使いたい</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"></h5>
+        </div>
+        <div class="row center">
+         
+         
+           <a href="https://github.com/GOD-oda"><img src="https://blog.oda.world/images/github2-dreamstale35.png"></a>
+         
+         
+           <a href="https://www.facebook.com/last.pass.oda"><img src="https://blog.oda.world/images/facebook-dreamstale25.png"></a>
+         
+         
+           <a href="https://twitter.com/@oskfjzp"><img src="https://blog.oda.world/images/twitter-dreamstale71.png"></a>
+         
+         
+         
+         <a href="https://blog.oda.world/index.xml"><img src="https://blog.oda.world/images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="article">
+  <div class="container">
+    <div class="section">
+  
+      <div class="row">
+        <div class="col s12">
+          <div class="">
+            
+            <p>
+             
+            </p>
+            <p><h1 id="想定するケース">想定するケース</h1>
+<p>コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話</p>
+<p>例えばAとBという記事投稿サイトにおける記事の<code>status</code>について考える</p>
+<p>「記事が公開されている状態」をそれぞれ以下のように定義されていたとする</p>
+<ul>
+<li>Aは<code>open</code></li>
+<li>Bは<code>published</code></li>
+</ul>
+<p>この時にAPI経由などで取得しそれぞれを<code>released</code>に変換することがゴールとなる</p>
+<p>まぁ列挙型の公式ページにだいたい例として書いてある</p>
+<h1 id="実装サンプル">実装サンプル</h1>
+<p>単純にマッピングと文字列だけ扱えれば良いので、今回はBackedEnumを使うサンプルとする</p>
+<p>AとBそれぞれのステータスを列挙するBackedEnumを用意して、それぞれにマッピングさせるロジックを実装する方針</p>
+<p>マッピングのロジックは<code>convert()</code>を持つインターフェースで縛る</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ArticleStatus</span>
+{
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">convert</span>()<span style="color:#f92672">:</span> 
+}
+
+<span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">AStatus</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">ArticleStatus</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">OPEN</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;open&#39;</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">convert</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Status</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span> ($this) {
+            <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">OPEN</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span>
+        };
+    }
+}
+
+<span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">BStatus</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">ArticleStatus</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">PUBLISHED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;published&#39;</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">convert</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Status</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span> ($this) {
+            <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">PUBLISHED</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span>
+        };
+    }
+}
+
+<span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">RELEASED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;released&#39;</span>;
+}
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$aStatus <span style="color:#f92672">=</span> <span style="color:#a6e22e">AStatus</span><span style="color:#f92672">::</span><span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;open&#39;</span>);
+$aStatus<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">value</span>; <span style="color:#75715e">// open
+</span><span style="color:#75715e"></span>$aStatus<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">convert</span>()<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">value</span>; <span style="color:#75715e">// released
+</span><span style="color:#75715e"></span>
+$bStatus <span style="color:#f92672">=</span> <span style="color:#a6e22e">BStatus</span><span style="color:#f92672">::</span><span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;published&#39;</span>);
+$bStatus<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">value</span>; <span style="color:#75715e">// published
+</span><span style="color:#75715e"></span>$bStatus<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">convert</span>()<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">value</span>; <span style="color:#75715e">// released
+</span></code></pre></div><p>BackedEnumにしていることで<code>from()</code>が使えるようになり、caseに対応しないステータス文字列が渡された時に例外が出る</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">$aStatus <span style="color:#f92672">=</span> <span style="color:#a6e22e">AStatus</span><span style="color:#f92672">::</span><span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;opened&#39;</span>);
+
+<span style="color:#75715e">// Fatal error: Uncaught ValueError: &#34;opened&#34; is not a valid backing value for enum &#34;AStatus&#34; in /var/www/html/index.php:8
+</span><span style="color:#75715e">// Stack trace:
+</span><span style="color:#75715e">// #0 /var/www/html/index.php(8): AStatus::from(&#39;opened&#39;)
+</span><span style="color:#75715e">// #1 {main}
+</span><span style="color:#75715e">//   thrown in /var/www/html/index.php on line 8
+</span></code></pre></div><h1 id="ステータスが増えた時の対応">ステータスが増えた時の対応</h1>
+<p>都度マッピングを実装すれば良い</p>
+<p>以下は<code>open</code>と<code>opened</code>の両対応と<code>closed</code>の追加</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">AStatus</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">ArticleStatus</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">OPEN</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;open&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">OPENED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;opened&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CLOSED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;closed&#39;</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">convert</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Status</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span> ($this) {
+            <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">OPEN</span>, <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">OPENED</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span>,
+            <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">CLOSED</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">CLOSED</span>
+        };
+    }
+}
+</code></pre></div><h1 id="余談">余談</h1>
+<p>ステータスの状態遷移に制約を儲けることができてロジックをより堅く作れそうだなと思ったんだけど、<a href="https://qiita.com/rana_kualu/items/bdfa6c844125c1d0f4d4#state-machine">この書き方</a>は出来ないっぽい？</p>
+<p><a href="https://github.com/php/php-src/pull/6489/files">PR</a>にはその変更はなさそう</p>
+<p>やるとしたらこんな感じかなぁ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">DRAFT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;draft&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">RELEASED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;released&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CLOSED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;closed&#39;</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">release</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Status</span>
+    {
+        <span style="color:#66d9ef">if</span> ($this <span style="color:#f92672">!==</span> <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">DRAFT</span>) {
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LogicException</span>();
+        }    
+        
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span>;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">close</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Status</span>
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span> ($this) {
+            <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">DRAFT</span>, <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">CLOSED</span>,
+            <span style="color:#66d9ef">default</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LogicException</span>() 
+        };
+    }
+}
+</code></pre></div><p>これはやりすぎか（<code>__call</code>とかどういうケースで有用なのかわからんわ）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * @method Status release()
+</span><span style="color:#e6db74"> * @method Status close()
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#a6e22e">enum</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+{
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">DRAFT</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;draft&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">RELEASED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;released&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">CLOSED</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;closed&#39;</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __call(<span style="color:#a6e22e">string</span> $name, <span style="color:#66d9ef">array</span> $arguments)
+    {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match</span> ($name) {
+            <span style="color:#e6db74">&#39;release&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">match</span> ($this) {
+                <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">DRAFT</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span>,
+            },
+            <span style="color:#e6db74">&#39;close&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">match</span> ($this) {
+                <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">DRAFT</span>, <span style="color:#a6e22e">self</span><span style="color:#f92672">::</span><span style="color:#a6e22e">RELEASED</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Status</span><span style="color:#f92672">::</span><span style="color:#a6e22e">CLOSED</span>,
+            },
+            <span style="color:#66d9ef">default</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">LogicException</span>()
+        };
+    }
+}
+</code></pre></div><h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://www.php.net/manual/ja/language.enumerations.methods.php">https://www.php.net/manual/ja/language.enumerations.methods.php</a></li>
+<li><a href="https://www.php.net/manual/ja/language.enumerations.backed.php">https://www.php.net/manual/ja/language.enumerations.backed.php</a></li>
+<li><a href="https://qiita.com/rana_kualu/items/bdfa6c844125c1d0f4d4#advanced-exclusive-values">https://qiita.com/rana_kualu/items/bdfa6c844125c1d0f4d4#advanced-exclusive-values</a></li>
+</ul>
+</p>
+            <p>
+              
+                
+                  <a href="https://blog.oda.world/tags/php/">#php</a>
+                
+              
+            </p>
+            <hr>
+            <p>
+              更新日 2022/08/02 03:32:32
+            </p>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large waves-effect waves-light" href="https://blog.oda.world/posts/104/">prev</a>
+        
+        </div>
+        <div class="col s6 m10 center">&nbsp</div>
+        <div class="col s3 m1">
+        
+          <a class="btn-floating btn-large disabled">next</a>
+        
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+  <footer class="container">
+    <div class="copyright">
+      © 2021 ODA WORLD
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://blog.oda.world/js/materialize.min.js"></script>
+  <script src="https://blog.oda.world/js/init.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/base16/oceanicnext.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+
+  </body>
+</html>
+

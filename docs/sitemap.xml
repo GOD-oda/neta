@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.oda.world/</loc>
+    <lastmod>2022-08-02T03:32:32+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/tags/php/</loc>
+    <lastmod>2022-08-02T03:32:32+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/posts/106/</loc>
+    <lastmod>2022-08-02T03:32:32+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/posts/</loc>
+    <lastmod>2022-08-02T03:32:32+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.oda.world/tags/</loc>
+    <lastmod>2022-08-02T03:32:32+09:00</lastmod>
+  </url><url>
     <loc>https://blog.oda.world/tags/ddd/</loc>
     <lastmod>2022-07-20T23:26:28+09:00</lastmod>
   </url><url>
@@ -9,15 +24,6 @@
     <lastmod>2022-07-20T23:26:28+09:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/posts/104/</loc>
-    <lastmod>2022-07-20T23:26:28+09:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/</loc>
-    <lastmod>2022-07-20T23:26:28+09:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/posts/</loc>
-    <lastmod>2022-07-20T23:26:28+09:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/tags/</loc>
     <lastmod>2022-07-20T23:26:28+09:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/</loc>
@@ -39,9 +45,6 @@
     <lastmod>2022-03-09T23:17:01+00:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/tags/nginx/</loc>
-    <lastmod>2022-03-09T23:17:01+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.oda.world/tags/php/</loc>
     <lastmod>2022-03-09T23:17:01+00:00</lastmod>
   </url><url>
     <loc>https://blog.oda.world/tags/php-fpm/</loc>
