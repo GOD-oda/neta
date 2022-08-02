@@ -16,31 +16,23 @@ class Post
     File.read(@file_path)
   end
 
-  def save_meta(title:, publish_date: '', date: '', tags: [])
+  def save_meta(title:, created_at: '', updated_at: '', tags: [])
     texts = File.read(@file_path)
 
     if title
       texts = texts.sub(/title:\s.*\n/, "title: #{title}\n")
     end
 
-    unless publish_date.empty?
-      if texts =~ /publishDate:\s.*\n/
-        texts = texts.sub(/publishDate:\s.*\n/, "publishDate: #{publish_date}\n")
-      elsif texts =~ /date:\s.*\n/
-        texts = texts.sub(/date:\s(.*)\n/, "date: \1\npublishDate: #{publish_date}\n")
-      end
+    unless created_at.empty?
+      texts = texts.sub(/publishDate:\s.*\n/, "publishDate: #{created_at}\n")
     end
 
-    unless date.empty?
-      texts = texts.sub(/date:\s.*\n/, "date: #{date}\n")
+    unless updated_at.empty?
+      texts = texts.sub(/date:\s.*\n/, "date: #{updated_at}\n")
     end
 
     unless tags.empty?
-      if texts =~ /tags:\s.*\n/
-        texts = texts.sub(/tags:\s.*\n/, "tags: [#{tags.join(',')}]\n")
-      elsif texts =~ /draft:\s.*\n/
-        texts = texts.sub(/draft:\s(.*)\n/, "draft: \1\ntags: [#{tags.join(',')}]\n")
-      end
+      texts = texts.sub(/tags:\s.*\n/, "tags: [#{tags.join(',')}]\n")
     end
 
     texts = texts.sub(/draft:\s.*\n/, "draft: false\n")

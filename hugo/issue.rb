@@ -6,6 +6,8 @@ class Issue
     @title = params[:title]
     @body = params[:body]
     @labels = params[:labels]
+    @created_at = Time.parse(params[:created_at]).getlocal("+09:00")
+    @updated_at = Time.parse(params[:updated_at]).getlocal("+09:00")
   end
 
   class Client
@@ -47,7 +49,9 @@ class Issue
       issue_id: issue_id,
       title: response['title'],
       body: response['body'],
-      labels: response['labels']
+      labels: response['labels'],
+      created_at: response['created_at'],
+      updated_at: response['updated_at']
     )
   end
 
@@ -61,20 +65,10 @@ class Issue
   end
 
   def created_at
-    unless @res['created_at']
-      return ''
-    end
-
-    created_at = Time.parse(@res['created_at'])
-    created_at.getlocal.to_s
+    @created_at.strftime("%Y-%m-%dT%H:%M:%S%z")
   end
 
   def updated_at
-    unless @res['updated_at']
-      return ''
-    end
-
-    updated_at = Time.parse(@res['updated_at'])
-    updated_at.getlocal.to_s
+    @updated_at.strftime("%Y-%m-%dT%H:%M:%S%z")
   end
 end
