@@ -34,9 +34,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- style -->
-  <link href="{{.Site.BaseURL}}/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
 
   <style type="text/css">
   {{if .Site.Params.footerCover}}
