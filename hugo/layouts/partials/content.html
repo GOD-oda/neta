@@ -1,19 +1,22 @@
 {{ $baseurl := .Site.BaseURL }}
 <div class="row">
 {{range $index, $page := .Paginator.Pages}}
-  <div class="col m6 s12 card-style-p">
-    <div class="card-style">
+
+  <div class="col-12 card mb-4 border-light">
+    <div class="card-body">
       <div class="header">
-        <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+        <a href="{{ .Permalink }}">
+          <h4>{{ .Title }}</h4>
+        </a>
       </div>
       <div class="body">
         {{if .Params.categories }}
         <p>
           {{ range $index, $category := .Params.categories }}
-            <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
+          <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
           {{ end }}
         </p>
-        {{end}} 
+        {{end}}
         <p>{{ substr .Summary 0 100 }} ...</p>
       </div>
       <div class="footer">
@@ -22,13 +25,14 @@
         </div>
         <div class="tags">
           {{if .Params.tags }}
-            {{ range $index, $tag := .Params.tags }}
-              <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
-            {{ end }}
-          {{end}} 
+          {{ range $index, $tag := .Params.tags }}
+          <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
+          {{ end }}
+          {{end}}
         </div>
       </div>
     </div>
   </div>
+
 {{ end }}
 </div>

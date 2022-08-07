@@ -1,15 +1,11 @@
 {{ partial "header.html" . }}
 
-<div class="top">
-  <div class="container top">
-    <div class="section">
-  
+<div class="container top">
+
   {{ partial "content.html" . }}
     
-  {{ partial "pagination.html" .Paginator }}
-  
-    </div>
-  </div>
 </div>
+
+{{ partial "pagination.html" .Paginator }}
 
 {{ partial "footer.html" . }}

@@ -1,60 +1,25 @@
 {{ partial "header.html" . }}
 {{ $baseurl := .Site.BaseURL }}
 
-<div class="article">
+<article>
   <div class="container">
     <div class="section">
   
       <div class="row">
-        <div class="col s12">
-          <div class="">
-            <!--<h4>{{ .Title }}</h4>-->
-            <p>
-            {{if .Params.categories }}
-              {{ range $index, $category := .Params.categories }}
-                <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
-              {{ end }}
-            {{end}} 
-            </p>
-            <p>{{ .Content }}</p>
-            <p>
-              {{if .Params.tags }}
-                {{ range $index, $tag := .Params.tags }}
-                  <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
-                {{ end }}
-              {{end}}
-            </p>
-            <hr>
-            <p>
-              更新日 {{ .PublishDate.Format "2006/01/02 15:04:05" }}
-            </p>
-            {{ with .Site.DisqusShortname }}
-              {{ partial "disqus.html" . }}
-            {{ end }}
-          </div>
+        <div class="col">
+          {{ .Content }}
+          <hr>
+          <p>
+            更新日 {{ .PublishDate.Format "2006/01/02 15:04:05" }}
+          </p>
+          {{ with .Site.DisqusShortname }}
+            {{ partial "disqus.html" . }}
+          {{ end }}
         </div>
       </div>
-  
-      <div class="row">
-        <div class="col s3 m1">
-        {{if .Prev}}
-          <a class="btn-floating btn-large waves-effect waves-light" href="{{ .Prev.Permalink }}">prev</a>
-        {{else}}
-          <a class="btn-floating btn-large disabled">prev</a>
-        {{end}}
-        </div>
-        <div class="col s6 m10 center">&nbsp</div>
-        <div class="col s3 m1">
-        {{if .Next}}
-          <a class="btn-floating btn-large waves-effect waves-light" href="{{ .Next.Permalink }}">next</a>
-        {{else}}
-          <a class="btn-floating btn-large disabled">next</a>
-        {{end}}
-        </div>
-      </div>
-  
+
     </div>
   </div>
-</div>
+</article>
 
 {{ partial "footer.html" . }}
