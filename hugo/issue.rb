@@ -6,8 +6,8 @@ class Issue
     @title = params[:title]
     @body = params[:body]
     @labels = params[:labels]
-    @created_at = Time.parse(params[:created_at]).getlocal("+09:00")
-    @updated_at = Time.parse(params[:updated_at]).getlocal("+09:00")
+    @created_at = Time.parse(params[:created_at]).getlocal("+09:00") if params[:created_at]
+    @updated_at = Time.parse(params[:updated_at]).getlocal("+09:00") if params[:updated_at]
   end
 
   class Client
@@ -37,7 +37,7 @@ class Issue
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = uri.scheme === "https"
 
-      http.patch(uri.path, params.to_json, @headers)
+      http.patch(uri.path, params.compact.to_json, @headers)
     end
   end
 
@@ -57,7 +57,7 @@ class Issue
 
   def save(issue_id, title: nil, body: nil)
     request = Issue::Client.new
-    @res = request.patch(issue_id, params: {title: title, body: body})
+    request.patch(issue_id, params: {title: title, body: body})
   end
 
   def label_names

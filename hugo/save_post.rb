@@ -13,4 +13,5 @@ unless post.exists?
 end
 
 issue = Issue.new
-issue.save(issue_id, title: nil, body: post.texts)
+res = issue.save(issue_id, body: post.texts)
+puts res.code, res.body
