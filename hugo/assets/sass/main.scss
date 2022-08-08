@@ -179,6 +179,35 @@ article {
     }
   }
 
+  .highlight[fn] {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      background-color: #323e52!important;
+      color: #ddd;
+      border-radius: 3px;
+      top: 0;
+      left: 0;
+      content: attr(fn);
+      font-size: .8rem;
+      padding: .5rem;
+    }
+
+    pre {
+      padding: 3rem 1.1rem 1.1rem 1.1rem;
+      font-size: 0.8em;
+      border-radius: 3px;
+      line-height: 1.9;
+      color: #fff;
+
+      code {
+        word-wrap: initial;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+      }
+    }
+  }
+
   pre {
     padding: 1.1rem;
     font-size: 0.8em;
@@ -190,11 +219,6 @@ article {
     code {
       word-wrap: initial;
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-      span {
-        span[class="hljs-shebang"] {
-          color: #f8f8f2;
-        }
-      }
     }
   }
 
