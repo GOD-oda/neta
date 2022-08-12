@@ -2,23 +2,21 @@
 {{ $baseurl := .Site.BaseURL }}
 
 <article>
-  <div class="container">
-    <div class="section">
-  
-      <div class="row">
-        <div class="col">
-          {{ .Content }}
-          <hr>
-          <p>
-            更新日 {{ .Lastmod.Format "2006/01/02 15:04:05" }}
-          </p>
-          {{ with .Site.DisqusShortname }}
-            {{ partial "disqus.html" . }}
-          {{ end }}
-        </div>
-      </div>
+  <div class="section">
 
+    <div class="row">
+      <div class="col">
+        {{ .Content }}
+        <hr>
+        <p>
+          更新日 {{ .Lastmod.Format "2006/01/02 15:04:05" }}
+        </p>
+        {{ with .Site.DisqusShortname }}
+          {{ partial "disqus.html" . }}
+        {{ end }}
+      </div>
     </div>
+
   </div>
 </article>
 
