@@ -10,7 +10,7 @@
           {{ .Content }}
           <hr>
           <p>
-            更新日 {{ .PublishDate.Format "2006/01/02 15:04:05" }}
+            更新日 {{ .Lastmod.Format "2006/01/02 15:04:05" }}
           </p>
           {{ with .Site.DisqusShortname }}
             {{ partial "disqus.html" . }}

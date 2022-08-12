@@ -5,7 +5,8 @@ publishDir = 'docs'
 canonifyurls = true
 hasCJKLanguage = true
 copyright = "© 2021 ODA WORLD"
-paginate = 12 
+paginate = 12
+enableGitInfo = true
 
 [params]
   twitter = "@oskfjzp"

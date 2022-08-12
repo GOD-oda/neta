@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vpc on ODA WORLD</title>
+    <link>https://blog.oda.world/tags/vpc/</link>
+    <description>Recent content in vpc on ODA WORLD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>© 2021 ODA WORLD</copyright>
+    <lastBuildDate>Fri, 12 Aug 2022 15:26:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/vpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPCとVPN</title>
+      <link>https://blog.oda.world/posts/108/</link>
+      <pubDate>Fri, 12 Aug 2022 15:26:51 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/108/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -16,19 +16,11 @@ class Post
     File.read(@file_path)
   end
 
-  def save_meta(title:, created_at: '', updated_at: '', tags: [])
+  def save_meta(title:, tags: [])
     texts = File.read(@file_path)
 
     if title
       texts = texts.sub(/title:\s.*\n/, "title: #{title}\n")
-    end
-
-    unless created_at.empty?
-      texts = texts.sub(/publishDate:\s.*\n/, "publishDate: #{created_at}\n")
-    end
-
-    unless updated_at.empty?
-      texts = texts.sub(/date:\s.*\n/, "date: #{updated_at}\n")
     end
 
     unless tags.empty?
