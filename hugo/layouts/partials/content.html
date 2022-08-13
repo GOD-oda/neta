@@ -1,8 +1,7 @@
 {{ $baseurl := .Site.BaseURL }}
-<div class="row">
+<div class="">
 {{range $index, $page := .Paginator.Pages}}
-
-  <div class="col-12 card mb-4 border-light">
+  <div class="card mb-4 border-light">
     <div class="card-body">
       <div class="header">
         <a href="{{ .Permalink }}">
