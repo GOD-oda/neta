@@ -129,6 +129,14 @@ article {
     padding: 1rem 0;
   }
 
+  aside {
+    .publish-date {
+      @include sp {
+        padding: 0 .5rem;
+      }
+    }
+  }
+
   a {
     color: #039be5;
     text-decoration: none;
