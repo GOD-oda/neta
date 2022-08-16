@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>a on ODA WORLD</title>
+    <link>https://blog.oda.world/categories/a/</link>
+    <description>Recent content in a on ODA WORLD</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>© 2021 ODA WORLD</copyright>
+    <lastBuildDate>Mon, 08 Aug 2022 23:00:00 +0900</lastBuildDate><atom:link href="https://blog.oda.world/categories/a/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>phpのenumをいい感じに使いたい</title>
+      <link>https://blog.oda.world/posts/106/</link>
+      <pubDate>Mon, 08 Aug 2022 23:00:00 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/106/</guid>
+      <description>想定するケース コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話 例えばAとBという記事投稿サイトに</description>
+    </item>
+    
+  </channel>
+</rss>
