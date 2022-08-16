@@ -9,13 +9,6 @@
         </a>
       </div>
       <div class="body">
-        {{if .Params.categories }}
-        <p>
-          {{ range $index, $category := .Params.categories }}
-          <a href="{{$baseurl}}/categories/{{ $category | urlize }}/">{{ $category }}</a>
-          {{ end }}
-        </p>
-        {{end}}
         <p>{{ substr .Summary 0 100 }} ...</p>
       </div>
       <div class="footer">
@@ -24,9 +17,9 @@
         </div>
         <div class="tags">
           {{if .Params.tags }}
-          {{ range $index, $tag := .Params.tags }}
-          <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
-          {{ end }}
+            {{ range $index, $tag := .Params.tags }}
+            <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/">#{{ $tag }}</a>
+            {{ end }}
           {{end}}
         </div>
       </div>

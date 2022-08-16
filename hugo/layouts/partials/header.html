@@ -6,10 +6,10 @@
   <meta name="description" content="{{ if .Path }}{{ substr .Summary 0 100 }}{{ else }}{{ .Site.Params.SiteDescription }}{{ end }}" />
   <meta property="og:title" content="{{ .Title }}" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.OgImage }}" />
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.ogImage | default .Site.Params.defaultOgImage }}" />
   <meta property="og:site_name" content="{{ .Site.Params.SiteName }}" />
   <meta property="og:description" content="{{ if .Path }}{{ substr .Summary 0 100 }}{{ else }}{{ .Site.Params.SiteDescription }}{{ end }}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="{{ .Site.Params.Twitter }}" />
   <meta name="twitter:player" content="{{ .Site.Params.Twitter }}" />
   <title>{{ .Title }}</title>

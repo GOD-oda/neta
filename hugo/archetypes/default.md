@@ -4,5 +4,8 @@ date: {{ .Date }}
 publishDate: {{ .Date }}
 draft: true
 tags: 
+categories: [a]
+author: {{ .Site.Params.author }}
+ogImage: "/images/ogImage/{{ .Name }}.png"
 ---
 

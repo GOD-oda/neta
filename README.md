@@ -3,8 +3,10 @@
 ## Hugo
 ### required
 
-- ruby
-- cwebp
+- ruby >= 3.1
+- go >= 1.6
+- [cwebp](https://formulae.brew.sh/formula/webp)
+- [tcardgen](https://github.com/Ladicle/tcardgen)
 
 ### setup
 ```shell
@@ -13,11 +15,12 @@
 % bundle install
 ```
 
-### install theme
 ```shell
-% cd hugo
-% mkdir -p themes
-% git clone https://github.com/pdevty/material-design themes 
+% brew install webp
+```
+
+```shell
+% go install github.com/Ladicle/tcardgen@latest
 ```
 
 ### create new post
@@ -52,7 +55,16 @@
 ex) ruby import_meta 88
 ```
 
-### 記事について
+### create eyecatch
+```shell
+% cd hugo
+% tcardgen -c twitterCard/config.yaml \
+           -f twitterCard/font/kinto-master/Kinto\ Sans \
+           -o static/images/ogImage/106.png \
+           content/posts/106.md
+```
+
+### about Post
 #### 画像
 画像は`hugo/content/images/{issue_id}`に配置する
 
@@ -72,9 +84,5 @@ ex) make cwebp FROM=./hugo/content/images/85/foo.png TO=./hugo/content/images/85
 ## issues
 検証したサンプルコードのディレクトリ
 `issues/{issue_id}`ディレクトリで区別している
-
-## hugo
-記事作成のためのディレクトリ
-
 
 

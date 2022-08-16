@@ -12,9 +12,10 @@ enableGitInfo = true
   twitter = "@oskfjzp"
   facebook = "last.pass.oda"
   github = "GOD-oda"
-  ogImage = 'og_image.png'
+  defaultOgImage = '/images/ogImage/default.png'
   siteName = 'ODA WORLD'
   siteDescription = 'GOD-odaが運営するブログ'
+  author = "GOD oda"
 
 [markup]
   [markup.highlight]
