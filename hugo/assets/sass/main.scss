@@ -157,6 +157,11 @@ article {
     @include sp {
       padding: 1rem
     }
+
+    .iframe {
+      max-width: 560px;
+      margin: 0 auto;
+    }
   }
 
   h1 {
