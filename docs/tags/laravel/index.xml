@@ -14,7 +14,7 @@
       <pubDate>Thu, 08 Sep 2022 15:30:37 +0900</pubDate>
       
       <guid>https://blog.oda.world/posts/115/</guid>
-      <description>環境 laravel/framework: ^9.2 laravel/slack-notification-channel: ^2.4 想定シーン 全ての例外をスラックに通知する アタッチメントを利用する 用意するもの slackのwebhook URL 登場人物 App\Exception\Handler App\Notifications\ExceptionNotification App\Notifications\SlackNotifiable Illuminate\Notifications\Messages\SlackMessage Illuminate\Notifications\Messages\SlackAttachment 手っ取</description>
+      <description>環境 laravel/framework: ^9.2 laravel/slack-notification-channel: ^2.4 想定シーン 全ての例外をスラックに通知する アタッチメントを利用する 用意するもの slackのwebhook URL 登場人物 App\Exception\Handler App\Notifications\ExceptionNotification App\Notifications\SlackNotifiable Illuminate\Notifications\Messages\SlackMessage Illuminate\Notifications\Messages\SlackAttachment 実装 パ</description>
     </item>
     
     <item>
