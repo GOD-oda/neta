@@ -135,6 +135,12 @@ article {
         padding: 0 .5rem;
       }
     }
+
+    .updated-date {
+      @include sp {
+        padding: 0 .5rem;
+      }
+    }
   }
 
   a {

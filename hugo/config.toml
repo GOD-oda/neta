@@ -8,6 +8,9 @@ copyright = "© 2021 ODA WORLD"
 paginate = 12
 enableGitInfo = true
 
+[frontmatter]
+  lastmod = ':git'
+
 [params]
   twitter = "@oskfjzp"
   facebook = "last.pass.oda"
