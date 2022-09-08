@@ -223,13 +223,13 @@ article {
 
       code {
         word-wrap: initial;
+        padding: 0 !important;
         font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
       }
     }
   }
 
   pre {
-    padding: 1.1rem;
     font-size: 0.8em;
     border-radius: 3px;
     line-height: 1.9;
@@ -237,6 +237,8 @@ article {
     color: #f8f8f2;
 
     code {
+      padding: 1.1rem !important;
+      background-color: #292A3B!important;
       word-wrap: initial;
       font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
     }
