@@ -83,7 +83,7 @@
       公開日: <time datetime="2022-09-08 15:30:37 &#43;0900 JST">2022/09/08 15:30:37</time>
     </div>
     <div class="updated-date">
-      更新日: <time datetime="2022-09-08 17:03:38 &#43;0900 JST">2022/09/08 17:03:38</time>
+      更新日: <time datetime="2022-09-09 00:07:10 &#43;0900 JST">2022/09/09 00:07:10</time>
     </div>
   </aside>
 
@@ -110,7 +110,7 @@
 <li>Illuminate\Notifications\Messages\SlackMessage</li>
 <li>Illuminate\Notifications\Messages\SlackAttachment</li>
 </ul>
-<h1 id="手っ取り早く実装したい人向け">手っ取り早く実装したい人向け</h1>
+<h1 id="実装">実装</h1>
 <ol>
 <li>パッケージを入れる</li>
 </ol>
@@ -127,25 +127,24 @@
 <li><code>via()</code>をslackにする</li>
 <li>slack用の通知内容を生成する<code>toSlack()</code>を追加する</li>
 </ul>
-<div class="highlight" fn="App\Notifications\ExceptionNotification"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">
-<span style="color:#a6e22e">+ public function __construct(private \Throwable $exception) {}
-</span><span style="color:#a6e22e"></span>
-  public function via($notifiable)
-  {
-<span style="color:#f92672">-   return [&#39;mail&#39;];
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+   return [&#39;slack&#39;];
-</span><span style="color:#a6e22e"></span>  }
+<div class="highlight" fn="App\Notifications\ExceptionNotification"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">\Throwable</span> $exception) {}
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">via</span>($notifiable)
+{
+    <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#39;slack&#39;</span>];
+}
   
-<span style="color:#a6e22e">+ public function toSlack($notifiable)
-</span><span style="color:#a6e22e">+ {
-</span><span style="color:#a6e22e">+   return (new SlackMessage())
-</span><span style="color:#a6e22e">+     -&gt;error()
-</span><span style="color:#a6e22e">+     -&gt;attachment(function (SlackAttachment $attachment) {
-</span><span style="color:#a6e22e">+       $attachment-&gt;title(&#39;error&#39;)
-</span><span style="color:#a6e22e">+         -&gt;content($this-&gt;exception-&gt;getMessage());
-</span><span style="color:#a6e22e">+     });
-</span><span style="color:#a6e22e">+ }
-</span></code></pre></div><ol start="4">
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">toSlack</span>($notifiable)
+{
+    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SlackMessage</span>())
+        <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">error</span>()
+        <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">attachment</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">SlackAttachment</span> $attachment) {
+            $attachment<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">title</span>(<span style="color:#e6db74">&#39;error&#39;</span>)
+                <span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">content</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">exception</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">getMessage</span>());
+    });
+}
+</code></pre></div><ol start="4">
 <li>実際に通知イベントを発行する</li>
 </ol>
 <ul>
@@ -169,17 +168,17 @@
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">config</span>(<span style="color:#e6db74">&#39;services.slack.web_hook_url&#39;</span>);
     }
 }
-</code></pre></div><div class="highlight" fn="App\Exceptions\Handler"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">  class Handler extends ExceptionHandler
-  {
-<span style="color:#a6e22e">+   use SlackNotifiable;
-</span><span style="color:#a6e22e"></span>
-  public function register()
-  {
-    $this-&gt;reportable(function (Throwable $e) {
-<span style="color:#f92672">-     //
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+     $this-&gt;notify(new ExceptionNotification($e));
-</span><span style="color:#a6e22e"></span>    });
-  }
+</code></pre></div><div class="highlight" fn="App\Exceptions\Handler"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Handler</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">ExceptionHandler</span>
+{
+    <span style="color:#66d9ef">use</span> <span style="color:#a6e22e">SlackNotifiable</span>;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">register</span>()
+    {
+        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">reportable</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">Throwable</span> $e) {
+            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">notify</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExceptionNotification</span>($e));
+        });
+    }
+}
 </code></pre></div><ol start="5">
 <li>webhook urlの設定</li>
 </ol>
@@ -187,10 +186,13 @@
 <li><code>.env</code>に<code>SLACK_WEB_HOOK_URL</code>を追加する</li>
 <li><code>config/services.php</code>に設定する</li>
 </ul>
-<div class="highlight" fn="config/services.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+   &#39;slack&#39; =&gt; [
-</span><span style="color:#a6e22e">+     &#39;web_hook_url&#39; =&gt; env(&#39;SLACK_WEB_HOOK_URL&#39;)
-</span><span style="color:#a6e22e">+   ],
-</span></code></pre></div><ol start="6">
+<div class="highlight" fn=".env"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">SLACK_WEB_HOOK_URL<span style="color:#f92672">=</span>xxxx
+</code></pre></div><div class="highlight" fn="config/services.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">return</span> [
+    <span style="color:#e6db74">&#39;slack&#39;</span> <span style="color:#f92672">=&gt;</span> [
+        <span style="color:#e6db74">&#39;web_hook_url&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">env</span>(<span style="color:#e6db74">&#39;SLACK_WEB_HOOK_URL&#39;</span>)
+    ],
+];
+</code></pre></div><ol start="6">
 <li>実際に例外が出るとこのように通知される</li>
 </ol>
 <figure><img src="https://blog.oda.world/images/115/1.webp"/>
