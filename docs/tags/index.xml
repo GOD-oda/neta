@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Mon, 08 Aug 2022 23:00:00 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Sep 2022 15:30:37 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>laravel</title>
+      <link>https://blog.oda.world/tags/laravel/</link>
+      <pubDate>Thu, 08 Sep 2022 15:30:37 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slack</title>
+      <link>https://blog.oda.world/tags/slack/</link>
+      <pubDate>Thu, 08 Sep 2022 15:30:37 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/slack/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>php</title>
       <link>https://blog.oda.world/tags/php/</link>
@@ -23,15 +41,6 @@
       <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
       
       <guid>https://blog.oda.world/tags/ddd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>https://blog.oda.world/tags/laravel/</link>
-      <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/tags/laravel/</guid>
       <description></description>
     </item>
     

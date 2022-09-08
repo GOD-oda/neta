@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>a on ODA WORLD</title>
-    <link>https://blog.oda.world/categories/a/</link>
-    <description>Recent content in a on ODA WORLD</description>
+    <title>slack on ODA WORLD</title>
+    <link>https://blog.oda.world/tags/slack/</link>
+    <description>Recent content in slack on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Thu, 08 Sep 2022 15:30:37 +0900</lastBuildDate><atom:link href="https://blog.oda.world/categories/a/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Sep 2022 15:30:37 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/slack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>laravelでslack通知</title>
       <link>https://blog.oda.world/posts/115/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://blog.oda.world/posts/115/</guid>
       <description>環境 laravel/framework: ^9.2 laravel/slack-notification-channel: ^2.4 想定シーン 全ての例外をスラックに通知する アタッチメントを利用する 用意するもの slackのwebhook URL 登場人物 App\Exception\Handler App\Notifications\ExceptionNotification App\Notifications\SlackNotifiable Illuminate\Notifications\Messages\SlackMessage Illuminate\Notifications\Messages\SlackAttachment 手っ取</description>
-    </item>
-    
-    <item>
-      <title>phpのenumをいい感じに使いたい</title>
-      <link>https://blog.oda.world/posts/106/</link>
-      <pubDate>Mon, 08 Aug 2022 23:00:00 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/posts/106/</guid>
-      <description>想定するケース コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話 例えばAとBという記事投稿サイトに</description>
     </item>
     
   </channel>
