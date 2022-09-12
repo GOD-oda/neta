@@ -94,71 +94,71 @@
 <li>brew 2.6.2</li>
 <li>zsh</li>
 </ul>
-<pre tabindex="0"><code>% php -v
-PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS )
-Copyright (c) 1997-2018 The PHP Group
-Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies
-</code></pre><pre tabindex="0"><code>% brew -v
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php -v
+PHP 7.3.11 <span style="color:#f92672">(</span>cli<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>built: Apr <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">2020</span> 19:14:14<span style="color:#f92672">)</span> <span style="color:#f92672">(</span> NTS <span style="color:#f92672">)</span>
+Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1997-2018 The PHP Group
+Zend Engine v3.3.11, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1998-2018 Zend Technologies
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew -v
 Homebrew 2.6.2
-Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17)
-Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18)
-</code></pre><h1 id="手順">手順</h1>
+Homebrew/homebrew-core <span style="color:#f92672">(</span>git revision df724f; last commit 2020-12-17<span style="color:#f92672">)</span>
+Homebrew/homebrew-cask <span style="color:#f92672">(</span>git revision d4fbc; last commit 2020-12-18<span style="color:#f92672">)</span>
+</code></pre></div><h1 id="手順">手順</h1>
 <ol>
 <li>インストール可能なphpバージョンを確認する</li>
 </ol>
-<pre tabindex="0"><code>% brew search php
-==&gt; Formulae
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew search php
+<span style="color:#f92672">==</span>&gt; Formulae
 brew-php-switcher      php-cs-fixer           php@7.4                phpmyadmin
 php                    php@7.2                phplint                phpstan
 php-code-sniffer       php@7.3                phpmd                  phpunit
-==&gt; Casks
+<span style="color:#f92672">==</span>&gt; Casks
 eclipse-php                   netbeans-php                  phpstorm
-</code></pre><ol start="2">
+</code></pre></div><ol start="2">
 <li>php7.4をインストールする</li>
 </ol>
-<pre tabindex="0"><code>% brew install php@7.4
-==&gt; Downloading https://homebrew.bintray.com/bottles/php%407.4-7.4.13_1.catalina.bottle.ta
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew install php@7.4
+<span style="color:#f92672">==</span>&gt; Downloading https://homebrew.bintray.com/bottles/php%407.4-7.4.13_1.catalina.bottle.ta
 Already downloaded: /Users/odatakahiro/Library/Caches/Homebrew/downloads/0d6c05855a046af46f6f36438fa17097dceb423efbed6427ddc03cc931b757af--php@7.4-7.4.13_1.catalina.bottle.tar.gz
-==&gt; Pouring php@7.4-7.4.13_1.catalina.bottle.tar.gz
-==&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set php_ini /usr/local/etc/php/7.4/
-==&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set php_dir /usr/local/share/pear@7
-==&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set doc_dir /usr/local/share/pear@7
-==&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set ext_dir /usr/local/lib/php/pecl
+<span style="color:#f92672">==</span>&gt; Pouring php@7.4-7.4.13_1.catalina.bottle.tar.gz
+<span style="color:#f92672">==</span>&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set php_ini /usr/local/etc/php/7.4/
+<span style="color:#f92672">==</span>&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set php_dir /usr/local/share/pear@7
+<span style="color:#f92672">==</span>&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set doc_dir /usr/local/share/pear@7
+<span style="color:#f92672">==</span>&gt; /usr/local/Cellar/php@7.4/7.4.13_1/bin/pear config-set ext_dir /usr/local/lib/php/pecl
 .
 .
 .
 To have launchd start php@7.4 now and restart at login:
   brew services start php@7.4
-Or, if you don't want/need a background service you can just run:
+Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run:
   php-fpm
-==&gt; Summary
-🍺  /usr/local/Cellar/php@7.4/7.4.13_1: 497 files, 72.3MB
-</code></pre><pre tabindex="0"><code> % brew list --formula | grep php
+<span style="color:#f92672">==</span>&gt; Summary
+🍺  /usr/local/Cellar/php@7.4/7.4.13_1: <span style="color:#ae81ff">497</span> files, 72.3MB
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> % brew list --formula | grep php
 php@7.4
-</code></pre><ol start="3">
+</code></pre></div><ol start="3">
 <li>リンクさせる</li>
 </ol>
-<pre tabindex="0"><code>% brew link php@7.4
-Linking /usr/local/Cellar/php@7.4/7.4.13_1... 25 symlinks created
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew link php@7.4
+Linking /usr/local/Cellar/php@7.4/7.4.13_1... <span style="color:#ae81ff">25</span> symlinks created
 
 If you need to have this software first in your PATH instead consider running:
-  echo 'export PATH=&quot;/usr/local/opt/php@7.4/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
-  echo 'export PATH=&quot;/usr/local/opt/php@7.4/sbin:$PATH&quot;' &gt;&gt; ~/.zshrc
-</code></pre><ol start="4">
+  echo <span style="color:#e6db74">&#39;export PATH=&#34;/usr/local/opt/php@7.4/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
+  echo <span style="color:#e6db74">&#39;export PATH=&#34;/usr/local/opt/php@7.4/sbin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</code></pre></div><ol start="4">
 <li>パスを通す
 3の最後の2つのechoを、使ってるシェルのrcファイル（今回は.zshrc）に追記する
 rcファイルをsourceで読み込み直す</li>
 </ol>
-<pre tabindex="0"><code>% source ~/.zshrc
-</code></pre><ol start="5">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% source ~/.zshrc
+</code></pre></div><ol start="5">
 <li>確認</li>
 </ol>
-<pre tabindex="0"><code>% php -v
-PHP 7.4.13 (cli) (built: Nov 30 2020 14:46:04) ( NTS )
-Copyright (c) The PHP Group
-Zend Engine v3.4.0, Copyright (c) Zend Technologies
-    with Zend OPcache v7.4.13, Copyright (c), by Zend Technologies
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php -v
+PHP 7.4.13 <span style="color:#f92672">(</span>cli<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>built: Nov <span style="color:#ae81ff">30</span> <span style="color:#ae81ff">2020</span> 14:46:04<span style="color:#f92672">)</span> <span style="color:#f92672">(</span> NTS <span style="color:#f92672">)</span>
+Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> The PHP Group
+Zend Engine v3.4.0, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> Zend Technologies
+    with Zend OPcache v7.4.13, Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span>, by Zend Technologies
+</code></pre></div>
   </div>
 </article>
 

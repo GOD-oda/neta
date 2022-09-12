@@ -90,8 +90,13 @@
   <div class="section">
     <h1 id="結論">結論</h1>
 <p>column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時</p>
-<pre tabindex="0"><code>SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &lt; t2.column2 WHERE t2.column2 IS NULL;
-</code></pre><p><a href="https://dev.mysql.com/doc/refman/5.6/ja/example-maximum-column-group-row.html">mysqlの公式</a>にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> 
+<span style="color:#66d9ef">FROM</span> <span style="color:#66d9ef">table</span> t1 
+<span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> <span style="color:#66d9ef">table</span> t2 
+  <span style="color:#66d9ef">ON</span> t1.column1 <span style="color:#f92672">=</span> t2.column1 
+  <span style="color:#66d9ef">AND</span> t1.column2 <span style="color:#f92672">&lt;</span> t2.column2 
+<span style="color:#66d9ef">WHERE</span> t2.column2 <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+</code></pre></div><p><a href="https://dev.mysql.com/doc/refman/5.6/ja/example-maximum-column-group-row.html">mysqlの公式</a>にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる</p>
 <h1 id="環境">環境</h1>
 <ul>
 <li>Docker version 19.03.13, build 4484c46d9d</li>
@@ -103,36 +108,36 @@
 </ul>
 <h1 id="準備">準備</h1>
 <p>mysql5.6のイメージをダウンロードする</p>
-<pre tabindex="0"><code>% docker pull mysql:5.6
-</code></pre><p>コンテナを起動する</p>
-<pre tabindex="0"><code>% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker pull mysql:5.6
+</code></pre></div><p>コンテナを起動する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD<span style="color:#f92672">=</span>password -d mysql:5.6
 c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120
-</code></pre><p>確認</p>
-<pre tabindex="0"><code>% docker ps
+</code></pre></div><p>確認</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-c10a60237021        mysql:5.6           &quot;docker-entrypoint.s…&quot;   3 seconds ago       Up 2 seconds        3306/tcp            mysql56
-</code></pre><p>コンテナに入る</p>
-<pre tabindex="0"><code>% docker exec -it mysql56 bash
+c10a60237021        mysql:5.6           <span style="color:#e6db74">&#34;docker-entrypoint.s…&#34;</span>   <span style="color:#ae81ff">3</span> seconds ago       Up <span style="color:#ae81ff">2</span> seconds        3306/tcp            mysql56
+</code></pre></div><p>コンテナに入る</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker exec -it mysql56 bash
 root@c10a60237021:/#
-</code></pre><p>mysqlに入る
+</code></pre></div><p>mysqlに入る
 passwordは<code>docker run</code>の<code>-e</code>オプションで指定したもの
 ここでは<code>password</code></p>
-<pre tabindex="0"><code>root@c10a60237021:/# mysql -u root -p
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">root<span style="color:#f92672">@</span>c10a60237021:<span style="color:#f92672">/#</span> mysql <span style="color:#f92672">-</span>u root <span style="color:#f92672">-</span>p
 Enter password:
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 2
-Server version: 5.6.47 MySQL Community Server (GPL)
+Welcome <span style="color:#66d9ef">to</span> the MySQL monitor.  Commands <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">with</span> ; <span style="color:#66d9ef">or</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">g</span>.
+Your MySQL <span style="color:#66d9ef">connection</span> id <span style="color:#66d9ef">is</span> <span style="color:#ae81ff">2</span>
+Server <span style="color:#66d9ef">version</span>: <span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">6</span>.<span style="color:#ae81ff">47</span> MySQL Community Server (GPL)
 
-Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+Copyright (<span style="color:#66d9ef">c</span>) <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">2020</span>, Oracle <span style="color:#66d9ef">and</span><span style="color:#f92672">/</span><span style="color:#66d9ef">or</span> its affiliates. <span style="color:#66d9ef">All</span> rights reserved.
 
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
+Oracle <span style="color:#66d9ef">is</span> a registered trademark <span style="color:#66d9ef">of</span> Oracle Corporation <span style="color:#66d9ef">and</span><span style="color:#f92672">/</span><span style="color:#66d9ef">or</span> its
+affiliates. Other <span style="color:#66d9ef">names</span> may be trademarks <span style="color:#66d9ef">of</span> their respective
 owners.
 
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+<span style="color:#66d9ef">Type</span> <span style="color:#e6db74">&#39;help;&#39;</span> <span style="color:#66d9ef">or</span> <span style="color:#e6db74">&#39;\h&#39;</span> <span style="color:#66d9ef">for</span> help. <span style="color:#66d9ef">Type</span> <span style="color:#e6db74">&#39;\c&#39;</span> <span style="color:#66d9ef">to</span> clear the <span style="color:#66d9ef">current</span> <span style="color:#66d9ef">input</span> <span style="color:#66d9ef">statement</span>.
 
-mysql&gt;
-</code></pre><p>必要なデータを作る</p>
+mysql<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>必要なデータを作る</p>
 <ul>
 <li>データベース: test</li>
 <li>テーブル: products
@@ -142,36 +147,36 @@ mysql&gt;
 </ul>
 </li>
 </ul>
-<pre tabindex="0"><code>mysql&gt; create database test;
-Query OK, 1 row affected (0.00 sec)
-</code></pre><pre tabindex="0"><code>mysql&gt; use test
-Database changed
-</code></pre><pre tabindex="0"><code>mysql&gt; create table products (name varchar(255), price int);
-Query OK, 0 rows affected (0.01 sec)
-</code></pre><pre tabindex="0"><code>mysql&gt; insert into products (name, price) values ('A', 100), ('B', 200), ('A', 300), ('B', 100);
-Query OK, 4 rows affected (0.00 sec)
-Records: 4  Duplicates: 0  Warnings: 0
-</code></pre><pre tabindex="0"><code>mysql&gt; select * from products;
-+------+-------+
-| name | price |
-+------+-------+
-| A    |   100 |
-| B    |   200 |
-| A    |   300 |
-| B    |   100 |
-+------+-------+
-4 rows in set (0.00 sec)
-</code></pre><h1 id="sql">SQL</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> test;
+Query OK, <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> use test
+<span style="color:#66d9ef">Database</span> changed
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> products (name varchar(<span style="color:#ae81ff">255</span>), price int);
+Query OK, <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">01</span> sec)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">insert</span> <span style="color:#66d9ef">into</span> products (name, price) <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#ae81ff">100</span>), (<span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#ae81ff">200</span>), (<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#ae81ff">300</span>), (<span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#ae81ff">100</span>);
+Query OK, <span style="color:#ae81ff">4</span> <span style="color:#66d9ef">rows</span> affected (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+Records: <span style="color:#ae81ff">4</span>  Duplicates: <span style="color:#ae81ff">0</span>  Warnings: <span style="color:#ae81ff">0</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> products;
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> A    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">100</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> B    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">200</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> A    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">300</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> B    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">100</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">4</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div><h1 id="sql">SQL</h1>
 <p>nameごとのグループのうち最大のpriceを持つレコードを抽出する</p>
-<pre tabindex="0"><code>mysql&gt; SELECT * FROM products t1 LEFT JOIN products t2 ON t1.name = t2.name AND t1.price &lt; t2.price WHERE t2.price IS NULL;
-+------+-------+------+-------+
-| name | price | name | price |
-+------+-------+------+-------+
-| B    |   200 | NULL |  NULL |
-| A    |   300 | NULL |  NULL |
-+------+-------+------+-------+
-2 rows in set (0.00 sec)
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> products t1 <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> products t2 <span style="color:#66d9ef">ON</span> t1.name <span style="color:#f92672">=</span> t2.name <span style="color:#66d9ef">AND</span> t1.price <span style="color:#f92672">&lt;</span> t2.price <span style="color:#66d9ef">WHERE</span> t2.price <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NULL</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> name <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span> name <span style="color:#f92672">|</span> price <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> B    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">200</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span> <span style="color:#f92672">|</span>  <span style="color:#66d9ef">NULL</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> A    <span style="color:#f92672">|</span>   <span style="color:#ae81ff">300</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">NULL</span> <span style="color:#f92672">|</span>  <span style="color:#66d9ef">NULL</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">------+-------+------+-------+
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div>
   </div>
 </article>
 

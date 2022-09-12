@@ -131,7 +131,7 @@
       <pubDate>Tue, 17 Aug 2021 02:55:57 +0900</pubDate>
       
       <guid>https://blog.oda.world/posts/44/</guid>
-      <description>コマンド % find /path/to/directory -name &amp;quot;*.php&amp;quot; | xargs wc -l Laravelで確認 % ls -l total 632 drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 . drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 .. -rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig -rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env -rw-r--r-- 1 odatakahiro staff 869 6</description>
+      <description>コマンド % find /path/to/directory -name &amp;#34;*.php&amp;#34; | xargs wc -l Laravelで確認 % ls -l total 632 drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 . drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 .. -rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig -rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env -rw-r--r-- 1 odatakahiro staff 869 6</description>
     </item>
     
     <item>
@@ -149,7 +149,7 @@
       <pubDate>Tue, 20 Jul 2021 16:57:02 +0000</pubDate>
       
       <guid>https://blog.oda.world/posts/54/</guid>
-      <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
+      <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &amp;#39;%slow_query%&amp;#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
     </item>
     
     <item>
@@ -167,7 +167,7 @@
       <pubDate>Sat, 03 Apr 2021 13:27:48 +0000</pubDate>
       
       <guid>https://blog.oda.world/posts/37/</guid>
-      <description>環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 書き方 ブロックを仮引数として明示した書き方 コード def exec_block(&amp;amp;block) block.call end exec_block do p &amp;#39;hoge&amp;#39; end 結果 % ruby a.rb &amp;quot;hoge&amp;quot; 補足 &amp;a</description>
+      <description>環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 書き方 ブロックを仮引数として明示した書き方 コード def exec_block(&amp;amp;block) block.call end exec_block do p &amp;#39;hoge&amp;#39; end 結果 % ruby a.rb &amp;#34;hoge&amp;#34; 補足 &amp;a</description>
     </item>
     
     <item>
@@ -185,7 +185,7 @@
       <pubDate>Thu, 14 Jan 2021 00:06:53 +0000</pubDate>
       
       <guid>https://blog.oda.world/posts/28/</guid>
-      <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;quot; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
+      <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
     </item>
     
     <item>

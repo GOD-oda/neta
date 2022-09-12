@@ -89,11 +89,11 @@
 
   <div class="section">
     <p>インストール済みパッケージ一覧</p>
-<pre tabindex="0"><code>% yum list installed
-</code></pre><p>ヘルプ</p>
-<pre tabindex="0"><code>% yum list -h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% yum list installed
+</code></pre></div><p>ヘルプ</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% yum list -h
 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper
-Usage: yum [options] COMMAND
+Usage: yum <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> COMMAND
 
 List of Commands:
 
@@ -105,7 +105,7 @@ deplist        パッケージの依存性の一覧を表示する
 distribution-synchronization 最新の利用可能なバージョンへインストール済みパッケージを同期する
 downgrade      パッケージのダウングレード
 erase          システムから削除するパッケージ
-fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.
+fs             Acts on the filesystem data of the host, mainly <span style="color:#66d9ef">for</span> removing docs/lanuages <span style="color:#66d9ef">for</span> minimal hosts.
 fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
 groups         グループ情報の表示または使用
 help           役立つ使い方のメッセージを表示する
@@ -123,7 +123,7 @@ search         指定した文字列でパッケージの詳細を検索する
 shell          対話型の yum シェルを実行する
 swap           Simple way to swap packages, instead of using shell
 update         システムのパッケージを更新する
-update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system
+update-minimal Works like upgrade, but goes to the <span style="color:#e6db74">&#39;newest&#39;</span> package match which fixes a problem that affects your system
 updateinfo     Acts on repository update information
 upgrade        不要になったパッケージを考慮しながらパッケージを更新する
 version        ホストの利用できるリポジトリーのバージョンを表示する
@@ -133,67 +133,67 @@ Options:
   -h, --help            このヘルプ メッセージを表示して終了する
   -t, --tolerant        エラーを黙認する
   -C, --cacheonly       キャッシュから完全に実行し、キャッシュを更新しません
-  -c [config file], --config=[config file]
+  -c <span style="color:#f92672">[</span>config file<span style="color:#f92672">]</span>, --config<span style="color:#f92672">=[</span>config file<span style="color:#f92672">]</span>
                         構成ファイルの場所
-  -R [minutes], --randomwait=[minutes]
+  -R <span style="color:#f92672">[</span>minutes<span style="color:#f92672">]</span>, --randomwait<span style="color:#f92672">=[</span>minutes<span style="color:#f92672">]</span>
                         コマンドの最大待ち時間
-  -d [debug level], --debuglevel=[debug level]
+  -d <span style="color:#f92672">[</span>debug level<span style="color:#f92672">]</span>, --debuglevel<span style="color:#f92672">=[</span>debug level<span style="color:#f92672">]</span>
                         デバッグ情報の出力レベル
   --showduplicates      一覧/検索コマンドのリポジトリーの重複の表示
-  -e [error level], --errorlevel=[error level]
+  -e <span style="color:#f92672">[</span>error level<span style="color:#f92672">]</span>, --errorlevel<span style="color:#f92672">=[</span>error level<span style="color:#f92672">]</span>
                         エラー出力レベル
-  --rpmverbosity=[debug level name]
+  --rpmverbosity<span style="color:#f92672">=[</span>debug level name<span style="color:#f92672">]</span>
                         rpm のデバッグ情報の出力レベル
   -q, --quiet           静かに処理をする
   -v, --verbose         冗長に処理をする
   -y, --assumeyes       すべての問い合わせに「yes」で答える
   --assumeno            すべての質問にいいえを回答します
   --version             Yum のバージョンを表示して終了する
-  --installroot=[path]  インストールのベース ディレクトリーを設定する
-  --enablerepo=[repo]   ひとつ以上のリポジトリーを有効にする (ワイルドカード許可)
-  --disablerepo=[repo]  ひとつ以上のリポジトリーを無効にする (ワイルドカード許可)
-  -x [package], --exclude=[package]
+  --installroot<span style="color:#f92672">=[</span>path<span style="color:#f92672">]</span>  インストールのベース ディレクトリーを設定する
+  --enablerepo<span style="color:#f92672">=[</span>repo<span style="color:#f92672">]</span>   ひとつ以上のリポジトリーを有効にする <span style="color:#f92672">(</span>ワイルドカード許可<span style="color:#f92672">)</span>
+  --disablerepo<span style="color:#f92672">=[</span>repo<span style="color:#f92672">]</span>  ひとつ以上のリポジトリーを無効にする <span style="color:#f92672">(</span>ワイルドカード許可<span style="color:#f92672">)</span>
+  -x <span style="color:#f92672">[</span>package<span style="color:#f92672">]</span>, --exclude<span style="color:#f92672">=[</span>package<span style="color:#f92672">]</span>
                         名前かワイルドカードでパッケージを除外する
-  --disableexcludes=[repo]
+  --disableexcludes<span style="color:#f92672">=[</span>repo<span style="color:#f92672">]</span>
                         main、あるリポジトリー、またはすべてからの除外を無効にします。
-  --disableincludes=[repo]
-                        disable includepkgs for a repo or for everything
+  --disableincludes<span style="color:#f92672">=[</span>repo<span style="color:#f92672">]</span>
+                        disable includepkgs <span style="color:#66d9ef">for</span> a repo or <span style="color:#66d9ef">for</span> everything
   --obsoletes           更新中に不要な処理を有効にします
   --noplugins           Yum プラグインを無効にする
   --nogpgcheck          GPG 署名の確認を無効にする
-  --disableplugin=[plugin]
+  --disableplugin<span style="color:#f92672">=[</span>plugin<span style="color:#f92672">]</span>
                         名前でプラグインを無効にする
-  --enableplugin=[plugin]
+  --enableplugin<span style="color:#f92672">=[</span>plugin<span style="color:#f92672">]</span>
                         名前でプラグインを有効にする
   --skip-broken         依存性関連に問題があるパッケージを飛ばす
-  --color=COLOR         色を使うかどうか制御する
-  --releasever=RELEASEVER
+  --color<span style="color:#f92672">=</span>COLOR         色を使うかどうか制御する
+  --releasever<span style="color:#f92672">=</span>RELEASEVER
                         yum 設定と repo ファイルに $releasever の値を設定する
-  --downloadonly        don't update, just download
-  --downloaddir=DLDIR   specifies an alternate directory to store packages
-  --setopt=SETOPTS      全体設定とリポジトリー オプションの任意に設定する
+  --downloadonly        don<span style="color:#960050;background-color:#1e0010">&#39;</span>t update, just download
+  --downloaddir<span style="color:#f92672">=</span>DLDIR   specifies an alternate directory to store packages
+  --setopt<span style="color:#f92672">=</span>SETOPTS      全体設定とリポジトリー オプションの任意に設定する
   --bugfix              Include bugfix relevant packages, in updates
   --security            Include security relevant packages, in updates
-  --advisory=ADVS, --advisories=ADVS
+  --advisory<span style="color:#f92672">=</span>ADVS, --advisories<span style="color:#f92672">=</span>ADVS
                         Include packages needed to fix the given advisory, in
                         updates
-  --bzs=BZS             Include packages needed to fix the given BZ, in
+  --bzs<span style="color:#f92672">=</span>BZS             Include packages needed to fix the given BZ, in
                         updates
-  --cves=CVES           Include packages needed to fix the given CVE, in
+  --cves<span style="color:#f92672">=</span>CVES           Include packages needed to fix the given CVE, in
                         updates
-  --sec-severity=SEVS, --secseverity=SEVS
+  --sec-severity<span style="color:#f92672">=</span>SEVS, --secseverity<span style="color:#f92672">=</span>SEVS
                         Include security relevant packages matching the
                         severity, in updates
 
   プラグインのオプション:
     --samearch-priorities
                         Priority-exclude packages based on name + arch
-</code></pre><pre tabindex="0"><code>% yum list installed
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% yum list installed
 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper
 Determining fastest mirrors
  * remi-safe: ftp.riken.jp
 blackfire                                                                                                                                                                     48/48
-59 packages excluded due to repository priority protections
+<span style="color:#ae81ff">59</span> packages excluded due to repository priority protections
 インストール済みパッケージ
 acl.x86_64                                                                         2.2.49-6.11.amzn1                                                              installed
 acpid.x86_64                                                                       2.0.19-6.7.amzn1                                                               @amzn-main
@@ -201,7 +201,7 @@ alsa-lib.x86_64                                                                 
 .
 .
 .
-</code></pre>
+</code></pre></div>
   </div>
 </article>
 

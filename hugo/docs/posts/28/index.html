@@ -3,12 +3,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst" />
+  <meta name="description" content="インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta" />
   <meta property="og:title" content="macOS M1でhomebrew" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://blog.oda.world/images/ogImage/default.png" />
   <meta property="og:site_name" content="ODA WORLD" />
-  <meta property="og:description" content="インストールコマンドは公式で確認する % /bin/bash -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst" />
+  <meta property="og:description" content="インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@oskfjzp" />
   <meta name="twitter:player" content="@oskfjzp" />
@@ -89,9 +89,9 @@
 
   <div class="section">
     <p>インストールコマンドは<a href="https://brew.sh/index_ja">公式</a>で確認する</p>
-<pre tabindex="0"><code>% /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% /bin/bash -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 Password:
-==&gt; This script will install:
+<span style="color:#f92672">==</span>&gt; This script will install:
 /opt/homebrew/bin/brew
 /opt/homebrew/share/doc/homebrew
 /opt/homebrew/share/man/man1/brew.1
@@ -99,23 +99,23 @@ Password:
 /opt/homebrew/etc/bash_completion.d/brew
 /opt/homebrew
 
-Press RETURN to continue or any other key to abort
-==&gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew
-==&gt; Downloading and installing Homebrew...
-remote: Enumerating objects: 381, done.
-remote: Counting objects: 100% (381/381), done.
-remote: Compressing objects: 100% (9/9), done.
-remote: Total 548 (delta 375), reused 376 (delta 372), pack-reused 167
-Receiving objects: 100% (548/548), 127.88 KiB | 190.00 KiB/s, done.
-Resolving deltas: 100% (436/436), completed with 122 local objects.
+Press RETURN to <span style="color:#66d9ef">continue</span> or any other key to abort
+<span style="color:#f92672">==</span>&gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew
+<span style="color:#f92672">==</span>&gt; Downloading and installing Homebrew...
+remote: Enumerating objects: 381, <span style="color:#66d9ef">done</span>.
+remote: Counting objects: 100% <span style="color:#f92672">(</span>381/381<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+remote: Compressing objects: 100% <span style="color:#f92672">(</span>9/9<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+remote: Total <span style="color:#ae81ff">548</span> <span style="color:#f92672">(</span>delta 375<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">376</span> <span style="color:#f92672">(</span>delta 372<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">167</span>
+Receiving objects: 100% <span style="color:#f92672">(</span>548/548<span style="color:#f92672">)</span>, 127.88 KiB | 190.00 KiB/s, <span style="color:#66d9ef">done</span>.
+Resolving deltas: 100% <span style="color:#f92672">(</span>436/436<span style="color:#f92672">)</span>, completed with <span style="color:#ae81ff">122</span> local objects.
 From https://github.com/Homebrew/brew
    d75e9c99b..ec93e9190  master     -&gt; origin/master
- * [new tag]             2.7.3      -&gt; 2.7.3
-HEAD is now at ec93e9190 Merge pull request #10208 from samford/livecheck-skip-archived-stable-urls
-Updated 1 tap (homebrew/core).
-==&gt; New Formulae
+ * <span style="color:#f92672">[</span>new tag<span style="color:#f92672">]</span>             2.7.3      -&gt; 2.7.3
+HEAD is now at ec93e9190 Merge pull request <span style="color:#75715e">#10208 from samford/livecheck-skip-archived-stable-urls</span>
+Updated <span style="color:#ae81ff">1</span> tap <span style="color:#f92672">(</span>homebrew/core<span style="color:#f92672">)</span>.
+<span style="color:#f92672">==</span>&gt; New Formulae
 bandit                  forge                   gallery-dl              gdu                     gofumpt                 ptpython                richmd
-==&gt; Updated Formulae
+<span style="color:#f92672">==</span>&gt; Updated Formulae
 act                     chamber                 feh                     ispell                  mosquitto               plantuml                terragrunt
 adios2                  circleci                firebase-cli            jupyterlab              mycli                   pnpm                    terrahub
 aliyun-cli              clib                    flawfinder              kapacitor               netlify-cli             profanity               texlab
@@ -138,36 +138,36 @@ c7n                     emscripten              httpd                   micropla
 castxml                 evernote2md             igraph                  mlpack                  phpstan                 tarantool
 cdk                     exploitdb               infracost               molecule                pipemeter               terraform-ls
 Warning: /opt/homebrew/bin is not in your PATH.
-==&gt; Installation successful!
+<span style="color:#f92672">==</span>&gt; Installation successful!
 
-==&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.
-Read the analytics documentation (and how to opt-out) here:
+<span style="color:#f92672">==</span>&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.
+Read the analytics documentation <span style="color:#f92672">(</span>and how to opt-out<span style="color:#f92672">)</span> here:
   https://docs.brew.sh/Analytics
-No analytics data has been sent yet (or will be during this `install` run).
+No analytics data has been sent yet <span style="color:#f92672">(</span>or will be during this <span style="color:#e6db74">`</span>install<span style="color:#e6db74">`</span> run<span style="color:#f92672">)</span>.
 
-==&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:
+<span style="color:#f92672">==</span>&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:
   https://github.com/Homebrew/brew#donations
 
-==&gt; Next steps:
+<span style="color:#f92672">==</span>&gt; Next steps:
 - Add Homebrew to your PATH in /Users/gonzalezoda/.zprofile:
-    echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; /Users/gonzalezoda/.zprofile
-    eval $(/opt/homebrew/bin/brew shellenv)
-- Run `brew help` to get started
+    echo <span style="color:#e6db74">&#39;eval $(/opt/homebrew/bin/brew shellenv)&#39;</span> &gt;&gt; /Users/gonzalezoda/.zprofile
+    eval <span style="color:#66d9ef">$(</span>/opt/homebrew/bin/brew shellenv<span style="color:#66d9ef">)</span>
+- Run <span style="color:#e6db74">`</span>brew help<span style="color:#e6db74">`</span> to get started
 - Further documentation:
     https://docs.brew.sh
-</code></pre><p>Next stepsにあるように次のコマンドを実行する</p>
-<pre tabindex="0"><code>% echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; /Users/gonzalezoda/.zprofile
-% eval $(/opt/homebrew/bin/brew shellenv)
-</code></pre><p>インストール完了</p>
-<pre tabindex="0"><code>% brew
+</code></pre></div><p>Next stepsにあるように次のコマンドを実行する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% echo <span style="color:#e6db74">&#39;eval $(/opt/homebrew/bin/brew shellenv)&#39;</span> &gt;&gt; /Users/gonzalezoda/.zprofile
+% eval <span style="color:#66d9ef">$(</span>/opt/homebrew/bin/brew shellenv<span style="color:#66d9ef">)</span>
+</code></pre></div><p>インストール完了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew
 Example usage:
-  brew search [TEXT|/REGEX/]
-  brew info [FORMULA...]
+  brew search <span style="color:#f92672">[</span>TEXT|/REGEX/<span style="color:#f92672">]</span>
+  brew info <span style="color:#f92672">[</span>FORMULA...<span style="color:#f92672">]</span>
   brew install FORMULA...
   brew update
-  brew upgrade [FORMULA...]
+  brew upgrade <span style="color:#f92672">[</span>FORMULA...<span style="color:#f92672">]</span>
   brew uninstall FORMULA...
-  brew list [FORMULA...]
+  brew list <span style="color:#f92672">[</span>FORMULA...<span style="color:#f92672">]</span>
 
 Troubleshooting:
   brew config
@@ -175,15 +175,15 @@ Troubleshooting:
   brew install --verbose --debug FORMULA
 
 Contributing:
-  brew create [URL [--no-fetch]]
-  brew edit [FORMULA...]
+  brew create <span style="color:#f92672">[</span>URL <span style="color:#f92672">[</span>--no-fetch<span style="color:#f92672">]]</span>
+  brew edit <span style="color:#f92672">[</span>FORMULA...<span style="color:#f92672">]</span>
 
 Further help:
   brew commands
-  brew help [COMMAND]
+  brew help <span style="color:#f92672">[</span>COMMAND<span style="color:#f92672">]</span>
   man brew
   https://docs.brew.sh
-</code></pre><pre tabindex="0"><code>% brew -v
+</code></pre></div><pre tabindex="0"><code>% brew -v
 Homebrew 2.7.3
 Homebrew/homebrew-core (git revision c2557a; last commit 2021-01-13)
 </code></pre>

@@ -92,9 +92,9 @@
 <ul>
 <li>ruby 2.5.8</li>
 </ul>
-<pre tabindex="0"><code>% ruby -v
-ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19]
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby -v
+ruby 2.5.8p224 <span style="color:#f92672">(</span>2020-03-31 revision 67882<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>x86_64-darwin19<span style="color:#f92672">]</span>
+</code></pre></div><ul>
 <li>a.rbにコードを書いて実行</li>
 </ul>
 <h1 id="書き方">書き方</h1>
@@ -108,9 +108,9 @@ exec_block <span style="color:#66d9ef">do</span>
   p <span style="color:#e6db74">&#39;hoge&#39;</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>結果</p>
-<pre tabindex="0"><code>% ruby a.rb
-&quot;hoge&quot;
-</code></pre><p>補足</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
+<span style="color:#e6db74">&#34;hoge&#34;</span>
+</code></pre></div><p>補足</p>
 <ul>
 <li><code>&amp;block</code>はProcオブジェクトのこと</li>
 <li><code>&amp;</code>をつけることでProcオブジェクトに変換している（つけないとただの引数なのでエラーになる）</li>
@@ -124,9 +124,9 @@ exec_block <span style="color:#66d9ef">do</span>
 
 exec_block <span style="color:#66d9ef">do</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre tabindex="0"><code>% ruby a.rb
-#&lt;Proc:0x00007fd9a187a1b8@a.rb:11&gt;
-</code></pre><p>ブロック引数でない時にブロックを渡した時
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
+<span style="color:#75715e">#&lt;Proc:0x00007fd9a187a1b8@a.rb:11&gt;</span>
+</code></pre></div><p>ブロック引数でない時にブロックを渡した時
 <img src="https://user-images.githubusercontent.com/14949022/113468622-2d346580-9482-11eb-9cde-756a325adafe.png" alt="スクリーンショット 2021-04-03 13 38 43"></p>
 <p>仮引数でブロックが定義できないパターン
 <img src="https://user-images.githubusercontent.com/14949022/113468706-ce232080-9482-11eb-9126-add43dc6434d.png" alt="スクリーンショット 2021-04-03 13 44 05"></p>
@@ -143,9 +143,9 @@ exec_block <span style="color:#66d9ef">do</span>
   p <span style="color:#e6db74">&#39;hoge&#39;</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>確認</p>
-<pre tabindex="0"><code>% ruby a.rb
-&quot;hoge&quot;
-</code></pre><h1 id="メリット">メリット</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
+<span style="color:#e6db74">&#34;hoge&#34;</span>
+</code></pre></div><h1 id="メリット">メリット</h1>
 <ul>
 <li>書き手が、前提が同じ状態で好きな処理をかける</li>
 <li>クロージャのとしての機能が得られる（<a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2#%E7%8A%B6%E6%85%8B%E3%82%92%E6%8C%81%E3%81%A3%E3%81%9F%E9%96%A2%E6%95%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%8C%E5%BE%97%E3%82%89%E3%82%8C%E3%82%8B">こちら</a>を参考に）</li>
@@ -156,17 +156,17 @@ exec_block <span style="color:#66d9ef">do</span>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre tabindex="0"><code>% ruby a.rb
-2
-3
-</code></pre><p>書き手B：全ての要素に2をかける</p>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
+<span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">3</span>
+</code></pre></div><p>書き手B：全ての要素に2をかける</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">].</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>i<span style="color:#f92672">|</span>
   p i <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
 <span style="color:#66d9ef">end</span>
-</code></pre></div><pre tabindex="0"><code>% ruby a.rb
-2
-4
-</code></pre><h1 id="参考">参考</h1>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
+<span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">4</span>
+</code></pre></div><h1 id="参考">参考</h1>
 <ul>
 <li><a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2">https://qiita.com/kidach1/items/15cfee9ec66804c3afd2</a></li>
 <li><a href="https://language-and-engineering.hatenablog.jp/entry/20101118/p1">https://language-and-engineering.hatenablog.jp/entry/20101118/p1</a></li>

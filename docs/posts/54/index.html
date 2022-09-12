@@ -3,12 +3,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; &#43;---------------" />
+  <meta name="description" content="TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &amp;#39;%slow_query%&amp;#39;; &#43;-------" />
   <meta property="og:title" content="slow_query_log確認コマンド" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://blog.oda.world/images/ogImage/default.png" />
   <meta property="og:site_name" content="ODA WORLD" />
-  <meta property="og:description" content="TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &#39;%slow_query%&#39;; &#43;---------------" />
+  <meta property="og:description" content="TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &amp;#39;%slow_query%&amp;#39;; &#43;-------" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@oskfjzp" />
   <meta name="twitter:player" content="@oskfjzp" />
@@ -93,51 +93,51 @@
 <ol>
 <li><code>slow_query_log</code>が<code>ON</code>になていること</li>
 </ol>
-<pre tabindex="0"><code>mysql&gt; show variables like '%slow_query%';
-+---------------------+----------------------------------------------+
-| Variable_name       | Value                                        |
-+---------------------+----------------------------------------------+
-| slow_query_log      | ON                                           |
-| slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log |
-+---------------------+----------------------------------------------+
-2 rows in set (0.00 sec)
-</code></pre><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> variables <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%slow_query%&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------------+----------------------------------------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Variable_name       <span style="color:#f92672">|</span> Value                                        <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------------+----------------------------------------------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> slow_query_log      <span style="color:#f92672">|</span> <span style="color:#66d9ef">ON</span>                                           <span style="color:#f92672">|</span>
+<span style="color:#f92672">|</span> slow_query_log_file <span style="color:#f92672">|</span> <span style="color:#f92672">/</span>rdsdbdata<span style="color:#f92672">/</span>log<span style="color:#f92672">/</span>slowquery<span style="color:#f92672">/</span>mysql<span style="color:#f92672">-</span>slowquery.log <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------------+----------------------------------------------+
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div><ol start="2">
 <li><code>log_output</code>が<code>TABLE</code>になっていること</li>
 </ol>
-<pre tabindex="0"><code>mysql&gt; show variables like '%output%';
-+---------------+-------+
-| Variable_name | Value |
-+---------------+-------+
-| log_output    | TABLE |
-+---------------+-------+
-1 row in set (0.00 sec)
-</code></pre><h2 id="コマンド">コマンド</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> variables <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%output%&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Variable_name <span style="color:#f92672">|</span> Value <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> log_output    <span style="color:#f92672">|</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">---------------+-------+
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div><h2 id="コマンド">コマンド</h2>
 <p>上位10件を抽出する例</p>
-<pre tabindex="0"><code>mysql&gt; select * from mysql.slow_log order by query_time desc limit 10\G
-*************************** 1. row ***************************
-    start_time: 2021-07-16 14:00:28
-     user_host:mysql[mysql] @  [127.0.0.1]
-    query_time: 00:00:07
-     lock_time: 00:00:00
-     rows_sent: 5
- rows_examined: 69734
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> mysql.slow_log <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> query_time <span style="color:#66d9ef">desc</span> <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">G</span>
+<span style="color:#f92672">***************************</span> <span style="color:#ae81ff">1</span>. <span style="color:#66d9ef">row</span> <span style="color:#f92672">***************************</span>
+    start_time: <span style="color:#ae81ff">2021</span><span style="color:#f92672">-</span><span style="color:#ae81ff">07</span><span style="color:#f92672">-</span><span style="color:#ae81ff">16</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">28</span>
+     user_host:mysql[mysql] <span style="color:#f92672">@</span>  [<span style="color:#ae81ff">127</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">1</span>]
+    query_time: <span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">07</span>
+     lock_time: <span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span>
+     rows_sent: <span style="color:#ae81ff">5</span>
+ rows_examined: <span style="color:#ae81ff">69734</span>
             db: tb
-last_insert_id: 0
-     insert_id: 0
-     server_id: 0
-      sql_text: *********
-     thread_id: 308316555
-</code></pre><h2 id="備考">備考</h2>
+last_insert_id: <span style="color:#ae81ff">0</span>
+     insert_id: <span style="color:#ae81ff">0</span>
+     server_id: <span style="color:#ae81ff">0</span>
+      sql_text: <span style="color:#f92672">*********</span>
+     thread_id: <span style="color:#ae81ff">308316555</span>
+</code></pre></div><h2 id="備考">備考</h2>
 <p>スロークエリの定義
 下記だと2秒以上かかったクエリをスロークエリとみなす</p>
-<pre tabindex="0"><code>mysql&gt; show variables like '%query_time%';
-+-----------------+----------+
-| Variable_name   | Value    |
-+-----------------+----------+
-| long_query_time | 2.000000 |
-+-----------------+----------+
-1 row in set (0.00 sec)
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">show</span> variables <span style="color:#66d9ef">like</span> <span style="color:#e6db74">&#39;%query_time%&#39;</span>;
+<span style="color:#f92672">+</span><span style="color:#75715e">-----------------+----------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> Variable_name   <span style="color:#f92672">|</span> Value    <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-----------------+----------+
+</span><span style="color:#75715e"></span><span style="color:#f92672">|</span> long_query_time <span style="color:#f92672">|</span> <span style="color:#ae81ff">2</span>.<span style="color:#ae81ff">000000</span> <span style="color:#f92672">|</span>
+<span style="color:#f92672">+</span><span style="color:#75715e">-----------------+----------+
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">row</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">set</span> (<span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">00</span> sec)
+</code></pre></div>
   </div>
 </article>
 

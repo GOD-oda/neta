@@ -89,7 +89,7 @@
 
   <div class="section">
     <h1 id="環境">環境</h1>
-<pre tabindex="0"><code>% nodenv -v
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% nodenv -v
 nodenv 1.4.0
 
 % npm -v
@@ -100,41 +100,41 @@ v15.5.1
 
 % echo $SHELL
 /bin/zsh
-</code></pre><h1 id="手順">手順</h1>
+</code></pre></div><h1 id="手順">手順</h1>
 <ol>
 <li>インストール</li>
 </ol>
 <p>とりあえずグローバルでいいのでインストールコマンドを実行する</p>
-<pre tabindex="0"><code>% npm i @google/clasp -g
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% npm i @google/clasp -g
 npm WARN ERESOLVE overriding peer dependency
 npm WARN Found: inquirer@7.3.3
 npm WARN node_modules/@google/clasp/node_modules/inquirer
-npm WARN   inquirer@&quot;^7.0.0&quot; from @google/clasp@2.3.0
+npm WARN   inquirer@<span style="color:#e6db74">&#34;^7.0.0&#34;</span> from @google/clasp@2.3.0
 npm WARN   node_modules/@google/clasp
-npm WARN     @google/clasp@&quot;*&quot; from the root project
+npm WARN     @google/clasp@<span style="color:#e6db74">&#34;*&#34;</span> from the root project
 npm WARN
 npm WARN Could not resolve dependency:
-npm WARN peer inquirer@&quot;^5.0.0 || ^6.0.0&quot; from inquirer-autocomplete-prompt@1.0.1
+npm WARN peer inquirer@<span style="color:#e6db74">&#34;^5.0.0 || ^6.0.0&#34;</span> from inquirer-autocomplete-prompt@1.0.1
 npm WARN node_modules/@google/clasp/node_modules/inquirer-autocomplete-prompt
-npm WARN   inquirer-autocomplete-prompt@&quot;1.0.1&quot; from @google/clasp@2.3.0
+npm WARN   inquirer-autocomplete-prompt@<span style="color:#e6db74">&#34;1.0.1&#34;</span> from @google/clasp@2.3.0
 npm WARN   node_modules/@google/clasp
 
-changed 160 packages, and audited 161 packages in 10s
+changed <span style="color:#ae81ff">160</span> packages, and audited <span style="color:#ae81ff">161</span> packages in 10s
 
-13 packages are looking for funding
-  run `npm fund` for details
+<span style="color:#ae81ff">13</span> packages are looking <span style="color:#66d9ef">for</span> funding
+  run <span style="color:#e6db74">`</span>npm fund<span style="color:#e6db74">`</span> <span style="color:#66d9ef">for</span> details
 
-7 high severity vulnerabilities
+<span style="color:#ae81ff">7</span> high severity vulnerabilities
 
 To address all issues, run:
   npm audit fix
 
-Run `npm audit` for details
-</code></pre><ol start="2">
+Run <span style="color:#e6db74">`</span>npm audit<span style="color:#e6db74">`</span> <span style="color:#66d9ef">for</span> details
+</code></pre></div><ol start="2">
 <li>コマンド確認</li>
 </ol>
-<pre tabindex="0"><code>% clasp
-Usage: clasp &lt;command&gt; [options]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% clasp
+Usage: clasp &lt;command&gt; <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
 
 clasp - The Apps Script CLI
 
@@ -143,52 +143,52 @@ Options:
   -h, --help                                  output usage information
 
 Commands:
-  login [options]                             Log in to script.google.com
+  login <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                             Log in to script.google.com
   logout                                      Log out
-  create [options]                            Create a script
-  clone [options] [scriptId] [versionNumber]  Clone a project
-  pull [options]                              Fetch a remote project
-  push [options]                              Update the remote project
-  status [options]                            Lists files that will be pushed by clasp
-  open [options] [scriptId]                   Open a script
+  create <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                            Create a script
+  clone <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>scriptId<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>versionNumber<span style="color:#f92672">]</span>  Clone a project
+  pull <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                              Fetch a remote project
+  push <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                              Update the remote project
+  status <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                            Lists files that will be pushed by clasp
+  open <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>scriptId<span style="color:#f92672">]</span>                   Open a script
   deployments                                 List deployment ids of a script
-  deploy [options]                            Deploy a project
-  undeploy [options] [deploymentId]           Undeploy a deployment of a project
-  version [description]                       Creates an immutable version of the script
+  deploy <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                            Deploy a project
+  undeploy <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>deploymentId<span style="color:#f92672">]</span>           Undeploy a deployment of a project
+  version <span style="color:#f92672">[</span>description<span style="color:#f92672">]</span>                       Creates an immutable version of the script
   versions                                    List versions of a script
   list                                        List App Scripts projects
-  logs [options]                              Shows the StackDriver logs
-  run [options] [functionName]                Run a function in your Apps Scripts project
-  apis [options]                              List, enable, or disable APIs
+  logs <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                              Shows the StackDriver logs
+  run <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>functionName<span style="color:#f92672">]</span>                Run a <span style="color:#66d9ef">function</span> in your Apps Scripts project
+  apis <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>                              List, enable, or disable APIs
     list
     enable &lt;api&gt;
     disable &lt;api&gt;
   help                                        Display help
-  setting|settings [settingKey] [newValue]    Update &lt;settingKey&gt; in .clasp.json
+  setting|settings <span style="color:#f92672">[</span>settingKey<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>newValue<span style="color:#f92672">]</span>    Update &lt;settingKey&gt; in .clasp.json
   *                                           Any other command is not supported
 
 % which clasp
 /Users/gonzalezoda/.nodenv/shims/clasp
-</code></pre><ol start="3">
+</code></pre></div><ol start="3">
 <li>ログイン</li>
 </ol>
 <p><code>clasp login</code>と打つと表示されたページに飛ぶので「アカウントの選択」する</p>
-<pre tabindex="0"><code>% clasp login
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% clasp login
 Logging in globally...
 🔑 Authorize clasp by visiting this url:
 ********
-</code></pre><p>許可するとこれが表示される</p>
-<pre tabindex="0"><code>Logged in! You may close this page. 
-</code></pre><p>ターミナルに戻り、こうなっているとログインに成功している</p>
-<pre tabindex="0"><code>% clasp login
+</code></pre></div><p>許可するとこれが表示される</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Logged in! You may close this page. 
+</code></pre></div><p>ターミナルに戻り、こうなっているとログインに成功している</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% clasp login
 Logging in globally...
 🔑 Authorize clasp by visiting this url:
 ********
 
 Authorization successful.
 
-Default credentials saved to: ~/.clasprc.json (/Users/gonzalezoda/.clasprc.json).
-</code></pre><ol start="4">
+Default credentials saved to: ~/.clasprc.json <span style="color:#f92672">(</span>/Users/gonzalezoda/.clasprc.json<span style="color:#f92672">)</span>.
+</code></pre></div><ol start="4">
 <li>
 <p>新規作成</p>
 </li>
@@ -201,9 +201,9 @@ Default credentials saved to: ~/.clasprc.json (/Users/gonzalezoda/.clasprc.json)
 <p>もしくは歯車から設定ページにいき、IDのセクションに書いてある</p>
 <p><img src="https://user-images.githubusercontent.com/14949022/105607008-b9ba0c00-5ddf-11eb-8f28-84f782f264f3.png" alt="スクリーンショット_2021-01-24_0_56_34"></p>
 <p>cloneするとgasのファイル名がそのまま<code>.js</code>として配置される（ここでは<code>app.gs</code>だったので<code>app.js</code>となっている）</p>
-<pre tabindex="0"><code>% clasp clone ****
-Warning: files in subfolder are not accounted for unless you set a '.claspignore' file.
-Cloned 2 files.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% clasp clone ****
+Warning: files in subfolder are not accounted <span style="color:#66d9ef">for</span> unless you set a <span style="color:#e6db74">&#39;.claspignore&#39;</span> file.
+Cloned <span style="color:#ae81ff">2</span> files.
 └─ app.js
 └─ appsscript.json
 Not ignored files:
@@ -213,7 +213,7 @@ Not ignored files:
 
 Ignored files:
 └─ .clasp.json
-</code></pre><ul>
+</code></pre></div><ul>
 <li><code>app.js</code>はgasのコード</li>
 <li><code>appscript.json</code>はgasの設定ファイル</li>
 <li><code>.clasp.json</code>はclaspの設定ファイル（cloneしただけだと対象のgasIDのみ記載されている）</li>
