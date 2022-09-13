@@ -15,13 +15,8 @@
         <div class="created-at">
           {{ .PublishDate.Format "2006/01/02" }}
         </div>
-        <div class="tags">
-          {{if .Params.tags }}
-            {{ range $index, $tag := .Params.tags }}
-            <a href="{{$baseurl}}/tags/{{ $tag | urlize }}/" class="tag"># {{ $tag }}</a>
-            {{ end }}
-          {{end}}
-        </div>
+
+        {{ partial "tag.html" . }}
       </div>
     </div>
   </div>
