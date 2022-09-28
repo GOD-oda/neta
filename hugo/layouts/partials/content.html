@@ -8,12 +8,9 @@
           <h4>{{ .Title }}</h4>
         </a>
       </div>
-      <div class="body">
-        <p>{{ substr .Summary 0 100 }} ...</p>
-      </div>
       <div class="footer">
         <div class="created-at">
-          {{ .PublishDate.Format "2006/01/02" }}
+          {{ .PublishDate.Format "2006.01.02" }}
         </div>
 
         {{ partial "tag.html" . }}
