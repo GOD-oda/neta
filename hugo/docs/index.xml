@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Thu, 08 Sep 2022 15:30:37 +0900</lastBuildDate><atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Oct 2022 19:36:25 +0900</lastBuildDate><atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tagprの導入</title>
+      <link>https://blog.oda.world/posts/120/</link>
+      <pubDate>Fri, 07 Oct 2022 19:36:25 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/120/</guid>
+      <description>前提 デプロイをgithub actionsで行っている バージョニングやリリース用タグを自動で打ちたい tagprとは いい感じにリリース用PRとC</description>
+    </item>
+    
     <item>
       <title>laravelでslack通知</title>
       <link>https://blog.oda.world/posts/115/</link>
