@@ -58,10 +58,9 @@ ex) ruby import_meta 88
 ### create eyecatch
 ```shell
 % cd hugo
-% tcardgen -c twitterCard/config.yaml \
-           -f twitterCard/font/kinto-master/Kinto\ Sans \
-           -o static/images/ogImage/106.png \
-           content/posts/106.md
+% make eyecatch-{post_id}
+
+ex) make eyecatch-124
 ```
 
 ### short codes
