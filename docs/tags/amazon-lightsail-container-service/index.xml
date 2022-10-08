@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWS on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/aws/</link>
-    <description>Recent content in AWS on ODA WORLD</description>
+    <title>amazon lightsail container service on ODA WORLD</title>
+    <link>https://blog.oda.world/tags/amazon-lightsail-container-service/</link>
+    <description>Recent content in amazon lightsail container service on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sat, 08 Oct 2022 22:37:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Oct 2022 22:37:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/amazon-lightsail-container-service/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lightsail container serviceで保存できるイメージ数の上限</title>
       <link>https://blog.oda.world/posts/124/</link>
@@ -15,15 +15,6 @@
       
       <guid>https://blog.oda.world/posts/124/</guid>
       <description>結論 最大150個 確認 ECRを使わない場合にここに溜まっていく 上限に達した状態でpushした時 % aws lightsail push-container-image --service-name playground --label app --image playground-app . . . InvalidInputException: Maximum number of container service images has been reached {</description>
-    </item>
-    
-    <item>
-      <title>Serverless Frameworkを使ってみる</title>
-      <link>https://blog.oda.world/posts/76/</link>
-      <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
-      
-      <guid>https://blog.oda.world/posts/76/</guid>
-      <description>ゴール AWS Lambdaにデプロイと実行でserverlessテンプレートの内容を表示する AWS Lambdaのランタイムはnode.js14 デプロイ</description>
     </item>
     
   </channel>
