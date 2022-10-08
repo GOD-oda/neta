@@ -64,22 +64,38 @@ ex) ruby import_meta 88
            content/posts/106.md
 ```
 
-### about Post
-#### 画像
-画像は`hugo/content/images/{issue_id}`に配置する
-
-ショートコードを使う
+### short codes
+#### image
 ```
 {{<figure src="">}}
 ```
 
+画像は`hugo/content/images/{issue_id}`に配置する
+
+
 必要に応じてwebp変換を行う
 ```
 % brew install webp
-% make cwebp FROM={path} TO={path}
 
-ex) make cwebp FROM=./hugo/content/images/85/foo.png TO=./hugo/content/images/85/foo.webp
+ex) cwebp path/to/foo.png -o ./hugo/content/images/85/foo.webp
 ```
+
+#### message
+```
+{{<message>}}
+default
+{{</message>}}
+
+{{<message class="alert">}}
+alert
+{{</message>}}
+
+{{<message class="success">}}
+success
+{{</message>}}
+```
+
+![shortcode message](images/shortcode_message.png)
 
 ## issues
 検証したサンプルコードのディレクトリ
