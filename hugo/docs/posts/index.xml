@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Fri, 07 Oct 2022 19:36:25 +0900</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Oct 2022 22:37:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>lightsail container serviceで保存できるイメージ数の上限</title>
+      <link>https://blog.oda.world/posts/124/</link>
+      <pubDate>Sat, 08 Oct 2022 22:37:51 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/posts/124/</guid>
+      <description>結論 最大150個 確認 ECRを使わない場合にここに溜まっていく 上限に達した状態でpushした時 % aws lightsail push-container-image --service-name playground --label app --image playground-app . . . InvalidInputException: Maximum number of container service images has been reached {</description>
+    </item>
+    
     <item>
       <title>tagprの導入</title>
       <link>https://blog.oda.world/posts/120/</link>
