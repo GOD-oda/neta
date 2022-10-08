@@ -17,8 +17,8 @@ category:
   fontStyle: Regular
 info:
   start:
-    px: 750
-    py: 600
+    px: 800
+    py: 700
   fgHexColor: "#A0A0A0"
   fontSize: 38
   fontStyle: Regular
