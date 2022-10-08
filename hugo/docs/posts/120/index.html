@@ -83,7 +83,7 @@
       公開日: <time datetime="2022-10-07 19:36:25 &#43;0900 JST">2022/10/07 19:36:25</time>
     </div>
     <div class="updated-date">
-      更新日: <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">0001/01/01 00:00:00</time>
+      更新日: <time datetime="2022-10-08 13:36:07 &#43;0900 JST">2022/10/08 13:36:07</time>
     </div>
   </aside>
 
@@ -98,6 +98,7 @@
 <h1 id="導入">導入</h1>
 <h2 id="ワークフロー">ワークフロー</h2>
 <p>まずはtagprがmasterブランチで動作するようにデプロイ用ワークフローを作る</p>
+<p><a href="https://github.com/Songmu/tagpr/blob/main/tag.go#L99">outputsで指定する変数名</a>は内部的に<code>tag</code>と決まっているので<code>${{ steps.{id}.outputs.tag }}</code>とすること</p>
 <div class="highlight" fn=".github/workflows/deploy.yml"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deployment</span>
 <span style="color:#f92672">on</span>:
   <span style="color:#f92672">push</span>:
