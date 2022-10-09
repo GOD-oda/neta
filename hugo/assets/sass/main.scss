@@ -376,10 +376,16 @@ footer {
   padding: .5rem 0;
 
   .tag {
+    display: inline-block;
     border: solid 1px;
     border-radius: 10px;
     padding: 8px 5px;
     font-size: .7em;
+
+    @include sp {
+      padding: 5px 3px;
+      margin: 2px 0;
+    }
   }
 }
 
