@@ -9,7 +9,7 @@ paginate = 12
 enableGitInfo = true
 
 [frontmatter]
-  lastmod = ':git'
+  lastmod = [':git', 'lastmod']
 
 [params]
   twitter = "@oskfjzp"
