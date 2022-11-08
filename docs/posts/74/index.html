@@ -107,7 +107,7 @@
 <h1 id="dynamodb-localの準備">dynamodb localの準備</h1>
 <p><code>docker-compose.yml</code>は<a href="https://blog.oda.world/posts/72/">こちら</a>を参考に用意する</p>
 <p>完成系は以下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+<div class="highlight" fn="docker-compose.yml"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
 <span style="color:#f92672">services</span>:
   <span style="color:#f92672">dynamodb</span>:
     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">amazon/dynamodb-local</span>
@@ -122,15 +122,13 @@
 </code></pre></div><h1 id="php-sdkの準備">php sdkの準備</h1>
 <h2 id="php環境を用意する">php環境を用意する</h2>
 <p>最小限のphpイメージとcomposerが使えるようにDockerfileを<code>src</code>ディレクトリに用意する</p>
+<p>また<code>docker compose</code>を利用するので<code>docker-compose.yml</code>も用意する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% mkdir src
 % touch src/Dockerfile
-</code></pre></div><p>Dockerfileはこうなる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> php:8.0-alpine</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>composer:latest /usr/bin/composer /usr/bin/composer<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>それをdocker-compose.ymlで指定する</p>
-<p>あと<code>volumes</code>と<code>working_dir</code>を設定しておこう</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">version: &#39;3.8&#39;
+</code></pre></div><div class="highlight" fn="src/Dockerfile"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">FROM php:8.0-alpine
+
+COPY --from<span style="color:#f92672">=</span>composer:latest /usr/bin/composer /usr/bin/composer
+</code></pre></div><div class="highlight" fn="docker-compose.yml"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">version: &#39;3.8&#39;
 services:
 <span style="color:#a6e22e">+ app:
 </span><span style="color:#a6e22e">+  build: src/
@@ -165,8 +163,7 @@ Building app
  <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; exporting layers                                                                                                                                                        0.0s
  <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; writing image sha256:c1d873c7edc63a019a182686bbd78f6eb8c350fcc58b4b6b4b99c285afc05fbc                                                                                   0.0s
  <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">=</span>&gt; naming to docker.io/library/74_app
-</code></pre></div><p>んじゃちょっと確認</p>
-<p><code>composer</code>と<code>php</code>が入ってるよね</p>
+</code></pre></div><p><code>composer</code>と<code>php</code>が入ってることが確認できる</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">% docker-compose run --rm app sh
 
 /src <span style="color:#75715e"># php -v</span>
@@ -194,7 +191,7 @@ Generating autoload files
 <span style="color:#ae81ff">2</span> packages you are using are looking <span style="color:#66d9ef">for</span> funding.
 Use the <span style="color:#e6db74">`</span>composer fund<span style="color:#e6db74">`</span> command to find out more!
 </code></pre></div><p><code>composer.json</code>を確認</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/src <span style="color:#75715e"># cat composer.json</span>
+<div class="highlight" fn="src/composer.json"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/src <span style="color:#75715e"># cat composer.json</span>
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;require&#34;</span>: <span style="color:#f92672">{</span>
         <span style="color:#e6db74">&#34;aws/aws-sdk-php&#34;</span>: <span style="color:#e6db74">&#34;^3.193&#34;</span>
@@ -211,11 +208,11 @@ Use the <span style="color:#e6db74">`</span>composer fund<span style="color:#e6d
 
 <span style="color:#ae81ff">1</span> directory, <span style="color:#ae81ff">4</span> files
 </code></pre></div><h1 id="envの用意">envの用意</h1>
-<p>DynamoDBに限らずawsのサービスにアクセスするためには<code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>が必要になるので<code>.env</code>を<code>src</code>ディレクトリに用意しよう
-ローカルなのでfakeでOK</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake
+<p>DynamoDBに限らずawsのサービスにアクセスするためには<code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>が必要になるので<code>.env</code>を`用意する</p>
+<p>ローカルなのでfakeでOKだがちゃんと<code>.gitignore</code>に指定すること</p>
+<div class="highlight" fn="src/.env"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake
 AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>fake
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">version: &#39;3.8&#39;
+</code></pre></div><div class="highlight" fn="docker-compose.yml"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">version: &#39;3.8&#39;
 services:
   app:
     build: src/
@@ -237,10 +234,10 @@ services:
     dynamodb:
       driver: local
 </code></pre></div><h1 id="テーブル作成">テーブル作成</h1>
-<p>さて、ここまできたらあとはphpから操作するだけ</p>
-<p>ということで<code>src</code>ディレクトリに<code>create.php</code>を作ってテーブル作成のスクリプトを書いていこう</p>
+<p>ここまできたらあとはphpから操作するだけ</p>
+<p><code>src</code>ディレクトリに<code>create.php</code>を作ってテーブル作成のスクリプトを書いていく</p>
 <p>今回は<code>name</code>という属性を持つ<code>Persons</code>テーブルを作る</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight" fn="src/create.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">require_once</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/vendor/autoload.php&#39;</span>;
 
@@ -278,8 +275,8 @@ $dynamoDb <span style="color:#f92672">=</span> $sdk<span style="color:#f92672">-
 
 $result <span style="color:#f92672">=</span> $dynamoDb<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">createTable</span>($params);
 <span style="color:#a6e22e">var_dump</span>($result);
-</code></pre></div><p>endpointで指定する<code>dynamodb:8000</code>はdocker-compose.ymlで定義したサービス名をホスト、portsをポートとして指定すること</p>
-<p>で、<code>app</code>コンテナから実行する</p>
+</code></pre></div><p>endpointで指定する<code>dynamodb:8000</code>は<code>docker-compose.yml</code>で定義したサービス名をホスト、portsをポートとして指定すること</p>
+<p><code>app</code>コンテナから実行する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">/src <span style="color:#75715e"># php create.php</span>
 object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</span>esult<span style="color:#f92672">)</span><span style="color:#75715e">#186 (2) {</span>
   <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#e6db74">&#34;Aws\Result&#34;</span>:private<span style="color:#f92672">]=</span>&gt;
@@ -392,7 +389,7 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
 </code></pre></div><h1 id="テーブル確認">テーブル確認</h1>
 <p>無事作成できたらテーブルを確認しよう</p>
 <p><code>src</code>ディレクトリに<code>tables.php</code>スクリプトを作って同じように実行する</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight" fn="src/tables.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">require_once</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/vendor/autoload.php&#39;</span>;
 
@@ -456,11 +453,11 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h1 id="項目作成">項目作成</h1>
-<p>次は作ったテーブルに項目を追加してみよう</p>
+<p>次は作ったテーブルに項目を追加してみる</p>
 <p><code>src</code>ディレクトリに<code>insert.php</code>スクリプトを作り、同じように実行する</p>
-<p>putItemメソッドを使うのだがそうやら追加する項目のjsonを作って<code>Marshaler</code>クラスに一度通す必要があるみたいだ</p>
+<p><code>putItem()</code>を使うのだがどうやら追加する項目のjsonを作って<code>Marshaler</code>クラスに一度通す必要がある</p>
 <p>ということで2つ作ってみる</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight" fn="insert.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">require_once</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/vendor/autoload.php&#39;</span>;
 
@@ -573,10 +570,10 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><h1 id="項目取得">項目取得</h1>
-<p>最後に作成した項目を取得しよう</p>
-<p>方法は<code>getItem</code>、<code>query</code>、<code>scan</code>などあるがここでは一番簡単な<code>scan</code>を使う</p>
+<p>最後に作成した項目を取得する</p>
+<p>方法は<code>getItem()</code>、<code>query()</code>、<code>scan()</code>などあるがここでは一番簡単な<code>scan</code>を使う</p>
 <p>特に条件を指定せずそのまま実行してみよう</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+<div class="highlight" fn="src/scan.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
 
 <span style="color:#66d9ef">require_once</span> <span style="color:#66d9ef">__DIR__</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/vendor/autoload.php&#39;</span>;
 
@@ -610,8 +607,7 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
   <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">]=</span>&gt;
   string<span style="color:#f92672">(</span>3<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;foo&#34;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>ちょっとクセがあるコードになるんだなぁ</p>
-<h1 id="参考">参考</h1>
+</code></pre></div><h1 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html">https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html</a></li>
 <li><a href="https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/">https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/</a></li>
