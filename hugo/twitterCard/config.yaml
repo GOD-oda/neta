@@ -3,7 +3,7 @@ title:
   start:
     px: 300
     py: 600
-  fgHexColor: "#FFFFFF"
+  fgHexColor: "#444444"
   fontSize: 256
   fontStyle: Bold
   maxWidth: 4000
@@ -19,7 +19,7 @@ info:
   start:
     px: 2500
     py: 2000
-  fgHexColor: "#FFFFFFF"
+  fgHexColor: "#EEEEEE"
   fontSize: 150
   fontStyle: Regular
   separator: " / "
@@ -27,7 +27,7 @@ tags:
   start:
     px: 300
     py: 1700
-  fgHexColor: "#999999"
+  fgHexColor: "#555555"
   bgHexColor: "#FFFFFF"
   fontSize: 75
   fontStyle: Medium
