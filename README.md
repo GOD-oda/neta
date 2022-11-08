@@ -71,11 +71,13 @@ ex) make eyecatch-124
 ![named code block](images/named_code_block_2.png)
 
 #### image
+画像は`hugo/content/images/{issue_id}/{name}.webp`に配置する
+
+`hugo/content/images/85/foo.webp`に配置した場合に以下で参照する
 ```
-{{<figure src="">}}
+{{<figure src="/images/85/foo.webp">}}
 ```
 
-画像は`hugo/content/images/{issue_id}`に配置する
 
 
 必要に応じてwebp変換を行う

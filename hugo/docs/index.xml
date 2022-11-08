@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sat, 08 Oct 2022 22:37:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Oct 2022 14:44:12 +0000</lastBuildDate><atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>amazon lightsail container serviceのイメージを削除するgithub actions</title>
+      <link>https://blog.oda.world/posts/126/</link>
+      <pubDate>Sat, 15 Oct 2022 14:44:12 +0000</pubDate>
+      
+      <guid>https://blog.oda.world/posts/126/</guid>
+      <description>amazon lightsail container serviceに保持できるイメージ数は合計150なのでいつかは上限に達する その時に画面ポチポチで削除するのは手間でめんどいので自動でや</description>
+    </item>
+    
     <item>
       <title>lightsail container serviceで保存できるイメージ数の上限</title>
       <link>https://blog.oda.world/posts/124/</link>
