@@ -2,7 +2,7 @@ template: twitterCard/template.png
 title:
   start:
     px: 300
-    py: 300
+    py: 600
   fgHexColor: "#FFFFFF"
   fontSize: 256
   fontStyle: Bold
@@ -18,7 +18,7 @@ category:
 info:
   start:
     px: 2500
-    py: 2500
+    py: 2000
   fgHexColor: "#FFFFFFF"
   fontSize: 150
   fontStyle: Regular
@@ -26,7 +26,7 @@ info:
 tags:
   start:
     px: 300
-    py: 2000
+    py: 1700
   fgHexColor: "#999999"
   bgHexColor: "#FFFFFF"
   fontSize: 75
