@@ -56,6 +56,8 @@ ex) ruby import_meta 88
 ```
 
 ### create eyecatch
+https://github.com/Ladicle/tcardgen
+
 ```shell
 % cd hugo
 % make eyecatch-{post_id}
