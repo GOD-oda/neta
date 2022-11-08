@@ -15,7 +15,6 @@ uri = URI.parse("https://api.github.com/repos/GOD-oda/neta/issues/#{issue_id}")
 res = Net::HTTP.get_response(uri)
 res_body = JSON.parse(res.body)
 title = res_body['title']
-body = res_body['body']
 file_name = "#{issue_id}.md"
 file_path = "content/posts/#{file_name}"
 if File.exist?(file_path)
@@ -62,45 +61,49 @@ message_line = {
   option: ''
 }
 
-File.open(file_path, 'a') do |f|
-  res_body['body'].gsub(/\r/, '').split("\n").each.with_index do |line, i|
-    # notation
-    end_line_notation = line == ':::'
-
-    ## :::message
-    message_line_match = line.match(/\A:::message(?<class>\s.*)?\z/)
-    if message_line_match
-      message_line[:values] = []
-      message_line[:option] = message_line_match[:class]
-      message_line[:now] = true
-      next
-    end
-
-    if end_line_notation
-      message_line[:now] = false
-      f.puts "{{<message class=\"#{message_line[:option]}\">}}"
-      message_line[:values].each { |v| f.puts "#{v}<br>" }
-      f.puts "{{</message>}}"
-      next
-    end
-
-    if message_line[:now]
-      message_line[:values] << line
-      next
-    end
-
-    # image
-    if line.include?('<img')
-      src = line[/src="(?<src>.*?)"/, 'src'] || ''
-      alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
-      next if src.empty?
-
-      f.puts "![#{alt}](#{src})"
-    else
-      f.puts line
-    end
-  end
-end
+# --------------------------------------------------------
+# githubのissueで執筆してhugoのマークダウンに置き換えようとしたが
+# 結局hugoで書くようになったので使っていない
+# --------------------------------------------------------
+# File.open(file_path, 'a') do |f|
+#   res_body['body'].gsub(/\r/, '').split("\n").each.with_index do |line, i|
+#     # notation
+#     end_line_notation = line == ':::'
+#
+#     ## :::message
+#     message_line_match = line.match(/\A:::message(?<class>\s.*)?\z/)
+#     if message_line_match
+#       message_line[:values] = []
+#       message_line[:option] = message_line_match[:class]
+#       message_line[:now] = true
+#       next
+#     end
+#
+#     if end_line_notation
+#       message_line[:now] = false
+#       f.puts "{{<message class=\"#{message_line[:option]}\">}}"
+#       message_line[:values].each { |v| f.puts "#{v}<br>" }
+#       f.puts "{{</message>}}"
+#       next
+#     end
+#
+#     if message_line[:now]
+#       message_line[:values] << line
+#       next
+#     end
+#
+#     # image
+#     if line.include?('<img')
+#       src = line[/src="(?<src>.*?)"/, 'src'] || ''
+#       alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
+#       next if src.empty?
+#
+#       f.puts "![#{alt}](#{src})"
+#     else
+#       f.puts line
+#     end
+#   end
+# end
 
 if File.exist?("#{file_path}-e")
   File.delete("#{file_path}-e")
