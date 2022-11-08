@@ -68,8 +68,11 @@ ex) make eyecatch-124
 ### short codes
 #### named code block
 記述
+
 ![named code block](images/named_code_block_1.png)
+
 表示
+
 ![named code block](images/named_code_block_2.png)
 
 #### image
