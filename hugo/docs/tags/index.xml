@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sat, 08 Oct 2022 22:37:51 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Oct 2022 14:44:12 +0900</lastBuildDate><atom:link href="https://blog.oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>amazon lightsail</title>
       <link>https://blog.oda.world/tags/amazon-lightsail/</link>
-      <pubDate>Sat, 08 Oct 2022 22:37:51 +0900</pubDate>
+      <pubDate>Sat, 15 Oct 2022 14:44:12 +0900</pubDate>
       
       <guid>https://blog.oda.world/tags/amazon-lightsail/</guid>
       <description></description>
@@ -20,9 +20,27 @@
     <item>
       <title>amazon lightsail container service</title>
       <link>https://blog.oda.world/tags/amazon-lightsail-container-service/</link>
-      <pubDate>Sat, 08 Oct 2022 22:37:51 +0900</pubDate>
+      <pubDate>Sat, 15 Oct 2022 14:44:12 +0900</pubDate>
       
       <guid>https://blog.oda.world/tags/amazon-lightsail-container-service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws cli</title>
+      <link>https://blog.oda.world/tags/aws-cli/</link>
+      <pubDate>Sat, 15 Oct 2022 14:44:12 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/aws-cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github-actions</title>
+      <link>https://blog.oda.world/tags/github-actions/</link>
+      <pubDate>Sat, 15 Oct 2022 14:44:12 +0900</pubDate>
+      
+      <guid>https://blog.oda.world/tags/github-actions/</guid>
       <description></description>
     </item>
     
@@ -32,15 +50,6 @@
       <pubDate>Sat, 08 Oct 2022 22:37:51 +0900</pubDate>
       
       <guid>https://blog.oda.world/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github-actions</title>
-      <link>https://blog.oda.world/tags/github-actions/</link>
-      <pubDate>Fri, 07 Oct 2022 19:36:25 +0900</pubDate>
-      
-      <guid>https://blog.oda.world/tags/github-actions/</guid>
       <description></description>
     </item>
     

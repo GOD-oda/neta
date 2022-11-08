@@ -18,7 +18,7 @@ enableGitInfo = true
   defaultOgImage = '/images/ogImage/default.png'
   siteName = 'ODA WORLD'
   siteDescription = 'GOD-odaが運営するブログ'
-  author = "GOD oda"
+  author = "GOD-oda"
 
 [markup]
   [markup.highlight]

@@ -1,12 +1,12 @@
 template: twitterCard/template.png
 title:
   start:
-    px: 113
-    py: 150
+    px: 300
+    py: 300
   fgHexColor: "#FFFFFF"
-  fontSize: 72
+  fontSize: 256
   fontStyle: Bold
-  maxWidth: 946
+  maxWidth: 4000
   lineSpacing: 10
 category:
   start:
@@ -17,24 +17,24 @@ category:
   fontStyle: Regular
 info:
   start:
-    px: 800
-    py: 700
-  fgHexColor: "#A0A0A0"
-  fontSize: 38
+    px: 2500
+    py: 2500
+  fgHexColor: "#FFFFFFF"
+  fontSize: 150
   fontStyle: Regular
-  separator: " - "
+  separator: " / "
 tags:
   start:
-    px: 120
-    py: 600
-  fgHexColor: "#FFFFFF"
-  bgHexColor: "#7F7776"
-  fontSize: 22
+    px: 300
+    py: 2000
+  fgHexColor: "#999999"
+  bgHexColor: "#FFFFFF"
+  fontSize: 75
   fontStyle: Medium
   boxAlign: Left
-  boxSpacing: 6
+  boxSpacing: 10
   boxPadding:
-    top: 6
-    right: 10
-    bottom: 6
-    left: 8
+    top: 20
+    right: 20
+    bottom: 20
+    left: 20
