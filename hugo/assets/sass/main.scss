@@ -304,10 +304,11 @@ article {
     background: #fff6e4;
     padding: 1.5rem 1rem 1.5rem 2rem;
     margin: 1.3rem 0;
-    color: #5c5c5c;
+    color: #664d03;
     border-radius: 3px;
     position: relative;
     font-size: .9rem;
+    line-height: 1.8;
 
     &:before {
       content: "※";
@@ -320,6 +321,7 @@ article {
 
     &.alert {
       background: #ffeff2;
+      color: #842029;
 
       &:before {
         color: #ff7670;
@@ -328,6 +330,7 @@ article {
 
     &.success {
       background: #ddffdd;
+      color: #0f5132;
 
       &:before {
         color: #3c763d;
