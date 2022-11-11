@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>macM1 on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/macm1/</link>
+    <link>https://oda.world/tags/macm1/</link>
     <description>Recent content in macM1 on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/macm1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://oda.world/tags/macm1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
-      <link>https://blog.oda.world/posts/85/</link>
+      <link>https://oda.world/posts/85/</link>
       <pubDate>Wed, 09 Mar 2022 23:17:01 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/85/</guid>
+      <guid>https://oda.world/posts/85/</guid>
       <description>前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面</description>
     </item>
     
     <item>
       <title>macOS M1でhomebrew</title>
-      <link>https://blog.oda.world/posts/28/</link>
+      <link>https://oda.world/posts/28/</link>
       <pubDate>Thu, 14 Jan 2021 00:06:53 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/28/</guid>
+      <guid>https://oda.world/posts/28/</guid>
       <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
     </item>
     

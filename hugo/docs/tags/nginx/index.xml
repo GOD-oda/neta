@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nginx on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/nginx/</link>
+    <link>https://oda.world/tags/nginx/</link>
     <description>Recent content in nginx on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Mar 2022 23:17:01 +0000</lastBuildDate><atom:link href="https://oda.world/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
-      <link>https://blog.oda.world/posts/85/</link>
+      <link>https://oda.world/posts/85/</link>
       <pubDate>Wed, 09 Mar 2022 23:17:01 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/85/</guid>
+      <guid>https://oda.world/posts/85/</guid>
       <description>前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面</description>
     </item>
     

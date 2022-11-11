@@ -1,4 +1,4 @@
-baseURL = 'https://blog.oda.world'
+baseURL = 'https://oda.world'
 languageCode = 'ja'
 title = 'ODA WORLD'
 publishDir = 'docs'

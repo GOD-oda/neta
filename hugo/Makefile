@@ -4,6 +4,6 @@ eyecatch-%:
 		-o static/images/ogImage/${@:eyecatch-%=%}.png \
 		content/posts/${@:eyecatch-%=%}.md
 
-.PHONY :deploy
-deploy:
-	sh deploy
+.PHONY :build
+build:
+	sh build

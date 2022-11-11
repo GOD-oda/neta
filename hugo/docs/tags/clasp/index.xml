@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>clasp on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/clasp/</link>
+    <link>https://oda.world/tags/clasp/</link>
     <description>Recent content in clasp on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sun, 24 Jan 2021 00:09:39 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/clasp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jan 2021 00:09:39 +0000</lastBuildDate><atom:link href="https://oda.world/tags/clasp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>claspのインストール</title>
-      <link>https://blog.oda.world/posts/30/</link>
+      <link>https://oda.world/posts/30/</link>
       <pubDate>Sun, 24 Jan 2021 00:09:39 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/30/</guid>
+      <guid>https://oda.world/posts/30/</guid>
       <description>環境 % nodenv -v nodenv 1.4.0 % npm -v 7.4.0 % node -v v15.5.1 % echo $SHELL /bin/zsh 手順 インストール とりあえずグローバルでいいのでインストールコマンドを実行する % npm i @google/clasp -g npm WARN ERESOLVE overriding peer dependency npm WARN</description>
     </item>
     

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wordpress on ODA WORLD</title>
-    <link>https://blog.oda.world/tags/wordpress/</link>
+    <link>https://oda.world/tags/wordpress/</link>
     <description>Recent content in wordpress on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sun, 30 Jan 2022 17:52:45 +0000</lastBuildDate><atom:link href="https://blog.oda.world/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jan 2022 17:52:45 +0000</lastBuildDate><atom:link href="https://oda.world/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wordpressのfunctions.phpの場所</title>
-      <link>https://blog.oda.world/posts/83/</link>
+      <link>https://oda.world/posts/83/</link>
       <pubDate>Sun, 30 Jan 2022 17:52:45 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/83/</guid>
+      <guid>https://oda.world/posts/83/</guid>
       <description>functions.phpはテーマごとに設定されるものなので外観 &amp;gt; テーマファイルエディターページにある とりあえずの備忘録として</description>
     </item>
     

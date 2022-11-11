@@ -6,7 +6,7 @@
   <meta name="description" content="前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面" />
   <meta property="og:title" content="Lightsail container serviceでnginx, php-fpm構成を試す" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="https://blog.oda.world/images/ogImage/default.png" />
+  <meta property="og:image" content="https://oda.world/images/ogImage/default.png" />
   <meta property="og:site_name" content="ODA WORLD" />
   <meta property="og:description" content="前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -15,20 +15,20 @@
   <title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
 
   
-  <link rel="apple-touch-icon" sizes="57x57" href="https://blog.oda.world/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="https://blog.oda.world/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="https://blog.oda.world/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://blog.oda.world/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="https://blog.oda.world/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="https://blog.oda.world/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="https://blog.oda.world/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="https://blog.oda.world/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://blog.oda.world/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="https://blog.oda.world/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://blog.oda.world/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="https://blog.oda.world/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://blog.oda.world/favicon-16x16.png">
-  <link rel="manifest" href="https://blog.oda.world/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="https://oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://oda.world/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://blog.oda.world/sass/main.min.61cabbbf1317d1456aa557fa362c03d95ff60347e1abd5f5d6356a6f0645bd87.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.61cabbbf1317d1456aa557fa362c03d95ff60347e1abd5f5d6356a6f0645bd87.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -60,17 +60,17 @@
       <div class="icon-content d-flex justify-content-evenly">
         
         
-        <a href="https://github.com/GOD-oda"><img src="https://blog.oda.world/images/github.png"></a>
+        <a href="https://github.com/GOD-oda"><img src="https://oda.world/images/github.png"></a>
         
         
-        <a href="https://www.facebook.com/last.pass.oda"><img src="https://blog.oda.world/images/facebook.png"></a>
+        <a href="https://www.facebook.com/last.pass.oda"><img src="https://oda.world/images/facebook.png"></a>
         
         
-        <a href="https://twitter.com/@oskfjzp"><img src="https://blog.oda.world/images/twitter.png"></a>
+        <a href="https://twitter.com/@oskfjzp"><img src="https://oda.world/images/twitter.png"></a>
         
         
         
-        <a href="https://blog.oda.world/index.xml"><img src="https://blog.oda.world/images/feed.png"></a>
+        <a href="https://oda.world/index.xml"><img src="https://oda.world/images/feed.png"></a>
       </div>
     </div>
   </header>
@@ -190,7 +190,7 @@ Lightsail container serviceがどういうものかは割愛<br>
 ├── docker-compose.yml
 └── src
 </code></pre><p>コンテナ起動して<code>localhost:8000</code>にアクセスするとlaravelのトップページが表示されるはず</p>
-<figure><img src="https://blog.oda.world/images/85/2.webp"/>
+<figure><img src="https://oda.world/images/85/2.webp"/>
 </figure>
 
 <h1 id="イメージをビルドしてdocker-hubにプッシュする">イメージをビルドしてdocker hubにプッシュする</h1>
@@ -301,37 +301,37 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 </ul>
 <p>成功するとdocker hubで確認できる</p>
 <p>それぞれのアーキテクチャにamd64が含まれていればOK</p>
-<figure><img src="https://blog.oda.world/images/85/3.webp"/>
+<figure><img src="https://oda.world/images/85/3.webp"/>
 </figure>
 
-<figure><img src="https://blog.oda.world/images/85/4.webp"/>
+<figure><img src="https://oda.world/images/85/4.webp"/>
 </figure>
 
 <h1 id="lightsail-container-serviceにデプロイ">Lightsail container serviceにデプロイ</h1>
 <p>ここからは画面ポチポチ作業ゲー</p>
-<figure><img src="https://blog.oda.world/images/85/5.webp"/>
+<figure><img src="https://oda.world/images/85/5.webp"/>
 </figure>
 
-<figure><img src="https://blog.oda.world/images/85/6.webp"/>
+<figure><img src="https://oda.world/images/85/6.webp"/>
 </figure>
 
 <p>regionは東京、capacityはNa、scaleは1</p>
-<figure><img src="https://blog.oda.world/images/85/7.webp"/>
+<figure><img src="https://oda.world/images/85/7.webp"/>
 </figure>
 
 <p>deploymentはSpecify a custom deploymentを選択してdocker hubのイメージを指定する</p>
 <p>また、nginxコンテナにパブリックエンドポイントを設定する</p>
-<figure><img src="https://blog.oda.world/images/85/8.webp"/>
+<figure><img src="https://oda.world/images/85/8.webp"/>
 </figure>
 
 <p>コンテナサービス名は<code>sample</code>とする</p>
 <p>最後にCreate container serviceボタンを押して作成中になる</p>
-<figure><img src="https://blog.oda.world/images/85/10.webp"/>
+<figure><img src="https://oda.world/images/85/10.webp"/>
 </figure>
 
 <p>完了したらpublic domainのリンクをクリックしてトップページが表示されればOK</p>
 <p>お疲れっした</p>
-<figure><img src="https://blog.oda.world/images/85/9.webp"/>
+<figure><img src="https://oda.world/images/85/9.webp"/>
 </figure>
 
 <p>完成コード再掲</p>
@@ -348,14 +348,14 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 <h2 id="cpuアーキテクチャ">CPUアーキテクチャ</h2>
 <p>今回使った<code>nginx:1.21-alpine</code>も<code>php:8.1.3-fpm</code>もarm64だと死ぬんだよな</p>
 <p><code>--platform</code>をつけずにdocker hubにプッシュするとしっかりと<code>linux/arm64/v8</code>になってる</p>
-<figure><img src="https://blog.oda.world/images/85/11.webp"/>
+<figure><img src="https://oda.world/images/85/11.webp"/>
 </figure>
 
-<figure><img src="https://blog.oda.world/images/85/12.webp"/>
+<figure><img src="https://oda.world/images/85/12.webp"/>
 </figure>
 
 <p>これを利用してデプロイすると失敗するんだけど、そのログがこれ</p>
-<figure><img src="https://blog.oda.world/images/85/13.webp"/>
+<figure><img src="https://oda.world/images/85/13.webp"/>
 </figure>
 
 <p><a href="https://dev.classmethod.jp/articles/how-to-fix-standard-init-linux-error/">こちらの記事</a>のエラーパターンその3が該当したっぽくて、amd64にしたら動いたと</p>
@@ -374,16 +374,16 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
   }
 }
 </code></pre><p>これでデプロイすると何故か死ぬ</p>
-<figure><img src="https://blog.oda.world/images/85/14.webp"/>
+<figure><img src="https://oda.world/images/85/14.webp"/>
 </figure>
 
 <p>nginx→php-fpmってtcpじゃね？だからtcpで9000を解放したらいけんじゃね？とかいう安直な考えでやってみた</p>
 <p>が！！！</p>
 <p>ダメ！！！</p>
-<figure><img src="https://blog.oda.world/images/85/15.webp"/>
+<figure><img src="https://oda.world/images/85/15.webp"/>
 </figure>
 
-<figure><img src="https://blog.oda.world/images/85/1.webp"/>
+<figure><img src="https://oda.world/images/85/1.webp"/>
 </figure>
 
 <p><a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services">この図</a>を見ると1つのNode内に複数のContainer1, 2, 3がある（Nodeが2つなのはscaleが2になっているから</p>
@@ -406,19 +406,19 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
     <div class="tags">
   
     
-      <a href="https://blog.oda.world/tags/nginx/" class="tag"># nginx</a>
+      <a href="https://oda.world/tags/nginx/" class="tag"># nginx</a>
     
-      <a href="https://blog.oda.world/tags/macm1/" class="tag"># macM1</a>
+      <a href="https://oda.world/tags/macm1/" class="tag"># macM1</a>
     
-      <a href="https://blog.oda.world/tags/php/" class="tag"># php</a>
+      <a href="https://oda.world/tags/php/" class="tag"># php</a>
     
-      <a href="https://blog.oda.world/tags/php-fpm/" class="tag"># php-fpm</a>
+      <a href="https://oda.world/tags/php-fpm/" class="tag"># php-fpm</a>
     
-      <a href="https://blog.oda.world/tags/amazon-lightsail/" class="tag"># amazon lightsail</a>
+      <a href="https://oda.world/tags/amazon-lightsail/" class="tag"># amazon lightsail</a>
     
-      <a href="https://blog.oda.world/tags/laravel/" class="tag"># laravel</a>
+      <a href="https://oda.world/tags/laravel/" class="tag"># laravel</a>
     
-      <a href="https://blog.oda.world/tags/amazon-lightsail-container-sevice/" class="tag"># amazon lightsail container sevice</a>
+      <a href="https://oda.world/tags/amazon-lightsail-container-sevice/" class="tag"># amazon lightsail container sevice</a>
     
   
 </div>

@@ -2,225 +2,225 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ODA WORLD</title>
-    <link>https://blog.oda.world/</link>
+    <link>https://oda.world/</link>
     <description>Recent content on ODA WORLD</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sat, 15 Oct 2022 14:44:12 +0900</lastBuildDate><atom:link href="https://blog.oda.world/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Oct 2022 14:44:12 +0900</lastBuildDate><atom:link href="https://oda.world/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>amazon lightsail container serviceのイメージを削除するgithub actions</title>
-      <link>https://blog.oda.world/posts/126/</link>
+      <link>https://oda.world/posts/126/</link>
       <pubDate>Sat, 15 Oct 2022 14:44:12 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/126/</guid>
+      <guid>https://oda.world/posts/126/</guid>
       <description>amazon lightsail container serviceに保持できるイメージ数は合計150なのでいつかは上限に達する その時に画面ポチポチで削除するのは手間でめんどいので自動でや</description>
     </item>
     
     <item>
       <title>lightsail container serviceで保存できるイメージ数の上限</title>
-      <link>https://blog.oda.world/posts/124/</link>
+      <link>https://oda.world/posts/124/</link>
       <pubDate>Sat, 08 Oct 2022 22:37:51 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/124/</guid>
+      <guid>https://oda.world/posts/124/</guid>
       <description>結論 最大150個 確認 ECRを使わない場合にここに溜まっていく 上限に達した状態でpushした時 % aws lightsail push-container-image --service-name playground --label app --image playground-app . . . InvalidInputException: Maximum number of container service images has been reached {</description>
     </item>
     
     <item>
       <title>tagprの導入</title>
-      <link>https://blog.oda.world/posts/120/</link>
+      <link>https://oda.world/posts/120/</link>
       <pubDate>Fri, 07 Oct 2022 19:36:25 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/120/</guid>
+      <guid>https://oda.world/posts/120/</guid>
       <description>前提 デプロイをgithub actionsで行っている バージョニングやリリース用タグを自動で打ちたい tagprとは いい感じにリリース用PRとC</description>
     </item>
     
     <item>
       <title>laravelでslack通知</title>
-      <link>https://blog.oda.world/posts/115/</link>
+      <link>https://oda.world/posts/115/</link>
       <pubDate>Thu, 08 Sep 2022 15:30:37 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/115/</guid>
+      <guid>https://oda.world/posts/115/</guid>
       <description>環境 laravel/framework: ^9.2 laravel/slack-notification-channel: ^2.4 想定シーン 全ての例外をスラックに通知する アタッチメントを利用する 用意するもの slackのwebhook URL 登場人物 App\Exception\Handler App\Notifications\ExceptionNotification App\Notifications\SlackNotifiable Illuminate\Notifications\Messages\SlackMessage Illuminate\Notifications\Messages\SlackAttachment 実装 パ</description>
     </item>
     
     <item>
       <title>phpのenumをいい感じに使いたい</title>
-      <link>https://blog.oda.world/posts/106/</link>
+      <link>https://oda.world/posts/106/</link>
       <pubDate>Mon, 08 Aug 2022 23:00:00 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/106/</guid>
+      <guid>https://oda.world/posts/106/</guid>
       <description>想定するケース コンテキストによって異なる属性を共通の型として扱いたいというケースで、要するにマッピングの話 例えばAとBという記事投稿サイトに</description>
     </item>
     
     <item>
       <title>Laravelでユースケースのテストをどう書くか</title>
-      <link>https://blog.oda.world/posts/104/</link>
+      <link>https://oda.world/posts/104/</link>
       <pubDate>Wed, 20 Jul 2022 23:26:28 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/104/</guid>
+      <guid>https://oda.world/posts/104/</guid>
       <description>結論 ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること 必ずこう書かないといけないということはないと思うけど意識す</description>
     </item>
     
     <item>
       <title>aws cliを使ってLightsail container serviceにゼロからデプロイする</title>
-      <link>https://blog.oda.world/posts/88/</link>
+      <link>https://oda.world/posts/88/</link>
       <pubDate>Tue, 12 Jul 2022 23:44:00 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/88/</guid>
+      <guid>https://oda.world/posts/88/</guid>
       <description>前提 awsアカウントを作成しプロファイルを設定済み awsコマンドはプロファイルを指定して実行する 本記事で出てくる{profile}は置き換え</description>
     </item>
     
     <item>
       <title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
-      <link>https://blog.oda.world/posts/85/</link>
+      <link>https://oda.world/posts/85/</link>
       <pubDate>Wed, 09 Mar 2022 23:17:01 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/85/</guid>
+      <guid>https://oda.world/posts/85/</guid>
       <description>前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面</description>
     </item>
     
     <item>
       <title>duコマンドのオプション</title>
-      <link>https://blog.oda.world/posts/84/</link>
+      <link>https://oda.world/posts/84/</link>
       <pubDate>Fri, 04 Mar 2022 13:26:52 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/84/</guid>
+      <guid>https://oda.world/posts/84/</guid>
       <description>duとは ディレクトリ容量をいい感じに出してくれるコマンド du - estimate file space usage % man du NAME du - estimate file space usage . . . オプション -s * ディレクトリ配下のディレクトリは</description>
     </item>
     
     <item>
       <title>wordpressのfunctions.phpの場所</title>
-      <link>https://blog.oda.world/posts/83/</link>
+      <link>https://oda.world/posts/83/</link>
       <pubDate>Sun, 30 Jan 2022 17:52:45 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/83/</guid>
+      <guid>https://oda.world/posts/83/</guid>
       <description>functions.phpはテーマごとに設定されるものなので外観 &amp;gt; テーマファイルエディターページにある とりあえずの備忘録として</description>
     </item>
     
     <item>
       <title>macでEarthlyを使ってみる</title>
-      <link>https://blog.oda.world/posts/79/</link>
+      <link>https://oda.world/posts/79/</link>
       <pubDate>Tue, 16 Nov 2021 15:08:35 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/79/</guid>
+      <guid>https://oda.world/posts/79/</guid>
       <description>ゴール earthlyコマンドを使えるようにする goでチュートリアルを進める Earthlyとは チュートリアルにはこう書かれていた Earthly is a build automation tool that</description>
     </item>
     
     <item>
       <title>Serverless Frameworkを使ってみる</title>
-      <link>https://blog.oda.world/posts/76/</link>
+      <link>https://oda.world/posts/76/</link>
       <pubDate>Sat, 09 Oct 2021 15:45:49 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/76/</guid>
+      <guid>https://oda.world/posts/76/</guid>
       <description>ゴール AWS Lambdaにデプロイと実行でserverlessテンプレートの内容を表示する AWS Lambdaのランタイムはnode.js14 デプロイ</description>
     </item>
     
     <item>
       <title>dynamodb localにphp sdkで接続する</title>
-      <link>https://blog.oda.world/posts/74/</link>
+      <link>https://oda.world/posts/74/</link>
       <pubDate>Thu, 16 Sep 2021 00:23:34 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/74/</guid>
+      <guid>https://oda.world/posts/74/</guid>
       <description>前提 docker-composeを使う dynamodb localを使う php sdk v3を使う composerを使う macOS ゴール テーブルを作る 項目を追加する scanコマ</description>
     </item>
     
     <item>
       <title>DynamoDBをローカル環境に作る</title>
-      <link>https://blog.oda.world/posts/72/</link>
+      <link>https://oda.world/posts/72/</link>
       <pubDate>Mon, 30 Aug 2021 20:03:39 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/72/</guid>
+      <guid>https://oda.world/posts/72/</guid>
       <description>前提 ローカルでDynamoDBに関するコマンドを実行する docker-compose.ymlを使う 作ったテーブルや項目は残しておきたい aws</description>
     </item>
     
     <item>
       <title>brewで新しいphpをインストールする</title>
-      <link>https://blog.oda.world/posts/40/</link>
+      <link>https://oda.world/posts/40/</link>
       <pubDate>Tue, 17 Aug 2021 15:02:04 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/40/</guid>
+      <guid>https://oda.world/posts/40/</guid>
       <description>環境 php 7.3 brew 2.6.2 zsh % php -v PHP 7.3.11 (cli) (built: Apr 17 2020 19:14:14) ( NTS ) Copyright (c) 1997-2018 The PHP Group Zend Engine v3.3.11, Copyright (c) 1998-2018 Zend Technologies % brew -v Homebrew 2.6.2 Homebrew/homebrew-core (git revision df724f; last commit 2020-12-17) Homebrew/homebrew-cask (git revision d4fbc; last commit 2020-12-18) 手順 インストール可能なphpバー</description>
     </item>
     
     <item>
       <title>curlのバージョン確認</title>
-      <link>https://blog.oda.world/posts/41/</link>
+      <link>https://oda.world/posts/41/</link>
       <pubDate>Tue, 17 Aug 2021 14:59:53 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/41/</guid>
+      <guid>https://oda.world/posts/41/</guid>
       <description>コマンド curl -V % curl -V curl 7.64.1 (x86_64-apple-darwin19.0) libcurl/7.64.1 (SecureTransport) LibreSSL/2.8.3 zlib/1.2.11 nghttp2/1.39.2 Release-Date: 2019-03-27 Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp Features: AsynchDNS GSS-API HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM NTLM_WB SPNEGO SSL UnixSockets</description>
     </item>
     
     <item>
       <title>特定ディレクトリ配下のファイル合計行数を算出する</title>
-      <link>https://blog.oda.world/posts/44/</link>
+      <link>https://oda.world/posts/44/</link>
       <pubDate>Tue, 17 Aug 2021 02:55:57 +0900</pubDate>
       
-      <guid>https://blog.oda.world/posts/44/</guid>
+      <guid>https://oda.world/posts/44/</guid>
       <description>コマンド % find /path/to/directory -name &amp;#34;*.php&amp;#34; | xargs wc -l Laravelで確認 % ls -l total 632 drwxr-xr-x 26 odatakahiro staff 832 6 22 11:41 . drwxr-xr-x 30 odatakahiro staff 960 6 22 11:41 .. -rw-r--r-- 1 odatakahiro staff 220 6 16 00:48 .editorconfig -rw-r--r-- 1 odatakahiro staff 920 6 22 11:41 .env -rw-r--r-- 1 odatakahiro staff 869 6</description>
     </item>
     
     <item>
       <title>gasのtimezone設定</title>
-      <link>https://blog.oda.world/posts/55/</link>
+      <link>https://oda.world/posts/55/</link>
       <pubDate>Sun, 25 Jul 2021 22:27:03 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/55/</guid>
+      <guid>https://oda.world/posts/55/</guid>
       <description>設定からapplication.jsonを表示できるようにする timeZoneを指定のものに設定する</description>
     </item>
     
     <item>
       <title>slow_query_log確認コマンド</title>
-      <link>https://blog.oda.world/posts/54/</link>
+      <link>https://oda.world/posts/54/</link>
       <pubDate>Tue, 20 Jul 2021 16:57:02 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/54/</guid>
+      <guid>https://oda.world/posts/54/</guid>
       <description>TABLEでのログ 前提 slow_query_logがONになていること mysql&amp;gt; show variables like &amp;#39;%slow_query%&amp;#39;; +---------------------+----------------------------------------------+ | Variable_name | Value | +---------------------+----------------------------------------------+ | slow_query_log | ON | | slow_query_log_file | /rdsdbdata/log/slowquery/mysql-slowquery.log | +---------------------+----------------------------------------------+ 2 rows in set (0.00 sec) log_ou</description>
     </item>
     
     <item>
       <title>yumでインストール済みパッケージを表示する</title>
-      <link>https://blog.oda.world/posts/43/</link>
+      <link>https://oda.world/posts/43/</link>
       <pubDate>Tue, 15 Jun 2021 16:17:03 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/43/</guid>
+      <guid>https://oda.world/posts/43/</guid>
       <description>インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper Usage: yum [options] COMMAND List of Commands: autoremove Remove leaf packages check rpmdb の問題</description>
     </item>
     
     <item>
       <title>rubyのブロックについて</title>
-      <link>https://blog.oda.world/posts/37/</link>
+      <link>https://oda.world/posts/37/</link>
       <pubDate>Sat, 03 Apr 2021 13:27:48 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/37/</guid>
+      <guid>https://oda.world/posts/37/</guid>
       <description>環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 書き方 ブロックを仮引数として明示した書き方 コード def exec_block(&amp;amp;block) block.call end exec_block do p &amp;#39;hoge&amp;#39; end 結果 % ruby a.rb &amp;#34;hoge&amp;#34; 補足 &amp;a</description>
     </item>
     
     <item>
       <title>claspのインストール</title>
-      <link>https://blog.oda.world/posts/30/</link>
+      <link>https://oda.world/posts/30/</link>
       <pubDate>Sun, 24 Jan 2021 00:09:39 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/30/</guid>
+      <guid>https://oda.world/posts/30/</guid>
       <description>環境 % nodenv -v nodenv 1.4.0 % npm -v 7.4.0 % node -v v15.5.1 % echo $SHELL /bin/zsh 手順 インストール とりあえずグローバルでいいのでインストールコマンドを実行する % npm i @google/clasp -g npm WARN ERESOLVE overriding peer dependency npm WARN</description>
     </item>
     
     <item>
       <title>macOS M1でhomebrew</title>
-      <link>https://blog.oda.world/posts/28/</link>
+      <link>https://oda.world/posts/28/</link>
       <pubDate>Thu, 14 Jan 2021 00:06:53 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/28/</guid>
+      <guid>https://oda.world/posts/28/</guid>
       <description>インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; Password: ==&amp;gt; This script will install: /opt/homebrew/bin/brew /opt/homebrew/share/doc/homebrew /opt/homebrew/share/man/man1/brew.1 /opt/homebrew/share/zsh/site-functions/_brew /opt/homebrew/etc/bash_completion.d/brew /opt/homebrew Press RETURN to continue or any other key to abort ==&amp;gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew ==&amp;gt; Downloading and installing Homebrew... remote: Enumerating objects: 381, done. remote: Counting objects: 100% (381/381), done. remote: Compressing objects:</description>
     </item>
     
     <item>
       <title>特定のカラムでグルーピングされたもののうち特定のカラムが一番大きいレコードを抽出するSQL</title>
-      <link>https://blog.oda.world/posts/26/</link>
+      <link>https://oda.world/posts/26/</link>
       <pubDate>Wed, 02 Dec 2020 12:02:45 +0000</pubDate>
       
-      <guid>https://blog.oda.world/posts/26/</guid>
+      <guid>https://oda.world/posts/26/</guid>
       <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時 SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL; mys</description>
     </item>
     
