@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2022-03-14 10:31:37 &#43;0900 JST">2022/03/14 10:31:37</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-03-16 01:53:46 &#43;0900 JST">2022/03/16 01:53:46</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2022-03-14 10:31:37 &#43;0900 JST">2022/03/14 10:31:37</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-03-16 01:53:46 &#43;0900 JST">2022/03/16 01:53:46</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="前提">前提</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="前提">前提</h1>
 <ul>
 <li>ビルドしたイメージはdocker hubにプッシュする</li>
 <li>php-fpmではLaravelを動かす</li>
@@ -110,7 +113,7 @@ Lightsail container serviceがどういうものかは割愛<br>
 
 <p>完成したコード</p>
 <p><a href="https://github.com/GOD-oda/neta/tree/master/issues/85">https://github.com/GOD-oda/neta/tree/master/issues/85</a></p>
-<h1 id="ローカルで環境を用意する">ローカルで環境を用意する</h1>
+<h2 id="ローカルで環境を用意する">ローカルで環境を用意する</h1>
 <p>最初に用意するのはDockerfileとdocker-compose.yml</p>
 <p>まずはphp-fpmのDockerfileを<code>docker/php</code>に作る</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> php:8.1.3-fpm</span><span style="color:#960050;background-color:#1e0010">
@@ -193,7 +196,7 @@ Lightsail container serviceがどういうものかは割愛<br>
 <figure><img src="https://oda.world/images/85/2.webp"/>
 </figure>
 
-<h1 id="イメージをビルドしてdocker-hubにプッシュする">イメージをビルドしてdocker hubにプッシュする</h1>
+<h2 id="イメージをビルドしてdocker-hubにプッシュする">イメージをビルドしてdocker hubにプッシュする</h1>
 <h2 id="nginxのイメージ">nginxのイメージ</h2>
 <p>ここすんごいハマった箇所だけど、まずは結論から</p>
 <ol>
@@ -307,7 +310,7 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 <figure><img src="https://oda.world/images/85/4.webp"/>
 </figure>
 
-<h1 id="lightsail-container-serviceにデプロイ">Lightsail container serviceにデプロイ</h1>
+<h2 id="lightsail-container-serviceにデプロイ">Lightsail container serviceにデプロイ</h1>
 <p>ここからは画面ポチポチ作業ゲー</p>
 <figure><img src="https://oda.world/images/85/5.webp"/>
 </figure>
@@ -336,7 +339,7 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 
 <p>完成コード再掲</p>
 <p><a href="https://github.com/GOD-oda/neta/tree/master/issues/85">https://github.com/GOD-oda/neta/tree/master/issues/85</a></p>
-<h1 id="感想">感想</h1>
+<h2 id="感想">感想</h1>
 <ul>
 <li>ちょっとハマるポイントがあるけど僕みたいにネットワーク周り詳しくないけどコンテナ使いたいぞ！って人は良いサービスかなと思う</li>
 <li>定額なのでランニングコストは抑えられそうな気もする（データベースやロードバランサー等々も定額みたいね</li>
@@ -344,7 +347,7 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 <li>デプロイはやっぱ遅いっぽい</li>
 <li>datadogなどのagentを入れられるとかなんとか</li>
 </ul>
-<h1 id="ハマった点をもう少し">ハマった点をもう少し</h1>
+<h2 id="ハマった点をもう少し">ハマった点をもう少し</h1>
 <h2 id="cpuアーキテクチャ">CPUアーキテクチャ</h2>
 <p>今回使った<code>nginx:1.21-alpine</code>も<code>php:8.1.3-fpm</code>もarm64だと死ぬんだよな</p>
 <p><code>--platform</code>をつけずにdocker hubにプッシュするとしっかりと<code>linux/arm64/v8</code>になってる</p>
@@ -389,7 +392,7 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 <p><a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services">この図</a>を見ると1つのNode内に複数のContainer1, 2, 3がある（Nodeが2つなのはscaleが2になっているから</p>
 <p>nginxとphp-fpmのContainerができるはずなんだけど、このコンテナ間の通信は<code>localhost</code>を指定することで何故か可能になる</p>
 <p>うーむ、よくわからん</p>
-<h1 id="参考">参考</h1>
+<h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/announcing-amazon-lightsail-containers/">https://dev.classmethod.jp/articles/announcing-amazon-lightsail-containers/</a></li>
 <li><a href="https://note.varu3.me/n/nb9d691f9b307">https://note.varu3.me/n/nb9d691f9b307</a></li>
@@ -401,9 +404,9 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/nginx/" class="tag"># nginx</a>
@@ -422,6 +425,40 @@ docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t 
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提">前提</a></li>
+    <li><a href="#ローカルで環境を用意する">ローカルで環境を用意する</a></li>
+    <li><a href="#イメージをビルドしてdocker-hubにプッシュする">イメージをビルドしてdocker hubにプッシュする</a>
+      <ul>
+        <li><a href="#nginxのイメージ">nginxのイメージ</a></li>
+        <li><a href="#php-fpmのイメージ">php-fpmのイメージ</a></li>
+        <li><a href="#docker-hubにプッシュする">docker hubにプッシュする</a></li>
+      </ul>
+    </li>
+    <li><a href="#lightsail-container-serviceにデプロイ">Lightsail container serviceにデプロイ</a></li>
+    <li><a href="#感想">感想</a></li>
+    <li><a href="#ハマった点をもう少し">ハマった点をもう少し</a>
+      <ul>
+        <li><a href="#cpuアーキテクチャ">CPUアーキテクチャ</a></li>
+        <li><a href="#nginxのfastcgi_passの設定">nginxのfastcgi_passの設定</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

@@ -130,8 +130,8 @@ main {
  * main
  */
 article {
-  max-width: 960px;
-  margin: 0 auto;
+  //max-width: 960px;
+  //margin: 0 auto;
   word-wrap: break-word;
   color: #333;
   padding: 2rem 0;
@@ -164,176 +164,185 @@ article {
   }
 
   .section {
-    background: #fff;
-    border-radius: 10px;
-    @include sp {
-      border-radius: 0;
-    }
-    padding: 2rem;
-    @include sp {
-      padding: 1rem
+    .content {
+      background: #fff;
+      border-radius: 10px;
+      @include sp {
+        border-radius: 0;
+      }
+      padding: 2rem;
+      @include sp {
+        padding: 1rem
+      }
     }
 
     .iframe {
       max-width: 560px;
       margin: 0 auto;
     }
-  }
 
-  h1 {
-    margin: 3rem 0 1.7rem;
-    @include sp {
-      margin: 2rem 0 1.2rem;
-    }
+    .toc {
+      padding: 10px;
+      background: #fff;
+      border-radius: 10px;
+      top: 30px;
 
-    font-size: 2rem;
-    @include pc {
-      font-size: 2rem;
-    }
-    @include tablet {
-      font-size: 1.7rem;
-    }
-    @include sp {
-      font-size: 1.4rem;
-    }
-    border-bottom: 1px solid #D7DDE3;
-  }
-
-  h2 {
-    margin-top: 3rem;
-    margin-bottom: 1.7rem;
-
-    font-size: 1.7rem;
-    @include pc {
-      font-size: 1.7rem;
-    }
-    @include tablet {
-      font-size: 1.4rem;
-    }
-    @include sp {
-      font-size: 1.2rem;
-    }
-  }
-
-  .highlight[fn] {
-    position: relative;
-
-    &::before {
-      position: absolute;
-      background-color: #323e52!important;
-      color: #ddd;
-      border-radius: 3px;
-      top: 0;
-      left: 0;
-      content: attr(fn);
-      font-size: .8rem;
-      padding: .5rem;
-    }
-
-    pre {
-      padding: 3rem 1.1rem 1.1rem 1.1rem;
-      font-size: 0.8em;
-      border-radius: 3px;
-      line-height: 1.9;
-      color: #fff;
-
-      code {
-        word-wrap: initial;
-        padding: 0 !important;
-        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+      @include sp {
+        display: none;
       }
-    }
-  }
 
-  pre {
-    font-size: 0.8em;
-    border-radius: 3px;
-    line-height: 1.7;
-    background-color: #292A3B!important;
-    color: #f8f8f2;
-
-    code {
-      padding: 1.1rem !important;
-      background-color: #292A3B!important;
-      word-wrap: initial;
-      font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    }
-  }
-
-  ul, ol, p {
-    code {
-      padding: .2em .4em;
-      font-size: 85%;
-      background-color: #eee;
-      color: #444;
-      border-radius: 3px;
-      vertical-align: .1em;
-      font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-    }
-  }
-
-  ul {
-    padding-left: 2rem;
-    list-style-type: initial;
-
-    li {
-      list-style-type: initial;
-      margin: 0.3rem 0;
-    }
-  }
-
-  figure {
-    margin: 0 0 1rem;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  .card-panel {
-    border-radius: 6px;
-  }
-
-  blockquote {
-    color: #6e7781;
-    padding: 0 0 0 .5rem;
-    border-left: solid 5px #6e7781;
-  }
-
-  .message {
-    background: #fff6e4;
-    padding: 1.5rem 1rem 1.5rem 2rem;
-    margin: 1.3rem 0;
-    color: #664d03;
-    border-radius: 3px;
-    position: relative;
-    font-size: .9rem;
-    line-height: 1.8;
-
-    &:before {
-      content: "※";
-      color: #ffb84c;
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-52%);
-    }
-
-    &.alert {
-      background: #ffeff2;
-      color: #842029;
-
-      &:before {
-        color: #ff7670;
+      .toc-title {
+        margin-bottom: .5rem;
+      }
+      .toc-body {
+        ul {
+          font-size: .8rem;
+          padding-left: 1.5rem;
+        }
       }
     }
 
-    &.success {
-      background: #ddffdd;
-      color: #0f5132;
+    .content {
+      h2 {
+        margin: 3rem 0 1.7rem;
+        @include sp {
+          margin: 2rem 0 1.2rem;
+        }
 
-      &:before {
-        color: #3c763d;
+        font-size: 2rem;
+        @include pc {
+          font-size: 2rem;
+        }
+        @include tablet {
+          font-size: 1.7rem;
+        }
+        @include sp {
+          font-size: 1.4rem;
+        }
+        border-bottom: 1px solid #D7DDE3;
+      }
+
+      .highlight[fn] {
+        position: relative;
+
+        &::before {
+          position: absolute;
+          background-color: #323e52!important;
+          color: #ddd;
+          border-radius: 3px;
+          top: 0;
+          left: 0;
+          content: attr(fn);
+          font-size: .8rem;
+          padding: .5rem;
+        }
+
+        pre {
+          padding: 3rem 1.1rem 1.1rem 1.1rem;
+          font-size: 0.8em;
+          border-radius: 3px;
+          line-height: 1.9;
+          color: #fff;
+
+          code {
+            word-wrap: initial;
+            padding: 0 !important;
+            font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+          }
+        }
+      }
+
+      pre {
+        font-size: 0.8em;
+        border-radius: 3px;
+        line-height: 1.7;
+        background-color: #292A3B!important;
+        color: #f8f8f2;
+
+        code {
+          padding: 1.1rem !important;
+          background-color: #292A3B!important;
+          word-wrap: initial;
+          font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        }
+      }
+
+      ul, ol, p {
+        code {
+          padding: .2em .4em;
+          font-size: 85%;
+          background-color: #eee;
+          color: #444;
+          border-radius: 3px;
+          vertical-align: .1em;
+          font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+        }
+      }
+
+      ul {
+        padding-left: 2rem;
+        list-style-type: initial;
+
+        li {
+          list-style-type: initial;
+          margin: 0.3rem 0;
+        }
+      }
+
+      figure {
+        margin: 0 0 1rem;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .card-panel {
+        border-radius: 6px;
+      }
+
+      blockquote {
+        color: #6e7781;
+        padding: 0 0 0 .5rem;
+        border-left: solid 5px #6e7781;
+      }
+
+      .message {
+        background: #fff6e4;
+        padding: 1.5rem 1rem 1.5rem 2rem;
+        margin: 1.3rem 0;
+        color: #664d03;
+        border-radius: 3px;
+        position: relative;
+        font-size: .9rem;
+        line-height: 1.8;
+
+        &:before {
+          content: "※";
+          color: #ffb84c;
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-52%);
+        }
+
+        &.alert {
+          background: #ffeff2;
+          color: #842029;
+
+          &:before {
+            color: #ff7670;
+          }
+        }
+
+        &.success {
+          background: #ddffdd;
+          color: #0f5132;
+
+          &:before {
+            color: #3c763d;
+          }
+        }
       }
     }
   }

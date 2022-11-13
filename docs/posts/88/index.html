@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2022-07-12 23:44:00 &#43;0900 JST">2022/07/12 23:44:00</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-07-13 02:44:50 &#43;0900 JST">2022/07/13 02:44:50</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2022-07-12 23:44:00 &#43;0900 JST">2022/07/12 23:44:00</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-07-13 02:44:50 &#43;0900 JST">2022/07/13 02:44:50</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="前提">前提</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="前提">前提</h1>
 <ul>
 <li>awsアカウントを作成しプロファイルを設定済み
 <ul>
@@ -101,11 +104,11 @@
 <li>docker buildx</li>
 <li>ゴールはデプロイしたnginxのwelcomeページにアクセスする</li>
 </ul>
-<h1 id="awsコマンドインストール">awsコマンドインストール</h1>
+<h2 id="awsコマンドインストール">awsコマンドインストール</h1>
 <p>aws cliとlightsailctlのプラグインが必要なのでそれぞれbrewでインストールする</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew install awscli
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% brew install aws/tap/lightsailctl
-</code></pre></div><h1 id="コンテナサービス作成">コンテナサービス作成</h1>
+</code></pre></div><h2 id="コンテナサービス作成">コンテナサービス作成</h1>
 <p>コンテナサービスは1度しか作らないと思うのでサクッと作ってしまう</p>
 <p><code>--service-name</code>と<code>--power</code>と<code>--scale</code>は必須項目になる</p>
 <p>ここでは最小構成にしている</p>
@@ -133,7 +136,7 @@
 <span style="color:#f92672">}</span>
 </code></pre></div><p><code>--generate-cli-skeleton</code>と<code>--cli-input-json</code>オプションを利用して、テンプレートを作るのもひとつの手</p>
 <p>テンプレートを作っておくと同じようなコンテナサービスを簡単に複製することができるから便利っちゃ便利</p>
-<h1 id="イメージの用意">イメージの用意</h1>
+<h2 id="イメージの用意">イメージの用意</h1>
 <p>webサーバのコンテナとしてnginxのベースイメージだけのDockerfileを用意する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">FROM nginx:1.23
 </code></pre></div><p>ローカルでビルドしておく</p>
@@ -153,7 +156,7 @@ Digest: sha256:9cecd0d6f0542c8d26340966a4217825dbdcc3b158780d434416da4acfa4306f
 Image <span style="color:#e6db74">&#34;test-web:latest&#34;</span> registered.
 Refer to this image as <span style="color:#e6db74">&#34;:test.web.7&#34;</span> in deployments.
 </code></pre></div><p>この<code>:test.web.7</code>は後ほど使うのでメモしておく</p>
-<h1 id="コンテナのデプロイ">コンテナのデプロイ</h1>
+<h2 id="コンテナのデプロイ">コンテナのデプロイ</h1>
 <p>コンテナのデプロイにおいてはテンプレートを作って追いたほうが良い</p>
 <p>k8sのdeployment.yamlとかそんな感じ</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail create-container-service-deployment --generate-cli-skeleton &gt; container.json
@@ -212,7 +215,7 @@ Refer to this image as <span style="color:#e6db74">&#34;:test.web.7&#34;</span> 
 </code></pre></div><p><code>--cli-input-json</code>オプションを利用してデプロイする</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% aws lightsail create-container-service-deployment --profile <span style="color:#f92672">{</span>profile<span style="color:#f92672">}</span> --service-name test --cli-input-json file://container.json
 </code></pre></div><p>デプロイが完了したらpublic domainのURLにアクセスしてwelcome to nginxが表示されていることを確認する</p>
-<h1 id="参考">参考</h1>
+<h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/cli/latest/reference/lightsail/index.html?fid=3BE5EA8FA64943AD-0284EED1954F5F15">https://docs.aws.amazon.com/cli/latest/reference/lightsail/index.html?fid=3BE5EA8FA64943AD-0284EED1954F5F15</a></li>
 <li><a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-install-software">https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-install-software</a></li>
@@ -221,11 +224,33 @@ Refer to this image as <span style="color:#e6db74">&#34;:test.web.7&#34;</span> 
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提">前提</a></li>
+    <li><a href="#awsコマンドインストール">awsコマンドインストール</a></li>
+    <li><a href="#コンテナサービス作成">コンテナサービス作成</a></li>
+    <li><a href="#イメージの用意">イメージの用意</a></li>
+    <li><a href="#コンテナのデプロイ">コンテナのデプロイ</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

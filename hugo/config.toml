@@ -26,4 +26,6 @@ enableGitInfo = true
     lineNoStart = 1
     lineNumbersInTable = true
     noClasses = true
-
+  [markup.tableOfContents]
+    endLevel = 3
+    startLevel = 1

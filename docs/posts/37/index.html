@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2021-09-12 23:59:32 &#43;0900 JST">2021/09/12 23:59:32</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2021-09-12 23:59:32 &#43;0900 JST">2021/09/12 23:59:32</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="環境">環境</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="環境">環境</h1>
 <ul>
 <li>ruby 2.5.8</li>
 </ul>
@@ -97,7 +100,7 @@ ruby 2.5.8p224 <span style="color:#f92672">(</span>2020-03-31 revision 67882<spa
 </code></pre></div><ul>
 <li>a.rbにコードを書いて実行</li>
 </ul>
-<h1 id="書き方">書き方</h1>
+<h2 id="書き方">書き方</h1>
 <h2 id="ブロックを仮引数として明示した書き方">ブロックを仮引数として明示した書き方</h2>
 <p>コード</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exec_block</span>(<span style="color:#f92672">&amp;</span>block)
@@ -145,7 +148,7 @@ exec_block <span style="color:#66d9ef">do</span>
 </code></pre></div><p>確認</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
 <span style="color:#e6db74">&#34;hoge&#34;</span>
-</code></pre></div><h1 id="メリット">メリット</h1>
+</code></pre></div><h2 id="メリット">メリット</h1>
 <ul>
 <li>書き手が、前提が同じ状態で好きな処理をかける</li>
 <li>クロージャのとしての機能が得られる（<a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2#%E7%8A%B6%E6%85%8B%E3%82%92%E6%8C%81%E3%81%A3%E3%81%9F%E9%96%A2%E6%95%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%8C%E5%BE%97%E3%82%89%E3%82%8C%E3%82%8B">こちら</a>を参考に）</li>
@@ -166,7 +169,7 @@ exec_block <span style="color:#66d9ef">do</span>
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% ruby a.rb
 <span style="color:#ae81ff">2</span>
 <span style="color:#ae81ff">4</span>
-</code></pre></div><h1 id="参考">参考</h1>
+</code></pre></div><h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://qiita.com/kidach1/items/15cfee9ec66804c3afd2">https://qiita.com/kidach1/items/15cfee9ec66804c3afd2</a></li>
 <li><a href="https://language-and-engineering.hatenablog.jp/entry/20101118/p1">https://language-and-engineering.hatenablog.jp/entry/20101118/p1</a></li>
@@ -174,15 +177,40 @@ exec_block <span style="color:#66d9ef">do</span>
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/ruby/" class="tag"># ruby</a>
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#環境">環境</a></li>
+    <li><a href="#書き方">書き方</a>
+      <ul>
+        <li><a href="#ブロックを仮引数として明示した書き方">ブロックを仮引数として明示した書き方</a></li>
+        <li><a href="#ブロックを仮引数から省略した書き方">ブロックを仮引数から省略した書き方</a></li>
+      </ul>
+    </li>
+    <li><a href="#メリット">メリット</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

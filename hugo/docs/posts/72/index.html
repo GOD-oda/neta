@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,24 +78,27 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2021-09-12 16:48:16 &#43;0900 JST">2021/09/12 16:48:16</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2021-09-12 16:48:16 &#43;0900 JST">2021/09/12 16:48:16</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="前提">前提</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="前提">前提</h1>
 <ul>
 <li>ローカルでDynamoDBに関するコマンドを実行する</li>
 <li>docker-compose.ymlを使う</li>
 <li>作ったテーブルや項目は残しておきたい</li>
 <li>awsコマンドは打てる状態でshellスクリプトで実行する</li>
 </ul>
-<h1 id="やることとゴール">やることとゴール</h1>
+<h2 id="やることとゴール">やることとゴール</h1>
 <ul>
 <li>dynamodbのコンテナをdocker-compose.ymlで</li>
 <li>テーブル作成</li>
@@ -113,7 +116,7 @@
 │   ├── list-tables.sh
 │   └── scan.sh
 └── docker-compose.yml
-</code></pre></div><h1 id="環境用意">環境用意</h1>
+</code></pre></div><h2 id="環境用意">環境用意</h1>
 <h2 id="docker-composeyml">docker-compose.yml</h2>
 <p>まずは<code>docker-compose.yml</code>で<code>DynamoDB Local</code>イメージのコンテナの準備をする</p>
 <p>動作する必要最低限の<code>docker-compose.yml</code>はこうなる</p>
@@ -354,18 +357,18 @@ aws dynamodb <span style="color:#ae81ff">\
 │   └── scan.sh
 └── docker-compose.yml
 </code></pre></div><p><a href="https://github.com/GOD-oda/neta/tree/master/issues/72">https://github.com/GOD-oda/neta/tree/master/issues/72</a></p>
-<h1 id="余談">余談</h1>
+<h2 id="余談">余談</h1>
 <p>AWS公式での手順は<a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html">こちら</a></p>
-<h1 id="参考">参考</h1>
+<h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html#DynamoDBLocal.CommandLineOptions">https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html#DynamoDBLocal.CommandLineOptions</a></li>
 <li><a href="https://developers.freee.co.jp/entry/dynamodb-local">https://developers.freee.co.jp/entry/dynamodb-local</a></li>
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/docker/" class="tag"># docker</a>
@@ -374,6 +377,36 @@ aws dynamodb <span style="color:#ae81ff">\
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提">前提</a></li>
+    <li><a href="#やることとゴール">やることとゴール</a></li>
+    <li><a href="#環境用意">環境用意</a>
+      <ul>
+        <li><a href="#docker-composeyml">docker-compose.yml</a></li>
+        <li><a href="#テーブル作成">テーブル作成</a></li>
+        <li><a href="#項目挿入">項目挿入</a></li>
+        <li><a href="#scanで確認">scanで確認</a></li>
+        <li><a href="#環境変数とか">環境変数とか</a></li>
+        <li><a href="#最後に">最後に</a></li>
+      </ul>
+    </li>
+    <li><a href="#余談">余談</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,24 +78,27 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-11-14 00:45:06 &#43;0900 JST">2022/11/14 00:45:06</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-11-14 01:01:51 &#43;0900 JST">2022/11/14 01:01:51</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="前提">前提</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="前提">前提</h1>
 <ul>
 <li>Laravelの初期化が終わっている</li>
 <li><a href="https://lighthouse-php.com/">Lighthouse</a>を使う</li>
 <li>デフォルトのスキーマを利用する</li>
 </ul>
 <p>コードは<a href="https://github.com/GOD-oda/neta/tree/master/issues/129">こちら</a>にまとめてある</p>
-<h1 id="sqlite準備">sqlite準備</h1>
+<h2 id="sqlite準備">sqlite準備</h1>
 <ul>
 <li><code>DB_CONNECTION</code>を<code>sqlite</code>にする</li>
 <li><code>DB_DATABASE</code>をコメントアウトする</li>
@@ -115,7 +118,7 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 .
 </code></pre></div><p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker compose exec app php artisan migrate:migrate --seed
-</code></pre></div><h1 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
+</code></pre></div><h2 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
 <p>コンテナにてコマンドを実行する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require nuwave/lighthouse
 </code></pre></div><p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
@@ -172,7 +175,7 @@ DB_PASSWORD<span style="color:#f92672">=</span>
     <span style="color:#e6db74">&#34;When the account was last updated.&#34;</span>
     updated_at: <span style="color:#a6e22e">DateTime</span>!
 }
-</code></pre></div><h1 id="データ取得">データ取得</h1>
+</code></pre></div><h2 id="データ取得">データ取得</h1>
 <h2 id="複数のuserを取得">複数のUserを取得</h2>
 <ul>
 <li>paginatorが必須としている<code>count</code>を指定する</li>
@@ -207,7 +210,7 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(email:\&#34;cayla30@example.net\&#34;){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
 <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}}}</span>
 </code></pre></div><p>スキーマを見るとID指定は<code>required_without:email</code>、email指定は<code>required_without:id</code>となっているのでどちらかが必須となる</p>
-<h1 id="tips">TIPS</h1>
+<h2 id="tips">TIPS</h1>
 <h2 id="補完">補完</h2>
 <p>このようなシンタックスエラーが気になる時はヘルパーファイルを作ると良い</p>
 <figure><img src="https://oda.world/images/129/1.webp"/>
@@ -219,7 +222,7 @@ Wrote definitions <span style="color:#66d9ef">for</span> programmatically regist
 Wrote PHP definitions to /var/www/html/_lighthouse_ide_helper.php.
 
 It is recommended to add them to your .gitignore file.
-</code></pre></div><h1 id="参考">参考</h1>
+</code></pre></div><h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://lighthouse-php.com/">https://lighthouse-php.com/</a></li>
 <li><a href="https://graphql.org/">https://graphql.org/</a></li>
@@ -230,9 +233,9 @@ It is recommended to add them to your .gitignore file.
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/laravel/" class="tag"># laravel</a>
@@ -241,6 +244,37 @@ It is recommended to add them to your .gitignore file.
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提">前提</a></li>
+    <li><a href="#sqlite準備">sqlite準備</a></li>
+    <li><a href="#lighthouseをインストールする">Lighthouseをインストールする</a></li>
+    <li><a href="#データ取得">データ取得</a>
+      <ul>
+        <li><a href="#複数のuserを取得">複数のUserを取得</a></li>
+        <li><a href="#1件取得">1件取得</a></li>
+      </ul>
+    </li>
+    <li><a href="#tips">TIPS</a>
+      <ul>
+        <li><a href="#補完">補完</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

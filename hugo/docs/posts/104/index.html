@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2022-07-20 23:26:28 &#43;0900 JST">2022/07/20 23:26:28</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2022-07-20 23:26:28 &#43;0900 JST">2022/07/20 23:26:28</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-09-12 14:58:51 &#43;0900 JST">2022/09/12 14:58:51</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="結論">結論</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="結論">結論</h1>
 <ul>
 <li>ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること</li>
 <li>必ずこう書かないといけないということはないと思うけど意識すると良いねという話</li>
@@ -110,13 +113,13 @@
 <p>ドメイン層で公開されている(publicな)メソッドなどを組み合わせてユースケースを実現すること</p>
 </blockquote>
 <p>要するにユースケースのテストとはこれらのメソッドが適切に動作することを担保するものであると</p>
-<h1 id="書く前に">書く前に</h1>
+<h2 id="書く前に">書く前に</h1>
 <p>dockerを利用してあらかじめ環境を用意しておくのだがコード全体は以下になる</p>
 <p><a href="https://github.com/GOD-oda/neta/tree/master/issues/104">https://github.com/GOD-oda/neta/tree/master/issues/104</a></p>
 <p>実際に実行したいなら任意のディレクトリでイメージビルドするなりして準備しておく</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker build -t sample-php .
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker run -v $PWD/src:/var/www/html -it sample-php bash
-</code></pre></div><h1 id="実際に書いてみる">実際に書いてみる</h1>
+</code></pre></div><h2 id="実際に書いてみる">実際に書いてみる</h1>
 <p>ありがちな「タスクを作成する」というユースケースで考えてみる</p>
 <p>タスクはタイトルを持つTaskというドメインオブジェクトとする</p>
 <p>これを永続化するために<code>store()</code>というメソッドが必要になる</p>
@@ -209,9 +212,9 @@
 </code></pre></div><p>これでユースケースのテストは書けたわけだ</p>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/ddd/" class="tag"># DDD</a>
@@ -222,6 +225,25 @@
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#結論">結論</a></li>
+    <li><a href="#書く前に">書く前に</a></li>
+    <li><a href="#実際に書いてみる">実際に書いてみる</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2021-10-12 13:01:24 &#43;0900 JST">2021/10/12 13:01:24</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-11-08 16:00:37 &#43;0900 JST">2022/11/08 16:00:37</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2021-10-12 13:01:24 &#43;0900 JST">2021/10/12 13:01:24</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-11-08 16:00:37 &#43;0900 JST">2022/11/08 16:00:37</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <h1 id="前提">前提</h1>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <h2 id="前提">前提</h1>
 <ul>
 <li>docker-composeを使う</li>
 <li>dynamodb localを使う</li>
@@ -96,15 +99,15 @@
 <li>composerを使う</li>
 <li>macOS</li>
 </ul>
-<h1 id="ゴール">ゴール</h1>
+<h2 id="ゴール">ゴール</h1>
 <ul>
 <li>テーブルを作る</li>
 <li>項目を追加する</li>
 <li>scanコマンドで取得する</li>
 </ul>
-<h1 id="サンプルコード">サンプルコード</h1>
+<h2 id="サンプルコード">サンプルコード</h1>
 <p><a href="https://github.com/GOD-oda/neta/tree/master/issues/74">https://github.com/GOD-oda/neta/tree/master/issues/74</a></p>
-<h1 id="dynamodb-localの準備">dynamodb localの準備</h1>
+<h2 id="dynamodb-localの準備">dynamodb localの準備</h1>
 <p><code>docker-compose.yml</code>は<a href="https://blog.oda.world/posts/72/">こちら</a>を参考に用意する</p>
 <p>完成系は以下</p>
 <div class="highlight" fn="docker-compose.yml"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
@@ -119,7 +122,7 @@
 <span style="color:#f92672">volumes</span>:
   <span style="color:#f92672">dynamodb</span>:
     <span style="color:#f92672">driver</span>: <span style="color:#ae81ff">local</span>
-</code></pre></div><h1 id="php-sdkの準備">php sdkの準備</h1>
+</code></pre></div><h2 id="php-sdkの準備">php sdkの準備</h1>
 <h2 id="php環境を用意する">php環境を用意する</h2>
 <p>最小限のphpイメージとcomposerが使えるようにDockerfileを<code>src</code>ディレクトリに用意する</p>
 <p>また<code>docker compose</code>を利用するので<code>docker-compose.yml</code>も用意する</p>
@@ -207,7 +210,7 @@ Use the <span style="color:#e6db74">`</span>composer fund<span style="color:#e6d
     └── composer.lock
 
 <span style="color:#ae81ff">1</span> directory, <span style="color:#ae81ff">4</span> files
-</code></pre></div><h1 id="envの用意">envの用意</h1>
+</code></pre></div><h2 id="envの用意">envの用意</h1>
 <p>DynamoDBに限らずawsのサービスにアクセスするためには<code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>が必要になるので<code>.env</code>を`用意する</p>
 <p>ローカルなのでfakeでOKだがちゃんと<code>.gitignore</code>に指定すること</p>
 <div class="highlight" fn="src/.env"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-.env" data-lang=".env">AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>fake
@@ -233,7 +236,7 @@ services:
   volumes:
     dynamodb:
       driver: local
-</code></pre></div><h1 id="テーブル作成">テーブル作成</h1>
+</code></pre></div><h2 id="テーブル作成">テーブル作成</h1>
 <p>ここまできたらあとはphpから操作するだけ</p>
 <p><code>src</code>ディレクトリに<code>create.php</code>を作ってテーブル作成のスクリプトを書いていく</p>
 <p>今回は<code>name</code>という属性を持つ<code>Persons</code>テーブルを作る</p>
@@ -386,7 +389,7 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
   array<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h1 id="テーブル確認">テーブル確認</h1>
+</code></pre></div><h2 id="テーブル確認">テーブル確認</h1>
 <p>無事作成できたらテーブルを確認しよう</p>
 <p><code>src</code>ディレクトリに<code>tables.php</code>スクリプトを作って同じように実行する</p>
 <div class="highlight" fn="src/tables.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
@@ -452,7 +455,7 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
   array<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h1 id="項目作成">項目作成</h1>
+</code></pre></div><h2 id="項目作成">項目作成</h1>
 <p>次は作ったテーブルに項目を追加してみる</p>
 <p><code>src</code>ディレクトリに<code>insert.php</code>スクリプトを作り、同じように実行する</p>
 <p><code>putItem()</code>を使うのだがどうやら追加する項目のjsonを作って<code>Marshaler</code>クラスに一度通す必要がある</p>
@@ -569,7 +572,7 @@ object<span style="color:#f92672">(</span>Aws<span style="color:#ae81ff">\R</spa
   array<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
   <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h1 id="項目取得">項目取得</h1>
+</code></pre></div><h2 id="項目取得">項目取得</h1>
 <p>最後に作成した項目を取得する</p>
 <p>方法は<code>getItem()</code>、<code>query()</code>、<code>scan()</code>などあるがここでは一番簡単な<code>scan</code>を使う</p>
 <p>特に条件を指定せずそのまま実行してみよう</p>
@@ -607,7 +610,7 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
   <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">]=</span>&gt;
   string<span style="color:#f92672">(</span>3<span style="color:#f92672">)</span> <span style="color:#e6db74">&#34;foo&#34;</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><h1 id="参考">参考</h1>
+</code></pre></div><h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html">https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html</a></li>
 <li><a href="https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/">https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/</a></li>
@@ -617,9 +620,9 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/docker/" class="tag"># docker</a>
@@ -632,6 +635,38 @@ array<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前提">前提</a></li>
+    <li><a href="#ゴール">ゴール</a></li>
+    <li><a href="#サンプルコード">サンプルコード</a></li>
+    <li><a href="#dynamodb-localの準備">dynamodb localの準備</a></li>
+    <li><a href="#php-sdkの準備">php sdkの準備</a>
+      <ul>
+        <li><a href="#php環境を用意する">php環境を用意する</a></li>
+        <li><a href="#composerでphp-sdkをインストール">composerでphp sdkをインストール</a></li>
+      </ul>
+    </li>
+    <li><a href="#envの用意">envの用意</a></li>
+    <li><a href="#テーブル作成">テーブル作成</a></li>
+    <li><a href="#テーブル確認">テーブル確認</a></li>
+    <li><a href="#項目作成">項目作成</a></li>
+    <li><a href="#項目取得">項目取得</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 

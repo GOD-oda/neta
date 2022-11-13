@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.50d6e56410147544b69d3b32821363cf7c9f4e3afaee125062f67ee727ce5c9a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -78,17 +78,20 @@
 
 
 <article>
-  <aside class="mb-1 text-end">
-    <div class="publish-date">
-      公開日: <time datetime="2022-10-15 14:44:12 &#43;0900 JST">2022/10/15 14:44:12</time>
-    </div>
-    <div class="updated-date">
-      更新日: <time datetime="2022-11-09 00:52:11 &#43;0900 JST">2022/11/09 00:52:11</time>
-    </div>
-  </aside>
+  <div class="container">
+    <aside class="mb-1 text-end">
+      <div class="publish-date">
+        公開日: <time datetime="2022-10-15 14:44:12 &#43;0900 JST">2022/10/15 14:44:12</time>
+      </div>
+      <div class="updated-date">
+        更新日: <time datetime="2022-11-09 00:52:11 &#43;0900 JST">2022/11/09 00:52:11</time>
+      </div>
+    </aside>
 
-  <div class="section">
-    <p>amazon lightsail container serviceに保持できるイメージ数は合計150なのでいつかは上限に達する</p>
+    <div class="section row">
+      <div class="col-md-9">
+        <div class="content">
+          <p>amazon lightsail container serviceに保持できるイメージ数は合計150なのでいつかは上限に達する</p>
 <p>その時に画面ポチポチで削除するのは手間でめんどいので自動でやってしまおうという話</p>
 <p>実行タイミングは一旦は任意にしたかったのでgithub actionsから実行できるようにしている</p>
 <p>先に完成形を載せておく（shellスクリプトをあんまり書かないので雑なのはご愛嬌）</p>
@@ -139,7 +142,7 @@
 </span><span style="color:#e6db74">          fi</span>          
 </code></pre></div><p>構成はweb（ウェブサーバ）とapp（アプリケーションサーバ）になっている</p>
 <p>また各イメージ名は<code>web:{連番}</code>、<code>app:{連番}</code>として登録している</p>
-<h1 id="シークレットを登録する">シークレットを登録する</h1>
+<h2 id="シークレットを登録する">シークレットを登録する</h1>
 <p>今回必要なのは以下</p>
 <ul>
 <li>AWS_ACCESS_KEY_ID</li>
@@ -155,7 +158,7 @@
 <figure><img src="https://oda.world/images/126/2.webp"/>
 </figure>
 
-<h1 id="削除処理">削除処理</h1>
+<h2 id="削除処理">削除処理</h1>
 <p>サービスから全てのイメージを取得する</p>
 <p>ここで古い順に並べ替えているのは後のループ処理のため</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">LIGHTSAIL_CONTAINER_IMAGES<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>aws lightsail get-container-images --service-name <span style="color:#e6db74">${</span>{ secrets.LIGHTSAIL_SERVICE_NAME <span style="color:#e6db74">}</span><span style="color:#f92672">}</span> | jq <span style="color:#e6db74">&#39;.containerImages | reverse&#39;</span><span style="color:#66d9ef">)</span>
@@ -177,7 +180,7 @@ WEB_IMAGE_LENGTH<span style="color:#f92672">=</span><span style="color:#66d9ef">
     aws lightsail delete-container-image --service-name <span style="color:#e6db74">${</span>{ secrets.LIGHTSAIL_SERVICE_NAME <span style="color:#e6db74">}</span><span style="color:#f92672">}</span> --image <span style="color:#e6db74">&#34;</span>$IMAGE_NAME<span style="color:#e6db74">&#34;</span>
   <span style="color:#66d9ef">done</span>
 <span style="color:#66d9ef">fi</span>
-</code></pre></div><h1 id="github-actions実行">github actions実行</h1>
+</code></pre></div><h2 id="github-actions実行">github actions実行</h1>
 <p>ここから実行する</p>
 <figure><img src="https://oda.world/images/126/3.webp"/>
 </figure>
@@ -195,15 +198,15 @@ WEB_IMAGE_LENGTH<span style="color:#f92672">=</span><span style="color:#66d9ef">
 <figure><img src="https://oda.world/images/126/6.webp"/>
 </figure>
 </p>
-<h1 id="参考">参考</h1>
+<h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://docs.aws.amazon.com/cli/latest/reference/lightsail/delete-container-image.html">https://docs.aws.amazon.com/cli/latest/reference/lightsail/delete-container-image.html</a></li>
 </ul>
 
 
-    <hr>
+          <hr>
 
-    <div class="tags">
+          <div class="tags">
   
     
       <a href="https://oda.world/tags/amazon-lightsail/" class="tag"># amazon lightsail</a>
@@ -216,6 +219,26 @@ WEB_IMAGE_LENGTH<span style="color:#f92672">=</span><span style="color:#66d9ef">
     
   
 </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="toc">
+          <div class="toc-title">
+            目次
+          </div>
+          <div class="toc-body">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#シークレットを登録する">シークレットを登録する</a></li>
+    <li><a href="#削除処理">削除処理</a></li>
+    <li><a href="#github-actions実行">github actions実行</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </article>
 
