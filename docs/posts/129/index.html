@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="前提 Laravelの初期化が終わっている Lighthouseを使う コードはこちらにまとめてある sqlite準備 DB_CONNECTIONをs" />
+  <meta property="og:title" content="LaravelでGraphQLを使う" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://oda.world/images/ogImage/129.png" />
+  <meta property="og:site_name" content="ODA WORLD" />
+  <meta property="og:description" content="前提 Laravelの初期化が終わっている Lighthouseを使う コードはこちらにまとめてある sqlite準備 DB_CONNECTIONをs" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@oskfjzp" />
+  <meta name="twitter:player" content="@oskfjzp" />
+  <title>LaravelでGraphQLを使う</title>
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="https://oda.world/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://oda.world/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://oda.world/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://oda.world/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://oda.world/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://oda.world/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://oda.world/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://oda.world/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://oda.world/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://oda.world/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://oda.world/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://oda.world/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://oda.world/favicon-16x16.png">
+  <link rel="manifest" href="https://oda.world/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css">
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.0ca1a1c69303b0407b2f0292b1518d9577b329a26b00aa6cce8c1b01a1c96b11.css">
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M5XP83QSK8');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="text-center">LaravelでGraphQLを使う</h1>
+      <div class="icon-content d-flex justify-content-evenly">
+        
+        
+        <a href="https://github.com/GOD-oda"><img src="https://oda.world/images/github.png"></a>
+        
+        
+        <a href="https://www.facebook.com/last.pass.oda"><img src="https://oda.world/images/facebook.png"></a>
+        
+        
+        <a href="https://twitter.com/@oskfjzp"><img src="https://oda.world/images/twitter.png"></a>
+        
+        
+        
+        <a href="https://oda.world/index.xml"><img src="https://oda.world/images/feed.png"></a>
+      </div>
+    </div>
+  </header>
+
+
+
+<article>
+  <aside class="mb-1 text-end">
+    <div class="publish-date">
+      公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
+    </div>
+    <div class="updated-date">
+      更新日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
+    </div>
+  </aside>
+
+  <div class="section">
+    <h1 id="前提">前提</h1>
+<ul>
+<li>Laravelの初期化が終わっている</li>
+<li><a href="https://lighthouse-php.com/">Lighthouse</a>を使う</li>
+</ul>
+<p>コードは<a href="https://github.com/GOD-oda/neta/tree/master/issues/129">こちら</a>にまとめてある</p>
+<h1 id="sqlite準備">sqlite準備</h1>
+<ul>
+<li><code>DB_CONNECTION</code>を<code>sqlite</code>にする</li>
+<li><code>DB_DATABASE</code>をコメントアウトする</li>
+<li>空の<code>database/database.sqlite</code>を作成する</li>
+</ul>
+<div class="highlight" fn="src/.env"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env">.
+.
+.
+DB_CONNECTION<span style="color:#f92672">=</span>sqlite
+DB_HOST<span style="color:#f92672">=</span>127.0.0.1
+DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
+<span style="color:#75715e">#DB_DATABASE=laravel</span>
+DB_USERNAME<span style="color:#f92672">=</span>root
+DB_PASSWORD<span style="color:#f92672">=</span>
+.
+.
+.
+</code></pre></div><p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker compose exec app php artisan migrate:migrate --seed
+</code></pre></div><h1 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
+<p>コンテナにてコマンドを実行する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require nuwave/lighthouse
+</code></pre></div><p>公式では初期化のコマンドを紹介しているが今回はあえて利用しない</p>
+<p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan route:list
+
+  GET|HEAD   / ...................................................................................................................... 
+  POST       _ignition/execute-solution ............... ignition.executeSolution › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ........................... ignition.healthCheck › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › HealthCheckController
+  POST       _ignition/update-config ........................ ignition.updateConfig › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › UpdateConfigController
+  GET|HEAD   api/user ............................................................................................................... 
+  GET|HEAD   api/users .............................................................................................................. 
+  GET|POST|HEAD graphql ............................................................. graphql › Nuwave<span style="color:#ae81ff">\L</span>ighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................................. sanctum.csrf-cookie › Laravel<span style="color:#ae81ff">\S</span>anctum › CsrfCookieController@show
+
+</code></pre></div><h1 id="スキーマを作る">スキーマを作る</h1>
+<p>既にある<code>User</code>モデルを対象に次のクエリの定義をする</p>
+<ul>
+<li>全件取得</li>
+<li>ID指定で取得</li>
+</ul>
+<p>またLighthouseはデフォルトで<code>graphql/schema.graphql</code>を読み込むようだ</p>
+<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
+    users: [<span style="color:#a6e22e">User</span>!]! <span style="color:#a6e22e">@all</span>
+    user(id: <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">@eq</span>): <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">@find</span>
+}
+
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> {
+    id: <span style="color:#a6e22e">ID</span>!
+    name: <span style="color:#a6e22e">String</span>!
+    email: <span style="color:#a6e22e">String</span>!
+}
+</code></pre></div><p><code>@all</code>や<code>@find</code>はEloquentのための書き方になる</p>
+<h1 id="データ取得">データ取得</h1>
+<p>全件取得</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users{id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;horacio.yundt@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Dr. Earl Beer&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;mose94@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Camron Dicki&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;glenna.emard@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;4&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Faye Adams III&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ylueilwitz@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;5&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Jordon Jakubowski&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ehodkiewicz@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;6&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Sigurd Daugherty I&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;lwehner@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;7&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Kasandra Cruickshank II&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;shyatt@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Madison Schimmel&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;krajcik.kennedy@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Watson Zemlak&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;jerrold97@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;10&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Elmira Denesik&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;enola90@example.com&#34;</span><span style="color:#f92672">}]}}</span>
+</code></pre></div><p>ID指定で取得</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;horacio.yundt@example.net&#34;</span><span style="color:#f92672">}}}</span>
+</code></pre></div><p>項目を絞る（nameのみ欲しい場合）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){name}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span><span style="color:#f92672">}}}</span>
+</code></pre></div><h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://lighthouse-php.com/">https://lighthouse-php.com/</a></li>
+<li><a href="https://graphql.org/">https://graphql.org/</a></li>
+<li><a href="https://learn.liferay.com/dxp/latest/ja/headless-delivery/consuming-apis/consuming-graphql-apis.html">https://learn.liferay.com/dxp/latest/ja/headless-delivery/consuming-apis/consuming-graphql-apis.html</a></li>
+<li><a href="https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4">https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4</a></li>
+<li><a href="https://qiita.com/jintz/items/c9105dca1725224d36a8">https://qiita.com/jintz/items/c9105dca1725224d36a8</a></li>
+<li><a href="https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7">https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7</a></li>
+</ul>
+
+
+    <hr>
+
+    <div class="tags">
+  
+</div>
+  </div>
+</article>
+
+  <footer>
+    <div class="container">
+      <div class="copyright">
+        © 2021 ODA WORLD
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
