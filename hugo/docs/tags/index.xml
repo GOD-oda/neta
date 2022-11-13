@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>© 2021 ODA WORLD</copyright>
-    <lastBuildDate>Sat, 15 Oct 2022 14:44:12 +0900</lastBuildDate><atom:link href="https://oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Nov 2022 16:01:31 +0000</lastBuildDate><atom:link href="https://oda.world/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>graphql</title>
+      <link>https://oda.world/tags/graphql/</link>
+      <pubDate>Sun, 13 Nov 2022 16:01:31 +0000</pubDate>
+      
+      <guid>https://oda.world/tags/graphql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>laravel</title>
+      <link>https://oda.world/tags/laravel/</link>
+      <pubDate>Sun, 13 Nov 2022 16:01:31 +0000</pubDate>
+      
+      <guid>https://oda.world/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>amazon lightsail</title>
       <link>https://oda.world/tags/amazon-lightsail/</link>
@@ -59,15 +77,6 @@
       <pubDate>Fri, 07 Oct 2022 19:36:25 +0900</pubDate>
       
       <guid>https://oda.world/tags/tagpr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>https://oda.world/tags/laravel/</link>
-      <pubDate>Thu, 08 Sep 2022 15:30:37 +0900</pubDate>
-      
-      <guid>https://oda.world/tags/laravel/</guid>
       <description></description>
     </item>
     

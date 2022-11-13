@@ -3,12 +3,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <meta name="description" content="前提 Laravelの初期化が終わっている Lighthouseを使う コードはこちらにまとめてある sqlite準備 DB_CONNECTIONをs" />
+  <meta name="description" content="前提 Laravelの初期化が終わっている Lighthouseを使う デフォルトのスキーマを利用する コードはこちらにまとめてある sqlite準備" />
   <meta property="og:title" content="LaravelでGraphQLを使う" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://oda.world/images/ogImage/129.png" />
   <meta property="og:site_name" content="ODA WORLD" />
-  <meta property="og:description" content="前提 Laravelの初期化が終わっている Lighthouseを使う コードはこちらにまとめてある sqlite準備 DB_CONNECTIONをs" />
+  <meta property="og:description" content="前提 Laravelの初期化が終わっている Lighthouseを使う デフォルトのスキーマを利用する コードはこちらにまとめてある sqlite準備" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@oskfjzp" />
   <meta name="twitter:player" content="@oskfjzp" />
@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.0ca1a1c69303b0407b2f0292b1518d9577b329a26b00aa6cce8c1b01a1c96b11.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.0a40693196e310b7c7bc59a73ad9813c0b6106ebf82cff5dddd214885750a055.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -83,7 +83,7 @@
       公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
     </div>
     <div class="updated-date">
-      更新日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
+      更新日: <time datetime="2022-11-13 19:28:24 &#43;0900 JST">2022/11/13 19:28:24</time>
     </div>
   </aside>
 
@@ -92,6 +92,7 @@
 <ul>
 <li>Laravelの初期化が終わっている</li>
 <li><a href="https://lighthouse-php.com/">Lighthouse</a>を使う</li>
+<li>デフォルトのスキーマを利用する</li>
 </ul>
 <p>コードは<a href="https://github.com/GOD-oda/neta/tree/master/issues/129">こちら</a>にまとめてある</p>
 <h1 id="sqlite準備">sqlite準備</h1>
@@ -117,8 +118,7 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 </code></pre></div><h1 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
 <p>コンテナにてコマンドを実行する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require nuwave/lighthouse
-</code></pre></div><p>公式では初期化のコマンドを紹介しているが今回はあえて利用しない</p>
-<p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
+</code></pre></div><p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan route:list
 
   GET|HEAD   / ...................................................................................................................... 
@@ -129,35 +129,96 @@ DB_PASSWORD<span style="color:#f92672">=</span>
   GET|HEAD   api/users .............................................................................................................. 
   GET|POST|HEAD graphql ............................................................. graphql › Nuwave<span style="color:#ae81ff">\L</span>ighthouse › GraphQLController
   GET|HEAD   sanctum/csrf-cookie .................................. sanctum.csrf-cookie › Laravel<span style="color:#ae81ff">\S</span>anctum › CsrfCookieController@show
+</code></pre></div><p>スキーマファイルをデフォルトから複製する</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan vendor:publish --tag<span style="color:#f92672">=</span>lighthouse-schema
+</code></pre></div><div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#e6db74">&#34;A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`.&#34;</span>
+<span style="color:#66d9ef">scalar</span> <span style="color:#a6e22e">DateTime</span> <span style="color:#a6e22e">@scalar</span>(class: <span style="color:#e6db74">&#34;Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime&#34;</span>)
 
-</code></pre></div><h1 id="スキーマを作る">スキーマを作る</h1>
-<p>既にある<code>User</code>モデルを対象に次のクエリの定義をする</p>
-<ul>
-<li>全件取得</li>
-<li>ID指定で取得</li>
-</ul>
-<p>またLighthouseはデフォルトで<code>graphql/schema.graphql</code>を読み込むようだ</p>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Query</span> {
-    users: [<span style="color:#a6e22e">User</span>!]! <span style="color:#a6e22e">@all</span>
-    user(id: <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">@eq</span>): <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">@find</span>
+<span style="color:#e6db74">&#34;Indicates what fields are available at the top level of a query operation.&#34;</span>
+<span style="color:#a6e22e">type</span> Query {
+    <span style="color:#e6db74">&#34;Find a single user by an identifying attribute.&#34;</span>
+    user(
+      <span style="color:#e6db74">&#34;Search by primary key.&#34;</span>
+      id: <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">@eq</span> <span style="color:#a6e22e">@rules</span>(apply: [<span style="color:#e6db74">&#34;prohibits:email&#34;</span>, <span style="color:#e6db74">&#34;required_without:email&#34;</span>])
+
+      <span style="color:#e6db74">&#34;Search by email address.&#34;</span>
+      <span style="color:#a6e22e">email</span>: <span style="color:#a6e22e">String</span> <span style="color:#a6e22e">@eq</span> <span style="color:#a6e22e">@rules</span>(apply: [<span style="color:#e6db74">&#34;prohibits:id&#34;</span>, <span style="color:#e6db74">&#34;required_without:id&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>])
+    ): <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">@find</span>
+
+    <span style="color:#e6db74">&#34;List multiple users.&#34;</span>
+    <span style="color:#a6e22e">users</span>(
+      <span style="color:#e6db74">&#34;Filters by name. Accepts SQL LIKE wildcards `%` and `_`.&#34;</span>
+      name: <span style="color:#a6e22e">String</span> <span style="color:#a6e22e">@where</span>(operator: <span style="color:#e6db74">&#34;like&#34;</span>)
+    ): [<span style="color:#a6e22e">User</span>!]! <span style="color:#a6e22e">@paginate</span>(<span style="color:#a6e22e">defaultCount</span>: <span style="color:#a6e22e">10</span>)
 }
 
+<span style="color:#e6db74">&#34;Account of a person who utilizes this application.&#34;</span>
 <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> {
+    <span style="color:#e6db74">&#34;Unique primary key.&#34;</span>
     id: <span style="color:#a6e22e">ID</span>!
+
+    <span style="color:#e6db74">&#34;Non-unique name.&#34;</span>
     name: <span style="color:#a6e22e">String</span>!
+
+    <span style="color:#e6db74">&#34;Unique email address.&#34;</span>
     email: <span style="color:#a6e22e">String</span>!
+
+    <span style="color:#e6db74">&#34;When the email was verified.&#34;</span>
+    email_verified_at: <span style="color:#a6e22e">DateTime</span>
+
+    <span style="color:#e6db74">&#34;When the account was created.&#34;</span>
+    created_at: <span style="color:#a6e22e">DateTime</span>!
+
+    <span style="color:#e6db74">&#34;When the account was last updated.&#34;</span>
+    updated_at: <span style="color:#a6e22e">DateTime</span>!
 }
-</code></pre></div><p><code>@all</code>や<code>@find</code>はEloquentのための書き方になる</p>
-<h1 id="データ取得">データ取得</h1>
-<p>全件取得</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users{id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;horacio.yundt@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Dr. Earl Beer&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;mose94@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Camron Dicki&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;glenna.emard@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;4&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Faye Adams III&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ylueilwitz@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;5&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Jordon Jakubowski&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ehodkiewicz@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;6&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Sigurd Daugherty I&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;lwehner@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;7&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Kasandra Cruickshank II&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;shyatt@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Madison Schimmel&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;krajcik.kennedy@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Watson Zemlak&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;jerrold97@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;10&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Elmira Denesik&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;enola90@example.com&#34;</span><span style="color:#f92672">}]}}</span>
-</code></pre></div><p>ID指定で取得</p>
+</code></pre></div><h1 id="データ取得">データ取得</h1>
+<h2 id="複数のuserを取得">複数のUserを取得</h2>
+<ul>
+<li>paginatorが必須としている<code>count</code>を指定する</li>
+<li><code>currentPage</code>はなくても動作する</li>
+<li><code>data</code>に欲しいUserの項目を指定する</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users{paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:10,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Delfina Bartell&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;audreanne01@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Darius Lehner PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;zheidenreich@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;4&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Chase Trantow&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;franecki.roxane@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;5&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Cielo Morar PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;lubowitz.jonathon@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;6&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Florine Kuhic&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;stephon40@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;7&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Eugenia Lueilwitz Jr.&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;arch.collins@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Cindy Welch&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;bridgette.hintz@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Cordie Waelchi&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ncassin@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;10&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Rhoda Schaden&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;zlebsack@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
+</code></pre></div><p>1件のみ取得</p>
+<ul>
+<li>件数の絞りは<code>first</code>を使う（内部で定義されている）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(first:1){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
+</code></pre></div><p>1件かつ2ページ目</p>
+<ul>
+<li>ページ指定は<code>page</code>を使う</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(first:1,page:2){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:2<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Delfina Bartell&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;audreanne01@example.org&#34;</span><span style="color:#f92672">}]}}}</span>
+</code></pre></div><p>名前で絞る</p>
+<ul>
+<li>LIKE検索になっているので<code>&quot;%foo%&quot;</code>の形にする</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(name:\&#34;%Aglae%\&#34;){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
+</code></pre></div><h2 id="1件取得">1件取得</h2>
+<p>ID指定</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;horacio.yundt@example.net&#34;</span><span style="color:#f92672">}}}</span>
-</code></pre></div><p>項目を絞る（nameのみ欲しい場合）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){name}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Casimer Abernathy&#34;</span><span style="color:#f92672">}}}</span>
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}}</span>
+</code></pre></div><p>email指定</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(email:\&#34;cayla30@example.net\&#34;){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}}}</span>
+</code></pre></div><p>スキーマを見るとID指定は<code>required_without:email</code>、email指定は<code>required_without:id</code>となっているのでどちらかが必須となる</p>
+<h1 id="tips">TIPS</h1>
+<h2 id="補完">補完</h2>
+<p>このようなシンタックスエラーが気になる時はヘルパーファイルを作ると良い</p>
+<figure><img src="https://oda.world/images/129/1.webp"/>
+</figure>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan lighthouse:ide-helper
+Wrote schema directive definitions to /var/www/html/schema-directives.graphql.
+Wrote definitions <span style="color:#66d9ef">for</span> programmatically registered types to /var/www/html/programmatic-types.graphql.
+Wrote PHP definitions to /var/www/html/_lighthouse_ide_helper.php.
+
+It is recommended to add them to your .gitignore file.
 </code></pre></div><h1 id="参考">参考</h1>
 <ul>
 <li><a href="https://lighthouse-php.com/">https://lighthouse-php.com/</a></li>
@@ -172,6 +233,12 @@ DB_PASSWORD<span style="color:#f92672">=</span>
     <hr>
 
     <div class="tags">
+  
+    
+      <a href="https://oda.world/tags/laravel/" class="tag"># laravel</a>
+    
+      <a href="https://oda.world/tags/graphql/" class="tag"># graphql</a>
+    
   
 </div>
   </div>
