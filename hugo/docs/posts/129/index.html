@@ -84,7 +84,7 @@
         公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 JST">2022/11/13 18:06:03</time>
       </div>
       <div class="updated-date">
-        更新日: <time datetime="2022-11-15 18:23:39 &#43;0900 JST">2022/11/15 18:23:39</time>
+        更新日: <time datetime="2022-11-15 18:32:31 &#43;0900 JST">2022/11/15 18:32:31</time>
       </div>
     </aside>
 
@@ -117,7 +117,17 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 .
 .
 </code></pre></div><p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker compose exec app php artisan migrate:migrate --seed
+<div class="highlight" fn="database/seeders/DatabaseSeeder.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">public function run()
+{
+<span style="color:#f92672">-   // \App\Models\User::factory(10)-&gt;create();
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+   \App\Models\User::factory(10)-&gt;create();
+</span><span style="color:#a6e22e"></span>
+    // \App\Models\User::factory()-&gt;create([
+    //     &#39;name&#39; =&gt; &#39;Test User&#39;,
+    //     &#39;email&#39; =&gt; &#39;test@example.com&#39;,
+    // ]);
+}
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker compose exec app php artisan migrate:migrate --seed
 </code></pre></div><h2 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
 <p>コンテナにてコマンドを実行する</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require nuwave/lighthouse
