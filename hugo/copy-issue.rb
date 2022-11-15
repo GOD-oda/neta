@@ -33,77 +33,15 @@ if res_body['created_at']
 else
   created_at = nil
 end
-if res_body['updated_at']
-  ENV['TZ'] = 'Asia/Tokyo'
-  updated_at = Time.parse(res_body['updated_at'])
-  updated_at = updated_at + (60 * 60 * 9)
-else
-  updated_at = nil
-end
 
 %x(hugo new posts/#{file_name})
 
-system("sed -i -e \"s/title\:.*/title\: #{title}/\" #{file_path}")
-system("sed -i -e \"s/draft\:.*/draft: false/\" #{file_path}")
-unless label_names.empty?
-  system("gsed -i -e \"/draft\:.*/a tags: [#{label_names}]\" #{file_path}")
-end
-if created_at
-  system("sed -i -e \"s/date\:.*/date: #{created_at.strftime('%Y-%m-%dT%H:%M:%S')}/\" #{file_path}")
-end
-if updated_at
-  system("gsed -i -e \"/date\:.*/a publishDate: #{updated_at.strftime('%Y-%m-%dT%H:%M:%S')}+09:00\" #{file_path}")
-end
-
-message_line = {
-  now: false,
-  values: [],
-  option: ''
-}
-
-# --------------------------------------------------------
-# githubのissueで執筆してhugoのマークダウンに置き換えようとしたが
-# 結局hugoで書くようになったので使っていない
-# --------------------------------------------------------
-# File.open(file_path, 'a') do |f|
-#   res_body['body'].gsub(/\r/, '').split("\n").each.with_index do |line, i|
-#     # notation
-#     end_line_notation = line == ':::'
-#
-#     ## :::message
-#     message_line_match = line.match(/\A:::message(?<class>\s.*)?\z/)
-#     if message_line_match
-#       message_line[:values] = []
-#       message_line[:option] = message_line_match[:class]
-#       message_line[:now] = true
-#       next
-#     end
-#
-#     if end_line_notation
-#       message_line[:now] = false
-#       f.puts "{{<message class=\"#{message_line[:option]}\">}}"
-#       message_line[:values].each { |v| f.puts "#{v}<br>" }
-#       f.puts "{{</message>}}"
-#       next
-#     end
-#
-#     if message_line[:now]
-#       message_line[:values] << line
-#       next
-#     end
-#
-#     # image
-#     if line.include?('<img')
-#       src = line[/src="(?<src>.*?)"/, 'src'] || ''
-#       alt = line[/alt="(?<alt>.*?)"/, 'alt'] || 'alt'
-#       next if src.empty?
-#
-#       f.puts "![#{alt}](#{src})"
-#     else
-#       f.puts line
-#     end
-#   end
-# end
+buffer = File.open(file_path, "r") { |f| f.read() }
+buffer.sub!(/title:.*/, "title: #{title}")
+  .sub!(/tags:.*/, "tags: [#{label_names}]")
+  .sub!(/draft:.*/, "draft: false")
+  .sub!(/date:.*/, "date: date: #{created_at.strftime('%Y-%m-%dT%H:%M:%S')}+09:00")
+File.open(file_path, "w") { |f| f.write(buffer) }
 
 if File.exist?("#{file_path}-e")
   File.delete("#{file_path}-e")
