@@ -222,7 +222,27 @@ Wrote definitions <span style="color:#66d9ef">for</span> programmatically regist
 Wrote PHP definitions to /var/www/html/_lighthouse_ide_helper.php.
 
 It is recommended to add them to your .gitignore file.
-</code></pre></div><h2 id="参考">参考</h1>
+</code></pre></div><h2 id="gui">GUI</h2>
+<p><a href="https://github.com/mll-lab/laravel-graphql-playground">laravel-graphql-playground</a>というのが紹介されているのでインストールする</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require mll-lab/laravel-graphiql
+</code></pre></div><p><code>graphiql</code>というエンドポイントが追加される</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan route:list
+
+  GET|HEAD   / ........................................................................................................ 
+  POST       _ignition/execute-solution . ignition.executeSolution › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ............. ignition.healthCheck › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › HealthCheckController
+  POST       _ignition/update-config .......... ignition.updateConfig › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › UpdateConfigController
+  GET|HEAD   api/user ................................................................................................. 
+  GET|HEAD   graphiql .................................................... graphiql › MLL<span style="color:#ae81ff">\G</span>raphiQL › GraphiQLController
+  GET|POST|HEAD graphql ............................................... graphql › Nuwave<span style="color:#ae81ff">\L</span>ighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................... sanctum.csrf-cookie › Laravel<span style="color:#ae81ff">\S</span>anctum › CsrfCookieController@show
+
+                                                                                                     Showing <span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> routes
+</code></pre></div><p>実際にアクセスしてクエリを書くと結果が返ってくる</p>
+<figure><img src="https://oda.world/images/129/2.webp"/>
+</figure>
+
+<h2 id="参考">参考</h1>
 <ul>
 <li><a href="https://lighthouse-php.com/">https://lighthouse-php.com/</a></li>
 <li><a href="https://graphql.org/">https://graphql.org/</a></li>
@@ -230,6 +250,7 @@ It is recommended to add them to your .gitignore file.
 <li><a href="https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4">https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4</a></li>
 <li><a href="https://qiita.com/jintz/items/c9105dca1725224d36a8">https://qiita.com/jintz/items/c9105dca1725224d36a8</a></li>
 <li><a href="https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7">https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7</a></li>
+<li><a href="https://github.com/mll-lab/laravel-graphql-playground">https://github.com/mll-lab/laravel-graphql-playground</a></li>
 </ul>
 
 
@@ -266,6 +287,7 @@ It is recommended to add them to your .gitignore file.
     <li><a href="#tips">TIPS</a>
       <ul>
         <li><a href="#補完">補完</a></li>
+        <li><a href="#gui">GUI</a></li>
       </ul>
     </li>
     <li><a href="#参考">参考</a></li>
