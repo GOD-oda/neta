@@ -222,6 +222,13 @@ article {
         border-bottom: 1px solid #D7DDE3;
       }
 
+      h3 {
+        margin: 2.5rem 0 1.5rem;
+        @include sp {
+          margin: 2rem 0 1.2rem;
+        }
+      }
+
       .highlight[fn] {
         position: relative;
 

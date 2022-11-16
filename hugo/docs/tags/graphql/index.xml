@@ -14,7 +14,7 @@
       <pubDate>Sun, 13 Nov 2022 16:01:31 +0900</pubDate>
       
       <guid>https://oda.world/posts/129/</guid>
-      <description>前提 Laravelの初期化が終わっている Lighthouseを使う デフォルトのスキーマを利用する コードはこちらにまとめてある sqlite準備</description>
+      <description>前提 Laravelの初期化が終わっている Lighthouseを使う コードはこちらにまとめてある sqlite準備 DB_CONNECTIONをs</description>
     </item>
     
   </channel>
