@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://blog.oda.world/sitemap.xml
+Sitemap: https://oda.world/sitemap.xml
