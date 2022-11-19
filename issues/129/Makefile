@@ -17,4 +17,5 @@ migrate_refresh:
 reset:
 	make down
 	make up
+	cp /dev/null ./src/database/database.sqlite
 	make migrate_refresh
