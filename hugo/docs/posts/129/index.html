@@ -294,7 +294,12 @@ type User {
 </figure>
 
 <h2 id="リレーション-1">リレーション</h2>
-<p>ネストされたMutationが動作されるには、モデルのリレーションを定義するメソッドの戻り値が<strong>必ず</strong>必要になる</p>
+<div class="message ">
+
+ネストされたMutationが動作されるには、モデルのリレーションを定義するメソッドの戻り値が必ず必要になる
+
+</div>
+
 <div class="highlight" fn="app/Models/User.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Model</span>
 {
     <span style="color:#75715e">// 動作しない
