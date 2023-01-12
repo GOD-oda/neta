@@ -38,7 +38,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   
-  <link rel="stylesheet" href="https://oda.world/sass/main.min.18dabd5b90f48e6861583fa08160bf89651247df35f6ec24c572f54f8203485d.css">
+  <link rel="stylesheet" href="https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css">
 
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
@@ -84,7 +84,7 @@
         公開日: <time datetime="2022-11-13 18:06:03 &#43;0900 &#43;0900">2022/11/13 18:06:03</time>
       </div>
       <div class="updated-date">
-        更新日: <time datetime="2022-11-24 14:39:05 &#43;0900 &#43;0900">2022/11/24 14:39:05</time>
+        更新日: <time datetime="2023-01-12 09:46:09 &#43;0700 &#43;07">2023/01/12 09:46:09</time>
       </div>
     </aside>
 
@@ -111,68 +111,145 @@
 <li><code>DB_DATABASE</code>をコメントアウトする</li>
 <li>空の<code>database/database.sqlite</code>を作成する</li>
 </ul>
-<div class="highlight" fn="src/.env"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env">.
-.
-.
-DB_CONNECTION<span style="color:#f92672">=</span>sqlite
-DB_HOST<span style="color:#f92672">=</span>127.0.0.1
-DB_PORT<span style="color:#f92672">=</span><span style="color:#ae81ff">3306</span>
-<span style="color:#75715e">#DB_DATABASE=laravel</span>
-DB_USERNAME<span style="color:#f92672">=</span>root
-DB_PASSWORD<span style="color:#f92672">=</span>
+
+
+
+
+<pre fn="src/.env" >
+  <code class="language-env hljs">
+    
 .
 .
 .
-</code></pre></div><p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）</p>
-<div class="highlight" fn="database/seeders/DatabaseSeeder.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">public function run()
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+#DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+.
+.
+.
+
+  </code>
+</pre>
+
+<p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）
+
+
+
+
+<pre fn="database/seeders/DatabaseSeeder.php" >
+  <code class="language-diff hljs">
+     
+public function run()
 {
-<span style="color:#f92672">-   // \App\Models\User::factory(10)-&gt;create();
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+   \App\Models\User::factory(10)-&gt;create();
-</span><span style="color:#a6e22e"></span>
-    // \App\Models\User::factory()-&gt;create([
-    //     &#39;name&#39; =&gt; &#39;Test User&#39;,
-    //     &#39;email&#39; =&gt; &#39;test@example.com&#39;,
+-   // \App\Models\User::factory(10)->create();
++   \App\Models\User::factory(10)->create();
+
+    // \App\Models\User::factory()->create([
+    //     'name' => 'Test User',
+    //     'email' => 'test@example.com',
     // ]);
-}
-</code></pre></div><div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% docker compose exec app php artisan migrate:migrate --seed
-</code></pre></div><h2 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
-<p>コンテナにてコマンドを実行する</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require nuwave/lighthouse
-</code></pre></div><p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan route:list
+} 
+
+  </code>
+</pre>
+</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% docker compose exec app php artisan migrate:migrate --seed
+
+  </code>
+</pre>
+
+<h2 id="lighthouseをインストールする">Lighthouseをインストールする</h1>
+<p>コンテナにてコマンドを実行する
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% composer require nuwave/lighthouse
+
+  </code>
+</pre>
+</p>
+<p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% php artisan route:list
 
   GET|HEAD   / ...................................................................................................................... 
-  POST       _ignition/execute-solution ............... ignition.executeSolution › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › ExecuteSolutionController
-  GET|HEAD   _ignition/health-check ........................... ignition.healthCheck › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › HealthCheckController
-  POST       _ignition/update-config ........................ ignition.updateConfig › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › UpdateConfigController
+  POST       _ignition/execute-solution ............... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ........................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST       _ignition/update-config ........................ ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
   GET|HEAD   api/user ............................................................................................................... 
   GET|HEAD   api/users .............................................................................................................. 
-  GET|POST|HEAD graphql ............................................................. graphql › Nuwave<span style="color:#ae81ff">\L</span>ighthouse › GraphQLController
-  GET|HEAD   sanctum/csrf-cookie .................................. sanctum.csrf-cookie › Laravel<span style="color:#ae81ff">\S</span>anctum › CsrfCookieController@show
-</code></pre></div><p>スキーマファイルをデフォルトから複製する</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan vendor:publish --tag<span style="color:#f92672">=</span>lighthouse-schema
-</code></pre></div><p>コメントは削除した</p>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">scalar</span> <span style="color:#a6e22e">DateTime</span> <span style="color:#a6e22e">@scalar</span>(class: <span style="color:#e6db74">&#34;Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime&#34;</span>)
+  GET|POST|HEAD graphql ............................................................. graphql › Nuwave\Lighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................................. sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
 
-<span style="color:#a6e22e">type</span> Query {
+  </code>
+</pre>
+
+<p>スキーマファイルをデフォルトから複製する</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% php artisan vendor:publish --tag=lighthouse-schema
+
+  </code>
+</pre>
+
+<p>コメントは削除した</p>
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-graphql hljs">
+    
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
     user(
-      id: <span style="color:#a6e22e">ID</span> <span style="color:#a6e22e">@eq</span> <span style="color:#a6e22e">@rules</span>(apply: [<span style="color:#e6db74">&#34;prohibits:email&#34;</span>, <span style="color:#e6db74">&#34;required_without:email&#34;</span>])
-      <span style="color:#a6e22e">email</span>: <span style="color:#a6e22e">String</span> <span style="color:#a6e22e">@eq</span> <span style="color:#a6e22e">@rules</span>(apply: [<span style="color:#e6db74">&#34;prohibits:id&#34;</span>, <span style="color:#e6db74">&#34;required_without:id&#34;</span>, <span style="color:#e6db74">&#34;email&#34;</span>])
-    ): <span style="color:#a6e22e">User</span> <span style="color:#a6e22e">@find</span>
-    <span style="color:#a6e22e">users</span>(
-      name: <span style="color:#a6e22e">String</span> <span style="color:#a6e22e">@where</span>(operator: <span style="color:#e6db74">&#34;like&#34;</span>)
-    ): [<span style="color:#a6e22e">User</span>!]! <span style="color:#a6e22e">@paginate</span>(<span style="color:#a6e22e">defaultCount</span>: <span style="color:#a6e22e">10</span>)
+      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find
+    users(
+      name: String @where(operator: "like")
+    ): [User!]! @paginate(defaultCount: 10)
 }
 
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> {
-    id: <span style="color:#a6e22e">ID</span>!
-    name: <span style="color:#a6e22e">String</span>!
-    email: <span style="color:#a6e22e">String</span>!
-    email_verified_at: <span style="color:#a6e22e">DateTime</span>
-    created_at: <span style="color:#a6e22e">DateTime</span>!
-    updated_at: <span style="color:#a6e22e">DateTime</span>!
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    email_verified_at: DateTime
+    created_at: DateTime!
+    updated_at: DateTime!
 }
-</code></pre></div><h2 id="read">Read</h1>
+
+  </code>
+</pre>
+
+<h2 id="read">Read</h1>
 <h2 id="複数取得">複数取得</h2>
 <ul>
 <li>Queryを使う</li>
@@ -180,34 +257,100 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 <li><code>currentPage</code>はなくても動作する</li>
 <li><code>data</code>に欲しいUserの項目を指定する</li>
 </ul>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users{paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:10,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Delfina Bartell&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;audreanne01@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Darius Lehner PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;zheidenreich@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;4&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Chase Trantow&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;franecki.roxane@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;5&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Cielo Morar PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;lubowitz.jonathon@example.net&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;6&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Florine Kuhic&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;stephon40@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;7&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Eugenia Lueilwitz Jr.&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;arch.collins@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Cindy Welch&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;bridgette.hintz@example.org&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Cordie Waelchi&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;ncassin@example.com&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;10&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Ms. Rhoda Schaden&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;zlebsack@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
-</code></pre></div><p>1件のみ取得</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users{paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":10,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"},{"id":"2","name":"Delfina Bartell","email":"audreanne01@example.org"},{"id":"3","name":"Darius Lehner PhD","email":"zheidenreich@example.org"},{"id":"4","name":"Chase Trantow","email":"franecki.roxane@example.net"},{"id":"5","name":"Cielo Morar PhD","email":"lubowitz.jonathon@example.net"},{"id":"6","name":"Florine Kuhic","email":"stephon40@example.com"},{"id":"7","name":"Ms. Eugenia Lueilwitz Jr.","email":"arch.collins@example.org"},{"id":"8","name":"Cindy Welch","email":"bridgette.hintz@example.org"},{"id":"9","name":"Ms. Cordie Waelchi","email":"ncassin@example.com"},{"id":"10","name":"Ms. Rhoda Schaden","email":"zlebsack@example.net"}]}}}
+
+  </code>
+</pre>
+
+<p>1件のみ取得</p>
 <ul>
 <li>件数の絞りは<code>first</code>を使う（<code>first</code>は内部で定義されている）</li>
 </ul>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(first:1){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
-</code></pre></div><p>1件かつ2ページ目</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(first:1){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}]}}}
+
+  </code>
+</pre>
+
+<p>1件かつ2ページ目</p>
 <ul>
 <li>ページ指定は<code>page</code>を使う</li>
 </ul>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(first:1,page:2){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:2<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Delfina Bartell&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;audreanne01@example.org&#34;</span><span style="color:#f92672">}]}}}</span>
-</code></pre></div><p>名前で絞る</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(first:1,page:2){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":2},"data":[{"id":"2","name":"Delfina Bartell","email":"audreanne01@example.org"}]}}}
+
+  </code>
+</pre>
+
+<p>名前で絞る</p>
 <ul>
 <li>LIKE検索になっているので<code>&quot;%foo%&quot;</code>の形にする</li>
 </ul>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{users(name:\&#34;%Aglae%\&#34;){paginatorInfo{count,currentPage}data{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;users&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;paginatorInfo&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;count&#34;</span>:1,<span style="color:#e6db74">&#34;currentPage&#34;</span>:1<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}]}}}</span>
-</code></pre></div><h2 id="1件取得">1件取得</h2>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(name:\"%Aglae%\"){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}]}}}
+
+  </code>
+</pre>
+
+<h2 id="1件取得">1件取得</h2>
 <p>ID指定</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}}</span>
-</code></pre></div><p>email指定</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(email:\&#34;cayla30@example.net\&#34;){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mrs. Aglae Hayes PhD&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;cayla30@example.net&#34;</span><span style="color:#f92672">}}}</span>
-</code></pre></div><p>スキーマを見るとID指定は<code>required_without:email</code>、email指定は<code>required_without:id</code>となっているのでどちらかが必須となる</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(id:1){id,name,email}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}}
+
+  </code>
+</pre>
+
+<p>email指定</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(email:\"cayla30@example.net\"){id,name,email}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}}}
+
+  </code>
+</pre>
+
+<p>スキーマを見るとID指定は<code>required_without:email</code>、email指定は<code>required_without:id</code>となっているのでどちらかが必須となる</p>
 <h2 id="リレーション">リレーション</h2>
 <ul>
 <li>リレーション定義
@@ -217,23 +360,41 @@ DB_PASSWORD<span style="color:#f92672">=</span>
 </li>
 <li>モデル、マイグレーション、ファクトリーは通常の書き方でOK</li>
 </ul>
-<p>各Userが2つのPostを持つように書き換える</p>
-<div class="highlight" fn="database/seeders/DatabaseSeeder.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">     public function run()
-     {
-         \App\Models\User::factory(10)
-<span style="color:#a6e22e">+            -&gt;hasPosts(2)
-</span><span style="color:#a6e22e"></span>             -&gt;create();
-</code></pre></div><div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">type Query {
+<p>各Userが2つのPostを持つように書き換える
+
+
+
+
+<pre fn="database/seeders/DatabaseSeeder.php" >
+  <code class="language-diff hljs">
+    
+  public function run()
+  {
+    \App\Models\User::factory(10)
++    ->hasPosts(2)
+     ->create();
+
+  </code>
+</pre>
+</p>
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-diff hljs">
+    
+type Query {
     user(
-        id: ID @eq @rules(apply: [&#34;prohibits:email&#34;, &#34;required_without:email&#34;])
-        email: String @eq @rules(apply: [&#34;prohibits:id&#34;, &#34;required_without:id&#34;, &#34;email&#34;])
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+        email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
     users(
-        name: String @where(operator: &#34;like&#34;)
+        name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
-<span style="color:#a6e22e">+   post(id: ID @eq): Post @find
-</span><span style="color:#a6e22e"></span>}
++   post(id: ID @eq): Post @find
+}
 
 type User {
     id: ID!
@@ -242,38 +403,86 @@ type User {
     email_verified_at: DateTime
     created_at: DateTime!
     updated_at: DateTime!
-<span style="color:#a6e22e">+   posts: [Post!]!
-</span><span style="color:#a6e22e"></span>}
++   posts: [Post!]!
+}
 
-<span style="color:#a6e22e">+ type Post {
-</span><span style="color:#a6e22e">+     id: ID!
-</span><span style="color:#a6e22e">+     title: String!
-</span><span style="color:#a6e22e">+     user: User!
-</span><span style="color:#a6e22e">+ }
-</span></code></pre></div><p><code>@belongsTo</code>や<code>@hasMany</code>ディレクティブがあるがモデルにリレーションメソッドがあれば自動で紐づくのでつけなくても良い</p>
-<div class="highlight" fn="app/Models/User.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Model</span>
++ type Post {
++     id: ID!
++     title: String!
++     user: User!
++ }
+
+  </code>
+</pre>
+
+<p><code>@belongsTo</code>や<code>@hasMany</code>ディレクティブがあるがモデルにリレーションメソッドがあれば自動で紐づくのでつけなくても良い</p>
+
+
+
+
+<pre fn="app/Models/User.php" >
+  <code class="language-php hljs">
+     
+class User extends Model
 {
-    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">posts</span>()
+    public function posts()
     {
-        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hasMany</span>(<span style="color:#a6e22e">\App\Models\Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
+        return $this->hasMany(\App\Models\Post::class);
     }
 }
-</code></pre></div><p>以下のように明示しても動作する</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> {
-    posts: [<span style="color:#a6e22e">Post</span>!]! <span style="color:#a6e22e">@hasMany</span>
+
+  </code>
+</pre>
+
+<p>以下のように明示しても動作する
+
+
+
+
+<pre >
+  <code class="language-graphql hljs">
+    
+type User {
+    posts: [Post!]! @hasMany
 }
-</code></pre></div><h3 id="belongsto">belongsTo</h3>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{post(id:1){id,title,user{id,name,email}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;post&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos.&#34;</span>,<span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mr. Herminio Fisher&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;kkuhic@example.net&#34;</span><span style="color:#f92672">}}}}</span>
-</code></pre></div><figure><img src="https://oda.world/images/129/3.webp"/>
-</figure>
 
+  </code>
+</pre>
+</p>
+<h3 id="belongsto">belongsTo</h3>
+<p>
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{post(id:1){id,title,user{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"post":{"id":"1","title":"Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos.","user":{"id":"1","name":"Mr. Herminio Fisher","email":"kkuhic@example.net"}}}}
+
+  </code>
+</pre>
+
+<figure><img src="https://oda.world/images/129/3.webp"/>
+</figure>
+</p>
 <h3 id="hasmany">hasMany</h3>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;{user(id:1){id,name,email,posts{id,title}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Mr. Herminio Fisher&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;kkuhic@example.net&#34;</span>,<span style="color:#e6db74">&#34;posts&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos.&#34;</span><span style="color:#f92672">}</span>,<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;2&#34;</span>,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;Est et cumque voluptate dignissimos neque aut. A ut qui magnam sapiente nobis cupiditate molestiae. Voluptate quasi debitis qui. Voluptates sequi non eius maiores vero tempore eos.&#34;</span><span style="color:#f92672">}]}}}</span>
-</code></pre></div><figure><img src="https://oda.world/images/129/4.webp"/>
-</figure>
+<p>
 
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(id:1){id,name,email,posts{id,title}}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mr. Herminio Fisher","email":"kkuhic@example.net","posts":[{"id":"1","title":"Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos."},{"id":"2","title":"Est et cumque voluptate dignissimos neque aut. A ut qui magnam sapiente nobis cupiditate molestiae. Voluptate quasi debitis qui. Voluptates sequi non eius maiores vero tempore eos."}]}}}
+
+  </code>
+</pre>
+
+<figure><img src="https://oda.world/images/129/4.webp"/>
+</figure>
+</p>
 <h2 id="create">Create</h1>
 <ul>
 <li>typeはMutationになる</li>
@@ -281,66 +490,121 @@ type User {
 <li><code>@create</code>でEloquentの<code>create()</code>を指定している</li>
 </ul>
 <h2 id="1件新規作成">1件新規作成</h2>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutation</span> {
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-graphql hljs">
+    
+type Mutation {
     createUser(
-        name: <span style="color:#a6e22e">String</span>!
-        email: <span style="color:#a6e22e">String</span>!
-        password: <span style="color:#a6e22e">String</span>!
-    ): <span style="color:#a6e22e">User</span>! <span style="color:#a6e22e">@create</span>
+        name: String!
+        email: String!
+        password: String!
+    ): User! @create
 }
-</code></pre></div><div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;mutation{createUser(name:\&#34;foo\&#34;,email:\&#34;foo@sample.com\&#34;,password:\&#34;password\&#34;){id,name,email}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;createUser&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;11&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;foo&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;foo@sample.com&#34;</span><span style="color:#f92672">}}}</span>
-</code></pre></div><figure><img src="https://oda.world/images/129/5.webp"/>
+
+  </code>
+</pre>
+
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"mutation{createUser(name:\"foo\",email:\"foo@sample.com\",password:\"password\"){id,name,email}}"}' localhost:8080/graphql
+{"data":{"createUser":{"id":"11","name":"foo","email":"foo@sample.com"}}}
+
+  </code>
+</pre>
+
+<figure><img src="https://oda.world/images/129/5.webp"/>
 </figure>
 
 <h2 id="リレーション-1">リレーション</h2>
-<div class="message ">
+<p><div class="message ">
 
 ネストされたMutationが動作されるには、モデルのリレーションを定義するメソッドの戻り値が必ず必要になる
 
 </div>
 
-<div class="highlight" fn="app/Models/User.php"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Model</span>
+
+
+
+
+<pre fn="app/Models/User.php" >
+  <code class="language-php hljs">
+    
+class User extends Model
 {
-    <span style="color:#75715e">// 動作しない
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">posts</span>()
+    // 動作しない
+    public function posts()
     {
-        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hasMany</span>(<span style="color:#a6e22e">\App\Models\Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
+        return $this->hasMany(\App\Models\Post::class);
     }
     
-    <span style="color:#75715e">// 動作する
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">posts</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">HasMany</span>
+    // 動作する
+    public function posts(): HasMany
     {
-        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">hasMany</span>(<span style="color:#a6e22e">\App\Models\Post</span><span style="color:#f92672">::</span><span style="color:#a6e22e">class</span>);
+        return $this->hasMany(\App\Models\Post::class);
     }
 }
-</code></pre></div><h3 id="hasmany-1">hasMany</h3>
+
+  </code>
+</pre>
+</p>
+<h3 id="hasmany-1">hasMany</h3>
 <p>以下は新しくUserを作り、さらにそのUserのPostまで作るMutationになる</p>
 <p>またhasManyに限らずリレーションを使ったMutationはtype<code>input</code>を利用することになる</p>
-<p><code>input</code>は入力パラメータをまとめるものという認識で問題ない</p>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutation</span> {
-    createUser(<span style="color:#66d9ef">input</span>: <span style="color:#a6e22e">CreateUserInput</span>! <span style="color:#a6e22e">@spread</span>): <span style="color:#a6e22e">User</span>! <span style="color:#a6e22e">@create</span>
+<p><code>input</code>は入力パラメータをまとめるものという認識で問題ない
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-graphql hljs">
+    
+type Mutation {
+    createUser(input: CreateUserInput! @spread): User! @create
 }
 
-<span style="color:#a6e22e">input</span> CreateUserInput {
-    name: <span style="color:#a6e22e">String</span>!
-    email: <span style="color:#a6e22e">String</span>!
-    password: <span style="color:#a6e22e">String</span>!
-    posts: <span style="color:#a6e22e">CreatePostsInput</span> <span style="color:#75715e"># Userモデルのリレーションメソッドであるposts()を指定する </span>
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+    posts: CreatePostsInput # Userモデルのリレーションメソッドであるposts()を指定する 
 }
 
-<span style="color:#66d9ef">input</span> <span style="color:#a6e22e">CreatePostsInput</span> {
-    create: [<span style="color:#a6e22e">CreatePostInput</span>!]!
+input CreatePostsInput {
+    create: [CreatePostInput!]!
 }
 
-<span style="color:#66d9ef">input</span> <span style="color:#a6e22e">CreatePostInput</span> {
-    title: <span style="color:#a6e22e">String</span>! <span style="color:#75715e"># Postモデルの新規作成に必要な項目</span>
+input CreatePostInput {
+    title: String! # Postモデルの新規作成に必要な項目
 }
-</code></pre></div><p><code>CreatePostsInput</code>で定義している<code>create:</code>はPostをどうするか決定するオペレーションである</p>
+
+  </code>
+</pre>
+</p>
+<p><code>CreatePostsInput</code>で定義している<code>create:</code>はPostをどうするか決定するオペレーションである</p>
 <p>ここでは新規作成だが他にも<code>update</code>や<code>delete</code>などがある</p>
-<div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;mutation{createUser(input:{name:\&#34;foo\&#34;,email:\&#34;foo@sample.com\&#34;,password:\&#34;password\&#34;,posts:{create:[{title:\&#34;foo\&#34;}]}}){id,name,email,posts{id,title}}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;createUser&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;11&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;foo&#34;</span>,<span style="color:#e6db74">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;foo@sample.com&#34;</span>,<span style="color:#e6db74">&#34;posts&#34;</span>:<span style="color:#f92672">[{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;21&#34;</span>,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;foo&#34;</span><span style="color:#f92672">}]}}}</span> 
-</code></pre></div><figure><img src="https://oda.world/images/129/6.webp"/>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"mutation{createUser(input:{name:\"foo\",email:\"foo@sample.com\",password:\"password\",posts:{create:[{title:\"foo\"}]}}){id,name,email,posts{id,title}}}"}' localhost:8080/graphql
+{"data":{"createUser":{"id":"11","name":"foo","email":"foo@sample.com","posts":[{"id":"21","title":"foo"}]}}} 
+
+  </code>
+</pre>
+
+<figure><img src="https://oda.world/images/129/6.webp"/>
 </figure>
 
 <h2 id="update">Update</h1>
@@ -350,72 +614,150 @@ type User {
 <li>ID型としてPrimary Keyが必須</li>
 </ul>
 <h2 id="1件更新">1件更新</h2>
-<p>サンプルとしてあるUserのnameを更新する</p>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">type Mutation {
+<p>サンプルとしてあるUserのnameを更新する
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-diff hljs">
+    
+type Mutation {
     createUser(input: CreateUserInput! @spread): User! @create
     
-<span style="color:#a6e22e">+    updateUser(
-</span><span style="color:#a6e22e">+        id: ID!
-</span><span style="color:#a6e22e">+        name: String!
-</span><span style="color:#a6e22e">+    ): User! @update
-</span><span style="color:#a6e22e"></span>}
-</code></pre></div><div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;query{user(id:1){id,name}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;Leanne Sipes&#34;</span><span style="color:#f92672">}}}</span>
++    updateUser(
++        id: ID!
++        name: String!
++    ): User! @update
+}
 
-% curl -XPOST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;mutation{updateUser(id:1,name:\&#34;updated name\&#34;){id,name}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;updateUser&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;updated name&#34;</span><span style="color:#f92672">}}}</span>
+  </code>
+</pre>
+</p>
 
-% curl -XPOST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;query{user(id:1){id,name}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;user&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;updated name&#34;</span><span style="color:#f92672">}}}</span>
-</code></pre></div><figure><img src="https://oda.world/images/129/7.webp"/>
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"query{user(id:1){id,name}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Leanne Sipes"}}}
+
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"mutation{updateUser(id:1,name:\"updated name\"){id,name}}"}' localhost:8080/graphql
+{"data":{"updateUser":{"id":"1","name":"updated name"}}}
+
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"query{user(id:1){id,name}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"updated name"}}}
+
+  </code>
+</pre>
+
+<figure><img src="https://oda.world/images/129/7.webp"/>
 </figure>
 
 <p>Primary Keyの指定がない場合はエラーとなる</p>
 <figure><img src="https://oda.world/images/129/8.webp"/>
 </figure>
 
-<p>inputでまとめることも可能</p>
-<div class="highlight" fn="src/graphql/schema.graphql"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Mutation</span> {
+<p>inputでまとめることも可能
+
+
+
+
+<pre fn="src/graphql/schema.graphql" >
+  <code class="language-graphql hljs">
+    
+type Mutation {
     updateUser(
-        <span style="color:#66d9ef">input</span>: <span style="color:#a6e22e">UpdateUserInput</span>! <span style="color:#a6e22e">@spread</span>
-    ): <span style="color:#a6e22e">User</span>! <span style="color:#a6e22e">@update</span>
+        input: UpdateUserInput! @spread
+    ): User! @update
 }
 
-<span style="color:#a6e22e">input</span> UpdateUserInput {
-    id: <span style="color:#a6e22e">ID</span>!
-    name: <span style="color:#a6e22e">String</span>!
+input UpdateUserInput {
+    id: ID!
+    name: String!
 }
-</code></pre></div><div class="highlight" fn="shell"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% curl -XPOST -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;query&#34;:&#34;mutation{updateUser(input:{id:1,name:\&#34;after name\&#34;}){id,name}}&#34;}&#39;</span> localhost:8080/graphql
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;updateUser&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;after name&#34;</span><span style="color:#f92672">}}}</span>
-</code></pre></div><h2 id="tips">TIPS</h1>
+
+  </code>
+</pre>
+</p>
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"mutation{updateUser(input:{id:1,name:\"after name\"}){id,name}}"}' localhost:8080/graphql
+{"data":{"updateUser":{"id":"1","name":"after name"}}}
+
+  </code>
+</pre>
+
+<h2 id="tips">TIPS</h1>
 <h2 id="補完">補完</h2>
 <p>このようなシンタックスエラーが気になる時はヘルパーファイルを作ると良い</p>
 <figure><img src="https://oda.world/images/129/1.webp"/>
 </figure>
 
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan lighthouse:ide-helper
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% php artisan lighthouse:ide-helper
 Wrote schema directive definitions to /var/www/html/schema-directives.graphql.
-Wrote definitions <span style="color:#66d9ef">for</span> programmatically registered types to /var/www/html/programmatic-types.graphql.
+Wrote definitions for programmatically registered types to /var/www/html/programmatic-types.graphql.
 Wrote PHP definitions to /var/www/html/_lighthouse_ide_helper.php.
 
 It is recommended to add them to your .gitignore file.
-</code></pre></div><h2 id="gui">GUI</h2>
+
+  </code>
+</pre>
+
+<h2 id="gui">GUI</h2>
 <p><a href="https://github.com/mll-lab/laravel-graphql-playground">laravel-graphql-playground</a>というのが紹介されているのでインストールする</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% composer require mll-lab/laravel-graphiql
-</code></pre></div><p><code>graphiql</code>というエンドポイントが追加される</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">% php artisan route:list
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% composer require mll-lab/laravel-graphiql
+
+  </code>
+</pre>
+
+<p><code>graphiql</code>というエンドポイントが追加される
+
+
+
+
+<pre fn="shell" >
+  <code class="language-shell hljs">
+    
+% php artisan route:list
 
   GET|HEAD   / ........................................................................................................ 
-  POST       _ignition/execute-solution . ignition.executeSolution › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › ExecuteSolutionController
-  GET|HEAD   _ignition/health-check ............. ignition.healthCheck › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › HealthCheckController
-  POST       _ignition/update-config .......... ignition.updateConfig › Spatie<span style="color:#ae81ff">\L</span>aravelIgnition › UpdateConfigController
+  POST       _ignition/execute-solution . ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ............. ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST       _ignition/update-config .......... ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
   GET|HEAD   api/user ................................................................................................. 
-  GET|HEAD   graphiql .................................................... graphiql › MLL<span style="color:#ae81ff">\G</span>raphiQL › GraphiQLController
-  GET|POST|HEAD graphql ............................................... graphql › Nuwave<span style="color:#ae81ff">\L</span>ighthouse › GraphQLController
-  GET|HEAD   sanctum/csrf-cookie .................... sanctum.csrf-cookie › Laravel<span style="color:#ae81ff">\S</span>anctum › CsrfCookieController@show
+  GET|HEAD   graphiql .................................................... graphiql › MLL\GraphiQL › GraphiQLController
+  GET|POST|HEAD graphql ............................................... graphql › Nuwave\Lighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
 
-                                                                                                     Showing <span style="color:#f92672">[</span>8<span style="color:#f92672">]</span> routes
-</code></pre></div><p>実際にアクセスしてクエリを書くと結果が返ってくる</p>
+                                                                                                     Showing [8] routes
+
+
+  </code>
+</pre>
+</p>
+<p>実際にアクセスしてクエリを書くと結果が返ってくる</p>
 <figure><img src="https://oda.world/images/129/2.webp"/>
 </figure>
 

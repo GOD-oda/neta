@@ -1,0 +1,9 @@
+{{ $lang := or (.Get "lang") "" }}
+{{ $fn := .Get "fn" }}
+
+
+<pre {{ with $fn }}fn="{{ . }}" {{ end }}>
+  <code class="language-{{ $lang }} hljs">
+    {{ .Inner }}
+  </code>
+</pre>

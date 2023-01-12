@@ -229,7 +229,50 @@ article {
         }
       }
 
-      .highlight[fn] {
+      pre {
+        font-size: 0.8em;
+        border-radius: 3px;
+        line-height: 1.9;
+        background-color: #292A3B!important;
+        color: #f8f8f2;
+
+        &[fn] {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            background-color: #323e52!important;
+            color: #ddd;
+            border-radius: 3px;
+            top: 0;
+            left: 0;
+            content: attr(fn);
+            font-size: .8rem;
+            padding: .5rem;
+          }
+        }
+
+        code {
+          background-color: #292A3B!important; // preで!importantにしているがhighlight.jsのほうが適用されてしまう
+        }
+
+        pre {
+          //padding: 3rem 1.1rem 1.1rem 1.1rem;
+          //font-size: 0.8em;
+          //border-radius: 3px;
+          //line-height: 1.9;
+          //color: #fff;
+
+          code {
+            background-color: #292A3B!important; // preで!importantにしているがhighlight.jsのほうが適用されてしまう
+            //word-wrap: initial;
+            //padding: 0 !important;
+            //font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+          }
+        }
+      }
+
+      .highlight[fn] { // TODO: 全てのコードブロックをcode.htmlに置換できたら用済み
         position: relative;
 
         &::before {
@@ -259,20 +302,20 @@ article {
         }
       }
 
-      pre {
-        font-size: 0.8em;
-        border-radius: 3px;
-        line-height: 1.7;
-        background-color: #292A3B!important;
-        color: #f8f8f2;
-
-        code {
-          padding: 1.1rem !important;
-          background-color: #292A3B!important;
-          word-wrap: initial;
-          font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-        }
-      }
+      //pre {
+      //  font-size: 0.8em;
+      //  border-radius: 3px;
+      //  line-height: 1.7;
+      //  background-color: #292A3B!important;
+      //  color: #f8f8f2;
+      //
+      //  code {
+      //    padding: 1.1rem !important;
+      //    background-color: #292A3B!important;
+      //    word-wrap: initial;
+      //    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+      //  }
+      //}
 
       ul, ol, p {
         code {
