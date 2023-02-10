@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="{{.Site.LanguageCode}}" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="{{ if .Path }}{{ substr .Summary 0 100 }}{{ else }}{{ .Site.Params.SiteDescription }}{{ end }}" />
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.ogImage | default .Site.Params.defaultOgImage }}" />
+  <meta property="og:site_name" content="{{ .Site.Params.SiteName }}" />
+  <meta property="og:description" content="{{ if .Path }}{{ substr .Summary 0 100 }}{{ else }}{{ .Site.Params.SiteDescription }}{{ end }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="{{ .Site.Params.Twitter }}" />
+  <meta name="twitter:player" content="{{ .Site.Params.Twitter }}" />
+  <title>{{ .Title }}</title>
+
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css">
+
+  <!-- style -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M5XP83QSK8');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614"
+          crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="text-center">{{.Title | default .Site.Title}}</h1>
+      <div class="icon-content d-flex justify-content-evenly">
+        {{if .Site.Params.gitlab}}
+        <a href="https://gitlab.com/u/{{ .Site.Params.gitlab }}"><img src="/images/gitlab.png"></a>
+        {{end}}
+        {{if .Site.Params.github}}
+        <a href="https://github.com/{{ .Site.Params.github }}"><img src="/images/github.png"></a>
+        {{end}}
+        {{if .Site.Params.facebook}}
+        <a href="https://www.facebook.com/{{.Site.Params.facebook}}"><img src="/images/facebook.png"></a>
+        {{end}}
+        {{if .Site.Params.twitter}}
+        <a href="https://twitter.com/{{.Site.Params.twitter}}"><img src="/images/twitter.png"></a>
+        {{end}}
+        {{if .Site.Params.gplus}}
+        <a href="https://google.com/+{{.Site.Params.gplus}}"><img src="/images/gplus.png"></a>
+        {{end}}
+        {{if .Site.Params.linkedin}}
+        <a href="https://www.linkedin.com/in/{{.Site.Params.linkedin}}"><img src="{{.Site.BaseURL}}/images/linkedin.png"></a>
+        {{end}}
+        <a href="{{.Site.BaseURL}}/index.xml"><img src="{{.Site.BaseURL}}/images/feed.png"></a>
+      </div>
+    </div>
+  </header>
