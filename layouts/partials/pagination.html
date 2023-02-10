@@ -1,0 +1,16 @@
+<div class="pagination">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+      {{if .HasPrev}}
+      <div class="prev">
+        <a class="btn-floating btn-large waves-effect waves-light" href="{{ .Prev.URL }}">prev</a>
+      </div>
+      {{end}}
+      {{if .HasNext}}
+      <div class="next">
+        <a class="btn-floating btn-large waves-effect waves-light" href="{{ .Next.URL }}">next</a>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</div>
