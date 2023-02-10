@@ -1,7 +1,6 @@
 baseURL = 'https://oda.world'
 languageCode = 'ja'
 title = 'ODA WORLD'
-publishDir = 'docs'
 canonifyurls = true
 hasCJKLanguage = true
 copyright = "© 2021 ODA WORLD"

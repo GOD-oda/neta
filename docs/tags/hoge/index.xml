@@ -1,29 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>hoge on ODA WORLD</title>
-    <link>https://GOD-oda.github.io/neta/tags/hoge/</link>
-    <description>Recent content in hoge on ODA WORLD</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language>
-    <lastBuildDate>Sun, 15 Aug 2021 18:49:20 +0900</lastBuildDate>
-    
-	<atom:link href="https://GOD-oda.github.io/neta/tags/hoge/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>26</title>
-      <link>https://GOD-oda.github.io/neta/posts/26/</link>
-      <pubDate>Sun, 15 Aug 2021 18:49:20 +0900</pubDate>
-      
-      <guid>https://GOD-oda.github.io/neta/posts/26/</guid>
-      <description>結論 column1でグルーピングした中で、column2の値が一番大きいレコードを取りたい時
-SELECT * FROM table t1 LEFT JOIN table t2 ON t1.column1 = t2.column1 AND t1.column2 &amp;lt; t2.column2 WHERE t2.column2 IS NULL;mysqlの公式にもあるように自己結合し、右テーブルの特定のカラムがnullになるものをとる
-環境  Docker version 19.03.13, build 4484c46d9d mysql:5.6  my.confは未指定なのでデフォルト    準備 mysql5.6のイメージをダウンロードする
-% docker pull mysql:5.6コンテナを起動する
-% docker run -it --name mysql56 -e MYSQL_ROOT_PASSWORD=password -d mysql:5.6c10a602370212d74189076236de74f573a683c529f745c5ed5b60285c48d8120確認
-% docker psCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMESc10a60237021 mysql:5.6 &amp;quot;docker-entrypoint.s…&amp;quot; 3 seconds ago Up 2 seconds 3306/tcp mysql56コンテナに入る</description>
-    </item>
-    
-  </channel>
-</rss>
