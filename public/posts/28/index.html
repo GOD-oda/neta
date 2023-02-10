@@ -1,0 +1,194 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta">
+<meta property="og:title" content="macOS M1でhomebrew">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="インストールコマンドは公式で確認する % /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>macOS M1でhomebrew</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>macOS M1でhomebrew</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2021-08-16 22:46:05 +0900 JST">2021/08/16 22:46:05</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<p>インストールコマンドは<a href=https://brew.sh/index_ja>公式</a>で確認する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% /bin/bash -c <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+Password:
+<span style=color:#f92672>==</span>&gt; This script will install:
+/opt/homebrew/bin/brew
+/opt/homebrew/share/doc/homebrew
+/opt/homebrew/share/man/man1/brew.1
+/opt/homebrew/share/zsh/site-functions/_brew
+/opt/homebrew/etc/bash_completion.d/brew
+/opt/homebrew
+
+Press RETURN to <span style=color:#66d9ef>continue</span> or any other key to abort
+<span style=color:#f92672>==</span>&gt; /usr/bin/sudo /usr/sbin/chown gonzalezoda:admin /opt/homebrew
+<span style=color:#f92672>==</span>&gt; Downloading and installing Homebrew...
+remote: Enumerating objects: 381, <span style=color:#66d9ef>done</span>.
+remote: Counting objects: 100% <span style=color:#f92672>(</span>381/381<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Compressing objects: 100% <span style=color:#f92672>(</span>9/9<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Total <span style=color:#ae81ff>548</span> <span style=color:#f92672>(</span>delta 375<span style=color:#f92672>)</span>, reused <span style=color:#ae81ff>376</span> <span style=color:#f92672>(</span>delta 372<span style=color:#f92672>)</span>, pack-reused <span style=color:#ae81ff>167</span>
+Receiving objects: 100% <span style=color:#f92672>(</span>548/548<span style=color:#f92672>)</span>, 127.88 KiB | 190.00 KiB/s, <span style=color:#66d9ef>done</span>.
+Resolving deltas: 100% <span style=color:#f92672>(</span>436/436<span style=color:#f92672>)</span>, completed with <span style=color:#ae81ff>122</span> local objects.
+From https://github.com/Homebrew/brew
+   d75e9c99b..ec93e9190  master     -&gt; origin/master
+ * <span style=color:#f92672>[</span>new tag<span style=color:#f92672>]</span>             2.7.3      -&gt; 2.7.3
+HEAD is now at ec93e9190 Merge pull request <span style=color:#75715e>#10208 from samford/livecheck-skip-archived-stable-urls</span>
+Updated <span style=color:#ae81ff>1</span> tap <span style=color:#f92672>(</span>homebrew/core<span style=color:#f92672>)</span>.
+<span style=color:#f92672>==</span>&gt; New Formulae
+bandit                  forge                   gallery-dl              gdu                     gofumpt                 ptpython                richmd
+<span style=color:#f92672>==</span>&gt; Updated Formulae
+act                     chamber                 feh                     ispell                  mosquitto               plantuml                terragrunt
+adios2                  circleci                firebase-cli            jupyterlab              mycli                   pnpm                    terrahub
+aliyun-cli              clib                    flawfinder              kapacitor               netlify-cli             profanity               texlab
+alluxio                 cpm                     fleet-cli               kubeaudit               newsboat                proteinortho            tflint
+angle-grinder           cppman                  flux                    kubie                   ngt                     protoc-gen-gogo         tfsec
+ansible                 cproto                  flyway                  lab                     node-assets.sass               protoc-gen-gogofaster   tmx
+apollo-cli              cromwell                frugal                  libccd                  oci-cli                 pulseaudio              topgrade
+apr                     cubejs-cli              gdal                    libffi                  ocrmypdf                pygments                tox
+arangodb                dartsim                 gifski                  libpqxx                 openimageio             redis                   traefik
+argo                    deark                   git-gui                 libusrsctp              ory-hydra               remind                  ugrep
+aspcud                  devspace                gnupg                   localstack              osm                     repo                    uutils-coreutils
+aws-cdk                 diffstat                golangci-lint           luit                    osm-pbf                 rust                    v8
+awscli                  dnsviz                  gopass                  macos-trash             perltidy                rust-analyzer           vala
+bingrep                 dolt                    grin-wallet             masscan                 petsc                   scala@2.12              vale
+bpytop                  dotenv-linter           gtk-mac-integration     math-comp               petsc-complex           sccache                 verilator
+bup                     dpkg                    helmfile                mda-lv2                 pev                     skopeo                  weboob
+bwm-ng                  duck                    howdoi                  meilisearch             php                     socat                   webpack
+byacc                   ed                      htop                    meson                   php@7.3                 sqlite-utils            xmrig
+c7n                     emscripten              httpd                   microplane              php@7.4                 suil                    zenith
+castxml                 evernote2md             igraph                  mlpack                  phpstan                 tarantool
+cdk                     exploitdb               infracost               molecule                pipemeter               terraform-ls
+Warning: /opt/homebrew/bin is not in your PATH.
+<span style=color:#f92672>==</span>&gt; Installation successful!
+
+<span style=color:#f92672>==</span>&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.
+Read the analytics documentation <span style=color:#f92672>(</span>and how to opt-out<span style=color:#f92672>)</span> here:
+  https://docs.brew.sh/Analytics
+No analytics data has been sent yet <span style=color:#f92672>(</span>or will be during this <span style=color:#e6db74>`</span>install<span style=color:#e6db74>`</span> run<span style=color:#f92672>)</span>.
+
+<span style=color:#f92672>==</span>&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:
+  https://github.com/Homebrew/brew#donations
+
+<span style=color:#f92672>==</span>&gt; Next steps:
+- Add Homebrew to your PATH in /Users/gonzalezoda/.zprofile:
+    echo <span style=color:#e6db74>&#39;eval $(/opt/homebrew/bin/brew shellenv)&#39;</span> &gt;&gt; /Users/gonzalezoda/.zprofile
+    eval <span style=color:#66d9ef>$(</span>/opt/homebrew/bin/brew shellenv<span style=color:#66d9ef>)</span>
+- Run <span style=color:#e6db74>`</span>brew help<span style=color:#e6db74>`</span> to get started
+- Further documentation:
+    https://docs.brew.sh
+</code></pre></div><p>Next stepsにあるように次のコマンドを実行する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% echo <span style=color:#e6db74>&#39;eval $(/opt/homebrew/bin/brew shellenv)&#39;</span> &gt;&gt; /Users/gonzalezoda/.zprofile
+% eval <span style=color:#66d9ef>$(</span>/opt/homebrew/bin/brew shellenv<span style=color:#66d9ef>)</span>
+</code></pre></div><p>インストール完了</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% brew
+Example usage:
+  brew search <span style=color:#f92672>[</span>TEXT|/REGEX/<span style=color:#f92672>]</span>
+  brew info <span style=color:#f92672>[</span>FORMULA...<span style=color:#f92672>]</span>
+  brew install FORMULA...
+  brew update
+  brew upgrade <span style=color:#f92672>[</span>FORMULA...<span style=color:#f92672>]</span>
+  brew uninstall FORMULA...
+  brew list <span style=color:#f92672>[</span>FORMULA...<span style=color:#f92672>]</span>
+
+Troubleshooting:
+  brew config
+  brew doctor
+  brew install --verbose --debug FORMULA
+
+Contributing:
+  brew create <span style=color:#f92672>[</span>URL <span style=color:#f92672>[</span>--no-fetch<span style=color:#f92672>]]</span>
+  brew edit <span style=color:#f92672>[</span>FORMULA...<span style=color:#f92672>]</span>
+
+Further help:
+  brew commands
+  brew help <span style=color:#f92672>[</span>COMMAND<span style=color:#f92672>]</span>
+  man brew
+  https://docs.brew.sh
+</code></pre></div><pre tabindex=0><code>% brew -v
+Homebrew 2.7.3
+Homebrew/homebrew-core (git revision c2557a; last commit 2021-01-13)
+</code></pre>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/homebrew/ class=tag># Homebrew</a>
+<a href=https://oda.world/tags/macm1/ class=tag># macM1</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="前提 Laravelの初期化が終わっている versionは9.19 Lighthouseを使う versionは5.64 コードはこちらにまとめてあ">
+<meta property="og:title" content="LaravelでGraphQLを使う">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/129.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="前提 Laravelの初期化が終わっている versionは9.19 Lighthouseを使う versionは5.64 コードはこちらにまとめてあ">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>LaravelでGraphQLを使う</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>LaravelでGraphQLを使う</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2022-11-13 18:06:03 +0900 JST">2022/11/13 18:06:03</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=前提>前提</h1>
+<ul>
+<li>Laravelの初期化が終わっている
+<ul>
+<li>versionは<code>9.19</code></li>
+</ul>
+</li>
+<li><a href=https://lighthouse-php.com/>Lighthouse</a>を使う
+<ul>
+<li>versionは<code>5.64</code></li>
+</ul>
+</li>
+</ul>
+<p>コードは<a href=https://github.com/GOD-oda/neta/tree/master/issues/129>こちら</a>にまとめてある</p>
+<h2 id=sqlite準備>sqlite準備</h1>
+<ul>
+<li><code>DB_CONNECTION</code>を<code>sqlite</code>にする</li>
+<li><code>DB_DATABASE</code>をコメントアウトする</li>
+<li>空の<code>database/database.sqlite</code>を作成する</li>
+</ul>
+<pre fn=src/.env>
+  <code class="language-env hljs">
+    
+.
+.
+.
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+#DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+.
+.
+.
+
+  </code>
+</pre>
+<p>マイグレーションと初期データを入れる（<code>database/seeders/DatabaseSeeder.php</code>のコメントアウトを外しておく）
+<pre fn=database/seeders/DatabaseSeeder.php>
+  <code class="language-diff hljs">
+     
+public function run()
+{
+-   // \App\Models\User::factory(10)->create();
++   \App\Models\User::factory(10)->create();
+
+    // \App\Models\User::factory()->create([
+    //     'name' => 'Test User',
+    //     'email' => 'test@example.com',
+    // ]);
+} 
+
+  </code>
+</pre>
+</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% docker compose exec app php artisan migrate:migrate --seed
+
+  </code>
+</pre>
+<h2 id=lighthouseをインストールする>Lighthouseをインストールする</h1>
+<p>コンテナにてコマンドを実行する
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% composer require nuwave/lighthouse
+
+  </code>
+</pre>
+</p>
+<p>インストールが完了した時点で<code>graphql</code>というエンドポイントが増えていることが確認できる</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% php artisan route:list
+
+  GET|HEAD   / ...................................................................................................................... 
+  POST       _ignition/execute-solution ............... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ........................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST       _ignition/update-config ........................ ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
+  GET|HEAD   api/user ............................................................................................................... 
+  GET|HEAD   api/users .............................................................................................................. 
+  GET|POST|HEAD graphql ............................................................. graphql › Nuwave\Lighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................................. sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+
+  </code>
+</pre>
+<p>スキーマファイルをデフォルトから複製する</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% php artisan vendor:publish --tag=lighthouse-schema
+
+  </code>
+</pre>
+<p>コメントは削除した</p>
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-graphql hljs">
+    
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    user(
+      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find
+    users(
+      name: String @where(operator: "like")
+    ): [User!]! @paginate(defaultCount: 10)
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    email_verified_at: DateTime
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+  </code>
+</pre>
+<h2 id=read>Read</h1>
+<h2 id=複数取得>複数取得</h2>
+<ul>
+<li>Queryを使う</li>
+<li>paginatorが必須としている<code>count</code>を指定する</li>
+<li><code>currentPage</code>はなくても動作する</li>
+<li><code>data</code>に欲しいUserの項目を指定する</li>
+</ul>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users{paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":10,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"},{"id":"2","name":"Delfina Bartell","email":"audreanne01@example.org"},{"id":"3","name":"Darius Lehner PhD","email":"zheidenreich@example.org"},{"id":"4","name":"Chase Trantow","email":"franecki.roxane@example.net"},{"id":"5","name":"Cielo Morar PhD","email":"lubowitz.jonathon@example.net"},{"id":"6","name":"Florine Kuhic","email":"stephon40@example.com"},{"id":"7","name":"Ms. Eugenia Lueilwitz Jr.","email":"arch.collins@example.org"},{"id":"8","name":"Cindy Welch","email":"bridgette.hintz@example.org"},{"id":"9","name":"Ms. Cordie Waelchi","email":"ncassin@example.com"},{"id":"10","name":"Ms. Rhoda Schaden","email":"zlebsack@example.net"}]}}}
+
+  </code>
+</pre>
+<p>1件のみ取得</p>
+<ul>
+<li>件数の絞りは<code>first</code>を使う（<code>first</code>は内部で定義されている）</li>
+</ul>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(first:1){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}]}}}
+
+  </code>
+</pre>
+<p>1件かつ2ページ目</p>
+<ul>
+<li>ページ指定は<code>page</code>を使う</li>
+</ul>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(first:1,page:2){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":2},"data":[{"id":"2","name":"Delfina Bartell","email":"audreanne01@example.org"}]}}}
+
+  </code>
+</pre>
+<p>名前で絞る</p>
+<ul>
+<li>LIKE検索になっているので<code>"%foo%"</code>の形にする</li>
+</ul>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{users(name:\"%Aglae%\"){paginatorInfo{count,currentPage}data{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"users":{"paginatorInfo":{"count":1,"currentPage":1},"data":[{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}]}}}
+
+  </code>
+</pre>
+<h2 id=1件取得>1件取得</h2>
+<p>ID指定</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(id:1){id,name,email}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}}
+
+  </code>
+</pre>
+<p>email指定</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(email:\"cayla30@example.net\"){id,name,email}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mrs. Aglae Hayes PhD","email":"cayla30@example.net"}}}
+
+  </code>
+</pre>
+<p>スキーマを見るとID指定は<code>required_without:email</code>、email指定は<code>required_without:id</code>となっているのでどちらかが必須となる</p>
+<h2 id=リレーション>リレーション</h2>
+<ul>
+<li>リレーション定義
+<ul>
+<li>User:Post=1:N</li>
+</ul>
+</li>
+<li>モデル、マイグレーション、ファクトリーは通常の書き方でOK</li>
+</ul>
+<p>各Userが2つのPostを持つように書き換える
+<pre fn=database/seeders/DatabaseSeeder.php>
+  <code class="language-diff hljs">
+    
+  public function run()
+  {
+    \App\Models\User::factory(10)
++    ->hasPosts(2)
+     ->create();
+
+  </code>
+</pre>
+</p>
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-diff hljs">
+    
+type Query {
+    user(
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+        email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find
+    users(
+        name: String @where(operator: "like")
+    ): [User!]! @paginate(defaultCount: 10)
+
++   post(id: ID @eq): Post @find
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    email_verified_at: DateTime
+    created_at: DateTime!
+    updated_at: DateTime!
++   posts: [Post!]!
+}
+
++ type Post {
++     id: ID!
++     title: String!
++     user: User!
++ }
+
+  </code>
+</pre>
+<p><code>@belongsTo</code>や<code>@hasMany</code>ディレクティブがあるがモデルにリレーションメソッドがあれば自動で紐づくのでつけなくても良い</p>
+<pre fn=app/Models/User.php>
+  <code class="language-php hljs">
+     
+class User extends Model
+{
+    public function posts()
+    {
+        return $this->hasMany(\App\Models\Post::class);
+    }
+}
+
+  </code>
+</pre>
+<p>以下のように明示しても動作する
+<pre>
+  <code class="language-graphql hljs">
+    
+type User {
+    posts: [Post!]! @hasMany
+}
+
+  </code>
+</pre>
+</p>
+<h3 id=belongsto>belongsTo</h3>
+<p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{post(id:1){id,title,user{id,name,email}}}"}' localhost:8080/graphql
+{"data":{"post":{"id":"1","title":"Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos.","user":{"id":"1","name":"Mr. Herminio Fisher","email":"kkuhic@example.net"}}}}
+
+  </code>
+</pre>
+<figure><img src=https://oda.world/images/129/3.webp>
+</figure>
+</p>
+<h3 id=hasmany>hasMany</h3>
+<p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"{user(id:1){id,name,email,posts{id,title}}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Mr. Herminio Fisher","email":"kkuhic@example.net","posts":[{"id":"1","title":"Voluptate praesentium et dicta animi aliquid. Aperiam sunt ut a eum. Maiores aliquam expedita dignissimos."},{"id":"2","title":"Est et cumque voluptate dignissimos neque aut. A ut qui magnam sapiente nobis cupiditate molestiae. Voluptate quasi debitis qui. Voluptates sequi non eius maiores vero tempore eos."}]}}}
+
+  </code>
+</pre>
+<figure><img src=https://oda.world/images/129/4.webp>
+</figure>
+</p>
+<h2 id=create>Create</h1>
+<ul>
+<li>typeはMutationになる</li>
+<li>戻り値が対象のモデルになる</li>
+<li><code>@create</code>でEloquentの<code>create()</code>を指定している</li>
+</ul>
+<h2 id=1件新規作成>1件新規作成</h2>
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-graphql hljs">
+    
+type Mutation {
+    createUser(
+        name: String!
+        email: String!
+        password: String!
+    ): User! @create
+}
+
+  </code>
+</pre>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"mutation{createUser(name:\"foo\",email:\"foo@sample.com\",password:\"password\"){id,name,email}}"}' localhost:8080/graphql
+{"data":{"createUser":{"id":"11","name":"foo","email":"foo@sample.com"}}}
+
+  </code>
+</pre>
+<figure><img src=https://oda.world/images/129/5.webp>
+</figure>
+<h2 id=リレーション-1>リレーション</h2>
+<p><div class=message>
+ネストされたMutationが動作されるには、モデルのリレーションを定義するメソッドの戻り値が必ず必要になる
+</div>
+<pre fn=app/Models/User.php>
+  <code class="language-php hljs">
+    
+class User extends Model
+{
+    // 動作しない
+    public function posts()
+    {
+        return $this->hasMany(\App\Models\Post::class);
+    }
+    
+    // 動作する
+    public function posts(): HasMany
+    {
+        return $this->hasMany(\App\Models\Post::class);
+    }
+}
+
+  </code>
+</pre>
+</p>
+<h3 id=hasmany-1>hasMany</h3>
+<p>以下は新しくUserを作り、さらにそのUserのPostまで作るMutationになる</p>
+<p>またhasManyに限らずリレーションを使ったMutationはtype<code>input</code>を利用することになる</p>
+<p><code>input</code>は入力パラメータをまとめるものという認識で問題ない
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-graphql hljs">
+    
+type Mutation {
+    createUser(input: CreateUserInput! @spread): User! @create
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+    posts: CreatePostsInput # Userモデルのリレーションメソッドであるposts()を指定する 
+}
+
+input CreatePostsInput {
+    create: [CreatePostInput!]!
+}
+
+input CreatePostInput {
+    title: String! # Postモデルの新規作成に必要な項目
+}
+
+  </code>
+</pre>
+</p>
+<p><code>CreatePostsInput</code>で定義している<code>create:</code>はPostをどうするか決定するオペレーションである</p>
+<p>ここでは新規作成だが他にも<code>update</code>や<code>delete</code>などがある</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H 'Content-Type: application/json' -d '{"query":"mutation{createUser(input:{name:\"foo\",email:\"foo@sample.com\",password:\"password\",posts:{create:[{title:\"foo\"}]}}){id,name,email,posts{id,title}}}"}' localhost:8080/graphql
+{"data":{"createUser":{"id":"11","name":"foo","email":"foo@sample.com","posts":[{"id":"21","title":"foo"}]}}} 
+
+  </code>
+</pre>
+<figure><img src=https://oda.world/images/129/6.webp>
+</figure>
+<h2 id=update>Update</h1>
+<ul>
+<li>typeはMutationになる</li>
+<li>戻り値が対象のモデルになる</li>
+<li>ID型としてPrimary Keyが必須</li>
+</ul>
+<h2 id=1件更新>1件更新</h2>
+<p>サンプルとしてあるUserのnameを更新する
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-diff hljs">
+    
+type Mutation {
+    createUser(input: CreateUserInput! @spread): User! @create
+    
++    updateUser(
++        id: ID!
++        name: String!
++    ): User! @update
+}
+
+  </code>
+</pre>
+</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"query{user(id:1){id,name}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"Leanne Sipes"}}}
+
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"mutation{updateUser(id:1,name:\"updated name\"){id,name}}"}' localhost:8080/graphql
+{"data":{"updateUser":{"id":"1","name":"updated name"}}}
+
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"query{user(id:1){id,name}}"}' localhost:8080/graphql
+{"data":{"user":{"id":"1","name":"updated name"}}}
+
+  </code>
+</pre>
+<figure><img src=https://oda.world/images/129/7.webp>
+</figure>
+<p>Primary Keyの指定がない場合はエラーとなる</p>
+<figure><img src=https://oda.world/images/129/8.webp>
+</figure>
+<p>inputでまとめることも可能
+<pre fn=src/graphql/schema.graphql>
+  <code class="language-graphql hljs">
+    
+type Mutation {
+    updateUser(
+        input: UpdateUserInput! @spread
+    ): User! @update
+}
+
+input UpdateUserInput {
+    id: ID!
+    name: String!
+}
+
+  </code>
+</pre>
+</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% curl -XPOST -H "Content-Type: application/json" -d '{"query":"mutation{updateUser(input:{id:1,name:\"after name\"}){id,name}}"}' localhost:8080/graphql
+{"data":{"updateUser":{"id":"1","name":"after name"}}}
+
+  </code>
+</pre>
+<h2 id=tips>TIPS</h1>
+<h2 id=補完>補完</h2>
+<p>このようなシンタックスエラーが気になる時はヘルパーファイルを作ると良い</p>
+<figure><img src=https://oda.world/images/129/1.webp>
+</figure>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% php artisan lighthouse:ide-helper
+Wrote schema directive definitions to /var/www/html/schema-directives.graphql.
+Wrote definitions for programmatically registered types to /var/www/html/programmatic-types.graphql.
+Wrote PHP definitions to /var/www/html/_lighthouse_ide_helper.php.
+
+It is recommended to add them to your .gitignore file.
+
+  </code>
+</pre>
+<h2 id=gui>GUI</h2>
+<p><a href=https://github.com/mll-lab/laravel-graphql-playground>laravel-graphql-playground</a>というのが紹介されているのでインストールする</p>
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% composer require mll-lab/laravel-graphiql
+
+  </code>
+</pre>
+<p><code>graphiql</code>というエンドポイントが追加される
+<pre fn=shell>
+  <code class="language-shell hljs">
+    
+% php artisan route:list
+
+  GET|HEAD   / ........................................................................................................ 
+  POST       _ignition/execute-solution . ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD   _ignition/health-check ............. ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST       _ignition/update-config .......... ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
+  GET|HEAD   api/user ................................................................................................. 
+  GET|HEAD   graphiql .................................................... graphiql › MLL\GraphiQL › GraphiQLController
+  GET|POST|HEAD graphql ............................................... graphql › Nuwave\Lighthouse › GraphQLController
+  GET|HEAD   sanctum/csrf-cookie .................... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+
+                                                                                                     Showing [8] routes
+
+
+  </code>
+</pre>
+</p>
+<p>実際にアクセスしてクエリを書くと結果が返ってくる</p>
+<figure><img src=https://oda.world/images/129/2.webp>
+</figure>
+<h2 id=参考>参考</h1>
+<ul>
+<li><a href=https://lighthouse-php.com/>https://lighthouse-php.com/</a></li>
+<li><a href=https://graphql.org/>https://graphql.org/</a></li>
+<li><a href=https://learn.liferay.com/dxp/latest/ja/headless-delivery/consuming-apis/consuming-graphql-apis.html>https://learn.liferay.com/dxp/latest/ja/headless-delivery/consuming-apis/consuming-graphql-apis.html</a></li>
+<li><a href=https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4>https://qiita.com/yousan/items/c898f0d2ceb8f145e5a4</a></li>
+<li><a href=https://qiita.com/jintz/items/c9105dca1725224d36a8>https://qiita.com/jintz/items/c9105dca1725224d36a8</a></li>
+<li><a href=https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7>https://qiita.com/TsukasaGR/items/1a8b0020e5e83e7a46c7</a></li>
+<li><a href=https://github.com/mll-lab/laravel-graphql-playground>https://github.com/mll-lab/laravel-graphql-playground</a></li>
+<li><a href=https://speakerdeck.com/d_endo/laravel-plus-lighthousedeshi-merudi-kosutonagraphqlru-men>https://speakerdeck.com/d_endo/laravel-plus-lighthousedeshi-merudi-kosutonagraphqlru-men</a></li>
+</ul>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/laravel/ class=tag># laravel</a>
+<a href=https://oda.world/tags/graphql/ class=tag># graphql</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前提>前提</a></li>
+<li><a href=#sqlite準備>sqlite準備</a></li>
+<li><a href=#lighthouseをインストールする>Lighthouseをインストールする</a></li>
+<li><a href=#read>Read</a>
+<ul>
+<li><a href=#複数取得>複数取得</a></li>
+<li><a href=#1件取得>1件取得</a></li>
+<li><a href=#リレーション>リレーション</a>
+<ul>
+<li><a href=#belongsto>belongsTo</a></li>
+<li><a href=#hasmany>hasMany</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href=#create>Create</a>
+<ul>
+<li><a href=#1件新規作成>1件新規作成</a></li>
+<li><a href=#リレーション-1>リレーション</a>
+<ul>
+<li><a href=#hasmany-1>hasMany</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href=#update>Update</a>
+<ul>
+<li><a href=#1件更新>1件更新</a></li>
+</ul>
+</li>
+<li><a href=#tips>TIPS</a>
+<ul>
+<li><a href=#補完>補完</a></li>
+<li><a href=#gui>GUI</a></li>
+</ul>
+</li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

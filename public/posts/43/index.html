@@ -1,0 +1,208 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-">
+<meta property="og:title" content="yumでインストール済みパッケージを表示する">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="インストール済みパッケージ一覧 % yum list installed ヘルプ % yum list -h 読み込んだプラグイン:fastestmirror, priorities, update-">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>yumでインストール済みパッケージを表示する</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>yumでインストール済みパッケージを表示する</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2021-06-22 10:54:42 +0000 UTC">2021/06/22 10:54:42</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<p>インストール済みパッケージ一覧</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% yum list installed
+</code></pre></div><p>ヘルプ</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% yum list -h
+読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper
+Usage: yum <span style=color:#f92672>[</span>options<span style=color:#f92672>]</span> COMMAND
+
+List of Commands:
+
+autoremove     Remove leaf packages
+check          rpmdb の問題を確認する
+check-update   更新に利用できるパッケージを確認する
+clean          キャッシュデータを削除する
+deplist        パッケージの依存性の一覧を表示する
+distribution-synchronization 最新の利用可能なバージョンへインストール済みパッケージを同期する
+downgrade      パッケージのダウングレード
+erase          システムから削除するパッケージ
+fs             Acts on the filesystem data of the host, mainly <span style=color:#66d9ef>for</span> removing docs/lanuages <span style=color:#66d9ef>for</span> minimal hosts.
+fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.
+groups         グループ情報の表示または使用
+help           役立つ使い方のメッセージを表示する
+history        トランザクション履歴を表示、使用する
+info           パッケージもしくはパッケージのグループについての詳細を表示する
+install        システムにパッケージをインストールする
+list           パッケージグループの一覧を表示する
+load-transaction filename から保存済みトランザクションを読み込む
+makecache      メタデータキャッシュを生成する
+provides       指定値を提供するパッケージを検索する
+reinstall      パッケージの再インストール
+repo-pkgs      Treat a repo. as a group of packages, so we can install/remove all of them
+repolist       ソフトウェアリポジトリーの構成を表示する
+search         指定した文字列でパッケージの詳細を検索する
+shell          対話型の yum シェルを実行する
+swap           Simple way to swap packages, instead of using shell
+update         システムのパッケージを更新する
+update-minimal Works like upgrade, but goes to the <span style=color:#e6db74>&#39;newest&#39;</span> package match which fixes a problem that affects your system
+updateinfo     Acts on repository update information
+upgrade        不要になったパッケージを考慮しながらパッケージを更新する
+version        ホストの利用できるリポジトリーのバージョンを表示する
+
+
+Options:
+  -h, --help            このヘルプ メッセージを表示して終了する
+  -t, --tolerant        エラーを黙認する
+  -C, --cacheonly       キャッシュから完全に実行し、キャッシュを更新しません
+  -c <span style=color:#f92672>[</span>config file<span style=color:#f92672>]</span>, --config<span style=color:#f92672>=[</span>config file<span style=color:#f92672>]</span>
+                        構成ファイルの場所
+  -R <span style=color:#f92672>[</span>minutes<span style=color:#f92672>]</span>, --randomwait<span style=color:#f92672>=[</span>minutes<span style=color:#f92672>]</span>
+                        コマンドの最大待ち時間
+  -d <span style=color:#f92672>[</span>debug level<span style=color:#f92672>]</span>, --debuglevel<span style=color:#f92672>=[</span>debug level<span style=color:#f92672>]</span>
+                        デバッグ情報の出力レベル
+  --showduplicates      一覧/検索コマンドのリポジトリーの重複の表示
+  -e <span style=color:#f92672>[</span>error level<span style=color:#f92672>]</span>, --errorlevel<span style=color:#f92672>=[</span>error level<span style=color:#f92672>]</span>
+                        エラー出力レベル
+  --rpmverbosity<span style=color:#f92672>=[</span>debug level name<span style=color:#f92672>]</span>
+                        rpm のデバッグ情報の出力レベル
+  -q, --quiet           静かに処理をする
+  -v, --verbose         冗長に処理をする
+  -y, --assumeyes       すべての問い合わせに「yes」で答える
+  --assumeno            すべての質問にいいえを回答します
+  --version             Yum のバージョンを表示して終了する
+  --installroot<span style=color:#f92672>=[</span>path<span style=color:#f92672>]</span>  インストールのベース ディレクトリーを設定する
+  --enablerepo<span style=color:#f92672>=[</span>repo<span style=color:#f92672>]</span>   ひとつ以上のリポジトリーを有効にする <span style=color:#f92672>(</span>ワイルドカード許可<span style=color:#f92672>)</span>
+  --disablerepo<span style=color:#f92672>=[</span>repo<span style=color:#f92672>]</span>  ひとつ以上のリポジトリーを無効にする <span style=color:#f92672>(</span>ワイルドカード許可<span style=color:#f92672>)</span>
+  -x <span style=color:#f92672>[</span>package<span style=color:#f92672>]</span>, --exclude<span style=color:#f92672>=[</span>package<span style=color:#f92672>]</span>
+                        名前かワイルドカードでパッケージを除外する
+  --disableexcludes<span style=color:#f92672>=[</span>repo<span style=color:#f92672>]</span>
+                        main、あるリポジトリー、またはすべてからの除外を無効にします。
+  --disableincludes<span style=color:#f92672>=[</span>repo<span style=color:#f92672>]</span>
+                        disable includepkgs <span style=color:#66d9ef>for</span> a repo or <span style=color:#66d9ef>for</span> everything
+  --obsoletes           更新中に不要な処理を有効にします
+  --noplugins           Yum プラグインを無効にする
+  --nogpgcheck          GPG 署名の確認を無効にする
+  --disableplugin<span style=color:#f92672>=[</span>plugin<span style=color:#f92672>]</span>
+                        名前でプラグインを無効にする
+  --enableplugin<span style=color:#f92672>=[</span>plugin<span style=color:#f92672>]</span>
+                        名前でプラグインを有効にする
+  --skip-broken         依存性関連に問題があるパッケージを飛ばす
+  --color<span style=color:#f92672>=</span>COLOR         色を使うかどうか制御する
+  --releasever<span style=color:#f92672>=</span>RELEASEVER
+                        yum 設定と repo ファイルに $releasever の値を設定する
+  --downloadonly        don<span style=color:#960050;background-color:#1e0010>&#39;</span>t update, just download
+  --downloaddir<span style=color:#f92672>=</span>DLDIR   specifies an alternate directory to store packages
+  --setopt<span style=color:#f92672>=</span>SETOPTS      全体設定とリポジトリー オプションの任意に設定する
+  --bugfix              Include bugfix relevant packages, in updates
+  --security            Include security relevant packages, in updates
+  --advisory<span style=color:#f92672>=</span>ADVS, --advisories<span style=color:#f92672>=</span>ADVS
+                        Include packages needed to fix the given advisory, in
+                        updates
+  --bzs<span style=color:#f92672>=</span>BZS             Include packages needed to fix the given BZ, in
+                        updates
+  --cves<span style=color:#f92672>=</span>CVES           Include packages needed to fix the given CVE, in
+                        updates
+  --sec-severity<span style=color:#f92672>=</span>SEVS, --secseverity<span style=color:#f92672>=</span>SEVS
+                        Include security relevant packages matching the
+                        severity, in updates
+
+  プラグインのオプション:
+    --samearch-priorities
+                        Priority-exclude packages based on name + arch
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% yum list installed
+読み込んだプラグイン:fastestmirror, priorities, update-motd, upgrade-helper
+Determining fastest mirrors
+ * remi-safe: ftp.riken.jp
+blackfire                                                                                                                                                                     48/48
+<span style=color:#ae81ff>59</span> packages excluded due to repository priority protections
+インストール済みパッケージ
+acl.x86_64                                                                         2.2.49-6.11.amzn1                                                              installed
+acpid.x86_64                                                                       2.0.19-6.7.amzn1                                                               @amzn-main
+alsa-lib.x86_64                                                                    1.0.22-3.9.amzn1                                                               installed
+.
+.
+.
+</code></pre></div>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/yum/ class=tag># yum</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents></nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

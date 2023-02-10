@@ -1,0 +1,217 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="結論 ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること 必ずこう書かないといけないということはないと思うけど意識す">
+<meta property="og:title" content="Laravelでユースケースのテストをどう書くか">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="結論 ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること 必ずこう書かないといけないということはないと思うけど意識す">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>Laravelでユースケースのテストをどう書くか</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>Laravelでユースケースのテストをどう書くか</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2022-07-20 23:26:28 +0900 JST">2022/07/20 23:26:28</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=結論>結論</h1>
+<ul>
+<li>ユースケースのテストはドメイン層のメソッドが適切に動作することを担保させること</li>
+<li>必ずこう書かないといけないということはないと思うけど意識すると良いねという話</li>
+</ul>
+<div class=message>
+ここで言うユースケースはDDDで言うアプリケーションサービスのこと
+</div>
+<hr>
+<p>ユースケースのテストをどう書けばいいのかあやふやだった時に見つけたこのツイート</p>
+<p>ユースケースとは何かを再認識させてくれるものでもあった</p>
+<blockquote class=twitter-tweet><p lang=ja dir=ltr>単体テストとのポイントは、「ユースケースクラスがやっていること」をテストすることです。(続) <a href="https://twitter.com/hashtag/Peing?src=hash&ref_src=twsrc%5Etfw">#Peing</a> <a href="https://twitter.com/hashtag/%E8%B3%AA%E5%95%8F%E7%AE%B1?src=hash&ref_src=twsrc%5Etfw">#質問箱</a> <a href=https://t.co/6b1a9npRu6>https://t.co/6b1a9npRu6</a></p>&mdash; 松岡@ログラス/DDD,アジャイル (@little_hand_s) <a href="https://twitter.com/little_hand_s/status/1342268469195145216?ref_src=twsrc%5Etfw">December 25, 2020</a></blockquote>
+<script async src=https://platform.twitter.com/widgets.js></script>
+<p>ここにあるようにユースケースの責務はこう</p>
+<blockquote>
+<p>ドメイン層で公開されている(publicな)メソッドなどを組み合わせてユースケースを実現すること</p>
+</blockquote>
+<p>要するにユースケースのテストとはこれらのメソッドが適切に動作することを担保するものであると</p>
+<h2 id=書く前に>書く前に</h1>
+<p>dockerを利用してあらかじめ環境を用意しておくのだがコード全体は以下になる</p>
+<p><a href=https://github.com/GOD-oda/neta/tree/master/issues/104>https://github.com/GOD-oda/neta/tree/master/issues/104</a></p>
+<p>実際に実行したいなら任意のディレクトリでイメージビルドするなりして準備しておく</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% docker build -t sample-php .
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% docker run -v $PWD/src:/var/www/html -it sample-php bash
+</code></pre></div><h2 id=実際に書いてみる>実際に書いてみる</h1>
+<p>ありがちな「タスクを作成する」というユースケースで考えてみる</p>
+<p>タスクはタイトルを持つTaskというドメインオブジェクトとする</p>
+<p>これを永続化するために<code>store()</code>というメソッドが必要になる</p>
+<p>ということでこんな感じでドメイン層には<code>Task</code>と<code>TaskRepository</code>ができることになる</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Domain</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Task</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> __construct(<span style=color:#66d9ef>private</span> <span style=color:#a6e22e>string</span> $title) {}
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>title</span>()<span style=color:#f92672>:</span> <span style=color:#a6e22e>string</span>
+    {
+        <span style=color:#66d9ef>return</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>title</span>;
+    }
+}
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Domain</span>;
+
+<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>TaskRepository</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>store</span>(<span style=color:#a6e22e>Task</span> $task)<span style=color:#f92672>:</span> <span style=color:#a6e22e>void</span>;
+}
+</code></pre></div><p>この時点では、リポジトリの実装はモックするので必要ない</p>
+<p>Laravelでは既にMockeryというモックライブラリが含まれているのでこれを使っていいと思う</p>
+<p>ではユースケースを書いていく（と言っても<code>store()</code>を呼ぶだけ</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Usecase</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Domain\Task</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Domain\TaskRepository</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CreateTask</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> __construct(<span style=color:#66d9ef>private</span> <span style=color:#a6e22e>TaskRepository</span> $taskRepository) {}
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>exec</span>(<span style=color:#a6e22e>string</span> $title)<span style=color:#f92672>:</span> <span style=color:#a6e22e>void</span>
+    {
+        $task <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Task</span>($title);
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>taskRepository</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>store</span>($task);
+    }
+}
+</code></pre></div><p>では<code>$task</code>が想定通りかのテストを書いていく</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>Tests\Usecase</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Tests\TestCase</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Domain\Task</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Domain\TaskRepository</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Usecase\CreateTask</span>;
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CreateTaskTest</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>TestCase</span>
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>testExec</span>()
+    {
+        $expected <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;foo&#39;</span>;
+
+        $mock <span style=color:#f92672>=</span> <span style=color:#a6e22e>\Mockery</span><span style=color:#f92672>::</span><span style=color:#a6e22e>mock</span>(<span style=color:#a6e22e>TaskRepository</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>);
+        $mock<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>expects</span>()
+            <span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>store</span>(<span style=color:#a6e22e>\Mockery</span><span style=color:#f92672>::</span><span style=color:#a6e22e>on</span>(<span style=color:#66d9ef>function</span> ($actual) <span style=color:#66d9ef>use</span> ($expected) {
+                $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>assertInstanceOf</span>(<span style=color:#a6e22e>Task</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>, $actual);
+                $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>assertSame</span>($expected, $actual<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>title</span>());
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
+            }))
+            <span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>andReturn</span>();
+        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>app</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>instance</span>(<span style=color:#a6e22e>TaskRepository</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>, $mock);
+
+        $usecase <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>app</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>make</span>(<span style=color:#a6e22e>CreateTask</span><span style=color:#f92672>::</span><span style=color:#a6e22e>class</span>);
+        $usecase<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>exec</span>(<span style=color:#e6db74>&#39;foo&#39;</span>);
+    }
+}
+</code></pre></div><p>ここでのポイントは以下</p>
+<ol>
+<li><code>store()</code>が1度は必ず呼ばれること</li>
+<li><code>store()</code>にTaskのインスタンスが渡されること</li>
+<li>Taskのタイトルは<code>foo</code>であること</li>
+</ol>
+<p>これを実行するこのようになる</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>root@c858383efac1:/var/www/html# php artisan test
+
+   PASS  Tests<span style=color:#ae81ff>\U</span>secase<span style=color:#ae81ff>\C</span>reateTaskTest
+  ✓ exec
+
+  Tests:  <span style=color:#ae81ff>1</span> passed
+  Time:   0.40s
+</code></pre></div><p>これでユースケースのテストは書けたわけだ</p>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/ddd/ class=tag># DDD</a>
+<a href=https://oda.world/tags/laravel/ class=tag># laravel</a>
+<a href=https://oda.world/tags/%E3%83%86%E3%82%B9%E3%83%88/ class=tag># テスト</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#結論>結論</a></li>
+<li><a href=#書く前に>書く前に</a></li>
+<li><a href=#実際に書いてみる>実際に書いてみる</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

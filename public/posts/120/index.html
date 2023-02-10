@@ -1,0 +1,226 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="前提 デプロイをgithub actionsで行っている バージョニングやリリース用タグを自動で打ちたい tagprとは いい感じにリリース用PRとC">
+<meta property="og:title" content="tagprの導入">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/120.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="前提 デプロイをgithub actionsで行っている バージョニングやリリース用タグを自動で打ちたい tagprとは いい感じにリリース用PRとC">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>tagprの導入</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>tagprの導入</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2022-10-07 19:36:25 +0900 JST">2022/10/07 19:36:25</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=前提>前提</h1>
+<ul>
+<li>デプロイをgithub actionsで行っている</li>
+<li>バージョニングやリリース用タグを自動で打ちたい</li>
+</ul>
+<h2 id=tagprとは>tagprとは</h1>
+<p>いい感じにリリース用PRとCHANGELOG.mdを作ってくれるOSSの<a href=https://github.com/Songmu/tagpr>github actions</a></p>
+<h2 id=導入>導入</h1>
+<h2 id=ワークフロー>ワークフロー</h2>
+<p>まずはtagprがmasterブランチで動作するようにデプロイ用ワークフローを作る</p>
+<p><a href=https://github.com/Songmu/tagpr/blob/main/tag.go#L99>outputsで指定する変数名</a>は内部的に<code>tag</code>と決まっているので<code>${{ steps.{id}.outputs.tag }}</code>とすること</p>
+<div class=highlight fn=.github/workflows/deploy.yml><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deployment</span>
+<span style=color:#f92672>on</span>:
+  <span style=color:#f92672>push</span>:
+    <span style=color:#f92672>branches</span>:
+      - <span style=color:#ae81ff>master</span>
+<span style=color:#f92672>jobs</span>:
+  <span style=color:#f92672>tagpr</span>:
+    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+    <span style=color:#f92672>outputs</span>:
+      <span style=color:#f92672>tagpr-tag</span>: <span style=color:#ae81ff>${{ steps.run-tagpr.outputs.tag }}</span>
+    <span style=color:#f92672>env</span>:
+      <span style=color:#f92672>GITHUB_TOKEN</span>: <span style=color:#ae81ff>${{ secrets.GITHUB_TOKEN }}</span>
+    <span style=color:#f92672>steps</span>:
+      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>Songmu/tagpr@v1</span>
+        <span style=color:#f92672>id</span>: <span style=color:#ae81ff>run-tagpr</span>
+</code></pre></div><p>次にデプロイ用jobだがリリース用タグが打たれている時に動作するように条件をつける</p>
+<p><code>jobs.{job}.needs</code>と<code>jobs.{job}.if</code>を利用する</p>
+<pre tabindex=0><code>name: Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  tagpr:
+    runs-on: ubuntu-latest
+    outputs:
+      tagpr-tag: ${{ steps.run-tagpr.outputs.tag }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Songmu/tagpr@v1
+        id: run-tagpr
+  deploy:
+    needs: tagpr
+    if: needs.tagpr.outputs.tagpr-tag != ''
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ##デプロイ処理##
+</code></pre><p>連続してワークフローを実行する際には注意点があるとのこと</p>
+<blockquote>
+<p>tagprは自動でgit tagを打つところまでやってくれるため、そこから別のGitHub Actionsのワークフローをトリガーしたいこともあるでしょう。成果物の生成やアップロード等。しかし、tagprの動作にGitHub Actionsが自動で提供してくれる secrets.GITHUB_TOKEN を利用すると、後続のワークフローは動きません。これは、ワークフローの意図しない再帰的な連続実行を防ぐための仕様です。</p>
+</blockquote>
+<p>なので上記の各jobでは<code>env.GITHUB_TOKEN</code>が同じになるように定義している</p>
+<h2 id=tagpr>.tagpr</h2>
+<p>一度でもtagprが動作すれば<code>.tagpr</code>という設定ファイルが作られる</p>
+<p>リリース用ブランチは<code>master</code>にしているので<code>releaseBranch = master</code>としておく</p>
+<div class=highlight fn=.tagpr><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown># config file for the tagpr in git config format
+# The tagpr generates the initial configuration, which you can rewrite to suit your environment.
+# CONFIGURATIONS:
+#   tagpr.releaseBranch
+#       Generally, it is &#34;main.&#34; It is the branch for releases. The pcpr tracks this branch,
+#       creates or updates a pull request as a release candidate, or tags when they are merged.
+#
+#   tagpr.versionFile
+#       Versioning file containing the semantic version needed to be updated at release.
+#       It will be synchronized with the &#34;git tag&#34;.
+#       Often this is a meta-information file such as gemspec, setup.cfg, package.json, etc.
+#       Sometimes the source code file, such as version.go or Bar.pm, is used.
+#       If you do not want to use versioning files but only git tags, specify the &#34;-&#34; string here.
+#       You can specify multiple version files by comma separated strings.
+#
+#   tagpr.vPrefix
+#       Flag whether or not v-prefix is added to semver when git tagging. (e.g. v1.2.3 if true)
+#       This is only a tagging convention, not how it is described in the version file.
+#
+#   tagpr.changelog (Optional)
+#       Flag whether or not changelog is added or changed during the release.
+#
+#   tagpr.command (Optional)
+#       Command to change files just before release.
+#
+#   tagpr.tmplate (Optional)
+#       Pull request template in go template format
+#
+#   tagpr.release (Optional)
+#       GitHub Release creation behavior after tagging [true, draft, false]
+#       If this value is not set, the release is to be created.
+[tagpr]
+	vPrefix = true
+	releaseBranch = master
+	versionFile = -
+</code></pre></div><h2 id=github-actionsの動き>github actionsの動き</h2>
+<p>作業用ブランチがマージされた時にはdeployのjobがskipされていることがわかる
+<figure><img src=https://oda.world/images/120/1.webp>
+</figure>
+</p>
+<p>しかしtagprのjobは動作しているのでリリース用PRが作成される
+<figure><img src=https://oda.world/images/120/2.webp>
+</figure>
+</p>
+<p>リリース用PRがマージされた時にdeployのjobが動作する
+<figure><img src=https://oda.world/images/120/3.webp>
+</figure>
+</p>
+<h2 id=参考>参考</h1>
+<ul>
+<li><a href=https://songmu.jp/riji/entry/2022-09-05-tagpr.html>https://songmu.jp/riji/entry/2022-09-05-tagpr.html</a></li>
+<li><a href=https://github.com/Songmu/tagpr>https://github.com/Songmu/tagpr</a></li>
+<li><a href=https://k1low.hatenablog.com/entry/2022/10/04/083000>https://k1low.hatenablog.com/entry/2022/10/04/083000</a></li>
+<li><a href=https://swfz.hatenablog.com/entry/2020/04/18/160235>https://swfz.hatenablog.com/entry/2020/04/18/160235</a></li>
+<li><a href=https://docs.github.com/ja/actions/using-jobs/defining-outputs-for-jobs>https://docs.github.com/ja/actions/using-jobs/defining-outputs-for-jobs</a></li>
+</ul>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/tagpr/ class=tag># tagpr</a>
+<a href=https://oda.world/tags/github-actions/ class=tag># github-actions</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前提>前提</a></li>
+<li><a href=#tagprとは>tagprとは</a></li>
+<li><a href=#導入>導入</a>
+<ul>
+<li><a href=#ワークフロー>ワークフロー</a></li>
+<li><a href=#tagpr>.tagpr</a></li>
+<li><a href=#github-actionsの動き>github actionsの動き</a></li>
+</ul>
+</li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

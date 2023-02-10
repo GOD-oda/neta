@@ -1,0 +1,190 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 ">
+<meta property="og:title" content="rubyのブロックについて">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="環境 ruby 2.5.8 % ruby -v ruby 2.5.8p224 (2020-03-31 revision 67882) [x86_64-darwin19] a.rbにコードを書いて実行 ">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>rubyのブロックについて</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>rubyのブロックについて</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2021-09-12 23:59:32 +0900 JST">2021/09/12 23:59:32</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=環境>環境</h1>
+<ul>
+<li>ruby 2.5.8</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby -v
+ruby 2.5.8p224 <span style=color:#f92672>(</span>2020-03-31 revision 67882<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>x86_64-darwin19<span style=color:#f92672>]</span>
+</code></pre></div><ul>
+<li>a.rbにコードを書いて実行</li>
+</ul>
+<h2 id=書き方>書き方</h1>
+<h2 id=ブロックを仮引数として明示した書き方>ブロックを仮引数として明示した書き方</h2>
+<p>コード</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exec_block</span>(<span style=color:#f92672>&amp;</span>block)
+  block<span style=color:#f92672>.</span>call
+<span style=color:#66d9ef>end</span>
+
+exec_block <span style=color:#66d9ef>do</span>
+  p <span style=color:#e6db74>&#39;hoge&#39;</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><p>結果</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby a.rb
+<span style=color:#e6db74>&#34;hoge&#34;</span>
+</code></pre></div><p>補足</p>
+<ul>
+<li><code>&block</code>はProcオブジェクトのこと</li>
+<li><code>&</code>をつけることでProcオブジェクトに変換している（つけないとただの引数なのでエラーになる）</li>
+<li>Procオブジェクトはcallメソッドで呼び出す</li>
+<li>ブロック引数は仮引数の中で、必ず<strong>1つ</strong>だけ、<strong>最後</strong>に、定義されなければならない</li>
+</ul>
+<p>確認</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exec_block</span>(<span style=color:#f92672>&amp;</span>block)
+  p block
+<span style=color:#66d9ef>end</span>
+
+exec_block <span style=color:#66d9ef>do</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby a.rb
+<span style=color:#75715e>#&lt;Proc:0x00007fd9a187a1b8@a.rb:11&gt;</span>
+</code></pre></div><p>ブロック引数でない時にブロックを渡した時
+<img src=https://user-images.githubusercontent.com/14949022/113468622-2d346580-9482-11eb-9cde-756a325adafe.png alt="スクリーンショット 2021-04-03 13 38 43"></p>
+<p>仮引数でブロックが定義できないパターン
+<img src=https://user-images.githubusercontent.com/14949022/113468706-ce232080-9482-11eb-9126-add43dc6434d.png alt="スクリーンショット 2021-04-03 13 44 05"></p>
+<p><img src=https://user-images.githubusercontent.com/14949022/113468708-d1b6a780-9482-11eb-9823-3daa94392ffc.png alt="スクリーンショット 2021-04-03 13 44 33"></p>
+<h2 id=ブロックを仮引数から省略した書き方>ブロックを仮引数から省略した書き方</h2>
+<p>ブロック引数は1つしか取れないのでどのブロックをどう呼び出すかも決まり切っているので<code>yield</code>で<code>block.call</code>と同等の動きになる</p>
+<p>なので仮引数からブロックを省略できる</p>
+<p>コード</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exec_block</span>
+  <span style=color:#66d9ef>yield</span>
+<span style=color:#66d9ef>end</span>
+
+exec_block <span style=color:#66d9ef>do</span>
+  p <span style=color:#e6db74>&#39;hoge&#39;</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><p>確認</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby a.rb
+<span style=color:#e6db74>&#34;hoge&#34;</span>
+</code></pre></div><h2 id=メリット>メリット</h1>
+<ul>
+<li>書き手が、前提が同じ状態で好きな処理をかける</li>
+<li>クロージャのとしての機能が得られる（<a href=https://qiita.com/kidach1/items/15cfee9ec66804c3afd2#%E7%8A%B6%E6%85%8B%E3%82%92%E6%8C%81%E3%81%A3%E3%81%9F%E9%96%A2%E6%95%B0%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B8%E3%83%A3%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%8C%E5%BE%97%E3%82%89%E3%82%8C%E3%82%8B>こちら</a>を参考に）</li>
+</ul>
+<p>例）eachメソッド</p>
+<p>前提：対象をループさせる</p>
+<p>書き手A：全ての要素に1を足す</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span><span style=color:#f92672>].</span>each <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>i<span style=color:#f92672>|</span>
+  p i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby a.rb
+<span style=color:#ae81ff>2</span>
+<span style=color:#ae81ff>3</span>
+</code></pre></div><p>書き手B：全ての要素に2をかける</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span><span style=color:#f92672>].</span>each <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>i<span style=color:#f92672>|</span>
+  p i <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>% ruby a.rb
+<span style=color:#ae81ff>2</span>
+<span style=color:#ae81ff>4</span>
+</code></pre></div><h2 id=参考>参考</h1>
+<ul>
+<li><a href=https://qiita.com/kidach1/items/15cfee9ec66804c3afd2>https://qiita.com/kidach1/items/15cfee9ec66804c3afd2</a></li>
+<li><a href=https://language-and-engineering.hatenablog.jp/entry/20101118/p1>https://language-and-engineering.hatenablog.jp/entry/20101118/p1</a></li>
+<li><a href=https://artgear.hatenablog.com/entry/20120115/1326635158>https://artgear.hatenablog.com/entry/20120115/1326635158</a></li>
+</ul>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/ruby/ class=tag># ruby</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#環境>環境</a></li>
+<li><a href=#書き方>書き方</a>
+<ul>
+<li><a href=#ブロックを仮引数として明示した書き方>ブロックを仮引数として明示した書き方</a></li>
+<li><a href=#ブロックを仮引数から省略した書き方>ブロックを仮引数から省略した書き方</a></li>
+</ul>
+</li>
+<li><a href=#メリット>メリット</a></li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

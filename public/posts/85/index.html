@@ -1,0 +1,414 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面">
+<meta property="og:title" content="Lightsail container serviceでnginx, php-fpm構成を試す">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="前提 ビルドしたイメージはdocker hubにプッシュする php-fpmではLaravelを動かす aws cliは使わない Amazon Lightsailの画面">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>Lightsail container serviceでnginx, php-fpm構成を試す</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>Lightsail container serviceでnginx, php-fpm構成を試す</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2022-03-14 10:31:37 +0900 JST">2022/03/14 10:31:37</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=前提>前提</h1>
+<ul>
+<li>ビルドしたイメージはdocker hubにプッシュする</li>
+<li>php-fpmではLaravelを動かす</li>
+<li>aws cliは使わない</li>
+<li>Amazon Lightsailの画面でポチポチしていく</li>
+<li>ローカルでの作業はmac M1を使う</li>
+<li>ゴールはデプロイしてパブリックドメインにアクセス→laravelのトップページが表示されること
+<ul>
+<li>RDBなどとは連携しない</li>
+<li>nginxのdefault.confとかは雑に作る</li>
+</ul>
+</li>
+</ul>
+<div class=message>
+Lightsail container serviceがどういうものかは割愛<br>
+</div>
+<p>完成したコード</p>
+<p><a href=https://github.com/GOD-oda/neta/tree/master/issues/85>https://github.com/GOD-oda/neta/tree/master/issues/85</a></p>
+<h2 id=ローカルで環境を用意する>ローカルで環境を用意する</h1>
+<p>最初に用意するのはDockerfileとdocker-compose.yml</p>
+<p>まずはphp-fpmのDockerfileを<code>docker/php</code>に作る</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Dockerfile data-lang=Dockerfile><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> php:8.1.3-fpm</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>WORKDIR</span><span style=color:#e6db74> /var/www/html</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>ENV</span> COMPOSER_ALLOW_SUPERUSER<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>	COMPOSER_HOME<span style=color:#f92672>=</span>/composer<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --from<span style=color:#f92672>=</span>composer:2.1 /usr/bin/composer /usr/bin/composer<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> apt-get update <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    apt-get -y install git zip unzip<span style=color:#960050;background-color:#1e0010>
+</span></code></pre></div><p>次はnginxのDockerfileを<code>docker/nginx</code>に作る</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Dockerfile data-lang=Dockerfile><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> nginx:1.21-alpine</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> docker/nginx/conf.d/default.conf /etc/nginx/conf.d<span style=color:#960050;background-color:#1e0010>
+</span></code></pre></div><p>それとdefault.confを<code>docker/nginx/conf.d</code>に作る</p>
+<pre tabindex=0><code class=language-default.conf data-lang=default.conf>server {
+	listen 80 default_server;
+
+	access_log  /var/log/nginx/access.log  main;
+	error_log /var/log/nginx/error.log warn;
+
+	root /var/www/html/public;
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	error_page 500 502 503 504 /50x.html;
+
+	location ~ \.php$ {
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass app:9000;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+		fastcgi_max_temp_file_size 0;
+		fastcgi_buffer_size 4K;
+		fastcgi_buffers 64 4k;
+
+		include fastcgi_params;
+	}
+}
+</code></pre><p>で、最後にdocker-compose.ymlを作る</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-docker-compose.yml data-lang=docker-compose.yml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3.9&#34;</span>
+<span style=color:#f92672>services</span>:
+  <span style=color:#f92672>app</span>:
+    <span style=color:#f92672>build</span>:
+      <span style=color:#f92672>context</span>: <span style=color:#ae81ff>.</span>
+      <span style=color:#f92672>dockerfile</span>: <span style=color:#ae81ff>./docker/php/Dockerfile</span>
+    <span style=color:#f92672>volumes</span>:
+      - <span style=color:#f92672>type</span>: <span style=color:#ae81ff>bind</span>
+         <span style=color:#f92672>source</span>: <span style=color:#ae81ff>./src</span>
+         <span style=color:#f92672>target</span>: <span style=color:#ae81ff>/var/www/html</span>
+  <span style=color:#f92672>nginx</span>:
+    <span style=color:#f92672>build</span>:
+      <span style=color:#f92672>context</span>: <span style=color:#ae81ff>.</span>
+      <span style=color:#f92672>dockerfile</span>: <span style=color:#ae81ff>./docker/nginx/Dockerfile</span>
+    <span style=color:#f92672>ports</span>:
+      - <span style=color:#e6db74>&#34;8000:80&#34;</span>
+    <span style=color:#f92672>depends_on</span>:
+      - <span style=color:#ae81ff>app</span>
+</code></pre></div><p>そしたらイメージをビルドしてからLaravelを用意する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>mkdir -p src
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>docker compose build --no-cache --force-rm
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>docker compose run --rm app composer create-project --prefer-dist laravel/laravel .
+</code></pre></div><p>ここまでローカル用の環境は整ったね</p>
+<pre tabindex=0><code>.
+├── docker
+│   ├── nginx
+│   │   ├── Dockerfile
+│   │   └── conf.d
+│   └── php
+│       └── Dockerfile
+├── docker-compose.yml
+└── src
+</code></pre><p>コンテナ起動して<code>localhost:8000</code>にアクセスするとlaravelのトップページが表示されるはず</p>
+<figure><img src=https://oda.world/images/85/2.webp>
+</figure>
+<h2 id=イメージをビルドしてdocker-hubにプッシュする>イメージをビルドしてdocker hubにプッシュする</h1>
+<h2 id=nginxのイメージ>nginxのイメージ</h2>
+<p>ここすんごいハマった箇所だけど、まずは結論から</p>
+<ol>
+<li><code>linux/amd64</code>アーキテクチャとしてビルドする</li>
+<li>デプロイするnginxのfastcgi_passは<code>localhost:9000</code>とする</li>
+</ol>
+<p>1つ目はCPUアーキテクチャの問題</p>
+<p>M1チップのmacでビルドしたイメージのCPUアーキテクチャは<code>arm64</code>になるけどLightsail container serviceで動くCPUアーキテクチャは<code>linux/amd64</code>らしい（理由はわからんし詳しく調べてない</p>
+<p>ということなのでビルドする時に<code>--platform linux/amd64,linux/arm64</code>をつける必要がある（<code>linux/arm64</code>って必要ないように思えるけどつけないと動かなかった。理由はわからんしry</p>
+<p>だけど<code>--platform</code>オプションを使うには<code>docker buildx</code>コマンドになるので<a href=https://docs.docker.com/buildx/working-with-buildx/>Docker Buildx</a>をインストールしておこう</p>
+<p>2つ目はLightsail container serviceの問題（？）</p>
+<p>どうも<code>localhost:9000</code>と書かないと動かないがローカルでは<code>localhost:9000</code>とは書きたくない</p>
+<p>ということなのでマルチステージビルドを利用してローカル用と本番用のdefault.confを切り分けよう</p>
+<p><code>docker/nginx/conf.d/default.conf</code>を<code>default-local.conf</code>と<code>default-prod.conf</code>の2つにして、<code>default-prod.conf</code>のfastcgi_passを修正する</p>
+<pre tabindex=0><code>docker/nginx/conf.d
+├── default-local.conf
+└── default-prod.conf
+</code></pre><p>違いはここだけ</p>
+<pre tabindex=0><code>diff docker/nginx/conf.d/default-local.conf docker/nginx/conf.d/default-prod.conf
+17c17
+&lt; 		fastcgi_pass app:9000;
+---
+&gt; 		fastcgi_pass localhost:9000;
+</code></pre><p>では次にDockerfileを下記のように修正する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>FROM nginx:1.21-alpine AS base
+
+FROM base AS dev
+
+COPY ./docker/nginx/conf.d/default-local.conf /etc/nginx/conf.d/default.conf
+
+FROM base AS prod
+
+COPY ./docker/nginx/conf.d/default-prod.conf /etc/nginx/conf.d/default.conf
+</code></pre></div><p>またdocker-compose.ymlも下記のように修正する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>version: &#34;3.9&#34;
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    volumes:
+      - type: bind
+        source: ./src
+        target: /var/www/html
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+<span style=color:#a6e22e>+     target: ${APP_BUILD_TARGET:-local}
+</span><span style=color:#a6e22e></span>    ports:
+      - &#34;8000:80&#34;
+    depends_on:
+      - app
+</code></pre></div><h2 id=php-fpmのイメージ>php-fpmのイメージ</h2>
+<p>php-fpmのイメージもローカル用と本番用にする</p>
+<p>と言っても今回はローカル用イメージですることはなく、必要に応じてphp.iniとかをコピーすればいいと思う</p>
+<p>本番用はcomposer installとパーミッションくらい</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff><span style=color:#a6e22e>+ FROM php:8.1.3-fpm AS base
+</span><span style=color:#a6e22e></span>
+  WORKDIR /var/www/html
+
+  ENV COMPOSER_ALLOW_SUPERUSER=1 \
+      COMPOSER_HOME=/composer
+
+  COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
+
+  RUN apt-get update &amp;&amp; \
+      apt-get -y install git zip unzip
+
+<span style=color:#a6e22e>+ FROM base AS local
+</span><span style=color:#a6e22e></span>
+<span style=color:#a6e22e>+ FROM base AS prod
+</span><span style=color:#a6e22e></span>
+<span style=color:#a6e22e>+ COPY ./src .
+</span><span style=color:#a6e22e></span>
+<span style=color:#a6e22e>+ RUN composer install --no-dev &amp;&amp; \
+</span><span style=color:#a6e22e>+     chmod -R 777 storage bootstrap/cache
+</span></code></pre></div><p>docker-compose.ymlはtargetの指定をする</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>.
+.
+.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+<span style=color:#a6e22e>+     target: ${APP_BUILD_TARGET:-local}
+</span><span style=color:#a6e22e></span>.
+.
+.
+</code></pre></div><h2 id=docker-hubにプッシュする>docker hubにプッシュする</h2>
+<p>docker hubにログインした状態で次のコマンドを実行する</p>
+<pre tabindex=0><code>docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t gododa/lightsail-container-sample-nginx:latest --target prod -f ./docker/nginx/Dockerfile --push .
+docker buildx build --no-cache --force-rm --platform linux/amd64,linux/arm64 -t gododa/lightsail-container-sample-app:latest --target prod -f ./docker/php/Dockerfile --push .
+</code></pre><ul>
+<li>&ndash;platformでアーキテクチャの指定をする</li>
+<li>-tでタグをつける
+<ul>
+<li>本番に使うイメージは常に最新でいいとおもうからlastestとかでいいんじゃないかな</li>
+</ul>
+</li>
+<li>&ndash;targetでDockerfileのprodを指定する</li>
+<li>-fでDockerfileを指定する</li>
+<li>&ndash;pushでプッシュを行う（これがないとただのビルド）</li>
+</ul>
+<p>成功するとdocker hubで確認できる</p>
+<p>それぞれのアーキテクチャにamd64が含まれていればOK</p>
+<figure><img src=https://oda.world/images/85/3.webp>
+</figure>
+<figure><img src=https://oda.world/images/85/4.webp>
+</figure>
+<h2 id=lightsail-container-serviceにデプロイ>Lightsail container serviceにデプロイ</h1>
+<p>ここからは画面ポチポチ作業ゲー</p>
+<figure><img src=https://oda.world/images/85/5.webp>
+</figure>
+<figure><img src=https://oda.world/images/85/6.webp>
+</figure>
+<p>regionは東京、capacityはNa、scaleは1</p>
+<figure><img src=https://oda.world/images/85/7.webp>
+</figure>
+<p>deploymentはSpecify a custom deploymentを選択してdocker hubのイメージを指定する</p>
+<p>また、nginxコンテナにパブリックエンドポイントを設定する</p>
+<figure><img src=https://oda.world/images/85/8.webp>
+</figure>
+<p>コンテナサービス名は<code>sample</code>とする</p>
+<p>最後にCreate container serviceボタンを押して作成中になる</p>
+<figure><img src=https://oda.world/images/85/10.webp>
+</figure>
+<p>完了したらpublic domainのリンクをクリックしてトップページが表示されればOK</p>
+<p>お疲れっした</p>
+<figure><img src=https://oda.world/images/85/9.webp>
+</figure>
+<p>完成コード再掲</p>
+<p><a href=https://github.com/GOD-oda/neta/tree/master/issues/85>https://github.com/GOD-oda/neta/tree/master/issues/85</a></p>
+<h2 id=感想>感想</h1>
+<ul>
+<li>ちょっとハマるポイントがあるけど僕みたいにネットワーク周り詳しくないけどコンテナ使いたいぞ！って人は良いサービスかなと思う</li>
+<li>定額なのでランニングコストは抑えられそうな気もする（データベースやロードバランサー等々も定額みたいね</li>
+<li>コンテナスペックを最大にしたら$3200 USD / monthで、アプリケーション規模とコストとの相談次第だけどスケーリングについてはある程度頑張れそう</li>
+<li>デプロイはやっぱ遅いっぽい</li>
+<li>datadogなどのagentを入れられるとかなんとか</li>
+</ul>
+<h2 id=ハマった点をもう少し>ハマった点をもう少し</h1>
+<h2 id=cpuアーキテクチャ>CPUアーキテクチャ</h2>
+<p>今回使った<code>nginx:1.21-alpine</code>も<code>php:8.1.3-fpm</code>もarm64だと死ぬんだよな</p>
+<p><code>--platform</code>をつけずにdocker hubにプッシュするとしっかりと<code>linux/arm64/v8</code>になってる</p>
+<figure><img src=https://oda.world/images/85/11.webp>
+</figure>
+<figure><img src=https://oda.world/images/85/12.webp>
+</figure>
+<p>これを利用してデプロイすると失敗するんだけど、そのログがこれ</p>
+<figure><img src=https://oda.world/images/85/13.webp>
+</figure>
+<p><a href=https://dev.classmethod.jp/articles/how-to-fix-standard-init-linux-error/>こちらの記事</a>のエラーパターンその3が該当したっぽくて、amd64にしたら動いたと</p>
+<p>深ぼってないから本当にそうかはわからんけど動いたからいいやw</p>
+<h2 id=nginxのfastcgi_passの設定>nginxのfastcgi_passの設定</h2>
+<p>これがお作法なのかはわからんがなーんでlocalhostになるの</p>
+<p>ローカルで環境を整えた場合にnginxからphp-fpmに流す時に通常はfastcgi_passはphp-fpmの<code>コンテナ名:ポート</code>で指定する</p>
+<p>php-fpmのportはデフォルトで9000で、php-fpmのコンテナ名はappとしよう</p>
+<p>とするとdefault.confはこう書く</p>
+<pre tabindex=0><code class=language-default.conf data-lang=default.conf>server {
+.
+.
+.
+  location ~ \.php$ {
+    fastcgi_pass app:9000;
+  }
+}
+</code></pre><p>これでデプロイすると何故か死ぬ</p>
+<figure><img src=https://oda.world/images/85/14.webp>
+</figure>
+<p>nginx→php-fpmってtcpじゃね？だからtcpで9000を解放したらいけんじゃね？とかいう安直な考えでやってみた</p>
+<p>が！！！</p>
+<p>ダメ！！！</p>
+<figure><img src=https://oda.world/images/85/15.webp>
+</figure>
+<figure><img src=https://oda.world/images/85/1.webp>
+</figure>
+<p><a href=https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services>この図</a>を見ると1つのNode内に複数のContainer1, 2, 3がある（Nodeが2つなのはscaleが2になっているから</p>
+<p>nginxとphp-fpmのContainerができるはずなんだけど、このコンテナ間の通信は<code>localhost</code>を指定することで何故か可能になる</p>
+<p>うーむ、よくわからん</p>
+<h2 id=参考>参考</h1>
+<ul>
+<li><a href=https://dev.classmethod.jp/articles/announcing-amazon-lightsail-containers/>https://dev.classmethod.jp/articles/announcing-amazon-lightsail-containers/</a></li>
+<li><a href=https://note.varu3.me/n/nb9d691f9b307>https://note.varu3.me/n/nb9d691f9b307</a></li>
+<li><a href=https://dev.classmethod.jp/articles/how-to-fix-standard-init-linux-error/>https://dev.classmethod.jp/articles/how-to-fix-standard-init-linux-error/</a></li>
+<li><a href=https://medium.com/geekculture/deploying-php-app-as-a-container-services-in-amazon-lightsail-with-github-actions-edbe68fcb45d>https://medium.com/geekculture/deploying-php-app-as-a-container-services-in-amazon-lightsail-with-github-actions-edbe68fcb45d</a></li>
+<li><a href=https://repost.aws/questions/QUoYzGuzJBSE-0iWuBeliLaw/communication-between-lightsail-containers>https://repost.aws/questions/QUoYzGuzJBSE-0iWuBeliLaw/communication-between-lightsail-containers</a></li>
+<li><a href=https://docs.docker.com/buildx/working-with-buildx/>https://docs.docker.com/buildx/working-with-buildx/</a></li>
+<li><a href=https://gendosu.jp/archives/3512>https://gendosu.jp/archives/3512</a></li>
+</ul>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/nginx/ class=tag># nginx</a>
+<a href=https://oda.world/tags/macm1/ class=tag># macM1</a>
+<a href=https://oda.world/tags/php/ class=tag># php</a>
+<a href=https://oda.world/tags/php-fpm/ class=tag># php-fpm</a>
+<a href=https://oda.world/tags/amazon-lightsail/ class=tag># amazon lightsail</a>
+<a href=https://oda.world/tags/laravel/ class=tag># laravel</a>
+<a href=https://oda.world/tags/amazon-lightsail-container-sevice/ class=tag># amazon lightsail container sevice</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前提>前提</a></li>
+<li><a href=#ローカルで環境を用意する>ローカルで環境を用意する</a></li>
+<li><a href=#イメージをビルドしてdocker-hubにプッシュする>イメージをビルドしてdocker hubにプッシュする</a>
+<ul>
+<li><a href=#nginxのイメージ>nginxのイメージ</a></li>
+<li><a href=#php-fpmのイメージ>php-fpmのイメージ</a></li>
+<li><a href=#docker-hubにプッシュする>docker hubにプッシュする</a></li>
+</ul>
+</li>
+<li><a href=#lightsail-container-serviceにデプロイ>Lightsail container serviceにデプロイ</a></li>
+<li><a href=#感想>感想</a></li>
+<li><a href=#ハマった点をもう少し>ハマった点をもう少し</a>
+<ul>
+<li><a href=#cpuアーキテクチャ>CPUアーキテクチャ</a></li>
+<li><a href=#nginxのfastcgi_passの設定>nginxのfastcgi_passの設定</a></li>
+</ul>
+</li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>

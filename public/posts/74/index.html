@@ -1,0 +1,643 @@
+<!doctype html><html lang=ja prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="前提 docker-composeを使う dynamodb localを使う php sdk v3を使う composerを使う macOS ゴール テーブルを作る 項目を追加する scanコマ">
+<meta property="og:title" content="dynamodb localにphp sdkで接続する">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://oda.world/images/ogImage/default.png">
+<meta property="og:site_name" content="ODA WORLD">
+<meta property="og:description" content="前提 docker-composeを使う dynamodb localを使う php sdk v3を使う composerを使う macOS ゴール テーブルを作る 項目を追加する scanコマ">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@oskfjzp">
+<meta name=twitter:player content="@oskfjzp">
+<title>dynamodb localにphp sdkで接続する</title>
+<link rel=apple-touch-icon sizes=57x57 href=https://oda.world/apple-icon-57x57.png>
+<link rel=apple-touch-icon sizes=60x60 href=https://oda.world/apple-icon-60x60.png>
+<link rel=apple-touch-icon sizes=72x72 href=https://oda.world/apple-icon-72x72.png>
+<link rel=apple-touch-icon sizes=76x76 href=https://oda.world/apple-icon-76x76.png>
+<link rel=apple-touch-icon sizes=114x114 href=https://oda.world/apple-icon-114x114.png>
+<link rel=apple-touch-icon sizes=120x120 href=https://oda.world/apple-icon-120x120.png>
+<link rel=apple-touch-icon sizes=144x144 href=https://oda.world/apple-icon-144x144.png>
+<link rel=apple-touch-icon sizes=152x152 href=https://oda.world/apple-icon-152x152.png>
+<link rel=apple-touch-icon sizes=180x180 href=https://oda.world/apple-icon-180x180.png>
+<link rel=icon type=image/png sizes=192x192 href=https://oda.world/android-icon-192x192.png>
+<link rel=icon type=image/png sizes=32x32 href=https://oda.world/favicon-32x32.png>
+<link rel=icon type=image/png sizes=96x96 href=https://oda.world/favicon-96x96.png>
+<link rel=icon type=image/png sizes=16x16 href=https://oda.world/favicon-16x16.png>
+<link rel=manifest href=https://oda.world/manifest.json>
+<meta name=msapplication-TileColor content="#ffffff">
+<meta name=msapplication-TileImage content="/ms-icon-144x144.png">
+<meta name=theme-color content="#ffffff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/tomorrow-night-bright.min.css>
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC crossorigin=anonymous>
+<link rel=stylesheet href=https://oda.world/sass/main.min.6a4184105520e71d8258bb62b050b9aa7a66a7bddf63c7b84656edade3fb551a.css>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5XP83QSK8"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-M5XP83QSK8')</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6572411330656614" crossorigin=anonymous></script>
+</head>
+<body>
+<header>
+<div class=container>
+<h1 class=text-center>dynamodb localにphp sdkで接続する</h1>
+<div class="icon-content d-flex justify-content-evenly">
+<a href=https://github.com/GOD-oda><img src=https://oda.world/images/github.png></a>
+<a href=https://www.facebook.com/last.pass.oda><img src=https://oda.world/images/facebook.png></a>
+<a href=https://twitter.com/@oskfjzp><img src=https://oda.world/images/twitter.png></a>
+<a href=https://oda.world/index.xml><img src=https://oda.world/images/feed.png></a>
+</div>
+</div>
+</header>
+<article>
+<div class=container>
+<aside class="mb-1 text-end">
+<div class=publish-date>
+公開日: <time datetime="2021-10-12 13:01:24 +0900 JST">2021/10/12 13:01:24</time>
+</div>
+<div class=updated-date>
+更新日: <time datetime="2023-02-10 16:09:31 +0900 JST">2023/02/10 16:09:31</time>
+</div>
+</aside>
+<div class="section row">
+<div class=col-md-9>
+<div class=content>
+<h2 id=前提>前提</h1>
+<ul>
+<li>docker-composeを使う</li>
+<li>dynamodb localを使う</li>
+<li>php sdk v3を使う</li>
+<li>composerを使う</li>
+<li>macOS</li>
+</ul>
+<h2 id=ゴール>ゴール</h1>
+<ul>
+<li>テーブルを作る</li>
+<li>項目を追加する</li>
+<li>scanコマンドで取得する</li>
+</ul>
+<h2 id=サンプルコード>サンプルコード</h1>
+<p><a href=https://github.com/GOD-oda/neta/tree/master/issues/74>https://github.com/GOD-oda/neta/tree/master/issues/74</a></p>
+<h2 id=dynamodb-localの準備>dynamodb localの準備</h1>
+<p><code>docker-compose.yml</code>は<a href=https://blog.oda.world/posts/72/>こちら</a>を参考に用意する</p>
+<p>完成系は以下</p>
+<div class=highlight fn=docker-compose.yml><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;3.8&#39;</span>
+<span style=color:#f92672>services</span>:
+  <span style=color:#f92672>dynamodb</span>:
+    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>amazon/dynamodb-local</span>
+    <span style=color:#f92672>command</span>: <span style=color:#e6db74>&#34;-jar DynamoDBLocal.jar -dbPath .&#34;</span>
+    <span style=color:#f92672>ports</span>:
+      - <span style=color:#e6db74>&#34;8000:8000&#34;</span>
+    <span style=color:#f92672>volumes</span>:
+      - <span style=color:#e6db74>&#34;dynamodb:/home/dynamodblocal&#34;</span>
+<span style=color:#f92672>volumes</span>:
+  <span style=color:#f92672>dynamodb</span>:
+    <span style=color:#f92672>driver</span>: <span style=color:#ae81ff>local</span>
+</code></pre></div><h2 id=php-sdkの準備>php sdkの準備</h1>
+<h2 id=php環境を用意する>php環境を用意する</h2>
+<p>最小限のphpイメージとcomposerが使えるようにDockerfileを<code>src</code>ディレクトリに用意する</p>
+<p>また<code>docker compose</code>を利用するので<code>docker-compose.yml</code>も用意する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>% mkdir src
+% touch src/Dockerfile
+</code></pre></div><div class=highlight fn=src/Dockerfile><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>FROM php:8.0-alpine
+
+COPY --from<span style=color:#f92672>=</span>composer:latest /usr/bin/composer /usr/bin/composer
+</code></pre></div><div class=highlight fn=docker-compose.yml><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>version: &#39;3.8&#39;
+services:
+<span style=color:#a6e22e>+ app:
+</span><span style=color:#a6e22e>+  build: src/
+</span><span style=color:#a6e22e>+  volumes:
+</span><span style=color:#a6e22e>+    - ./src:/src
+</span><span style=color:#a6e22e>+  working_dir: /src
+</span><span style=color:#a6e22e></span>  dynamodb:
+    image: amazon/dynamodb-local
+    command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;
+    ports:
+      - &#34;8000:8000&#34;
+    volumes:
+      - &#34;dynamodb:/home/dynamodblocal&#34;
+volumes:
+  dynamodb:
+    driver: local
+</code></pre></div><p>一通り揃ったのでイメージをビルドする</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>% docker-compose build
+dynamodb uses an image, skipping
+Building app
+<span style=color:#f92672>[</span>+<span style=color:#f92672>]</span> Building 3.6s <span style=color:#f92672>(</span>7/7<span style=color:#f92672>)</span> FINISHED
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>[</span>internal<span style=color:#f92672>]</span> load build definition from Dockerfile                                                                                                                           0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; transferring dockerfile: 128B                                                                                                                                           0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>[</span>internal<span style=color:#f92672>]</span> load .dockerignore                                                                                                                                              0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; transferring context: 2B                                                                                                                                                0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>[</span>internal<span style=color:#f92672>]</span> load metadata <span style=color:#66d9ef>for</span> docker.io/library/php:8.0-alpine                                                                                                              2.2s
+ <span style=color:#f92672>=</span>&gt; FROM docker.io/library/composer:latest                                                                                                                                     1.3s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; resolve docker.io/library/composer:latest                                                                                                                               1.3s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>[</span>stage-0 1/2<span style=color:#f92672>]</span> FROM docker.io/library/php:8.0-alpine@sha256:6d339aec418226dd8f7fa0c460e3cb805aa11cc6939b0f90cd418eb17bf3343d                                                0.0s
+ <span style=color:#f92672>=</span>&gt; CACHED <span style=color:#f92672>[</span>stage-0 2/2<span style=color:#f92672>]</span> COPY --from<span style=color:#f92672>=</span>composer:latest /usr/bin/composer /usr/bin/composer                                                                                       0.0s
+ <span style=color:#f92672>=</span>&gt; exporting to image                                                                                                                                                         0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; exporting layers                                                                                                                                                        0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; writing image sha256:c1d873c7edc63a019a182686bbd78f6eb8c350fcc58b4b6b4b99c285afc05fbc                                                                                   0.0s
+ <span style=color:#f92672>=</span>&gt; <span style=color:#f92672>=</span>&gt; naming to docker.io/library/74_app
+</code></pre></div><p><code>composer</code>と<code>php</code>が入ってることが確認できる</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>% docker-compose run --rm app sh
+
+/src <span style=color:#75715e># php -v</span>
+PHP 8.0.11 <span style=color:#f92672>(</span>cli<span style=color:#f92672>)</span> <span style=color:#f92672>(</span>built: Sep <span style=color:#ae81ff>23</span> <span style=color:#ae81ff>2021</span> 20:15:09<span style=color:#f92672>)</span> <span style=color:#f92672>(</span> NTS <span style=color:#f92672>)</span>
+Copyright <span style=color:#f92672>(</span>c<span style=color:#f92672>)</span> The PHP Group
+Zend Engine v4.0.11, Copyright <span style=color:#f92672>(</span>c<span style=color:#f92672>)</span> Zend Technologies
+
+/src <span style=color:#75715e># composer -V</span>
+Composer version 2.1.9 2021-10-05 09:47:38
+</code></pre></div><h2 id=composerでphp-sdkをインストール>composerでphp sdkをインストール</h2>
+<p>コンテナでコマンドを実行する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># composer require aws/aws-sdk-php</span>
+Using version ^3.193 <span style=color:#66d9ef>for</span> aws/aws-sdk-php
+./composer.json has been created
+Running composer update aws/aws-sdk-php
+Loading composer repositories with package information
+Updating dependencies
+.
+.
+.
+  - Installing aws/aws-crt-php <span style=color:#f92672>(</span>v1.0.2<span style=color:#f92672>)</span>: Extracting archive
+  - Installing aws/aws-sdk-php <span style=color:#f92672>(</span>3.193.4<span style=color:#f92672>)</span>: Extracting archive
+<span style=color:#ae81ff>6</span> package suggestions were added by new dependencies, use <span style=color:#e6db74>`</span>composer suggest<span style=color:#e6db74>`</span> to see details.
+Generating autoload files
+<span style=color:#ae81ff>2</span> packages you are using are looking <span style=color:#66d9ef>for</span> funding.
+Use the <span style=color:#e6db74>`</span>composer fund<span style=color:#e6db74>`</span> command to find out more!
+</code></pre></div><p><code>composer.json</code>を確認</p>
+<div class=highlight fn=src/composer.json><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># cat composer.json</span>
+<span style=color:#f92672>{</span>
+    <span style=color:#e6db74>&#34;require&#34;</span>: <span style=color:#f92672>{</span>
+        <span style=color:#e6db74>&#34;aws/aws-sdk-php&#34;</span>: <span style=color:#e6db74>&#34;^3.193&#34;</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>今はこんな状態(<code>tree</code>コマンドはapkで入れるかコンテナから抜けてホスト側で確認するとよい)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>% tree -I vendor
+.
+├── docker-compose.yml
+└── src
+    ├── Dockerfile
+    ├── composer.json
+    └── composer.lock
+
+<span style=color:#ae81ff>1</span> directory, <span style=color:#ae81ff>4</span> files
+</code></pre></div><h2 id=envの用意>envの用意</h1>
+<p>DynamoDBに限らずawsのサービスにアクセスするためには<code>AWS_ACCESS_KEY_ID</code>と<code>AWS_SECRET_ACCESS_KEY</code>が必要になるので<code>.env</code>を`用意する</p>
+<p>ローカルなのでfakeでOKだがちゃんと<code>.gitignore</code>に指定すること</p>
+<div class=highlight fn=src/.env><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-.env data-lang=.env>AWS_ACCESS_KEY_ID<span style=color:#f92672>=</span>fake
+AWS_SECRET_ACCESS_KEY<span style=color:#f92672>=</span>fake
+</code></pre></div><div class=highlight fn=docker-compose.yml><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-diff data-lang=diff>version: &#39;3.8&#39;
+services:
+  app:
+    build: src/
+    volumes:
+      - ./src:/src
+    working_dir: /src
+    depends_on:
+      - dynamodb
+    command: php index.php
+<span style=color:#a6e22e>+   env_file: src/.env
+</span><span style=color:#a6e22e></span>  dynamodb:
+    image: amazon/dynamodb-local
+    command: &#34;-jar DynamoDBLocal.jar -dbPath .&#34;
+    ports:
+      - &#34;8000:8000&#34;
+    volumes:
+      - &#34;dynamodb:/home/dynamodblocal&#34;
+  volumes:
+    dynamodb:
+      driver: local
+</code></pre></div><h2 id=テーブル作成>テーブル作成</h1>
+<p>ここまできたらあとはphpから操作するだけ</p>
+<p><code>src</code>ディレクトリに<code>create.php</code>を作ってテーブル作成のスクリプトを書いていく</p>
+<p>今回は<code>name</code>という属性を持つ<code>Persons</code>テーブルを作る</p>
+<div class=highlight fn=src/create.php><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>require_once</span> <span style=color:#66d9ef>__DIR__</span> <span style=color:#f92672>.</span> <span style=color:#e6db74>&#39;/vendor/autoload.php&#39;</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\Sdk</span>;
+
+$sdk <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Sdk</span>([
+  <span style=color:#e6db74>&#39;endpoint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;dynamodb:8000&#39;</span>,
+  <span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;ap-northeast-1&#39;</span>,
+  <span style=color:#e6db74>&#39;version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;latest&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_access_key_id&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_secret_access_key&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>
+]);
+$dynamoDb <span style=color:#f92672>=</span> $sdk<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createDynamoDb</span>();
+
+<span style=color:#75715e>// テーブル作成
+</span><span style=color:#75715e></span>$params <span style=color:#f92672>=</span> [
+  <span style=color:#e6db74>&#39;TableName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Persons&#39;</span>,
+  <span style=color:#e6db74>&#39;KeySchema&#39;</span> <span style=color:#f92672>=&gt;</span> [
+    [
+      <span style=color:#e6db74>&#39;AttributeName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;name&#39;</span>,
+      <span style=color:#e6db74>&#39;KeyType&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;HASH&#39;</span>
+    ]
+  ],
+  <span style=color:#e6db74>&#39;AttributeDefinitions&#39;</span> <span style=color:#f92672>=&gt;</span> [
+    [
+      <span style=color:#e6db74>&#39;AttributeName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;name&#39;</span>,
+      <span style=color:#e6db74>&#39;AttributeType&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;S&#39;</span>
+    ]
+  ],
+  <span style=color:#e6db74>&#39;ProvisionedThroughput&#39;</span> <span style=color:#f92672>=&gt;</span> [
+    <span style=color:#e6db74>&#39;ReadCapacityUnits&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>10</span>,
+    <span style=color:#e6db74>&#39;WriteCapacityUnits&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>10</span>
+  ]
+];
+
+$result <span style=color:#f92672>=</span> $dynamoDb<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createTable</span>($params);
+<span style=color:#a6e22e>var_dump</span>($result);
+</code></pre></div><p>endpointで指定する<code>dynamodb:8000</code>は<code>docker-compose.yml</code>で定義したサービス名をホスト、portsをポートとして指定すること</p>
+<p><code>app</code>コンテナから実行する</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># php create.php</span>
+object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\R</span>esult<span style=color:#f92672>)</span><span style=color:#75715e>#186 (2) {</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableDescription&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>9<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;AttributeDefinitions&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;AttributeName&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;name&#34;</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;AttributeType&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;S&#34;</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableName&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>7<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Persons&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;KeySchema&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;AttributeName&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;name&#34;</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;KeyType&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;HASH&#34;</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableStatus&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;ACTIVE&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;CreationDateTime&#34;</span><span style=color:#f92672>]=</span>&gt;
+      object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\A</span>pi<span style=color:#ae81ff>\D</span>ateTimeResult<span style=color:#f92672>)</span><span style=color:#75715e>#182 (3) {</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;2021-10-12 02:41:49.000000&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone_type&#34;</span><span style=color:#f92672>]=</span>&gt;
+        int<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;+00:00&#34;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;ProvisionedThroughput&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>5<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;LastIncreaseDateTime&#34;</span><span style=color:#f92672>]=</span>&gt;
+        object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\A</span>pi<span style=color:#ae81ff>\D</span>ateTimeResult<span style=color:#f92672>)</span><span style=color:#75715e>#184 (3) {</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;1970-01-01 00:00:00.000000&#34;</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone_type&#34;</span><span style=color:#f92672>]=</span>&gt;
+          int<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;+00:00&#34;</span>
+        <span style=color:#f92672>}</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;LastDecreaseDateTime&#34;</span><span style=color:#f92672>]=</span>&gt;
+        object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\A</span>pi<span style=color:#ae81ff>\D</span>ateTimeResult<span style=color:#f92672>)</span><span style=color:#75715e>#185 (3) {</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;1970-01-01 00:00:00.000000&#34;</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone_type&#34;</span><span style=color:#f92672>]=</span>&gt;
+          int<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>
+          <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;timezone&#34;</span><span style=color:#f92672>]=</span>&gt;
+          string<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;+00:00&#34;</span>
+        <span style=color:#f92672>}</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;NumberOfDecreasesToday&#34;</span><span style=color:#f92672>]=</span>&gt;
+        int<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;ReadCapacityUnits&#34;</span><span style=color:#f92672>]=</span>&gt;
+        int<span style=color:#f92672>(</span>10<span style=color:#f92672>)</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;WriteCapacityUnits&#34;</span><span style=color:#f92672>]=</span>&gt;
+        int<span style=color:#f92672>(</span>10<span style=color:#f92672>)</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableSizeBytes&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;ItemCount&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableArn&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>52<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;arn:aws:dynamodb:ddblocal:000000000000:table/Persons&#34;</span>
+    <span style=color:#f92672>}</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;@metadata&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;statusCode&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>200<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;effectiveUri&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>15<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;//dynamodb:8000&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;headers&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>29<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Tue, 12 Oct 2021 02:41:48 GMT&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-type&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;application/x-amz-json-1.0&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amz-crc32&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>10<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;3361348334&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amzn-requestid&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>36<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;4135ccc2-a167-4823-98f0-2edb82577b26&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-length&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>3<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;484&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;server&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>23<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Jetty(9.4.18.v20190429)&#34;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;transferStats&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;http&#34;</span><span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+          array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;monitoringEvents&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h2 id=テーブル確認>テーブル確認</h1>
+<p>無事作成できたらテーブルを確認しよう</p>
+<p><code>src</code>ディレクトリに<code>tables.php</code>スクリプトを作って同じように実行する</p>
+<div class=highlight fn=src/tables.php><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>require_once</span> <span style=color:#66d9ef>__DIR__</span> <span style=color:#f92672>.</span> <span style=color:#e6db74>&#39;/vendor/autoload.php&#39;</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\Sdk</span>;
+
+$sdk <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Sdk</span>([
+  <span style=color:#e6db74>&#39;endpoint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;dynamodb:8000&#39;</span>,
+  <span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;ap-northeast-1&#39;</span>,
+  <span style=color:#e6db74>&#39;version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;latest&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_access_key_id&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_secret_access_key&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>
+]);
+$dynamoDb <span style=color:#f92672>=</span> $sdk<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createDynamoDb</span>();
+
+$result <span style=color:#f92672>=</span> $dynamoDb<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>listTables</span>();
+<span style=color:#a6e22e>var_dump</span>($result);
+
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># php tables.php</span>
+object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\R</span>esult<span style=color:#f92672>)</span><span style=color:#75715e>#149 (2) {</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;TableNames&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>7<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Persons&#34;</span>
+    <span style=color:#f92672>}</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;@metadata&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;statusCode&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>200<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;effectiveUri&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>15<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;//dynamodb:8000&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;headers&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>29<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Tue, 12 Oct 2021 02:56:35 GMT&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-type&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;application/x-amz-json-1.0&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amz-crc32&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>9<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;531363284&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amzn-requestid&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>36<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;07e36ec7-6415-4bb1-938e-0f1cfa8d982e&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-length&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>2<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;26&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;server&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>23<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Jetty(9.4.18.v20190429)&#34;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;transferStats&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;http&#34;</span><span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+          array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;monitoringEvents&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h2 id=項目作成>項目作成</h1>
+<p>次は作ったテーブルに項目を追加してみる</p>
+<p><code>src</code>ディレクトリに<code>insert.php</code>スクリプトを作り、同じように実行する</p>
+<p><code>putItem()</code>を使うのだがどうやら追加する項目のjsonを作って<code>Marshaler</code>クラスに一度通す必要がある</p>
+<p>ということで2つ作ってみる</p>
+<div class=highlight fn=insert.php><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>require_once</span> <span style=color:#66d9ef>__DIR__</span> <span style=color:#f92672>.</span> <span style=color:#e6db74>&#39;/vendor/autoload.php&#39;</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\Sdk</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\DynamoDb\Marshaler</span>;
+
+$sdk <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Sdk</span>([
+  <span style=color:#e6db74>&#39;endpoint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;dynamodb:8000&#39;</span>,
+  <span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;ap-northeast-1&#39;</span>,
+  <span style=color:#e6db74>&#39;version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;latest&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_access_key_id&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_secret_access_key&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>
+]);
+$dynamoDb <span style=color:#f92672>=</span> $sdk<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createDynamoDb</span>();
+$marshaler <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Marshaler</span>();
+
+$items <span style=color:#f92672>=</span> [
+  [
+    <span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;foo&#39;</span>
+  ],
+  [
+    <span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;bar&#39;</span>
+  ]
+];
+
+<span style=color:#66d9ef>foreach</span> ($items <span style=color:#66d9ef>as</span> $item) {
+  $result <span style=color:#f92672>=</span> $dynamoDb<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>putItem</span>([
+    <span style=color:#e6db74>&#39;TableName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Persons&#39;</span>,
+    <span style=color:#e6db74>&#39;Item&#39;</span> <span style=color:#f92672>=&gt;</span> $marshaler<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>marshalJson</span>(<span style=color:#a6e22e>json_encode</span>($item))
+  ]);
+  <span style=color:#a6e22e>var_dump</span>($result);
+}
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># php insert.php</span>
+object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\R</span>esult<span style=color:#f92672>)</span><span style=color:#75715e>#162 (2) {</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;@metadata&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;statusCode&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>200<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;effectiveUri&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>15<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;//dynamodb:8000&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;headers&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>29<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Tue, 12 Oct 2021 03:13:19 GMT&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-type&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;application/x-amz-json-1.0&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amz-crc32&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>10<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;2745614147&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amzn-requestid&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>36<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;63982180-03eb-4b22-92df-1dbb26fe6c75&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-length&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;2&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;server&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>23<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Jetty(9.4.18.v20190429)&#34;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;transferStats&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;http&#34;</span><span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+          array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;monitoringEvents&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+object<span style=color:#f92672>(</span>Aws<span style=color:#ae81ff>\R</span>esult<span style=color:#f92672>)</span><span style=color:#75715e>#188 (2) {</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;data&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;@metadata&#34;</span><span style=color:#f92672>]=</span>&gt;
+    array<span style=color:#f92672>(</span>4<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;statusCode&#34;</span><span style=color:#f92672>]=</span>&gt;
+      int<span style=color:#f92672>(</span>200<span style=color:#f92672>)</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;effectiveUri&#34;</span><span style=color:#f92672>]=</span>&gt;
+      string<span style=color:#f92672>(</span>15<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;//dynamodb:8000&#34;</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;headers&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>6<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;date&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>29<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Tue, 12 Oct 2021 03:13:19 GMT&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-type&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>26<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;application/x-amz-json-1.0&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amz-crc32&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>10<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;2745614147&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;x-amzn-requestid&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>36<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;df87edaa-d13e-42ec-a5d3-a110bee6cb1c&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;content-length&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;2&#34;</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;server&#34;</span><span style=color:#f92672>]=</span>&gt;
+        string<span style=color:#f92672>(</span>23<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;Jetty(9.4.18.v20190429)&#34;</span>
+      <span style=color:#f92672>}</span>
+      <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;transferStats&#34;</span><span style=color:#f92672>]=</span>&gt;
+      array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;http&#34;</span><span style=color:#f92672>]=</span>&gt;
+        array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>[</span>0<span style=color:#f92672>]=</span>&gt;
+          array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+      <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+  <span style=color:#f92672>}</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;monitoringEvents&#34;</span>:<span style=color:#e6db74>&#34;Aws\Result&#34;</span>:private<span style=color:#f92672>]=</span>&gt;
+  array<span style=color:#f92672>(</span>0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h2 id=項目取得>項目取得</h1>
+<p>最後に作成した項目を取得する</p>
+<p>方法は<code>getItem()</code>、<code>query()</code>、<code>scan()</code>などあるがここでは一番簡単な<code>scan</code>を使う</p>
+<p>特に条件を指定せずそのまま実行してみよう</p>
+<div class=highlight fn=src/scan.php><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#66d9ef>require_once</span> <span style=color:#66d9ef>__DIR__</span> <span style=color:#f92672>.</span> <span style=color:#e6db74>&#39;/vendor/autoload.php&#39;</span>;
+
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\Sdk</span>;
+<span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\DynamoDb\Marshaler</span>;
+
+$sdk <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Sdk</span>([
+  <span style=color:#e6db74>&#39;endpoint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;dynamodb:8000&#39;</span>,
+  <span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;ap-northeast-1&#39;</span>,
+  <span style=color:#e6db74>&#39;version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;latest&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_access_key_id&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>,
+  <span style=color:#e6db74>&#39;aws_secret_access_key&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;fake&#39;</span>
+]);
+$dynamoDb <span style=color:#f92672>=</span> $sdk<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createDynamoDb</span>();
+$marshaler <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Marshaler</span>();
+
+$result <span style=color:#f92672>=</span> $dynamoDb<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>scan</span>([
+  <span style=color:#e6db74>&#39;TableName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Persons&#39;</span>
+]);
+
+<span style=color:#66d9ef>foreach</span> ($result[<span style=color:#e6db74>&#39;Items&#39;</span>] <span style=color:#66d9ef>as</span> $item) {
+  $person <span style=color:#f92672>=</span> $marshaler<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>unmarshalItem</span>($item);
+  <span style=color:#a6e22e>var_dump</span>($person);
+}
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>/src <span style=color:#75715e># php scan.php</span>
+array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;name&#34;</span><span style=color:#f92672>]=</span>&gt;
+  string<span style=color:#f92672>(</span>3<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;bar&#34;</span>
+<span style=color:#f92672>}</span>
+array<span style=color:#f92672>(</span>1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+  <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;name&#34;</span><span style=color:#f92672>]=</span>&gt;
+  string<span style=color:#f92672>(</span>3<span style=color:#f92672>)</span> <span style=color:#e6db74>&#34;foo&#34;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h2 id=参考>参考</h1>
+<ul>
+<li><a href=https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html>https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html</a></li>
+<li><a href=https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/>https://aws.amazon.com/jp/blogs/developer/dynamodb-json-and-array-marshaling-for-php/</a></li>
+<li><a href=https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.04.html#GettingStarted.PHP.04.Scan>https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.04.html#GettingStarted.PHP.04.Scan</a></li>
+<li><a href=https://qiita.com/Imyslx/items/f250cf2d24ac4f21a7e0>https://qiita.com/Imyslx/items/f250cf2d24ac4f21a7e0</a></li>
+<li><a href=https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#listTables-property>https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#listTables-property</a></li>
+</ul>
+<hr>
+<div class=tags>
+<a href=https://oda.world/tags/docker/ class=tag># docker</a>
+<a href=https://oda.world/tags/composer/ class=tag># composer</a>
+<a href=https://oda.world/tags/php/ class=tag># php</a>
+<a href=https://oda.world/tags/dynamodb/ class=tag># DynamoDB</a>
+</div>
+</div>
+</div>
+<div class=col-md-3>
+<div class="toc sticky-top">
+<div class=toc-title>
+目次
+</div>
+<div class=toc-body>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#前提>前提</a></li>
+<li><a href=#ゴール>ゴール</a></li>
+<li><a href=#サンプルコード>サンプルコード</a></li>
+<li><a href=#dynamodb-localの準備>dynamodb localの準備</a></li>
+<li><a href=#php-sdkの準備>php sdkの準備</a>
+<ul>
+<li><a href=#php環境を用意する>php環境を用意する</a></li>
+<li><a href=#composerでphp-sdkをインストール>composerでphp sdkをインストール</a></li>
+</ul>
+</li>
+<li><a href=#envの用意>envの用意</a></li>
+<li><a href=#テーブル作成>テーブル作成</a></li>
+<li><a href=#テーブル確認>テーブル確認</a></li>
+<li><a href=#項目作成>項目作成</a></li>
+<li><a href=#項目取得>項目取得</a></li>
+<li><a href=#参考>参考</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<footer>
+<div class=container>
+<div class=copyright>
+© 2021 ODA WORLD
+</div>
+</div>
+</footer>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js></script>
+<script>hljs.highlightAll()</script>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+</body>
+</html>
